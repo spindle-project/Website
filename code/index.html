@@ -1,0 +1,23 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+      <link rel="stylesheet" href="style.css" />
+<title>Sparkle Playground</title>
+        <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    
+</head>
+
+<body class="pyscript">
+   <h1>Sparkle Playground</h1> <br>
+    <h2> Input</h2>
+  <textarea id="codeInput" placeholder="Write your code here" rows="10" cols="50" style="line-height:14px" resize="none"></textarea>
+
+  <button id="runButton" py-click="run_python_code">Run Code</button> <br>
+    <h2> Output</h2>
+
+  <div id="output">Your code's outputs will be here</div>
+<script type="py" src="code/spindle.py"  config="code/pyscript.toml"></script> <!-- on the worker -->
+</body>
+
+</html>

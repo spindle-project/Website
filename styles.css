@@ -1,0 +1,133 @@
+* {
+  font-family: "noto sans", Arial, Helvetica, sans-serif;
+  border-radius: 10px;
+  padding: 10px;
+}
+body {
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  overflow-x: hidden;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+html {
+  padding: 0px;
+}
+#navBar {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  font-weight: bold;
+  height: 50px;
+  display: flex;
+  width: 100%;
+  margin: 0px;
+  position: relative;
+  top: -20px;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+#logoMark,
+.brandname {
+  font-family: "Dela Gothic One";
+  font-weight: bold;
+}
+#heroSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#spindleHeader h1 {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+#spindlebrandImg {
+  width: 200px;
+  aspect-ratio: 1/1;
+}
+#aboutSpindleSection {
+  opacity: 80%;
+  font-style: italic;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-on-tertiary);
+  transition: 0.3s;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 275px;
+  height: 275px;
+  align-self: center;
+  margin: 10px;
+}
+.card .container {
+  position: relative;
+  top: -30px; /*offset 10 from 40 to create padding*/
+}
+.card p {
+  padding: 0px;
+  margin: 5px;
+}
+
+.card b {
+  font-size: 24px;
+}
+.container b {
+  width: 100%;
+  display: flex;
+}
+.card span {
+  display: flex;
+  align-self: center;
+  font-size: 72px;
+  justify-content: center;
+  background-color: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+  width: calc(100% + 20px);
+  height: 75px;
+  position: relative;
+  right: 20px;
+  top: -20px;
+  margin: 0px;
+}
+#subHeroSection {
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.material-symbols-rounded {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+#copyright {
+  width: 100%;
+}
+#optionsContiner {
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  align-content: stretch;
+  flex-wrap: nowrap;
+}
+#optionsContiner div {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  padding-right: 0px;
+}
+#optionsContiner .optionTitle {
+  font-size: 24px;
+  font-weight: bold;
+  padding-right: 0px;
+}
+.optionContainer {
+  width: 46vw !important;
+  margin: 10px;
+}
