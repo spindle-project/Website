@@ -12,6 +12,9 @@ body {
   flex-direction: column;
   align-items: center;
 }
+a {
+  color: inherit;
+}
 html {
   padding: 0px;
 }
@@ -33,7 +36,7 @@ html {
 }
 #logoMark,
 .brandname {
-  font-family: "Dela Gothic One";
+  font-family: "Dela Gothic One", cursive;
   font-weight: bold;
 }
 #heroSection {

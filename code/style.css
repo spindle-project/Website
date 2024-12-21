@@ -1,60 +1,46 @@
-:root {
-  --primary-color: #fff;
-  --secondary-color: #333;
-  --text-color: #333;
-  --background-color: #fff;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary-color: #333333;
-    --secondary-color: #ffffff;
-    --text-color: #ffffff;
-    --background-color: #333333;
-  }
-}
-
-/* Example usage: */
-* { border-radius: 8px; /* Rounded corners for a cleaner look */
-padding: 5px;
-  }
 body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-   font-family: Arial, sans-serif; /* Set a default font for the body */
-}
-
-
-button {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  border: 1px solid var(--secondary-color);
-    margin-top: 10px;
+  width: 100vw;
+  padding: 10px;
 }
 #codeInput {
-line-height: 14px;
-    resize: none;
-    height: MAX(40%, 300px);
-    width: 100%;
-   font-family: monospace;
-      font-size: 14pt;
-      background-color:var(--primary-color);
-     color: var(--text-color);
-      padding: 10px; /* Add some padding for better readability */
-      border: 1px solid #cccccc; /* Add a thin border */
+  line-height: 14px;
+  resize: none;
+  width: calc(100% - 20px);
+  height: MAX(40vh, 300px) !important;
+  width: 100%;
+  font-family: monospace;
+  font-size: 14pt;
+  background-color: var(--md-sys-color-on-background);
+  color: var(--md-sys-color-background);
+  padding: 10px; /* Add some padding for better readability */
+  resize: vertical !important;
+  line-height: 1.5;
 }
-
+::placeholder {
+  color: var(--md-sys-color-on-primary);
+  opacity: 60%;
+}
 #output {
-    width: 100%;
-    min-height: MAX(200px, 20%);
-    border: 2px solid #6b6b6b;
-    background-color:var(--primary-color);
-    color: var(--text-color);
-    padding: 5px
+  width: calc(100% - 40px);
+  position: relative;
+  left: -20px;
+  height: MAX(50px, 5vh);
+  background-color: var(--md-sys-color-on-secondary);
+  color: var(--md-sys-color-secondary);
+  padding: 5px;
+  font-weight: bold;
 }
 
-
-
-    h1, h2 {
-      margin-bottom: 15px; /* Add some space after headings */
-    }
+h1,
+h2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+#UserOptionPannel button {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+}
