@@ -1,3 +1,5 @@
+@import url(css/light.css) (prefers-color-scheme: light);
+@import url(css/dark.css) (prefers-color-scheme: dark);
 * {
   font-family: "noto sans", Arial, Helvetica, sans-serif;
   border-radius: 10px;
@@ -18,13 +20,33 @@ a {
 html {
   padding: 0px;
 }
+@media screen and (max-width: 650px) {
+  #navBar {
+  flex-direction: column !important;
+    height: unset !important;
+     
+
+  }
+  #navBar a {
+        text-decoration: none;
+    padding: 5px;
+    display: inline-flex;
+    
+  }
+  #navBar span {
+    padding: 5px !important;
+  }
+  #navBar > {
+    padding: 0px
+  }
+}
 #navBar {
   background-color: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-on-primary-container);
   font-weight: bold;
   height: 50px;
   display: flex;
-  width: 100%;
+  width: 100vw;
   margin: 0px;
   position: relative;
   top: -20px;
@@ -33,6 +55,15 @@ html {
   align-content: center;
   flex-direction: row;
   flex-wrap: nowrap;
+}
+#navBar a {
+   text-decoration: none; 
+  padding: 5px;
+ 
+}
+#navBar span {
+   
+  padding: 0px;
 }
 #logoMark,
 .brandname {
@@ -133,4 +164,33 @@ html {
 .optionContainer {
   width: 46vw !important;
   margin: 10px;
+}
+#launchDemo{
+    background-color: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-on-tertiary);
+  padding: 20px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+  width: 275px;
+}
+code {
+  font-family: Consolas, "courier new", monospace;
+  color: var(--md-sys-color-on-secondary);
+  background-color: var(--md-sys-color-secondary);
+  padding: 20px;
+  font-size: 105%;
+    padding: 5px;
+
+}
+.spindle-code {
+   font-family: Consolas, "courier new", monospace;
+  color: crimson;
+  background-color: var(--md-sys-color-secondary);
+  padding: 20px;
+  font-size: 105%;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: auto;
 }

@@ -7,6 +7,7 @@
     <title>Spindle</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
@@ -15,19 +16,25 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-    <link rel="stylesheet" href="css/dark.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div id="navBar">
-      <div id="logoMark">Spindle</div>
+     <a class="pagelink" href="/" > <div id="logoMark">Spindle</div></a>
       <div id="pageOptions">
-        <a class="pagelink" href="/"> Home </a>
-        <a class="pagelink" href="/code"> Code </a>
-        <a class="pagelink"> Documentation </a>
-        <a class="pagelink"> AP Review </a>
+        <a class="pagelink" href="/code"
+          ><span class="material-symbols-rounded"> code_blocks </span> <span class ="navBarText" >Code</span>
+        </a>
+        <a class="pagelink" href="/docs">
+          <span class="material-symbols-rounded"> description </span>
+          <span class ="navBarText" >Documentation</span>
+        </a>
+        <a class="pagelink">
+          <span class="material-symbols-rounded"> school </span> <span class ="navBarText" >Exam Prep</span>
+        </a>
       </div>
     </div>
+
     <div id="heroSection">
       <img
         id="spindlebrandImg"
@@ -94,7 +101,21 @@
         </div>
       </div>
     </div>
-
+    <div id="spindleShowcase">
+      <h1>We take AP CSP Seriously</h1>
+      Experience the power of Spindle firsthand with our interactive demo. Write
+      code, see the results instantly, and learn the basics of the language in a
+      fun and engaging way. <br />
+      Don't believe us? Here's a peek at some Spindle Code: <br />
+      <div class="spindle-code">
+        <code>1. # Displays "hello" </code>
+        <code>2. text &lt;-- "hello" </code>
+        <code>3. DISPLAY(text) </code>
+      </div>
+    </div>
+    <div id="launchDemo">
+      <a href="/code">Like what you see? Launch Demo</a>
+    </div>
     <div id="optionsContiner" class="">
       <div class="optionContainer">
         <div class="optionTitle">
