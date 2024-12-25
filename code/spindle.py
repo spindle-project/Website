@@ -12,6 +12,7 @@
 import pyodide
 import js
 import builtins
+from pyscript import window
 
 def run_python_code(e):
     # Load and execute the code from my_module.py
@@ -1912,13 +1913,13 @@ class BuiltInFunction(BaseFunction):
 	execute_print_ret.arg_names = ["value"]
 	
 	def execute_input(self, exec_ctx):
-		text = prompt()
+		text = window.prompt()
 		return RTResult().success(String(text))
 	execute_input.arg_names = []
 
 	def execute_input_int(self, exec_ctx):
 		while True:
-			text = prompt()
+			text = window.prompt()
 			try:
 				number = int(text)
 				break
@@ -2447,32 +2448,45 @@ def semi_parse_string(string):
     return result
 # This function addes an empty ELSE block to if statements that don't already have one. This is required for them to work correctly.
 def add_else_to_if(text):
+    """
+    Adds an empty else block to each 'if' statement in the given text.
+
+    Args:
+        text: The input string containing potential 'if' statements.
+
+    Returns:
+        The modified string with added 'else' blocks.
+    """
+
     found_if = False
     return_text = ""
+
     for i in range(len(text)):
         char = text[i]
         return_text += char
+
         if char == " ":
             continue
-        #looking for if
-        if char == "I" and text[i+1]=="F":
-            found_if = True
-        if char == "}" and found_if == True:
-            #look for an else
-            found_else = False
-            for j in range(len(text[i:])):
-                ochar = text[i+j]
-                if ochar == "E" and text[i+j+1] == "L" and text[i+j+2] == "S" and  text[i+j+3] == "E":
-                    found_else = True
-                    found_if = False
-                    break
-                if ochar =="}":
-                    return_text += """ ELSE{
-					}"""
-                    found_if = False
-    print(return_text)
-    return return_text
 
+        if char == "I" and text[i+1] == "F":
+            found_if = True
+
+        if char == "}" and found_if:
+            found_else = False
+
+            # Check for existing 'else' within the current 'if' block
+            for j in range(i, len(text)):
+                if text[j:j+4] == "ELSE": 
+                    found_else = True
+                    break
+
+            if not found_else:
+                return_text += """ ELSE {
+                }""" 
+
+            found_if = False
+    print(str(return_text))
+    return str(return_text)
 
 def text_to_tokens(text):
 	lexer = Lexer('SELF', text)
@@ -2530,7 +2544,7 @@ def run_program(fn, text):
 		tokens, error = lexer.make_tokens()
 		#print(tokens)
 		if error: return None, error
-	else:
+	else: 
 		tokens = text
 	
 	# Generate AST

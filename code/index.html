@@ -3,10 +3,11 @@
   <html>
     <head>
       <link rel="stylesheet" href="/styles.css" />
-      <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
       <link rel="stylesheet" href="code/style.css" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
       <link
         href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet"
@@ -15,7 +16,7 @@
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
       />
-      <link rel="stylesheet" href="/css/dark.css" />
+      <link rel="stylesheet" href="styles.css" />
       <title>Sparkle Playground</title>
       <script
         type="module"
@@ -25,14 +26,20 @@
 
     <body>
       <div id="navBar">
-        <div id="logoMark">Spindle</div>
-        <div id="pageOptions">
-          <a class="pagelink" href="/"> Home </a>
-          <a class="pagelink" href="/code"> Code </a>
-          <a class="pagelink"> Documentation </a>
-          <a class="pagelink"> AP Review </a>
-        </div>
+     <a class="pagelink" href="/" > <div id="logoMark">Spindle</div></a>
+      <div id="pageOptions">
+        <a class="pagelink" href="/code"
+          ><span class="material-symbols-rounded"> code_blocks </span> Code
+        </a>
+        <a class="pagelink" href="/docs">
+          <span class="material-symbols-rounded"> description </span>
+          Documentation
+        </a>
+        <a class="pagelink">
+          <span class="material-symbols-rounded"> school </span> Exam Review
+        </a>
       </div>
+    </div>
       <h1>Spindle Playground</h1>
       <h2>Write your code here</h2>
       <textarea
