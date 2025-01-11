@@ -2,6 +2,7 @@ body {
   width: 100vw;
   padding: 10px;
 }
+
 #codeInput {
   line-height: 14px;
   resize: none;
@@ -12,14 +13,16 @@ body {
   font-size: 14pt;
   background-color: var(--md-sys-color-on-background);
   color: var(--md-sys-color-background);
-  padding: 10px; /* Add some padding for better readability */
+  padding: 10px;
   resize: vertical !important;
   line-height: 1.5;
 }
+
 ::placeholder {
   color: var(--md-sys-color-on-primary);
   opacity: 60%;
 }
+
 #output {
   width: calc(100% - 40px);
   position: relative;
@@ -37,7 +40,8 @@ h2 {
   margin-bottom: 5px;
   padding: 5px;
 }
-#UserOptionPannel button {
+
+#userOptionPanel button {
   background-color: var(--md-sys-color-primary);
   color: var(--md-sys-color-on-primary);
   font-family: inherit;
