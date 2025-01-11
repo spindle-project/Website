@@ -20,6 +20,10 @@ Report Issues: Identify and report any bugs or errors.
 Suggest Features: Share ideas for new features or improvements.
 Contribute Code: Submit pull requests with code changes.
 
+## 🌟 Contributors:
+Thanks to these wonderful people for helping to make Spindle what it is now!
+[rico33631](https://github.com/rico33631): Developed the website's accessibility features  
+
 # 🧑‍⚖️ License:
 
 This project, and Spindle itself,  are fully licensed under the MIT license. Please refer to the LICENSE file for more details.
