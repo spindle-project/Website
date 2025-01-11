@@ -26,20 +26,20 @@
 
     <body>
       <div id="navBar">
-     <a class="pagelink" href="/" > <div id="logoMark">Spindle</div></a>
-      <div id="pageOptions">
-        <a class="pagelink" href="/code"
-          ><span class="material-symbols-rounded"> code_blocks </span> Code
-        </a>
-        <a class="pagelink" href="/docs">
-          <span class="material-symbols-rounded"> description </span>
-          Documentation
-        </a>
-        <a class="pagelink">
-          <span class="material-symbols-rounded"> school </span> Exam Review
-        </a>
+        <a class="page-link" href="/"><div id="logoMark">Spindle</div></a>
+        <div id="pageOptions">
+          <a class="page-link" href="/code">
+            <span class="material-symbols-rounded">code_blocks</span> Code
+          </a>
+          <a class="page-link" href="/docs">
+            <span class="material-symbols-rounded">description</span>
+            Documentation
+          </a>
+          <a class="page-link">
+            <span class="material-symbols-rounded">school</span> Exam Review
+          </a>
+        </div>
       </div>
-    </div>
       <h1>Spindle Playground</h1>
       <h2>Write your code here</h2>
       <textarea
@@ -48,7 +48,7 @@
         resize="none"
       ></textarea>
 
-      <div id="UserOptionPannel">
+      <div id="userOptionPanel">
         <button id="runButton" py-click="run_python_code" aria-label="Run the code">Run Code</button>
       </div>
       <h2>Output</h2>
