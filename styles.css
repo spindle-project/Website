@@ -28,7 +28,8 @@ html {
 @media screen and (max-width: 650px) {
   #navBar {
     flex-direction: column !important;
-    height: unset !important;
+    height: 20vh !important;
+    width: auto !important;
   }
   
   #navBar a {
@@ -179,14 +180,24 @@ html {
 }
 
 .option-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  padding-right: 0px;
+  padding: 0px;
+  text-align: center;
+  /* Flexbox for centering */
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center;    /* Vertical centering */
 }
 
+
 .option-container {
-  width: 46vw !important;
+  display: flex;
+  flex-direction: column;
+  text-align:initial;
+  width: 40vw !important;
   margin: 10px;
+  padding: 0 !important;
 }
 
 #launchDemo {
@@ -215,6 +226,24 @@ code {
   font-size: 105%;
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 30vw;
   margin: auto;
+}
+
+/* For smaller screens (mobile devices) */
+@media (max-width: 768px) {
+  .spindle-code {
+    width: 80vw; /* Increase width for smaller screens */
+    font-size: 100%; /* Adjust font size for readability */
+    padding: 15px; /* Reduce padding to fit the screen */
+  }
+}
+
+/* For very small screens (e.g., phones in portrait mode) */
+@media (max-width: 480px) {
+  .spindle-code {
+    width: 90vw; /* Almost full width */
+    font-size: 95%; /* Slightly smaller font size */
+    padding: 10px; /* Further reduce padding */
+  }
 }
