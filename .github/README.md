@@ -22,7 +22,9 @@ Contribute Code: Submit pull requests with code changes.
 
 ## 🌟 Contributors:
 Thanks to these wonderful people for helping to make Spindle what it is now! <br>
-[rico33631](https://github.com/rico33631): Developed the website's accessibility features  
+[rico33631](https://github.com/rico33631): Developed the website's accessibility features <br>
+[RAHUL KUMAR](https://github.com/RahulKumar9988): Developed the website's accessibility features  
+
 
 # 🧑‍⚖️ License:
 
