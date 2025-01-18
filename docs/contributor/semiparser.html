@@ -8,8 +8,8 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-    <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/docs/docs.css" />
+    <link rel="stylesheet" href="/website/styles.css" />
+    <link rel="stylesheet" href="/website/docs/docs.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -40,14 +40,14 @@ If you would like to know how to write code in Spindle, please look at the user 
 <br> 
 With that out of the way, this document will lay out how Spindle works and will help you contribute to it. <br></p>
 </blockquote>
-<h1 id="allAboutTheSemiParser">All about the Semi-Parser</h1>
+<h2 id="allAboutTheSemiParser">All about the Semi-Parser</h2>
 <p>When you write code on using the spindle, you are told to run it though the <code>shell.py</code> file. This file exists to provide a front end for the language and to feed your code into the interpreter (in the  <code>spindle.py</code> file) but is not necessary. 
 <br> </p>
-<h2 id="runningAfileWithTheRunCommand">Running a file with the RUN(&quot;&quot;) command.</h2>
+<h3 id="runningAfileWithTheRunCommand">Running a file with the RUN(&quot;&quot;) command.</h3>
 <p>All Spindle code starts out as a string of text. The very first thing Spindle does is get it ready to run. This step of the process is called Semi-parsing and does three very critical things. <br> The first thing the semi-parser checks for is a RUN(&quot;&quot;) command.  This is <strong>not</strong> apart of the college board standards but is necessary for the desktop experience. This is called a &quot;command&quot; because it is technically <em>outside</em> of the spindle language but included in the file. RUN() takes one parameter, which is the full name of the file that you would like to run (including all extensions) as a string. When you execute a RUN command, Spindle will look for a file with that name, and feed that code into the semi-parser. If there is no RUN command, this process is skipped and the code written directly in the terminal is ran instead. <br> <hr> </p>
-<h2 id="standardizingIfStatements">Standardizing IF statements</h2>
+<h3 id="standardizingIfStatements">Standardizing IF statements</h3>
 <p> The second thing the semi-parser does is look at your program code and add &quot;ELSE{}&quot; to any of your if statements that do not have an else statement. It does this to fix a critical bug where an if statement without an else causes the program to <em>nullrun</em>, which is where spindle stops running code completely, or return a <em>fauxerror</em>, which is where spindle returns an error that simply doesn&#39;t make sense. <br> <hr> </p>
-<h2 id="divideAndConquerFunctions">Divide and Conquer Functions</h2>
+<h3 id="divideAndConquerFunctions">Divide and Conquer Functions</h3>
 <p>The last, and most major thing the semi parser does is check whether your program has a function in it. If and only if your program has a function in it, the semi parser will chop your code into pieces in such a way that function definitions are isolated. Each piece will then be fed into Spindle. <br> <hr> In a sense: </p>
 <pre><code>PROCEDURE add(a,b) {
 IF (a == b) {
