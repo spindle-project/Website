@@ -21,10 +21,10 @@ Suggest Features: Share ideas for new features or improvements.
 Contribute Code: Submit pull requests with code changes.
 
 ## 🌟 Contributors:
-Thanks to these wonderful people for helping to make Spindle what it is now! <br>
+Thanks to these wonderful people for helping to make Spindle's website what it is now! <br>
 [rico33631](https://github.com/rico33631): Developed the website's accessibility features <br>
-[RAHUL KUMAR](https://github.com/RahulKumar9988): Developed the website's accessibility features  
-
+[RAHUL KUMAR](https://github.com/RahulKumar9988): Developed the website's accessibility features  <br>
+[Ansh2904](https://github.com/Ansh2904): Improved the website's headings
 
 # 🧑‍⚖️ License:
 
