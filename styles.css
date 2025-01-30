@@ -1,29 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
 @import url(css/light.css) (prefers-color-scheme: light);
 @import url(css/dark.css) (prefers-color-scheme: dark);
 
 * {
   font-family: "noto sans", Arial, Helvetica, sans-serif;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 10px;
 }
 
-body {
-  background-color: var(--md-sys-color-background);
-  color: var(--md-sys-color-on-background);
-  overflow-x: hidden;
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-a {
-  color: inherit;
-}
-
-html {
-  padding: 0px;
-}
+.top-bar-container {
 
 @media screen and (max-width: 650px) {
   #navBar {
@@ -53,16 +40,90 @@ html {
   font-weight: bold;
   height: 50px;
   display: flex;
-  width: 100vw;
+  width: 100%;
   margin: 0px;
-  position: relative;
-  top: -20px;
-  align-items: center;
-  justify-content: space-between;
-  align-content: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  padding: 0px;
 }
+.top-bar {
+  background-color: var(--md-sys-color-on-tertiary);
+  color: var(--md-sys-color-tertiary);
+  border-radius: 0px 0px 20px 20px;
+  padding: 5px;
+  display: flex;
+  height: 100px;
+}
+.top-bar > * {
+  width: 60%;
+  padding: 0px;
+}
+.main-logo {
+  aspect-ratio: 1/1;
+  height: 200px;
+}
+.logo-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 200px;
+}
+.menu-items {
+  width: 100%;
+  padding: 0px;
+  flex: 1 1 0px;
+  font-weight: bold;
+}
+.menu-item-spacer {
+  width: 200px;
+}
+.menu-right-side,
+.menu-left-side {
+  width: calc(100% - 200px);
+}
+.menu-items,
+.menu-right-side,
+.menu-left-side {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.menu-item {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: max(40%, 50px);
+}
+.menu-item,
+.primary-button {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-primary);
+  border: none;
+  font-size: 1.15rem;
+  font-size: bold;
+}
+.hero-section {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.hero-section > * {
+  width: 50%;
+}
+.example-spdl-container {
+  background-color: #1f1f1f;
+  color: white;
+  position: relative;
+  font-family: "JetBrains Mono", monospace;
+}
+.example-spdl-code-header {
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 5px;
+}
+.test-code-button {
+  width: 50px;
+  height: 50px;
+  background-color: #d9d9d9;
+  color: #001f3f !important;
 
 #navBar a {
   text-decoration: none;
@@ -79,11 +140,31 @@ html {
   font-weight: bold;
 }
 
-#heroSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.test-code-button > * {
+  font-size: 4rem;
+  padding: 0px;
+  margin: 0px;
 }
+
+a,
+a:hover,
+a:visited,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
+.nav-bar-header {
+  font-size: 2rem;
+  padding-left: 10px;
+}
+#subHeroSection {
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 
 #spindleHeader h1 {
   margin-bottom: 0px;
@@ -98,21 +179,11 @@ html {
 #aboutSpindleSection {
   opacity: 80%;
   font-style: italic;
+
 }
 
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background-color: var(--md-sys-color-tertiary);
-  color: var(--md-sys-color-on-tertiary);
-  transition: 0.3s;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  width: 275px;
-  height: 275px;
-  align-self: center;
-  margin: 10px;
-}
+
+
 
 .card .container {
   position: relative;
@@ -133,20 +204,14 @@ html {
   display: flex;
 }
 
-.card span {
-  display: flex;
-  align-self: center;
-  font-size: 72px;
-  justify-content: center;
-  background-color: var(--md-sys-color-tertiary-container);
-  color: var(--md-sys-color-on-tertiary-container);
-  width: calc(100% + 20px);
-  height: 75px;
+
+.card .container {
   position: relative;
-  right: 20px;
-  top: -20px;
-  margin: 0px;
+  top: -30px;
 }
+.card b {
+  font-size: 24px;
+
 
 #subHeroSection {
   flex-direction: row;
