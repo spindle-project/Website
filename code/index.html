@@ -1,23 +1,78 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
 
-<head>
-  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-      <link rel="stylesheet" href="style.css" />
-<title>Sparkle Playground</title>
-        <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
-    
-</head>
+    <link rel="stylesheet" href="/code/style.css" />
+    <link rel="stylesheet" href="/css/dark.css" />
 
-<body class="pyscript">
-   <h1>Sparkle Playground</h1> <br>
-    <h2> Input</h2>
-  <textarea id="codeInput" placeholder="Write your code here" rows="10" cols="50" style="line-height:14px" resize="none"></textarea>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"
+    />
+    <title>Spindle Playground</title>
+    <script
+      type="module"
+      src="https://pyscript.net/releases/2024.1.1/core.js"
+    ></script>
+  </head>
 
-  <button id="runButton" py-click="run_python_code">Run Code</button> <br>
-    <h2> Output</h2>
+  <body class="pyscript">
+    <div id="navBar">
+      <a class="page-link" href="/"><div id="logoMark">Spindle</div></a>
+      <div id="pageOptions">
+        <a class="page-link" href="/code">
+          <span class="material-symbols-rounded" aria-label="Code"
+            >code_blocks</span
+          >
+          <span class="nav-bar-text">Code</span>
+        </a>
+        <a class="page-link" href="/docs">
+          <span class="material-symbols-rounded" aria-label="Documentation"
+            >description</span
+          >
+          <span class="nav-bar-text">Documentation</span>
+        </a>
+        <a class="page-link">
+          <span class="material-symbols-rounded" aria-label="Exam Prep"
+            >school</span
+          >
+          <span class="nav-bar-text">Exam Prep</span>
+        </a>
+      </div>
+    </div>
+    <h1>Spindle Playground</h1>
+    <br />
+    <div class="playground-wrapper">
+      <div class="code-input-wrapper">
+        <h2>Input</h2>
+        <textarea
+          id="codeInput"
+          class="code-input"
+          rows="10"
+          cols="50"
+          placeholder="What would you like to create?"
+        ></textarea>
+      </div>
+      <div class="code-output-wrapper">
+        <div class="test-code-button" id="runButton" py-click="run_python_code">
+          <span class="material-symbols-rounded"> play_arrow </span>
+        </div>
+        <h2>Output</h2>
+        <div id="output" class="code-output">
+          Your code's outputs will be here. To run your code, click the run
+          button below
 
-  <div id="output">Your code's outputs will be here</div>
-<script type="py" src="code/spindle.py"  config="code/pyscript.toml"></script> <!-- on the worker -->
-</body>
+          <br />
+        </div>
+      </div>
+    </div>
 
+    <script
+      type="py"
+      src="code/spindle.py"
+      config="code/pyscript.toml"
+    ></script>
+    <!-- on the worker -->
+  </body>
 </html>

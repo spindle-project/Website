@@ -1,60 +1,79 @@
-:root {
-  --primary-color: #fff;
-  --secondary-color: #333;
-  --text-color: #333;
-  --background-color: #fff;
+.playground-wrapper {
+  display: flex;
+  height: calc(100vh - 200px);
+  width: 100vw;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary-color: #333333;
-    --secondary-color: #ffffff;
-    --text-color: #ffffff;
-    --background-color: #333333;
-  }
-}
-
-/* Example usage: */
-* { border-radius: 8px; /* Rounded corners for a cleaner look */
-padding: 5px;
-  }
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-   font-family: Arial, sans-serif; /* Set a default font for the body */
-}
-
 
 button {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  border: 1px solid var(--secondary-color);
-    margin-top: 10px;
-}
-#codeInput {
-line-height: 14px;
-    resize: none;
-    height: MAX(40%, 300px);
-    width: 100%;
-   font-family: monospace;
-      font-size: 14pt;
-      background-color:var(--primary-color);
-     color: var(--text-color);
-      padding: 10px; /* Add some padding for better readability */
-      border: 1px solid #cccccc; /* Add a thin border */
+  background-color: var(--md-sys-color-on-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  border: 1px solid var(--md-sys-color-on-primary-container);
+  margin-top: 10px;
 }
 
-#output {
-    width: 100%;
-    min-height: MAX(200px, 20%);
-    border: 2px solid #6b6b6b;
-    background-color:var(--primary-color);
-    color: var(--text-color);
-    padding: 5px
+.code-input-wrapper,
+.code-output-wrapper {
+  width: 100%;
+  margin: 10px;
+  padding: 20px;
+  font-size: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  background-color: #1d1d1d;
+  color: #f1f1f1;
+  line-height: 1.5rem;
+  position: relative;
+}
+.code-input-wrapper {
+  flex-grow: 3;
+}
+.code-input,
+.code-output {
+  width: 100%;
+  border: none;
+  background-color: inherit;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  padding-left: 0px;
+  max-width: 80vw;
+}
+.code-input {
+  height: calc(100% - 24px);
+  min-width: 48vw;
+}
+.code-input:focus {
+  outline: none;
+  border: none;
+}
+textarea {
+  resize: horizontal;
+}
+.test-code-button {
+  width: min(calc(100% - 30px), 150px);
+  right: calc(50% - calc(min(calc(100% - 30px), 150px) / 2) - 10px);
+}
+.test-code-button > span {
+  font-size: 4rem !important;
 }
 
+h2 {
+  margin-bottom: 15px; /* Add some space after headings */
+}
 
-
-    h1, h2 {
-      margin-bottom: 15px; /* Add some space after headings */
-    }
+#navBar {
+  background-color: var(--md-sys-color-on-tertiary);
+  color: var(--md-sys-color-tertiary);
+  font-weight: bold;
+  height: 50px;
+  display: flex;
+  width: 100%;
+  margin: 0px;
+  position: relative;
+  top: -20px;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border-radius: 0px 0px 20px 20px;
+}
