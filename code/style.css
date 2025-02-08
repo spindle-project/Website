@@ -10,7 +10,9 @@ button {
   border: 1px solid var(--md-sys-color-on-primary-container);
   margin-top: 10px;
 }
-
+.material-symbols-rounded {
+     vertical-align: bottom;
+}
 .code-input-wrapper,
 .code-output-wrapper {
   width: 100%;
@@ -19,8 +21,8 @@ button {
   font-size: 1rem;
   font-family: "JetBrains Mono", monospace;
   background-color: #1d1d1d;
-  color: #f1f1f1;
-  line-height: 1.5rem;
+background-color: var(--md-sys-color-surface-container-low);
+  color:var(--md-sys-color-on-surface-container-low);  line-height: 1.5rem;
   position: relative;
 }
 .code-input-wrapper {
@@ -36,10 +38,12 @@ button {
   font-size: inherit;
   padding-left: 0px;
   max-width: 80vw;
+      font-variant-ligatures: none;
+
 }
 .code-input {
   height: calc(100% - 24px);
-  min-width: 48vw;
+  min-width: 40vw;
 }
 .code-input:focus {
   outline: none;
@@ -58,23 +62,5 @@ textarea {
 
 h2 {
   margin-bottom: 15px; /* Add some space after headings */
-}
-
-#navBar {
-  background-color: var(--md-sys-color-on-tertiary);
-  color: var(--md-sys-color-tertiary);
-  font-weight: bold;
-  height: 50px;
-  display: flex;
-  width: 100%;
-  margin: 0px;
-  position: relative;
-  top: -20px;
-  align-items: center;
-  justify-content: space-between;
-  align-content: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  border-radius: 0px 0px 20px 20px;
 }
 

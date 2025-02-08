@@ -1,104 +1,87 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
-
-@import url(css/light.css) (prefers-color-scheme: light);
-@import url(css/dark.css) (prefers-color-scheme: dark);
-
 * {
-  font-family: "noto sans", Arial, Helvetica, sans-serif;
   border-radius: 20px;
   padding: 10px;
 }
 
-.top-bar-container {
-
-@media screen and (max-width: 650px) {
-  #navBar {
-    flex-direction: column !important;
-    height: 20vh !important;
-    width: auto !important;
+body {
+    font-family: "noto sans", Arial, Helvetica, sans-serif;
+  background-color: var(--md-sys-color-surface-dim);
+  color: var(--md-sys-color-on-background);
+  overflow-x: hidden;
+  padding-top: 0px;
+  margin-top: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+}
+h2 {
+  padding: 0px;
+  margin: 0px;
+}
+html {
+  padding: 0px;
+}
+@media (max-width: 750px) {
+  .playground-wrapper {
+    flex-direction: column;
   }
-  
-  #navBar a {
-    text-decoration: none;
-    padding: 5px;
-    display: inline-flex;
-  }
-  
-  #navBar span {
-    padding: 5px !important;
-  }
-  
-  #navBar > {
-    padding: 0px
+  .test-code-button {
+    bottom: -100px !important;
   }
 }
 
-#navBar {
+button {
   background-color: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-on-primary-container);
+  font-style:  inherit;
   font-weight: bold;
-  height: 50px;
+  border: 2px solid var(--md-sys-color-on-primary-container);
+  margin-top: 10px;
+}
+#logoMark {
+  padding-left: 0px !important;
+}
+.page-link {
+  padding: 0px;
+  padding-left: 20px;
+}
+.page-link > * {
+  padding: 0px;
+}
+#pageOptions {
+      display: flex
+;
+  width: 100%;
+    flex-direction: row;
+    align-content: center;
+    justify-content: flex-end;
+}
+#navBar {
+    background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  font-weight: bold;
+  height: 75px;
+padding: 0px; 
+  border-left: solid var(--md-sys-color-primary-container) 5px;
+    border-right: solid var(--md-sys-color-primary-container) 5px;
+
   display: flex;
   width: 100%;
   margin: 0px;
-  padding: 0px;
-}
-.top-bar {
-  background-color: var(--md-sys-color-on-tertiary);
-  color: var(--md-sys-color-tertiary);
-  border-radius: 0px 0px 20px 20px;
-  padding: 5px;
-  display: flex;
-  height: 100px;
-}
-.top-bar > * {
-  width: 60%;
-  padding: 0px;
-}
-.main-logo {
-  aspect-ratio: 1/1;
-  height: 200px;
-}
-.logo-container {
   position: relative;
-  display: flex;
-  justify-content: center;
-  width: 200px;
-}
-.menu-items {
-  width: 100%;
-  padding: 0px;
-  flex: 1 1 0px;
-  font-weight: bold;
-}
-.menu-item-spacer {
-  width: 200px;
-}
-.menu-right-side,
-.menu-left-side {
-  width: calc(100% - 200px);
-}
-.menu-items,
-.menu-right-side,
-.menu-left-side {
-  display: flex;
+  top: -20px;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
   flex-direction: row;
-  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  border-radius: 0px 0px 20px 20px;
 }
-.menu-item {
-  padding-left: 10px;
-  padding-right: 10px;
-  width: max(40%, 50px);
-}
-.menu-item,
-.primary-button {
-  background-color: var(--md-sys-color-primary-container);
-  color: var(--md-sys-color-primary);
-  border: none;
-  font-size: 1.15rem;
-  font-size: bold;
-}
+
 .hero-section {
   display: flex;
   align-items: center;
@@ -112,35 +95,27 @@
   background-color: #1f1f1f;
   color: white;
   position: relative;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", monospace !important;
 }
 .example-spdl-code-header {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   width: 100%;
   padding: 5px;
 }
 .test-code-button {
   width: 50px;
   height: 50px;
-  background-color: #d9d9d9;
-  color: #001f3f !important;
-
-#navBar a {
-  text-decoration: none;
-  padding: 5px;
+    background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }
-
-#navBar span {
-  padding: 0px;
-}
-
-#logoMark,
-.brand-name {
-  font-family: "Dela Gothic One", cursive;
-  font-weight: bold;
-}
-
-
 .test-code-button > * {
   font-size: 4rem;
   padding: 0px;
@@ -165,150 +140,39 @@ a:active {
   flex-wrap: wrap;
   width: 100%;
   justify-content: center;
-
-#spindleHeader h1 {
-  margin-bottom: 0px;
-  padding-bottom: 0px;
 }
-
-#spindleBrandImg {
-  width: 200px;
-  aspect-ratio: 1/1;
-}
-
-#aboutSpindleSection {
-  opacity: 80%;
-  font-style: italic;
-
-}
-
-
-
-
-.card .container {
-  position: relative;
-  top: -30px;
-}
-
-.card p {
-  padding: 0px;
-  margin: 5px;
-}
-
-.card b {
-  font-size: 24px;
-}
-
-.container b {
-  width: 100%;
-  display: flex;
-}
-
-
-.card .container {
-  position: relative;
-  top: -30px;
-}
-.card b {
-  font-size: 24px;
-
-
-#subHeroSection {
-  flex-direction: row;
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
-}
-
-.material-symbols-rounded {
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
-}
-
-#copyright {
-  width: 100%;
-}
-
-#optionsContainer {
-  display: flex;
-  align-items: stretch;
-  flex-direction: row;
-  align-content: stretch;
-  flex-wrap: nowrap;
-}
-
-#optionsContainer div {
-  background-color: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
-  padding-right: 0px;
-}
-
-.option-title {
-  font-size: 20px;
-  font-weight: bold;
-  padding: 0px;
-  text-align: center;
-  /* Flexbox for centering */
-  display: flex;
-  justify-content: center; /* Horizontal centering */
-  align-items: center;    /* Vertical centering */
-}
-
-
-.option-container {
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+background-color: var(--md-sys-color-surface-container-low);
+  color:var(--md-sys-color-on-surface-container-low);
+  transition: 0.3s;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  text-align:initial;
-  width: 40vw !important;
-  margin: 10px;
-  padding: 0 !important;
-}
-
-#launchDemo {
-  background-color: var(--md-sys-color-tertiary);
-  color: var(--md-sys-color-on-tertiary);
-  padding: 20px;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: bold;
   width: 275px;
+  height: 275px;
+  align-self: center;
+  margin: 10px;
 }
-
-code {
-  font-family: Consolas, "courier new", monospace;
-  color: var(--md-sys-color-on-secondary);
-  background-color: var(--md-sys-color-secondary);
-  padding: 5px;
-  font-size: 105%;
-}
-
-.spindle-code {
-  font-family: Consolas, "courier new", monospace;
-  color: crimson;
-  background-color: var(--md-sys-color-secondary);
-  padding: 20px;
-  font-size: 105%;
+.card span {
   display: flex;
-  flex-direction: column;
-  width: 30vw;
-  margin: auto;
+  align-self: center;
+  font-size: 72px;
+  justify-content: center;
+background-color: var(--md-sys-color-surface-container-high);
+  color:var(--md-sys-color-primary);
+  width: calc(100% + 20px);
+  height: 75px;
+  position: relative;
+  right: 20px;
+  top: -20px;
+  margin: 0px;
+  border-radius: 0px 0px 20px 20px;
 }
-
-/* For smaller screens (mobile devices) */
-@media (max-width: 768px) {
-  .spindle-code {
-    width: 80vw; /* Increase width for smaller screens */
-    font-size: 100%; /* Adjust font size for readability */
-    padding: 15px; /* Reduce padding to fit the screen */
-  }
+.card .container {
+  position: relative;
+  top: -30px;
 }
-
-/* For very small screens (e.g., phones in portrait mode) */
-@media (max-width: 480px) {
-  .spindle-code {
-    width: 90vw; /* Almost full width */
-    font-size: 95%; /* Slightly smaller font size */
-    padding: 10px; /* Further reduce padding */
-  }
+.card b {
+  font-size: 24px;
 }
