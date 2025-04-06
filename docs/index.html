@@ -26,6 +26,7 @@
         margin-top: 1rem;
       }
     </style>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -44,6 +45,26 @@
           </p>
         </div>
         <div class="docs-grid">
+
+    <nav id="navBar">
+      <a class="page-link" href="/"><div id="logoMark">Spindle</div></a>
+      <div id="pageOptions">
+        <a class="page-link" href="/features">Features</a>
+        <a class="page-link" href="/docs">Documentation</a>
+        <a class="page-link" href="/exam-prep">Exam Prep</a>
+        <a class="page-link" href="/pricing">Pricing</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="hero-section" style="flex-direction: column; align-items: flex-start; gap: 2rem;">
+        <div>
+          <h3>Documentation <span style="color: var(--accent-blue);">& Resources</span></h3>
+          <p style="color: var(--text-secondary); max-width: 600px; margin-top: 1rem;">
+            Everything you need to succeed with Spindle - from getting started guides to advanced technical documentation.
+          </p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; width: 100%;">
           <div class="card">
             <b class="icon">
               <span class="material-symbols-rounded">code</span>
@@ -51,7 +72,7 @@
             <div class="container">
               <b>User Documentation</b>
               <p>Learn how to code in Spindle with our comprehensive tutorials and examples.</p>
-              <a href="/docs/user" class="primary-button docs-button">Get Started</a>
+              <a href="/docs/user" class="primary-button" style="display: inline-block; margin-top: 1rem;">Get Started</a>
             </div>
           </div>
           
@@ -63,6 +84,7 @@
               <b>Developer Documentation</b>
               <p>Contribute to Spindle's development by exploring our technical documentation.</p>
               <a href="/docs/contributor" class="primary-button docs-button">View Docs</a>
+
             </div>
           </div>
 

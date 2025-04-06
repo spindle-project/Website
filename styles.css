@@ -153,6 +153,7 @@ background-color: var(--md-sys-color-surface-container-low);
   height: 275px;
   align-self: center;
   margin: 10px;
+  flex-direction: column;
 }
 .card span {
   display: flex;

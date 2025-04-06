@@ -46,8 +46,14 @@
     <script src="/shared/nav.js" defer></script>
   </head>
   <body>
-    <nav id="navBar"></nav>
-
+    <nav id="navBar">
+      <a class="page-link" href="/"><div id="logoMark">Spindle</div></a>
+      <div id="pageOptions">
+        <a class="page-link" href="/features">Features</a>
+        <a class="page-link" href="/docs">Documentation</a>
+        <a class="page-link" href="/exam-prep">Exam Prep</a>
+      </div>
+    </nav>
     <main>
       <div class="hero-section">
         <div class="hero-left-side">
@@ -59,6 +65,7 @@
           <div class="hero-cta">
             <button class="primary-button">Start Learning</button>
             <button class="primary-button outline">Try IDE</button>
+
           </div>
         </div>
         <div class="hero-right-side">
@@ -66,6 +73,7 @@
             <div class="ide-header">
               <span class="text-secondary">main.py</span>
               <button class="primary-button run-button">Run ▶</button>
+
             </div>
             <pre><code>def calculate_average(numbers):
     # Calculate the average of a list of numbers
@@ -147,6 +155,113 @@ print(f"The average score is: {average}")
         </div>
       </div>
 
+
+      <div style="padding: 4rem 2rem;">
+        <h2 style="text-align: center; margin-bottom: 3rem;">Why Choose <span style="color: var(--accent-blue);">Spindle</span>?</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+          <div class="card">
+            <b class="icon">
+              <span class="material-symbols-rounded">clinical_notes</span>
+            </b>
+            <div class="container">
+              <b>Matches AP CSP Reference Sheet</b>
+              <p>Practice with code that looks exactly like what you'll see on exam day, reducing surprises and building confidence.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <b class="icon">
+              <span class="material-symbols-rounded">school</span>
+            </b>
+            <div class="container">
+              <b>Purpose-Built for AP CSP</b>
+              <p>Designed specifically to help students master the programming concepts tested on the AP CSP exam.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <b class="icon">
+              <span class="material-symbols-rounded">code</span>
+            </b>
+            <div class="container">
+              <b>Interactive Learning</b>
+              <p>Write, test, and debug code in our built-in IDE, getting immediate feedback on your solutions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+<div class="hero-section" style="padding-bottom: 0;">
+        <div>
+          <h3>AP CSP <span style="color: var(--accent-blue);">Exam Preparation</span></h3>
+          <p style="color: var(--text-secondary); max-width: 600px; margin-top: 1rem;">
+            Master the AP CSP exam with practice problems, coding exercises, and study resources that match the actual exam format.
+          </p>
+        </div>
+      </div>
+
+      <div style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+          <div class="card">
+            <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Practice Problems</h3>
+            <p style="margin-bottom: 1.5rem;">Work through problems that mirror the style and difficulty of AP CSP exam questions.</p>
+            <div style="display: grid; gap: 1rem;">
+              <div class="card" style="background: var(--code-bg);">
+                <h4>Basic Concepts</h4>
+                <ul style="list-style: none; padding: 0; margin-top: 0.5rem;">
+                  <li>✓ Variables and Assignment</li>
+                  <li>✓ Logical Operators</li>
+                  <li>✓ Control Structures</li>
+                </ul>
+              </div>
+              <div class="card" style="background: var(--code-bg);">
+                <h4>Advanced Topics</h4>
+                <ul style="list-style: none; padding: 0; margin-top: 0.5rem;">
+                  <li>✓ Functions and Procedures</li>
+                  <li>✓ Lists and Operations</li>
+                  <li>✓ Algorithm Analysis</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Exam Format</h3>
+            <p style="margin-bottom: 1.5rem;">Understand the structure and requirements of the AP CSP exam.</p>
+            <div class="card" style="background: var(--code-bg);">
+              <h4>Exam Components</h4>
+              <ul style="list-style: none; padding: 0; margin-top: 0.5rem;">
+                <li>• Multiple Choice Questions (70 questions, 2 hours)</li>
+                <li>• Create Performance Task (12 hours, submit program)</li>
+                <li>• Reference Sheet Available During Exam</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Study Resources</h3>
+            <p style="margin-bottom: 1.5rem;">Access comprehensive materials to help you prepare effectively.</p>
+            <div style="display: grid; gap: 1rem;">
+              <a href="/docs/user" class="card" style="background: var(--code-bg); text-decoration: none;">
+                <h4>📚 Learning Guide</h4>
+                <p style="margin-top: 0.5rem;">Complete documentation of all exam topics</p>
+              </a>
+              <a href="/code" class="card" style="background: var(--code-bg); text-decoration: none;">
+                <h4>💻 Practice IDE</h4>
+                <p style="margin-top: 0.5rem;">Write and test code in exam format</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+          <h2>Ready to Practice?</h2>
+          <p style="color: var(--text-secondary); margin: 1rem 0 2rem;">
+            Start with our interactive coding environment that mirrors the AP CSP exam format.
+          </p>
+          <a href="/code" class="primary-button">Launch Code Editor</a>
+        </div>
+      </div>
+    </main>
       <div style="background: var(--card-bg); padding: 4rem 2rem; margin-top: 2rem;">
         <div style="max-width: 1200px; margin: 0 auto;">
           <h2 style="margin-bottom: 2rem;">How Spindle Helps You Succeed</h2>
