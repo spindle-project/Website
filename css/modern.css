@@ -98,6 +98,15 @@ body {
   transition: opacity 0.2s;
 }
 
+.primary-button.outline {
+  background: transparent;
+  border: 1px solid var(--accent-blue);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
 .primary-button:hover {
   opacity: 0.9;
 }

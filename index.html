@@ -12,6 +12,38 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"
     />
     <link rel="stylesheet" href="css/modern.css" />
+    <style>
+      .hero-cta {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .ide-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      .run-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+      .benefits-section {
+        padding: 4rem 2rem;
+      }
+      .benefits-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+    </style>
+    <script src="/shared/nav.js" defer></script>
   </head>
   <body>
     <nav id="navBar">
@@ -22,25 +54,26 @@
         <a class="page-link" href="/exam-prep">Exam Prep</a>
       </div>
     </nav>
-
     <main>
       <div class="hero-section">
         <div class="hero-left-side">
-          <h3>Learn AP Computer Science <span style="color: var(--accent-blue);">Principles</span> with Confidence</h3>
-          <p>
+          <h3>Learn AP Computer Science <span class="accent">Principles</span> with Confidence</h3>
+          <p class="hero-description">
             An integrated learning platform with built-in IDE, comprehensive documentation, 
             and exam prep resources designed for students, teachers, and self-learners.
           </p>
-          <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+          <div class="hero-cta">
             <button class="primary-button">Start Learning</button>
-            <button class="primary-button" style="background: transparent; border: 1px solid var(--accent-blue);">Try IDE</button>
+            <button class="primary-button outline">Try IDE</button>
+
           </div>
         </div>
         <div class="hero-right-side">
           <div class="example-spdl-container">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-              <span style="color: var(--text-secondary);">main.py</span>
-              <button class="primary-button" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;">Run ▶</button>
+            <div class="ide-header">
+              <span class="text-secondary">main.py</span>
+              <button class="primary-button run-button">Run ▶</button>
+
             </div>
             <pre><code>def calculate_average(numbers):
     # Calculate the average of a list of numbers
@@ -86,6 +119,42 @@ print(f"The average score is: {average}")
           </div>
         </div>
       </div>
+
+      <div class="benefits-section">
+        <h2 class="benefits-title">Why Choose <span class="accent">Spindle</span>?</h2>
+        <div class="benefits-grid">
+          <div class="card">
+            <b class="icon">
+              <span class="material-symbols-rounded">clinical_notes</span>
+            </b>
+            <div class="container">
+              <b>Matches AP CSP Reference Sheet</b>
+              <p>Practice with code that looks exactly like what you'll see on exam day, reducing surprises and building confidence.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <b class="icon">
+              <span class="material-symbols-rounded">school</span>
+            </b>
+            <div class="container">
+              <b>Purpose-Built for AP CSP</b>
+              <p>Designed specifically to help students master the programming concepts tested on the AP CSP exam.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <b class="icon">
+              <span class="material-symbols-rounded">code</span>
+            </b>
+            <div class="container">
+              <b>Interactive Learning</b>
+              <p>Write, test, and debug code in our built-in IDE, getting immediate feedback on your solutions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       <div style="padding: 4rem 2rem;">
         <h2 style="text-align: center; margin-bottom: 3rem;">Why Choose <span style="color: var(--accent-blue);">Spindle</span>?</h2>
