@@ -11,87 +11,30 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"
     />
-   
+    
+        <link rel="stylesheet" href="/styles.css" />
+
+    <link rel="stylesheet" href="/exam-prep/styles.css" />
+        <link rel="stylesheet" href="/css/modern.css" />
+
+    <script src="/shared/nav.js" defer></script>
+  
     <title>AP Exam Prep</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #3498db;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        section {
-            padding: 20px;
-            margin: 20px;
-            border: 1px solid #ddd;
-        }
-
-        #tip-container, #question-container, #choices-container, #feedback-container {
-            margin-bottom: 15px;
-        }
-
-        button {
-            background-color: #2ecc71;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            cursor: pointer;
-        }
-
-        #feedback-container {
-            font-weight: bold;
-            margin-top: 15px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: center;
-        }
-
-        #feedback-container.correct {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        #feedback-container.incorrect {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-
-        #choices-container button {
-            margin: 5px;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            cursor: pointer;
-        }
-
-        #choices-container button.selected {
-            font-weight: bold;
-        }
-
-        #choices-container button.correct {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        #choices-container button.incorrect {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-    </style>
+   
     <script type="text/javascript" id="MathJax-script" async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
     </script>
 </head>
 <body>
-    <header>
-        <h1>AP Exam Study Hub</h1>
-    </header>
+  <nav id="navBar">
+      <a class="page-link" href="/"><div id="logoMark">Spindle</div></a>
+      <div id="pageOptions">
+        <a class="page-link" href="/features">Features</a>
+        <a class="page-link" href="/docs">Documentation</a>
+        <a class="page-link" href="/exam-prep">Exam Prep</a>
+      </div>
+    </nav>
+<br> <br> <br>
 
     <section id="tips">
         <h2>Study Tips</h2>
@@ -102,10 +45,13 @@
     <section id="practice">
         <h2>Practice Questions</h2>
         <div id="question-container"></div>
-        <input type="text" id="user-answer" placeholder="Enter your answer">
+        <input type="text" id="user-answer" placeholder="Enter your answer" style="display: none;">
         <div id="choices-container"></div>
+      <div id="question-mangager">
         <div id="feedback-container"></div>
         <button id="new-question-button">Get New Question</button>
+      </div>
+        
     </section>
 
     <script>

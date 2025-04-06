@@ -55,6 +55,7 @@ button {
 #pageOptions {
       display: flex
 ;
+  
   width: 100%;
     flex-direction: row;
     align-content: center;
@@ -74,6 +75,7 @@ padding: 0px;
   margin: 0px;
   position: relative;
   top: -20px;
+  left: 0px;
   align-items: center;
   justify-content: space-between;
   align-content: center;
