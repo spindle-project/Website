@@ -1,0 +1,165 @@
+:root {
+  --background: #13141f;
+  --nav-bg: #1c1d29;
+  --text-primary: #ffffff;
+  --text-secondary: #8b8c91;
+  --accent-blue: #4B9CFF;
+  --code-bg: #1f1f1f;
+  --card-bg: #1c1d29;
+  --border-radius: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+#navBar {
+  background-color: var(--nav-bg);
+  padding: 1rem 2rem;
+  border-radius: 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+}
+
+#logoMark {
+  color: var(--accent-blue);
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 0;
+}
+
+.page-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.page-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hero-section {
+  padding: 8rem 4rem 4rem 4rem;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-left-side {
+  flex: 1;
+}
+
+.hero-left-side h3 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-left-side p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.primary-button {
+  background-color: var(--accent-blue);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.primary-button.outline {
+  background: transparent;
+  border: 1px solid var(--accent-blue);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+.primary-button:hover {
+  opacity: 0.9;
+}
+
+.hero-right-side {
+  flex: 1;
+}
+
+.example-spdl-container {
+  background-color: var(--code-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  position: relative;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.card .icon {
+  background-color: rgba(75, 156, 255, 0.1);
+  color: var(--accent-blue);
+  padding: 0.8rem;
+  border-radius: var(--border-radius);
+}
+
+#subHeroSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    padding: 6rem 2rem 2rem 2rem;
+  }
+  
+  .nav-bar-text {
+    display: none;
+  }
+  
+  #subHeroSection {
+    padding: 2rem;
+  }
+}

@@ -11,135 +11,185 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"
     />
-    <link rel="stylesheet" href="css/light.css" />
-
-    <link rel="stylesheet" href="css/dark.css" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/modern.css" />
+    <style>
+      .hero-cta {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .ide-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      .run-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+      .benefits-section {
+        padding: 4rem 2rem;
+      }
+      .benefits-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+    </style>
+    <script src="/shared/nav.js" defer></script>
   </head>
   <body>
-    <div id="navBar">
-      <a class="page-link" href="/"><div id="logoMark">Spindle</div></a>
-      <div id="pageOptions">
-        <a class="page-link" href="/code">
-          <span class="material-symbols-rounded" aria-label="Code"
-            >code_blocks</span
-          >
-          <span class="nav-bar-text">Code</span>
-        </a>
-        <a class="page-link" href="/docs">
-          <span class="material-symbols-rounded" aria-label="Documentation"
-            >description</span
-          >
-          <span class="nav-bar-text">Documentation</span>
-        </a>
-        <a class="page-link">
-          <span class="material-symbols-rounded" aria-label="Exam Prep"
-            >school</span
-          >
-          <span class="nav-bar-text">Exam Prep</span>
-        </a>
-      </div>
-    </div>
+    <nav id="navBar"></nav>
 
-    <span
-      >Spindle is a free, open-source language empowering students to master AP
-      CSP exam coding with ease.</span
-    >
-    <div class="hero-section">
-      <div class="hero-left-side">
-        <h3>Set Yourself Up for a 5</h3>
-        <p>
-          Spindle is designed to closely resemble the syntax and structure of
-          the programming language used in the AP Computer Science Principles
-          (CSP) exam. This means that Spindle code looks and behaves very
-          similarly to the code that you’ll be expected to parse on the exam!
-          <br />
-          <br />
-          Given that Spindle is entirely free, there's absolutely no reason not
-          to give it a try!
-        </p>
+    <main>
+      <div class="hero-section">
+        <div class="hero-left-side">
+          <h3>Learn AP Computer Science <span class="accent">Principles</span> with Confidence</h3>
+          <p class="hero-description">
+            An integrated learning platform with built-in IDE, comprehensive documentation, 
+            and exam prep resources designed for students, teachers, and self-learners.
+          </p>
+          <div class="hero-cta">
+            <button class="primary-button">Start Learning</button>
+            <button class="primary-button outline">Try IDE</button>
+          </div>
+        </div>
+        <div class="hero-right-side">
+          <div class="example-spdl-container">
+            <div class="ide-header">
+              <span class="text-secondary">main.py</span>
+              <button class="primary-button run-button">Run ▶</button>
+            </div>
+            <pre><code>def calculate_average(numbers):
+    # Calculate the average of a list of numbers
+    if not numbers:
+        return 0
+    return sum(numbers) / len(numbers)
 
-        <button class="primary-button">Start Coding with Spindle</button>
-      </div>
-      <div class="hero-right-side">
-        <div class="example-spdl-container">
-          <a class="test-code-button" href="/code">
-            <span class="material-symbols-rounded"> play_arrow </span>
-          </a>
-          <span class="example-spdl-code-header"
-            ># See it for yourself!</span
-          ><br /><span class="example-spdl-code"
-            ><br />1. PROCEDURE SAY_HI (excitement) { <br />
-            2.<br />
-            3. REPEAT excitement TIMES { <br />4. DISPLAY("Hi!") <br />5. } } #
-            Prints “Hi!” ten times! <br />
-            6. SAY-HI(10)
-          </span>
-        </div>
-      </div>
-    </div>
-    <h2>What Makes Spindle Special</h2>
-    <div id="subHeroSection">
-      <div class="card">
-        <b class="icon">
-          <span class="material-symbols-rounded" aria-label="Fast Performance"
-            >bolt</span
-          >
-        </b>
-        <div class="container">
-          <b>Actually on the Test</b>
-          <p>
-            Spindle code mirrors the syntax of the AP CSP exam, so you'll be
-            tested on what you know directly.
-          </p>
-        </div>
-      </div>
-      <div class="card">
-        <b class="icon">
-          <span
-            class="material-symbols-rounded"
-            aria-label="Interactive Learning"
-            >school</span
-          >
-        </b>
-        <div class="container">
-          <b>Interactive Learning</b>
-          <p>
-            Spindle is designed for hands-on learning. You make your own code
-            and get to see the results firsthand.
-          </p>
+# Test with sample data
+test_scores = [92, 88, 95, 91, 89]
+average = calculate_average(test_scores)
+print(f"The average score is: {average}")
+# Output: The average score is: 91.0</code></pre>
+          </div>
         </div>
       </div>
 
-      <div class="card">
-        <b class="icon">
-          <span class="material-symbols-rounded" aria-label="User-Friendly"
-            >hourglass_top</span
-          >
-        </b>
-        <div class="container">
-          <b>Easy to Use</b>
-          <p>
-            Spindle only has what is on the AP EXAM, no more, no less. In
-            addition, Spindle is well documented.
-          </p>
+      <div id="subHeroSection">
+        <div class="card">
+          <b class="icon">
+            <span class="material-symbols-rounded">bolt</span>
+          </b>
+          <div class="container">
+            <b>Built for AP CSP</b>
+            <p>Practice with syntax that mirrors the actual AP CSP exam environment.</p>
+          </div>
+        </div>
+        <div class="card">
+          <b class="icon">
+            <span class="material-symbols-rounded">code</span>
+          </b>
+          <div class="container">
+            <b>Interactive IDE</b>
+            <p>Write, test, and debug your code in our built-in development environment.</p>
+          </div>
+        </div>
+        <div class="card">
+          <b class="icon">
+            <span class="material-symbols-rounded">school</span>
+          </b>
+          <div class="container">
+            <b>Comprehensive Learning</b>
+            <p>Access detailed documentation, tutorials, and exam preparation materials.</p>
+          </div>
         </div>
       </div>
 
-      <div class="card">
-        <b class="icon">
-          <span class="material-symbols-rounded" aria-label="Quick Setup"
-            >rocket_launch</span
-          >
-        </b>
-        <div class="container">
-          <b>Quick Set Up</b>
-          <p>
-            Spindle can be downloaded in just a few steps, or if you don't want
-            to download anything, you can run Spindle code on our website!
-          </p>
+      <div class="benefits-section">
+        <h2 class="benefits-title">Why Choose <span class="accent">Spindle</span>?</h2>
+        <div class="benefits-grid">
+          <div class="card">
+            <b class="icon">
+              <span class="material-symbols-rounded">clinical_notes</span>
+            </b>
+            <div class="container">
+              <b>Matches AP CSP Reference Sheet</b>
+              <p>Practice with code that looks exactly like what you'll see on exam day, reducing surprises and building confidence.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <b class="icon">
+              <span class="material-symbols-rounded">school</span>
+            </b>
+            <div class="container">
+              <b>Purpose-Built for AP CSP</b>
+              <p>Designed specifically to help students master the programming concepts tested on the AP CSP exam.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <b class="icon">
+              <span class="material-symbols-rounded">code</span>
+            </b>
+            <div class="container">
+              <b>Interactive Learning</b>
+              <p>Write, test, and debug code in our built-in IDE, getting immediate feedback on your solutions.</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div style="background: var(--card-bg); padding: 4rem 2rem; margin-top: 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+          <h2 style="margin-bottom: 2rem;">How Spindle Helps You Succeed</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+            <div>
+              <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Familiar Syntax</h3>
+              <p style="color: var(--text-secondary); line-height: 1.6;">
+                Many students struggle on the AP CSP exam because the code looks different from what they learned. 
+                Spindle solves this by using the exact same syntax and structure as the AP CSP Reference Sheet.
+              </p>
+            </div>
+            <div>
+              <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Comprehensive Resources</h3>
+              <p style="color: var(--text-secondary); line-height: 1.6;">
+                Access detailed documentation, practice problems, and exam preparation materials designed to help you 
+                understand and master every concept you'll need for the exam.
+              </p>
+            </div>
+            <div>
+              <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Open Source & Free</h3>
+              <p style="color: var(--text-secondary); line-height: 1.6;">
+                Spindle is completely free and open source, making quality AP CSP preparation accessible to everyone. 
+                Contribute to its development or use it freely under our open source license.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 4rem 2rem;">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <h2 style="margin-bottom: 1.5rem;">Ready to Start Learning?</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+            Join students and teachers using Spindle to prepare for AP CSP success.
+          </p>
+          <div style="display: flex; gap: 1rem; justify-content: center;">
+            <a href="/code" class="primary-button">Try the Code Editor</a>
+            <a href="/docs/user" class="primary-button" style="background: transparent; border: 1px solid var(--accent-blue);">
+              Read the Docs
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
