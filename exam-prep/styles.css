@@ -88,4 +88,106 @@ button {
 #choices-container button.incorrect {
   background-color: #f8d7da;
   color: #721c24;
+=======
+/* Exam Prep Page Specific Styles */
+.hero-section {
+  padding-bottom: 0;
+}
+
+.hero-description {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-top: 1rem;
+}
+
+.accent {
+  color: var(--accent-blue);
+}
+
+.section-title {
+  color: var(--accent-blue);
+  margin-bottom: 1rem;
+}
+
+.section-description {
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.topics-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.resources-grid {
+  display: grid;
+  gap: 1rem;
+}
+.practice-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.topic-card {
+  background: var(--code-bg);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+.topic-card h4 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.topic-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+.topic-card li {
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.exam-format {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+}
+
+.exam-format h4 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.resource-link {
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.resource-link:hover {
+  transform: translateY(-2px);
+}
+
+.cta-section {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.cta-section h2 {
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  color: var(--text-secondary);
+  margin: 1rem 0 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
