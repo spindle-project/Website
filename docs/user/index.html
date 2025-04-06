@@ -18,7 +18,27 @@
     <title>Spindle Documentation</title>
   </head>
   <body class="">
-    <h1 id="welcomeToSpindle">Welcome to ✨ Spindle ✨</h1>
+     <div id="navBar">
+     <a class="page-link" href="/" > <div id="logoMark">Spindle Contributor Docs</div></a>
+      <div id="pageOptions">
+        <a class="page-link" href="https://spdl.glitch.me/docs/user"
+          > User Docs
+        </a>
+        <a class="page-link" href="https://spdl.glitch.me/docs/contributor/semiparser.html"
+          > Semi-Parser
+        </a>
+        <a class="page-link" href="https://spdl.glitch.me/docs/contributor/parser.html"
+          > Parser
+        </a>
+        <a class="page-link" href="https://spdl.glitch.me/docs/contributor/lexer.html"
+          > Lexer
+        </a>
+        <a class="page-link" href="https://spdl.glitch.me/docs/contributor/interpreter.html"
+          > Interpreter
+        </a>
+      </div>
+    </div>
+    <h1 id="welcomeToSpindle">Welcome to ✨ Spindle's User Documentation ✨</h1>
     <p>
       <strong
         >The language used in the AP CSP Exam, now a programming
@@ -26,23 +46,14 @@
       >
     </p>
     <h2 id="programmingGuide"><strong>Programming Guide</strong></h2>
-    <h3 id="✖️Variables">✖️ Variables:</h3>
-    <p>
-      Varibles can be assigned a value using &quot;&lt;--&quot; OR
-      &quot;&lt;-&quot; For example, the following code sets a to 10 and then to
-      13 (a&#39;s value plus 3).
-    </p>
-    <pre><code>a &lt;- 10
-a &lt;-- [1,2,3]
-</code></pre>
-    <p>Varibles can be assigned to other varibles!</p>
-    <pre><code>b &lt;-- a / 2
-</code></pre>
-    <p>
-      If you added this line to the lines above, it would set b to a&#39;s value
-      divided by 2, resulting in 6.5
-    </p>
-    <details>
+    <div class="hero-section">
+      <div class="hero-left-side">
+        <h3>✖️ Variables:</h3>
+        <p>
+          Variables are like containers that hold information. This information can be anything, like numbers, words, or even more complex data structures. The key thing about variables is that their contents can change throughout a program's execution. This allows us to write flexible code that can adapt to different situations and inputs.
+
+        </p>
+        <details>
       <summary>How would you swap the values of two variables?</summary>
 
       <pre><code class="language-m">a &lt;-- 10
@@ -52,6 +63,23 @@ a &lt;-- b
 b &lt;-- c
 </code></pre>
     </details>
+      </div>
+      <div class="hero-right-side">
+        <div class="example-spdl-container">
+          <a class="test-code-button" href="/code">
+            <span class="material-symbols-rounded"> play_arrow </span>
+          </a>
+          <span class="example-spdl-code-header"
+            ># See it for yourself!</span
+          ><br /><span class="example-spdl-code"
+            ><br />1. a &lt;- 10 <br />
+            2.<br />
+            3. b &lt;-- a / 2
+          </span>
+        </div>
+      </div>
+    </div>
+  
 
     <h3 id="logicalOperators">💡 Logical Operators:</h3>
     <p>
