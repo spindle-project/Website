@@ -11,85 +11,9 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"
     />
-    <link rel="stylesheet" href="/css/modern.css" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="/shared/nav.js" defer></script>
-  </head>
-  <body>
-    <nav id="navBar"></nav>
+    
+        <link rel="stylesheet" href="/styles.css" />
 
-    <main>
-      <div class="hero-section">
-        <div>
-          <h3>AP CSP <span class="accent">Exam Preparation</span></h3>
-          <p class="hero-description">
-            Master the AP CSP exam with practice problems, coding exercises, and study resources that match the actual exam format.
-          </p>
-        </div>
-      </div>
-
-      <div class="practice-section">
-          <div class="card">
-            <h3 class="section-title">Practice Problems</h3>
-            <p class="section-description">Work through problems that mirror the style and difficulty of AP CSP exam questions.</p>
-            <div class="topics-grid">
-              <div class="topic-card">
-                <h4>Basic Concepts</h4>
-                <ul>
-                  <li>✓ Variables and Assignment</li>
-                  <li>✓ Logical Operators</li>
-                  <li>✓ Control Structures</li>
-                </ul>
-              </div>
-              <div class="topic-card">
-                <h4>Advanced Topics</h4>
-                <ul>
-                  <li>✓ Functions and Procedures</li>
-                  <li>✓ Lists and Operations</li>
-                  <li>✓ Algorithm Analysis</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3 class="section-title">Exam Format</h3>
-            <p class="section-description">Understand the structure and requirements of the AP CSP exam.</p>
-            <div class="exam-format">
-              <h4>Exam Components</h4>
-              <ul>
-                <li>• Multiple Choice Questions (70 questions, 2 hours)</li>
-                <li>• Create Performance Task (12 hours, submit program)</li>
-                <li>• Reference Sheet Available During Exam</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3 class="section-title">Study Resources</h3>
-            <p class="section-description">Access comprehensive materials to help you prepare effectively.</p>
-            <div class="resources-grid">
-              <a href="/docs/user" class="resource-link topic-card">
-                <h4>📚 Learning Guide</h4>
-                <p>Complete documentation of all exam topics</p>
-              </a>
-              <a href="/code" class="resource-link topic-card">
-                <h4>💻 Practice IDE</h4>
-                <p>Write and test code in exam format</p>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="cta-section">
-          <h2>Ready to Practice?</h2>
-          <p>Start with our interactive coding environment that mirrors the AP CSP exam format.</p>
-          <a href="/code" class="primary-button">Launch Code Editor</a>
-        </div>
-      </div>
-    </main>
-  </body>
-=======
    
     <title>AP Exam Prep</title>
     <style>
@@ -99,78 +23,27 @@
             padding: 0;
         }
 
-        header {
-            background-color: #3498db;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
+    <link rel="stylesheet" href="/exam-prep/styles.css" />
+        <link rel="stylesheet" href="/css/modern.css" />
 
-        section {
-            padding: 20px;
-            margin: 20px;
-            border: 1px solid #ddd;
-        }
-
-        #tip-container, #question-container, #choices-container, #feedback-container {
-            margin-bottom: 15px;
-        }
-
-        button {
-            background-color: #2ecc71;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            cursor: pointer;
-        }
-
-        #feedback-container {
-            font-weight: bold;
-            margin-top: 15px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: center;
-        }
-
-        #feedback-container.correct {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        #feedback-container.incorrect {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-
-        #choices-container button {
-            margin: 5px;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            cursor: pointer;
-        }
-
-        #choices-container button.selected {
-            font-weight: bold;
-        }
-
-        #choices-container button.correct {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        #choices-container button.incorrect {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-    </style>
+    <script src="/shared/nav.js" defer></script>
+  
+    <title>AP Exam Prep</title>
+   
     <script type="text/javascript" id="MathJax-script" async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
     </script>
 </head>
 <body>
-    <header>
-        <h1>AP Exam Study Hub</h1>
-    </header>
+  <nav id="navBar">
+      <a class="page-link" href="/"><div id="logoMark">Spindle</div></a>
+      <div id="pageOptions">
+        <a class="page-link" href="/features">Features</a>
+        <a class="page-link" href="/docs">Documentation</a>
+        <a class="page-link" href="/exam-prep">Exam Prep</a>
+      </div>
+    </nav>
+<br> <br> <br>
 
     <section id="tips">
         <h2>Study Tips</h2>
@@ -181,10 +54,13 @@
     <section id="practice">
         <h2>Practice Questions</h2>
         <div id="question-container"></div>
-        <input type="text" id="user-answer" placeholder="Enter your answer">
+        <input type="text" id="user-answer" placeholder="Enter your answer" style="display: none;">
         <div id="choices-container"></div>
+      <div id="question-mangager">
         <div id="feedback-container"></div>
         <button id="new-question-button">Get New Question</button>
+      </div>
+        
     </section>
 
     <script>
