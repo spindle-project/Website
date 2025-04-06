@@ -74,17 +74,15 @@
               <button class="primary-button run-button">Run ▶</button>
 
             </div>
-            <pre><code>def calculate_average(numbers):
-    # Calculate the average of a list of numbers
-    if not numbers:
-        return 0
-    return sum(numbers) / len(numbers)
-
-# Test with sample data
-test_scores = [92, 88, 95, 91, 89]
-average = calculate_average(test_scores)
-print(f"The average score is: {average}")
-# Output: The average score is: 91.0</code></pre>
+            <pre><code># Write your Spindle code here
+            
+PROCEDURE calculate_sum(numbers) {
+    sum <-- 0
+    REPEAT length(numbers) TIMES {
+        sum <-- sum + numbers[i]
+    }
+    RETURN sum
+}</code></pre>
           </div>
         </div>
       </div>
