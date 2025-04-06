@@ -8,8 +8,45 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-    <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/docs/docs.css" />
+    <link rel="stylesheet" href="/css/modern.css" />
+    <style>
+      .content-section {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      
+      h1, h2, h3 {
+        color: var(--text-primary);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+      
+      p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      
+      blockquote {
+        background: var(--card-bg);
+        border-left: 4px solid var(--accent-blue);
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+      
+      ul, ol {
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+      
+      code {
+        background: var(--code-bg);
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-family: "JetBrains Mono", monospace;
+      }
+    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -35,147 +72,129 @@
           > Interpreter
         </a>
       </div>
-    </div>
-    <h1
-      id="warningThisDocumentationIsForContributorsWhoWishToHelpOutTheProject"
-    >
-      Warning! This documentation is for contributors who wish to help out the
-      project.
-    </h1>
-    <blockquote>
-      <p>
-        It details how the project itself works, not how to write code in it. If
-        you would like to know how to write code in Spindle, please look at the
-        user documentation!
-        <br />
-        With that out of the way, this document will lay out how Spindle works
-        and will help you contribute to it. <br />
-        If you want a high-level overview of how Spindle works, you&#39;re in
-        just the right place!
-      </p>
-    </blockquote>
-    <h2 id="spindleFromCodeToExecution">Spindle: From Code to Execution</h2>
-    <p>
-      This explanation dives into how Spindle, a programming language, works
-      behind the scenes, transforming your code into a running program. It&#39;s
-      important to note that this explanation is geared towards developers
-      contributing to Spindle, not for users writing Spindle code.
-    </p>
-    <p><strong>The Grand Tour:</strong></p>
-    <p>
-      Spindle&#39;s journey from code to execution involves several key stages:
-    </p>
-    <ol>
-      <li>
+    </nav>
+
+    <main>
+      <div class="hero-section" style="padding-bottom: 0;">
+        <div>
+          <h3>Developer <span style="color: var(--accent-blue);">Documentation</span></h3>
+          <p style="color: var(--text-secondary); max-width: 600px; margin-top: 1rem;">
+            Technical documentation for contributors who want to help improve and extend Spindle.
+          </p>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+          <a href="/docs/contributor/semiparser.html" class="card" style="flex: 1; text-decoration: none;">
+            <span class="material-symbols-rounded" style="color: var(--accent-blue);">code</span>
+            <h4 style="margin: 0.5rem 0;">Semi-Parser</h4>
+          </a>
+          <a href="/docs/contributor/parser.html" class="card" style="flex: 1; text-decoration: none;">
+            <span class="material-symbols-rounded" style="color: var(--accent-blue);">data_object</span>
+            <h4 style="margin: 0.5rem 0;">Parser</h4>
+          </a>
+          <a href="/docs/contributor/lexer.html" class="card" style="flex: 1; text-decoration: none;">
+            <span class="material-symbols-rounded" style="color: var(--accent-blue);">token</span>
+            <h4 style="margin: 0.5rem 0;">Lexer</h4>
+          </a>
+          <a href="/docs/contributor/interpreter.html" class="card" style="flex: 1; text-decoration: none;">
+            <span class="material-symbols-rounded" style="color: var(--accent-blue);">terminal</span>
+            <h4 style="margin: 0.5rem 0;">Interpreter</h4>
+          </a>
+        </div>
+        <div class="card" style="margin-bottom: 2rem; border: 1px solid var(--accent-blue);">
+          <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+            <span class="material-symbols-rounded" style="color: var(--accent-blue);">info</span>
+            <h4 style="margin: 0; color: var(--accent-blue);">Important Note</h4>
+          </div>
+          <p style="margin: 0;">
+            This documentation explains how Spindle works internally and is intended for contributors.
+            If you're looking to learn how to write code in Spindle, please visit our
+            <a href="/docs/user" style="color: var(--accent-blue);">User Documentation</a>.
+          </p>
+        </div>
+        <h2 id="spindleFromCodeToExecution" style="display: flex; align-items: center; gap: 0.5rem;">
+          <span class="material-symbols-rounded" style="color: var(--accent-blue);">architecture</span>
+          Spindle: From Code to Execution
+        </h2>
+        
         <p>
-          <strong>The Warm-Up: Semi-Parsing</strong> (<strong
-            >Not User-Facing</strong
-          >)
+          This section explains how Spindle transforms source code into a running program,
+          detailing each stage of the compilation and execution process.
         </p>
-        <ul>
-          <li>
-            <strong>Skipping the Front-End:</strong> Spindle can run code
-            directly or through a front-end file (<code>shell.py</code>). This
-            documentation focuses on the direct execution path.
-          </li>
-          <li>
-            <strong><code>RUN(&quot;&quot;)</code> Command:</strong> Spindle
-            checks for a <code>RUN(&quot;&quot;)</code> command at the
-            beginning. This is not part of the Spindle language itself but helps
-            the desktop experience. It specifies the file to run.
-          </li>
-          <li>
-            <strong>Standardizing <code>IF</code> Statements:</strong> Spindle
-            automatically adds <code>ELSE{}</code> to any
-            <code>IF</code> statements missing an <code>ELSE</code> block. This
-            prevents program crashes caused by incomplete
-            <code>IF</code> statements.
-          </li>
-          <li>
-            <strong>Function Isolation:</strong> If your code contains
-            functions, the semi-parser splits the code into separate chunks,
-            isolating each function definition. This allows Spindle to process
-            each function independently.
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p><strong>Step 1: The Lexer - Turning Text into Tokens</strong></p>
-        <ul>
-          <li>
-            <strong>Character by Character:</strong> The lexer scans your code
-            character by character, ignoring whitespace (tabs and spaces) but
-            keeping track of newlines.
-          </li>
-          <li>
-            <strong>Creating Tokens:</strong> It breaks down your code into
-            smaller, meaningful units called tokens. These tokens represent
-            keywords, identifiers (variable names), operators (like
-            <code>+</code> or <code>-</code>), and literals (like numbers or
-            strings).
-          </li>
-          <li>
-            <strong>Error Checking:</strong> The lexer performs basic checks to
-            ensure proper syntax for simple elements.
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p><strong>Step 2: The Parser - Adding Meaning to Tokens</strong></p>
-        <ul>
-          <li>
-            <strong>Understanding the Structure:</strong> The parser takes the
-            tokens generated by the lexer and analyzes them to understand the
-            overall structure of your code. It recognizes different statements
-            like <code>IF</code>, <code>FOR</code>, and expressions.
-          </li>
-          <li>
-            <strong>Syntax Enforcement:</strong> The parser rigorously checks
-            for syntax errors. This is where most syntax errors are detected
-            during the Spindle execution process.
-          </li>
-          <li>
-            <strong>Building the Logic:</strong> The parser essentially
-            translates the token sequence into instructions for the interpreter.
-            It tells Spindle how to handle different constructs like
-            expressions, loops, and function calls.
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          <strong>Step 3: The Interpreter - From Meaning to Results</strong>
-        </p>
-        <ul>
-          <li>
-            <strong>Abstract Syntax Tree (AST):</strong> The interpreter
-            doesn&#39;t directly work with the token list. Instead, the parser
-            creates an AST, a tree-like structure that represents the
-            program&#39;s syntactic structure.
-          </li>
-          <li>
-            <strong>Executing the Program:</strong> The interpreter navigates
-            the AST, following the program&#39;s logic and performing the
-            necessary actions. For example, it runs loops, evaluates
-            expressions, and calls functions.
-          </li>
-          <li>
-            <strong>Returning the Result:</strong> Upon successful execution,
-            the interpreter returns the program&#39;s result. If the program
-            runs without explicitly returning anything, it returns
-            <code>null</code>. This <code>null</code> value is filtered out
-            during presentation.
-          </li>
-        </ul>
-      </li>
-    </ol>
-    <p><strong>Understanding the Process:</strong></p>
-    <p>
-      This breakdown helps visualize how Spindle transforms your code. Each
-      stage builds upon the last, ultimately resulting in a running program. If
-      you&#39;re interested in contributing to Spindle&#39;s development,
-      understanding these steps is crucial for working with the interpreter and
-      parser logic.
-    </p>
+
+        <div class="card" style="margin: 2rem 0;">
+          <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">Execution Pipeline</h4>
+          <div style="display: grid; gap: 1rem;">
+            <div class="card" style="background: var(--code-bg);">
+              <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                <span class="material-symbols-rounded" style="color: var(--accent-blue);">filter_1</span>
+                <div>
+                  <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Semi-Parsing (Pre-processing)</h4>
+                  <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.5rem;">• Direct execution or front-end file processing</li>
+                    <li style="margin-bottom: 0.5rem;">• Handling <code>RUN("")</code> commands</li>
+                    <li style="margin-bottom: 0.5rem;">• Standardizing <code>IF</code> statements with <code>ELSE{}</code> blocks</li>
+                    <li style="margin-bottom: 0.5rem;">• Isolating function definitions for independent processing</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="background: var(--code-bg);">
+              <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                <span class="material-symbols-rounded" style="color: var(--accent-blue);">filter_2</span>
+                <div>
+                  <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Lexical Analysis</h4>
+                  <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.5rem;">• Character-by-character scanning, handling whitespace and newlines</li>
+                    <li style="margin-bottom: 0.5rem;">• Tokenization of keywords, identifiers, operators (<code>+</code>, <code>-</code>), and literals</li>
+                    <li style="margin-bottom: 0.5rem;">• Basic syntax validation and error checking</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="background: var(--code-bg);">
+              <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                <span class="material-symbols-rounded" style="color: var(--accent-blue);">filter_3</span>
+                <div>
+                  <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Parsing</h4>
+                  <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.5rem;">• Analyzing token structure for <code>IF</code>, <code>FOR</code>, and expressions</li>
+                    <li style="margin-bottom: 0.5rem;">• Rigorous syntax validation and error detection</li>
+                    <li style="margin-bottom: 0.5rem;">• Converting tokens into interpreter instructions</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="background: var(--code-bg);">
+              <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                <span class="material-symbols-rounded" style="color: var(--accent-blue);">filter_4</span>
+                <div>
+                  <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Interpretation</h4>
+                  <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.5rem;">• Working with Abstract Syntax Tree (AST) representation</li>
+                    <li style="margin-bottom: 0.5rem;">• Executing program logic (loops, expressions, functions)</li>
+                    <li style="margin-bottom: 0.5rem;">• Managing program output and return values</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin: 2rem 0;">
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <span class="material-symbols-rounded" style="color: var(--accent-blue);">tips_and_updates</span>
+            <p style="margin: 0;">
+              <strong>Ready to contribute?</strong> Understanding these steps is crucial for working with Spindle's interpreter and parser logic.
+              Each stage builds upon the last, ultimately transforming source code into a running program.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
