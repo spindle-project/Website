@@ -1,0 +1,29 @@
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .ide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .run-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .benefits-section {
+    padding: 4rem 2rem;
+  }
+  .benefits-title {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }

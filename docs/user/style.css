@@ -1,0 +1,52 @@
+
+      body {
+          margin-top: 75px;
+      }
+      .content-section {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      
+      h1, h2, h3 {
+        color: var(--text-primary);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+      
+      p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      
+      pre {
+        background: var(--code-bg);
+        border-radius: var(--border-radius);
+        padding: 1rem;
+        margin: 1rem 0;
+        overflow-x: auto;
+      }
+      
+      code {
+        font-family: "JetBrains Mono", monospace;
+        color: var(--text-primary);
+      }
+      
+      details {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+      
+      summary {
+        color: var(--accent-blue);
+        cursor: pointer;
+        font-weight: 600;
+      }
+      
+      ol li {
+        color: var(--text-secondary);
+        margin: 0.5rem 0;
+      }
