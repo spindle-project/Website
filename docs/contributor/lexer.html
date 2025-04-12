@@ -1,76 +1,71 @@
 <html>
-  <head>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-      <link rel="stylesheet" href="/styles.css" />
-            <link rel="stylesheet" href="/css/modern.css" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Spindle Documentation</title>
-  </head>
-  <body class="markdown-body">
-    <div id="navBar">
-     <a class="page-link" href="/" > <div id="logoMark">Spindle  </div></a>
-      <div id="pageOptions">
-         <a class="page-link" href="https://spdl.glitch.me/docs/user"
-          > User Docs
-        </a>
-        <a class="page-link" href="https://spdl.glitch.me/docs/contributor/semiparser.html"
-          > Semi-Parser
-        </a>
-        <a class="page-link" href="https://spdl.glitch.me/docs/contributor/parser.html"
-          > Parser
-        </a>
-        <a class="page-link" href="https://spdl.glitch.me/docs/contributor/lexer.html"
-          > Lexer
-        </a>
-        <a class="page-link" href="https://spdl.glitch.me/docs/contributor/interpreter.html"
-          > Interpreter
-        </a>
-      </div>
+
+<head>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../css/modern.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Spindle Documentation</title>
+</head>
+
+<body class="markdown-body">
+  <div id="navBar">
+    <a class="page-link" href="/">
+      <div id="logoMark">Spindle </div>
+    </a>
+    <div id="pageOptions">
+      <a class="page-link" href="https://spdl.glitch.me/docs/user"> User Docs
+      </a>
+      <a class="page-link" href="https://spdl.glitch.me/docs/contributor/semiparser.html"> Semi-Parser
+      </a>
+      <a class="page-link" href="https://spdl.glitch.me/docs/contributor/parser.html"> Parser
+      </a>
+      <a class="page-link" href="https://spdl.glitch.me/docs/contributor/lexer.html"> Lexer
+      </a>
+      <a class="page-link" href="https://spdl.glitch.me/docs/contributor/interpreter.html"> Interpreter
+      </a>
     </div>
-    <h1
-      id="warningThisDocumentationIsForContributorsWhoWishToHelpOutTheProject"
-    >
-      Warning! This documentation is for contributors who wish to help out the
-      project.
-    </h1>
-    <blockquote>
-      <p>
-        It details how the project itself works, not how to write code in it. If
-        you would like to know how to write code in Spindle, please look at the
-        user documentation!
-        <br />
-        With that out of the way, this document will lay out how Spindle works
-        and will help you contribute to it. <br />
-      </p>
-    </blockquote>
-    <h2 id="fromTextToTokensTheLexer">From Text to Tokens: The Lexer</h2>
+  </div>
+  <h1 id="warningThisDocumentationIsForContributorsWhoWishToHelpOutTheProject">
+    Warning! This documentation is for contributors who wish to help out the
+    project.
+  </h1>
+  <blockquote>
     <p>
-      The Lexer is the first stage (ignoring the semi-parser) of converting
-      Spindle code itto a result. In summary, it takes your text and condenses
-      it into <em>tokens</em> <br />
-      The lexer goes though your text - character by character (ignoring tabs
-      and spaces, but taking note of newlines). In a sense, it translate your
-      text file into a more readable term for later steps. There is some minor
-      error checking at this stage, as it ensures you use the write syntax for
-      simple things. The process described above occurs in the make_tokens()
-      function. This:
+      It details how the project itself works, not how to write code in it. If
+      you would like to know how to write code in Spindle, please look at the
+      user documentation!
+      <br />
+      With that out of the way, this document will lay out how Spindle works
+      and will help you contribute to it. <br />
     </p>
-    <pre><code>a &lt;-- 10 + 5
+  </blockquote>
+  <h2 id="fromTextToTokensTheLexer">From Text to Tokens: The Lexer</h2>
+  <p>
+    The Lexer is the first stage (ignoring the semi-parser) of converting
+    Spindle code itto a result. In summary, it takes your text and condenses
+    it into <em>tokens</em> <br />
+    The lexer goes though your text - character by character (ignoring tabs
+    and spaces, but taking note of newlines). In a sense, it translate your
+    text file into a more readable term for later steps. There is some minor
+    error checking at this stage, as it ensures you use the write syntax for
+    simple things. The process described above occurs in the make_tokens()
+    function. This:
+  </p>
+  <pre><code>a &lt;-- 10 + 5
 </code></pre>
-    <p>
-      Is transformed into something like this:
-      <code>[IDENTIFIER:a, EE, INT:10, PLUS, INT:5</code>
-      The lexer also defines an advance() function that moves the current token
-      to the next one.
-    </p>
-  </body>
+  <p>
+    Is transformed into something like this:
+    <code>[IDENTIFIER:a, EE, INT:10, PLUS, INT:5</code>
+    The lexer also defines an advance() function that moves the current token
+    to the next one.
+  </p>
+</body>
+
 </html>
