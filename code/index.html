@@ -10,14 +10,15 @@
         margin: 0 auto;
         padding: 2rem;
       }
-      
-      .code-input-wrapper, .code-output-wrapper {
+
+      .code-input-wrapper,
+      .code-output-wrapper {
         flex: 1;
         background: var(--card-bg);
         border-radius: var(--border-radius);
         padding: 1.5rem;
       }
-      
+
       .code-input {
         width: 100%;
         height: 400px;
@@ -30,7 +31,7 @@
         resize: none;
         margin-top: 1rem;
       }
-      
+
       .code-output {
         width: 100%;
         height: 400px;
@@ -42,7 +43,7 @@
         overflow-y: auto;
         margin-top: 1rem;
       }
-      
+
       .test-code-button {
         position: absolute;
         right: 2rem;
@@ -59,7 +60,7 @@
         cursor: pointer;
         transition: opacity 0.2s;
       }
-      
+
       .test-code-button:hover {
         opacity: 0.9;
       }
@@ -84,43 +85,78 @@
         <a class="page-link" href="/features">Features</a>
         <a class="page-link" href="/docs">Documentation</a>
         <a class="page-link" href="/exam-prep">Exam Prep</a>
-        <a class="page-link" href="/pricing">Pricing</a>
       </div>
     </nav>
 
     <main>
-      <div class="hero-section" style="padding-bottom: 0;">
+      <div class="hero-section" style="padding-bottom: 0">
         <div>
-          <h3>Interactive <span style="color: var(--accent-blue);">Code Editor</span></h3>
-          <p style="color: var(--text-secondary); max-width: 600px; margin-top: 1rem;">
-            Write, test, and debug your Spindle code in our built-in development environment.
+          <h3>
+            Interactive
+            <span style="color: var(--accent-blue)">Code Editor</span>
+          </h3>
+          <p
+            style="
+              color: var(--text-secondary);
+              max-width: 600px;
+              margin-top: 1rem;
+            "
+          >
+            Write, test, and debug your Spindle code in our built-in development
+            environment.
           </p>
         </div>
       </div>
       <div class="playground-wrapper">
         <div class="code-input-wrapper">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h2 style="color: var(--text-primary); font-size: 1.2rem; margin: 0;">Input</h2>
-            <span style="color: var(--text-secondary); font-size: 0.9rem;">Spindle Code</span>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <h2
+              style="color: var(--text-primary); font-size: 1.2rem; margin: 0"
+            >
+              Input
+            </h2>
+            <span style="color: var(--text-secondary); font-size: 0.9rem"
+              >Spindle Code</span
+            >
           </div>
           <textarea
             id="codeInput"
             class="code-input"
-            placeholder="# Write your Spindle code here
-            
-PROCEDURE calculate_sum(numbers) {
-    sum <-- 0
-    REPEAT length(numbers) TIMES {
-        sum <-- sum + numbers[i]
+            placeholder="
+     PROCEDURE SAY_HI(excitement) {
+    REPEAT excitement TIMES {
+        DISPLAY('Hi!')
     }
-    RETURN sum
-}"
+}
+
+SAY_HI(3)
+                      "
           ></textarea>
         </div>
-        <div class="code-output-wrapper" style="position: relative;">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h2 style="color: var(--text-primary); font-size: 1.2rem; margin: 0;">Output</h2>
-            <div class="test-code-button" id="runButton" py-click="run_python_code">
+        <div class="code-output-wrapper" style="position: relative">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <h2
+              style="color: var(--text-primary); font-size: 1.2rem; margin: 0"
+            >
+              Output
+            </h2>
+            <div
+              class="test-code-button"
+              id="runButton"
+              py-click="run_python_code"
+            >
               <span class="material-symbols-rounded">play_arrow</span>
             </div>
           </div>

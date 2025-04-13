@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+   <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W4ZXXNRH');</script>
+<!-- End Google Tag Manager -->
+     <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PNTKZ9HR35"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-PNTKZ9HR35");
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -45,6 +66,10 @@
     </style>
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4ZXXNRH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     <nav id="navBar">
       <a class="page-link" href="/"><div id="logoMark">Spindle</div></a>
       <div id="pageOptions">
@@ -62,29 +87,29 @@
             and exam prep resources designed for students, teachers, and self-learners.
           </p>
           <div class="hero-cta">
-            <button class="primary-button">Start Learning</button>
-            <button class="primary-button outline">Try IDE</button>
+            <a href="/docs" class="primary-button">Start Learning</a>
+            <a href="/code" class="primary-button outline">Try IDE</a>
 
           </div>
         </div>
         <div class="hero-right-side">
           <div class="example-spdl-container">
             <div class="ide-header">
-              <span class="text-secondary">main.py</span>
-              <button class="primary-button run-button">Run ▶</button>
+              <span class="text-secondary">learn.spdl</span>
+             <a href="/code"><button class="primary-button run-button">Run ▶</button></a> 
 
             </div>
-            <pre><code># Write your Spindle code here
-            
-PROCEDURE calculate_sum(numbers) {
-    sum <-- 0
-    REPEAT length(numbers) TIMES {
-        sum <-- sum + numbers[i]
+            <pre><code>PROCEDURE SAY_HI (excitement) {
+    REPEAT excitement TIMES {
+        DISPLAY("Hi!")
     }
-    RETURN sum
-}</code></pre>
-          </div>
+}
+
+SAY_HI(3)</code></pre>
+          </div> <br>
+          <a href="https://www.producthunt.com/posts/spindle-3?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-spindle&#0045;3" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=950337&theme=light&t=1743982440529" alt="Spindle - Learn&#0032;AP&#0032;Computer&#0032;Science&#0032;Principles&#0032;with&#0032;Confidence | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
         </div>
+        
       </div>
 
       <div id="subHeroSection">
@@ -117,40 +142,7 @@ PROCEDURE calculate_sum(numbers) {
         </div>
       </div>
 
-      <div class="benefits-section">
-        <h2 class="benefits-title">Why Choose <span class="accent">Spindle</span>?</h2>
-        <div class="benefits-grid">
-          <div class="card">
-            <b class="icon">
-              <span class="material-symbols-rounded">clinical_notes</span>
-            </b>
-            <div class="container">
-              <b>Matches AP CSP Reference Sheet</b>
-              <p>Practice with code that looks exactly like what you'll see on exam day, reducing surprises and building confidence.</p>
-            </div>
-          </div>
-
-          <div class="card">
-            <b class="icon">
-              <span class="material-symbols-rounded">school</span>
-            </b>
-            <div class="container">
-              <b>Purpose-Built for AP CSP</b>
-              <p>Designed specifically to help students master the programming concepts tested on the AP CSP exam.</p>
-            </div>
-          </div>
-
-          <div class="card">
-            <b class="icon">
-              <span class="material-symbols-rounded">code</span>
-            </b>
-            <div class="container">
-              <b>Interactive Learning</b>
-              <p>Write, test, and debug code in our built-in IDE, getting immediate feedback on your solutions.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    
 
 
       <div style="padding: 4rem 2rem;">
@@ -278,7 +270,7 @@ PROCEDURE calculate_sum(numbers) {
               </p>
             </div>
             <div>
-              <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Open Source & Free</h3>
+              <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Open Source and commited to staying free forever</h3>
               <p style="color: var(--text-secondary); line-height: 1.6;">
                 Spindle is completely free and open source, making quality AP CSP preparation accessible to everyone. 
                 Contribute to its development or use it freely under our open source license.
