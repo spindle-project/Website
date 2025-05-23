@@ -2,7 +2,7 @@ const questionsUrl =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTNx_Vw7mdlWz8V1-OtuamwzE-pxq3z6a5M-HiBReTuLZcOI4xlBQYPsPRtSiQ7Y4q4d2Ajcjre_8mx/pub?gid=721477959&single=true&output=csv";
 const tipsUrl =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTNx_Vw7mdlWz8V1-OtuamwzE-pxq3z6a5M-HiBReTuLZcOI4xlBQYPsPRtSiQ7Y4q4d2Ajcjre_8mx/pub?gid=0&single=true&output=csv";
-  const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+  const proxyUrl = '';
   async function fetchTips(tipsUrl) {
   try {
     const fullUrl = proxyUrl + tipsUrl;
