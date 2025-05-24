@@ -39,6 +39,7 @@ background-color: var(--md-sys-color-surface-container-low);
   padding-left: 0px;
   max-width: 80vw;
       font-variant-ligatures: none;
+  
 
 }
 .code-input {
@@ -53,9 +54,14 @@ textarea {
   resize: horizontal;
 }
 .test-code-button {
-  width: min(calc(100% - 30px), 150px);
-  right: calc(50% - calc(min(calc(100% - 30px), 150px) / 2) - 10px);
+aspect-ratio: 1/1;  
+right: calc(50% - calc(min(calc(100% - 30px), 150px) / 2) - 10px);
+background-color: var(--accent-blue) !important;
+border-radius:25%;
+
 }
+
+
 .test-code-button > span {
   font-size: 4rem !important;
 }
