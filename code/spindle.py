@@ -456,41 +456,47 @@ class Lexer:
 				tokens.append(Token(TT_LSQUARE, pos_start=self.pos))
 				self.advance()
 				
-				# Skip any whitespace after [
+				# Skip any whitespace
 				while self.current_char in ' \t':
 					self.advance()
-					
-				# Handle array index or array literal
+				
+				# Handle array literal or array indexing
 				if self.current_char in LETTERS:
 					# Array indexing with identifier
 					identifier = self.make_identifier()
 					tokens.append(identifier)
 					
-					# Skip any whitespace before ]
 					while self.current_char in ' \t':
 						self.advance()
-						
+					
 					if self.current_char == ']':
 						tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
 						self.advance()
 					else:
 						return [], ExpectedCharError(self.pos, self.pos, "Expected ']'")
-				elif self.current_char in DIGITS:
+				else:
 					# Array literal or numeric index
-					number = self.make_number()
-					tokens.append(number)
-					
-					# Skip any whitespace
-					while self.current_char in ' \t':
-						self.advance()
-					
-					if self.current_char == ']':
-						tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
-						self.advance()
-					elif self.current_char == ',':
-						# This is an array literal, let make_number handle the rest
-						tokens.append(Token(TT_COMMA, pos_start=self.pos))
-						self.advance()
+					while True:
+						if self.current_char in DIGITS:
+							number = self.make_number()
+							tokens.append(number)
+							
+							while self.current_char in ' \t':
+								self.advance()
+							
+							if self.current_char == ']':
+								tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
+								self.advance()
+								break
+							elif self.current_char == ',':
+								tokens.append(Token(TT_COMMA, pos_start=self.pos))
+								self.advance()
+								while self.current_char in ' \t':
+									self.advance()
+							else:
+								return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
+						else:
+							return [], ExpectedCharError(self.pos, self.pos, "Expected number")
 			elif self.current_char == '!':
 				tok, error = self.make_not_equals()
 				if error: return [], error
