@@ -453,19 +453,15 @@ class Lexer:
 						return [], ExpectedCharError( self.pos, self.pos, f"Expected ']' got {self.current_char}")
 
 			elif self.current_char == '[':
-				print(f"DEBUG: Found '[' at position {self.pos}")
 				tokens.append(Token(TT_LSQUARE, pos_start=self.pos))
 				self.advance()
 				
 				# Skip whitespace after [
 				while self.current_char in ' \t':
 					self.advance()
-					
-				print(f"DEBUG: After '[' whitespace, found: '{self.current_char}'")
 				
 				# Parse array literal or array index
 				if self.current_char in DIGITS:
-					print(f"DEBUG: Starting array literal with number: '{self.current_char}'")
 					while True:
 						# Make current number token
 						number = self.make_number()
