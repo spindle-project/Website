@@ -457,28 +457,33 @@ class Lexer:
 				self.advance()
 				
 				# Skip any whitespace
+				print(f"DEBUG: Processing array access/literal")
 				start_pos = self.pos.copy()
+				
+				# Skip any whitespace
 				while self.current_char in ' \t':
 					self.advance()
+				
+				print(f"DEBUG: First char after '[': '{self.current_char}'")
 				
 				# Handle array indexing or array literal
 				if self.current_char in LETTERS:
 					# Store identifier characters
-					identifier = ''
-					while self.current_char is not None and (self.current_char in LETTERS_DIGITS or self.current_char == '_'):
-						identifier += self.current_char
-						self.advance()
-						
-					# Skip whitespace
+					identifier = self.make_identifier()
+					print(f"DEBUG: Found identifier: {identifier}")
+					tokens.append(identifier)
+					
+					# Skip whitespace before ]
 					while self.current_char in ' \t':
 						self.advance()
-						
+					
+					print(f"DEBUG: Found char after identifier: '{self.current_char}'")
 					if self.current_char == ']':
-						# Create identifier token and closing bracket
-						tokens.append(Token(TT_IDENTIFIER, identifier, start_pos, self.pos))
+						print("DEBUG: Found closing bracket")
 						tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
 						self.advance()
 					else:
+						print(f"DEBUG: Missing closing bracket, found '{self.current_char}'")
 						return [], ExpectedCharError(self.pos, self.pos, f"Expected ']' after identifier '{identifier}'")
 				elif self.current_char in DIGITS:
 					# Array literal or numeric index
