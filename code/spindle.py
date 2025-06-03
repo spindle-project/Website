@@ -2342,11 +2342,11 @@ class Interpreter:
 	def visit_ForNode(self, node, context):
 		res = RTResult()
 		elements = []
-		#start_value = 0
-		start_value =  Number(0)
-		start_value.value =  Number(0)
+		
+		# Initialize loop variable
+		start_value = Number(0)
 		end_value = res.register(self.visit(node.end_value_node, context))
-		if res.should_return(): end_value = 1
+		if res.should_return(): end_value = Number(1)
 
 		if node.step_value_node:
 			step_value = res.register(self.visit(node.step_value_node, context))
@@ -2356,23 +2356,37 @@ class Interpreter:
 
 		i = start_value.value
 
+		# Set up loop condition
 		if step_value.value >= 0:
 			condition = lambda: int(str(i)) < int(str(end_value.value))
 		else:
 			condition = lambda: i > end_value.value
 		
+		# Main loop
 		while condition():
-			context.symbol_table.set(node.var_name_tok.value, Number(i))
-			i = int(str(i))
-			i += int(str(step_value.value))
+			# Set and log loop variable
+			loop_var_value = Number(i)
+			context.symbol_table.set(node.var_name_tok.value, loop_var_value)
+			if self.logger:
+				self.logger.log_loop_iteration(node.var_name_tok.value, i, context)
 
-			value = (res.register(self.visit(node.body_node, context)))
-			if res.should_return() and res.loop_should_continue == False and res.loop_should_break == False: return res
+			# Convert for array indexing
+			i = int(str(i))
+			
+			# Execute loop body
+			value = res.register(self.visit(node.body_node, context))
+			
+			# Handle control flow
+			if res.should_return() and not res.loop_should_continue and not res.loop_should_break:
+				return res
 			if res.loop_should_continue:
+				i += int(str(step_value.value))
 				continue
 			if res.loop_should_break:
 				break
+				
 			elements.append(value)
+			i += int(str(step_value.value))
 		return res.success(
 			Number.null if node.should_return_null else
 			List(elements).set_context(context).set_pos(node.pos_start, node.pos_end))
