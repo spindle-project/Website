@@ -453,7 +453,6 @@ class Lexer:
 						return [], ExpectedCharError( self.pos, self.pos, f"Expected ']' got {self.current_char}")
 
 			elif self.current_char == '[':
-				print(f"DEBUG: Starting array handling at position {self.pos}")
 				tokens.append(Token(TT_LSQUARE, pos_start=self.pos))
 				self.advance()
 				
@@ -461,52 +460,67 @@ class Lexer:
 				while self.current_char in ' \t':
 					self.advance()
 				
-				print(f"DEBUG: Current char after whitespace: '{self.current_char}'")
-				
-				# Handle array literal or array indexing
+				# Handle array indexing or array literal
 				if self.current_char in LETTERS:
-					# Array indexing with identifier
-					print(f"DEBUG: Processing identifier '{self.current_char}'")
-					result = self.make_identifier()
-					print(f"DEBUG: Identifier result: {result}")
-					tokens.append(result)
+					# Create a token for the identifier
+					identifier_start = self.pos.copy()
+					identifier = ''
+					
+					while self.current_char is not None and self.current_char in LETTERS_DIGITS:
+						identifier += self.current_char
+						self.advance()
+					
+					# Skip any whitespace before ]
+					while self.current_char in ' \t':
+						self.advance()
+					
+					if self.current_char == ']':
+						tokens.append(Token(TT_IDENTIFIER, identifier, identifier_start, self.pos))
+						tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
+						self.advance()
+					else:
+						return [], ExpectedCharError(self.pos, self.pos, "Expected ']'")
+				elif self.current_char in DIGITS:
+					# Array literal or numeric index
+					number = self.make_number()
+					tokens.append(number)
 					
 					while self.current_char in ' \t':
 						self.advance()
 					
-					print(f"DEBUG: Looking for closing bracket, found: '{self.current_char}'")
 					if self.current_char == ']':
 						tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
 						self.advance()
-					else:
-						print(f"DEBUG: Error - expected ']' but found '{self.current_char}'")
-						return [], ExpectedCharError(self.pos, self.pos, "Expected ']'")
-				elif self.current_char in DIGITS:
-					# Array literal or numeric index
-					print(f"DEBUG: Processing numeric array literal/index")
-					while True:
-						if self.current_char in DIGITS:
-							number = self.make_number()
-							tokens.append(number)
-							
-							while self.current_char in ' \t':
-								self.advance()
-							
-							if self.current_char == ']':
-								tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
-								self.advance()
-								break
-							elif self.current_char == ',':
-								tokens.append(Token(TT_COMMA, pos_start=self.pos))
-								self.advance()
+					elif self.current_char == ',':
+						tokens.append(Token(TT_COMMA, pos_start=self.pos))
+						self.advance()
+						while self.current_char in ' \t':
+							self.advance()
+						# Continue processing array literal
+						while True:
+							if self.current_char in DIGITS:
+								number = self.make_number()
+								tokens.append(number)
+								
 								while self.current_char in ' \t':
 									self.advance()
+								
+								if self.current_char == ']':
+									tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
+									self.advance()
+									break
+								elif self.current_char == ',':
+									tokens.append(Token(TT_COMMA, pos_start=self.pos))
+									self.advance()
+									while self.current_char in ' \t':
+										self.advance()
+								else:
+									return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
 							else:
-								return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
-						else:
-							return [], ExpectedCharError(self.pos, self.pos, "Expected number")
+								return [], ExpectedCharError(self.pos, self.pos, "Expected number")
+					else:
+						return [], ExpectedCharError(self.pos, self.pos, "Expected ']'")
 				else:
-					print(f"DEBUG: Error - unexpected character '{self.current_char}' in array context")
 					return [], ExpectedCharError(self.pos, self.pos, "Expected identifier or number")
 			elif self.current_char == '!':
 				tok, error = self.make_not_equals()
