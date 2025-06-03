@@ -1,7 +1,8 @@
 from spindle import (
     Interpreter, SymbolTable, Context, Token, Position,
     NumberNode, ArrayAccessNode, VarAccessNode, ForNode,
-    BinOpNode, List, Number, TT_IDENTIFIER, TT_INT, TT_PLUS
+    BinOpNode, List, Number, TT_IDENTIFIER, TT_INT, TT_PLUS,
+    VarAssignNode
 )
 
 def run_test():
