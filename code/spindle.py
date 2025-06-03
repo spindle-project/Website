@@ -2182,13 +2182,27 @@ class SymbolTable:
 #######################################
 
 class Interpreter:
+	def __init__(self):
+		from spindle_logger import SpindleLogger
+		self.logger = SpindleLogger(verbosity=2)
+
 	def visit(self, node, context):
+		# Ensure context's symbol table has logger
+		if context and hasattr(context, 'symbol_table'):
+			context.symbol_table.logger = self.logger
+			
 		method_name = f'visit_{type(node).__name__}'
 		method = getattr(self, method_name, self.no_visit_method)
 		return method(node, context)
 
 	def no_visit_method(self, node, context):
 		raise Exception(f'No visit_{type(node).__name__} method defined')
+
+	def get_logs(self):
+		return self.logger.get_logs()
+
+	def clear_logs(self):
+		self.logger.clear_logs()
 
 	###################################
 	def visit_Number(self, node, context):
