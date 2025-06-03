@@ -453,6 +453,7 @@ class Lexer:
 						return [], ExpectedCharError( self.pos, self.pos, f"Expected ']' got {self.current_char}")
 
 			elif self.current_char == '[':
+				print(f"DEBUG: Starting array handling at position {self.pos}")
 				tokens.append(Token(TT_LSQUARE, pos_start=self.pos))
 				self.advance()
 				
@@ -460,22 +461,29 @@ class Lexer:
 				while self.current_char in ' \t':
 					self.advance()
 				
+				print(f"DEBUG: Current char after whitespace: '{self.current_char}'")
+				
 				# Handle array literal or array indexing
 				if self.current_char in LETTERS:
 					# Array indexing with identifier
-					identifier = self.make_identifier()
-					tokens.append(identifier)
+					print(f"DEBUG: Processing identifier '{self.current_char}'")
+					result = self.make_identifier()
+					print(f"DEBUG: Identifier result: {result}")
+					tokens.append(result)
 					
 					while self.current_char in ' \t':
 						self.advance()
 					
+					print(f"DEBUG: Looking for closing bracket, found: '{self.current_char}'")
 					if self.current_char == ']':
 						tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
 						self.advance()
 					else:
+						print(f"DEBUG: Error - expected ']' but found '{self.current_char}'")
 						return [], ExpectedCharError(self.pos, self.pos, "Expected ']'")
-				else:
+				elif self.current_char in DIGITS:
 					# Array literal or numeric index
+					print(f"DEBUG: Processing numeric array literal/index")
 					while True:
 						if self.current_char in DIGITS:
 							number = self.make_number()
@@ -497,6 +505,9 @@ class Lexer:
 								return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
 						else:
 							return [], ExpectedCharError(self.pos, self.pos, "Expected number")
+				else:
+					print(f"DEBUG: Error - unexpected character '{self.current_char}' in array context")
+					return [], ExpectedCharError(self.pos, self.pos, "Expected identifier or number")
 			elif self.current_char == '!':
 				tok, error = self.make_not_equals()
 				if error: return [], error
