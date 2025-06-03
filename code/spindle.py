@@ -1,21 +1,20 @@
 #######################################
+# Spindle Interpreter
 #######################################
-# SPECIFIC TO THE WEB VERSION
-# Override the normal print() function with display_res() in the 
-#######################################
-# This is the shell, to run any sparkle program:
-# 1. Ensure you have sparkle.py in the same directory
-# 2. Run shell.py
-# 3. Type "RUN(" + [the file you want to run with the .spkl extension] + ")"
-#       - Example: RUN("HELLO_SPARKLE.spkl")
-# 4. Press enter, and if everything works correctly, you should get an output!
 
-import pyodide
-import js
-import builtins
-from pyscript import window
+# Web-specific imports (conditional)
+try:
+    import pyodide
+    import js
+    import builtins
+    from pyscript import window
+    WEB_MODE = True
+except ImportError:
+    WEB_MODE = False
 
 def run_python_code(e):
+    if not WEB_MODE:
+        return
     # Load and execute the code from my_module.py
     text_input = js.document.getElementById('codeInput').value
     js.document.getElementById('output').textContent = ""
