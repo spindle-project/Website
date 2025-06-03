@@ -533,10 +533,6 @@ class Lexer:
 								return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
 					else:
 						return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
-					tokens.append(number)
-					
-					while self.current_char in ' \t':
-						self.advance()
 					
 					if self.current_char == ']':
 						tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
