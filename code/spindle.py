@@ -457,7 +457,7 @@ class Lexer:
 				self.advance()
 				
 				# Skip any whitespace
-				print(f"DEBUG: Processing array access/literal")
+				print(f"DEBUG: Processing array access/literal at position {self.pos}")
 				start_pos = self.pos.copy()
 				
 				# Skip any whitespace
@@ -469,9 +469,18 @@ class Lexer:
 				# Handle array indexing or array literal
 				if self.current_char in LETTERS:
 					# Store identifier characters
-					identifier = self.make_identifier()
-					print(f"DEBUG: Found identifier: {identifier}")
-					tokens.append(identifier)
+					identifier_str = ''
+					identifier_start = self.pos.copy()
+					
+					while self.current_char is not None and (self.current_char in LETTERS_DIGITS or self.current_char == '_'):
+						print(f"DEBUG: Building identifier with char: '{self.current_char}'")
+						identifier_str += self.current_char
+						self.advance()
+					
+					print(f"DEBUG: Built identifier: '{identifier_str}'")
+					# Create and append identifier token
+					identifier_token = Token(TT_IDENTIFIER, identifier_str, identifier_start, self.pos)
+					tokens.append(identifier_token)
 					
 					# Skip whitespace before ]
 					while self.current_char in ' \t':
@@ -484,7 +493,7 @@ class Lexer:
 						self.advance()
 					else:
 						print(f"DEBUG: Missing closing bracket, found '{self.current_char}'")
-						return [], ExpectedCharError(self.pos, self.pos, f"Expected ']' after identifier '{identifier}'")
+						return [], ExpectedCharError(self.pos, self.pos, f"Expected ']' after identifier '{identifier_str}'")
 				elif self.current_char in DIGITS:
 					# Array literal or numeric index
 					number = self.make_number()
