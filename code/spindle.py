@@ -2149,19 +2149,31 @@ class Context:
 # Keeps track of varibles, lists, functions and their values
 #######################################		
 class SymbolTable:
-	def __init__(self, parent = None):
+	def __init__(self, parent=None):
 		self.symbols = {}
 		self.parent = parent
-
+		self.logger = None  # Will be set by interpreter
+		
 	def get(self, name):
 		value = self.symbols.get(name, None)
 		if value == None and self.parent:
 			return self.parent.get(name)
 		return value
-	
+
 	def set(self, name, value):
 		self.symbols[name] = value
-	
+		if self.logger:
+			self.logger.log_symbol_update(name, value, self)
+
+	def get_array_element(self, array_name, index):
+		array = self.get(array_name)
+		if array and hasattr(array, 'elements') and 0 <= index < len(array.elements):
+			value = array.elements[index]
+			if self.logger:
+				self.logger.log_array_access(array_name, index, value, self)
+			return value
+		return None
+
 	def remove(self, name):
 		del self.symbols[name]
 #######################################
