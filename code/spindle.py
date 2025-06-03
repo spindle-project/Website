@@ -2210,6 +2210,39 @@ class Interpreter:
 	def clear_logs(self):
 		self.logger.clear_logs()
 
+	def visit_ArrayAccessNode(self, node, context):
+		res = RTResult()
+		
+		# Get array name and index
+		array_name = node.array_name_tok.value
+		
+		# If index_node is a variable (like our loop variable), resolve it
+		if isinstance(node.index_node, VarAccessNode):
+			index_value = context.symbol_table.get(node.index_node.var_name_tok.value)
+			if not index_value:
+				return res.failure(RTError(
+					node.pos_start, node.pos_end,
+					f"Variable '{node.index_node.var_name_tok.value}' is not defined",
+					context
+				))
+			index = int(str(index_value.value))
+		else:
+			# Direct number access
+			index_value = res.register(self.visit(node.index_node, context))
+			if res.should_return(): return res
+			index = int(str(index_value.value))
+		
+		# Get array value using our new get_array_element method
+		value = context.symbol_table.get_array_element(array_name, index)
+		if value is None:
+			return res.failure(RTError(
+				node.pos_start, node.pos_end,
+				f"Array access error: index {index} out of bounds or '{array_name}' is not an array",
+				context
+			))
+			
+		return res.success(value)
+
 	###################################
 	def visit_Number(self, node, context):
 		return RTResult().success(
