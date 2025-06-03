@@ -2315,15 +2315,20 @@ class Interpreter:
 		res = RTResult()
 		var_name = node.var_name_tok.value
 		value = context.symbol_table.get(var_name)
+
 		if not value:
 			return res.failure(RTError(
 				node.pos_start, node.pos_end,
 				f"'{var_name}' is not defined",
 				context
 			))
-		else:
-			value = value.copy().set_pos(node.pos_start, node.pos_end).set_context(context)
-			return res.success(value)
+
+		# If this is being used as an array index, convert to integer
+		if isinstance(value, Number) and getattr(node, 'is_array_index', False):
+			value = Number(int(str(value.value)))
+
+		value = value.copy().set_pos(node.pos_start, node.pos_end).set_context(context)
+		return res.success(value)
 		
 		
 	def visit_VarAssignNode(self, node, context): # Set the value of a varible
