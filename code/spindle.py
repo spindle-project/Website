@@ -453,7 +453,8 @@ class Lexer:
 						return [], ExpectedCharError( self.pos, self.pos, f"Expected ']' got {self.current_char}")
 
 			elif self.current_char == '[':
-				tokens.append(Token(TT_LSQUARE, pos_start=self.pos))
+				pos_start = self.pos.copy()
+				tokens.append(Token(TT_LSQUARE, pos_start=pos_start))
 				self.advance()
 				
 				# Skip any whitespace after [
@@ -462,20 +463,18 @@ class Lexer:
 				
 				# Parse array literal or array index
 				if self.current_char in DIGITS:
-					number = self.make_number()
-					if not number:
-						return [], ExpectedCharError(self.pos, self.pos, "Invalid number in array")
-					tokens.append(number)
-					
-					print(f"DEBUG: Added number token, next char is '{self.current_char}'")
-					
 					while True:
+						# Get current number
+						number = self.make_number()
+						if not number:
+							return [], ExpectedCharError(self.pos, self.pos, "Invalid number in array")
+						tokens.append(number)
+						
 						# Skip whitespace
 						while self.current_char in ' \t':
 							self.advance()
 						
-						print(f"DEBUG: After number or comma, found '{self.current_char}'")
-						# Handle array literal continuation
+						# Check for array termination or continuation
 						if self.current_char == ']':
 							tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
 							self.advance()
@@ -483,22 +482,13 @@ class Lexer:
 						elif self.current_char == ',':
 							tokens.append(Token(TT_COMMA, pos_start=self.pos))
 							self.advance()
-							
 							# Skip whitespace after comma
 							while self.current_char in ' \t':
 								self.advance()
-							
-							print(f"DEBUG: After comma whitespace, found '{self.current_char}'")
-							# Parse next number
 							if not self.current_char in DIGITS:
 								return [], ExpectedCharError(self.pos, self.pos, "Expected number after comma")
-							
-							number = self.make_number()
-							if not number:
-								return [], ExpectedCharError(self.pos, self.pos, "Invalid number after comma")
-							tokens.append(number)
 						else:
-							return [], ExpectedCharError(self.pos, self.pos, f"Expected ',' or ']', found '{self.current_char}'")
+							return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
 				elif self.current_char in LETTERS:
 					identifier = self.make_identifier()
 					tokens.append(identifier)
