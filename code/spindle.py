@@ -457,15 +457,17 @@ class Lexer:
 				self.advance()
 				
 				# Skip any whitespace
-				print(f"DEBUG: Processing array access/literal at position {self.pos}")
-				tokens.append(Token(TT_LSQUARE, pos_start=self.pos))
+				print(f"DEBUG: Processing array at pos {self.pos}, char='{self.current_char}'")
+				pos_start = self.pos.copy()
+				tokens.append(Token(TT_LSQUARE, pos_start=pos_start))
 				self.advance()
 				
 				# Skip any whitespace
 				while self.current_char in ' \t':
+					print(f"DEBUG: Skipping whitespace: '{self.current_char}'")
 					self.advance()
 				
-				print(f"DEBUG: First char after '[': '{self.current_char}'")
+				print(f"DEBUG: After whitespace, found: '{self.current_char}'")
 				
 				# Handle array indexing or array literal
 				if self.current_char in LETTERS:
