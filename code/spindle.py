@@ -1181,39 +1181,64 @@ class Parser:
 
 		if self.current_tok.type == TT_RBRACE:
 			return res.success(Number.null)
+			
 		atom = res.register(self.atom())
 		if res.error: return res
-		if self.current_tok.type == TT_LPAREN:
-			res.register_advancement()
-			self.advance()
-			arg_nodes = []
 
-			if self.current_tok.type == TT_RPAREN:
+		while True:
+			if self.current_tok.type == TT_LPAREN:
+				# Function call handling
 				res.register_advancement()
 				self.advance()
-			else:
-				arg_nodes.append(res.register(self.expr()))
-				if res.error:
-					return res.failure(InvalidSyntaxError(
-						self.current_tok.pos_start, self.current_tok.pos_end,
-						"Expected ')', '[', 'VARIBLE IDENTIFIFER', 'IF', 'REPEAT', 'REPEAT UNTIL', 'PROCEDURE', int, float, identifier, '+', '-', '(' or 'NOT'"
-					))
+				arg_nodes = []
 
-				while self.current_tok.type == TT_COMMA:
+				if self.current_tok.type == TT_RPAREN:
 					res.register_advancement()
 					self.advance()
-
+				else:
 					arg_nodes.append(res.register(self.expr()))
-					if res.error: return res
-				if self.current_tok.type != TT_RPAREN:
-					return res.failure(InvalidSyntaxError(
-						self.current_tok.pos_start, self.current_tok.pos_end,
-						f"Expected ',' or ')'"
-					))
+					if res.error:
+						return res.failure(InvalidSyntaxError(
+							self.current_tok.pos_start, self.current_tok.pos_end,
+							"Expected ')', '[', 'VARIBLE IDENTIFIFER', 'IF', 'REPEAT', 'REPEAT UNTIL', 'PROCEDURE', int, float, identifier, '+', '-', '(' or 'NOT'"
+						))
 
+					while self.current_tok.type == TT_COMMA:
+						res.register_advancement()
+						self.advance()
+
+						arg_nodes.append(res.register(self.expr()))
+						if res.error: return res
+					if self.current_tok.type != TT_RPAREN:
+						return res.failure(InvalidSyntaxError(
+							self.current_tok.pos_start, self.current_tok.pos_end,
+							f"Expected ',' or ')'"
+						))
+
+					res.register_advancement()
+					self.advance()
+				atom = CallNode(atom, arg_nodes)
+			elif self.current_tok.type == TT_LSQUARE:
+				# Array indexing handling
 				res.register_advancement()
 				self.advance()
-			return res.success(CallNode(atom, arg_nodes))
+				
+				index = res.register(self.expr())
+				if res.error: return res
+				
+				if self.current_tok.type != TT_RSQUARE:
+					return res.failure(InvalidSyntaxError(
+						self.current_tok.pos_start, self.current_tok.pos_end,
+						"Expected ']'"
+					))
+					
+				res.register_advancement()
+				self.advance()
+				
+				atom = ArrayAccessNode(atom.var_name_tok, index)
+			else:
+				break
+
 		return res.success(atom)
 
 # Do things with numbers, while handling REPEAT, WHILE, and PROCEDURE
