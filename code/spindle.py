@@ -371,10 +371,20 @@ class Lexer:
 							for i in range(4):
 								self.advance()
 								char_list += self.current_char
-							if char_list != "TURN":
-								return [], InvalidSyntaxError( self.pos, self.pos, f"Expected 'RETURN' got RE{self.current_char}")
-							tokens.append(Token(TT_KEYWORD, "RETURN", self.pos, self.pos))
-							continue			
+							if self.current_char == 'T':
+								self.advance()
+								if self.current_char == 'U':
+									self.advance()
+									if self.current_char == 'R':
+										self.advance()
+										if self.current_char == 'N':
+											self.advance()
+											pos_start = self.pos.copy()
+											pos_start.idx -= 6  # Move back for "RETURN"
+											pos_start.col -= 6
+											tokens.append(Token(TT_KEYWORD, "RETURN", pos_start, self.pos))
+											continue
+							return [], InvalidSyntaxError(self.pos, self.pos, f"Expected 'RETURN' got RE{self.current_char}")
 				else: # We do not have any loop or keyword. 
 				# Append the identifier token like normal
 					tokens.append(self.make_identifier())
@@ -2138,7 +2148,11 @@ class Function(BaseFunction):
 		value = res.register(interpreter.visit(self.body_node, exec_ctx))
 		if res.should_return() and res.func_return_value == None: return res
 
-		ret_value = (value if self.should_auto_return else None) or res.func_return_value or Number.null
+		# If we have an explicit return value from a RETURN statement, use that
+		if res.func_return_value is not None:
+			return res.success(res.func_return_value)
+		# Otherwise use auto-return value or null
+		ret_value = value if self.should_auto_return else Number.null
 		return res.success(ret_value)
 
 	def copy(self):
