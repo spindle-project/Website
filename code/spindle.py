@@ -453,8 +453,62 @@ class Lexer:
 						return [], ExpectedCharError( self.pos, self.pos, f"Expected ']' got {self.current_char}")
 
 			elif self.current_char == '[':
+				print(f"DEBUG: Found '[' at position {self.pos}")
 				tokens.append(Token(TT_LSQUARE, pos_start=self.pos))
 				self.advance()
+				
+				# Skip whitespace after [
+				while self.current_char in ' \t':
+					self.advance()
+					
+				print(f"DEBUG: After '[' whitespace, found: '{self.current_char}'")
+				
+				# Parse array literal or array index
+				if self.current_char in DIGITS:
+					print(f"DEBUG: Starting array literal with number: '{self.current_char}'")
+					number = self.make_number()
+					tokens.append(number)
+					
+					while True:
+						# Skip whitespace
+						while self.current_char in ' \t':
+							self.advance()
+							
+						if self.current_char == ']':
+							tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
+							self.advance()
+							break
+						elif self.current_char == ',':
+							tokens.append(Token(TT_COMMA, pos_start=self.pos))
+							self.advance()
+							
+							# Skip whitespace after comma
+							while self.current_char in ' \t':
+								self.advance()
+								
+							if not self.current_char in DIGITS:
+								return [], ExpectedCharError(self.pos, self.pos, "Expected number after comma")
+								
+							number = self.make_number()
+							tokens.append(number)
+						else:
+							return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
+				elif self.current_char in LETTERS:
+					print(f"DEBUG: Found identifier in array access: '{self.current_char}'")
+					identifier = self.make_identifier()
+					tokens.append(identifier)
+					
+					# Skip whitespace before ]
+					while self.current_char in ' \t':
+						self.advance()
+						
+					if self.current_char != ']':
+						return [], ExpectedCharError(self.pos, self.pos, "Expected ']'")
+						
+					tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
+					self.advance()
+				else:
+					return [], ExpectedCharError(self.pos, self.pos, "Expected number or identifier after '['")
 				
 				# Skip any whitespace
 				print(f"DEBUG: Processing array at pos {self.pos}, char='{self.current_char}'")
