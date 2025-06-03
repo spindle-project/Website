@@ -1100,24 +1100,12 @@ class Parser:
 			var_name = Token(TT_IDENTIFIER, 'i', 
 				self.current_tok.pos_start, self.current_tok.pos_end)
 
-		
-		res.register_advancement()
-		self.advance()
-
-		start_value = 0
-		if res.error: return res
-		a = res.register(self.expr())
-		end_value = a
-		if res.error: return res
-		step_value = None
-		if not self.current_tok.matches(TT_KEYWORD, 'TIMES'):
+		# Check for opening brace
+		if not self.current_tok.type == TT_LBRACE:
 			return res.failure(InvalidSyntaxError(
 				self.current_tok.pos_start, self.current_tok.pos_end,
-				f"Your REPEAT or REPEAT UNTIL loop has the wrong syntax. Please deouble check that everything is spelled correctly."
+				"Expected '{'"
 			))
-
-		res.register_advancement()
-		self.advance()
 		
 		if not self.current_tok.type == TT_LBRACE:
 			return res.failure(InvalidSyntaxError(
