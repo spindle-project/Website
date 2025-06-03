@@ -1273,6 +1273,7 @@ class Parser:
 	def atom(self):
 		res = ParseResult()
 		tok = self.current_tok
+
 		if tok.type in (TT_INT, TT_FLOAT):
 			res.register_advancement()
 			self.advance()
@@ -1284,9 +1285,9 @@ class Parser:
 			return res.success(StringNode(tok))
 		
 		elif tok.matches(TT_KEYWORD, 'IF'):
-					if_expr = res.register(self.if_expr())
-					if res.error: return res
-					return res.success(if_expr)
+			if_expr = res.register(self.if_expr())
+			if res.error: return res
+			return res.success(if_expr)
 		
 		elif tok.matches(TT_KEYWORD, 'REPEAT'):
 			for_expr = res.register(self.for_expr())
@@ -1304,9 +1305,30 @@ class Parser:
 			return res.success(func_def)
 		
 		elif tok.type == TT_IDENTIFIER:
+			node = VarAccessNode(tok)
 			res.register_advancement()
 			self.advance()
-			return res.success(VarAccessNode(tok))
+			
+			# Check for array indexing
+			if self.current_tok.type == TT_LSQUARE:
+				res.register_advancement()
+				self.advance()
+				
+				index_expr = res.register(self.expr())
+				if res.error: return res
+				
+				if self.current_tok.type != TT_RSQUARE:
+					return res.failure(InvalidSyntaxError(
+						self.current_tok.pos_start, self.current_tok.pos_end,
+						"Expected ']'"
+					))
+					
+				res.register_advancement()
+				self.advance()
+				
+				return res.success(ArrayAccessNode(node.var_name_tok, index_expr))
+				
+			return res.success(node)
 
 		elif tok.type == TT_LPAREN:
 			res.register_advancement()
