@@ -454,6 +454,13 @@ class Lexer:
 			elif self.current_char == '[':
 				tokens.append(Token(TT_LSQUARE, pos_start=self.pos))
 				self.advance()
+				# Handle array index identifier specifically
+				if self.current_char in LETTERS:
+					identifier = self.make_identifier()
+					tokens.append(identifier)
+					if self.current_char == ']':
+						tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
+						self.advance()
 			elif self.current_char == '!':
 				tok, error = self.make_not_equals()
 				if error: return [], error
