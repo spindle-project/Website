@@ -2714,8 +2714,11 @@ def run(fn, text):
     if text.strip() == "":
         return None
         
-    # Create tokens just for the sake of figuring out whether we're dealing with a RUN command or a procedure
+    # Create tokens and print for debugging
     tokens = generate_tokens('<stdin>', text)
+    print("DEBUG: Generated tokens:")
+    for i, token in enumerate(tokens):
+        print(f"  {i}: {token}")
     if tokens and str(tokens[0]) == "IDENTIFIER:RUN":  # Test whether the current script has a RUN FILE function
         text = str(get_file_text(str(tokens[2]).split(":")[1])).replace("{","{ \n")
     else: 
