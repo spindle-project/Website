@@ -1237,8 +1237,15 @@ class Parser:
 				res.register_advancement()
 				self.advance()
 				
-				index = res.register(self.expr())
-				if res.error: return res
+				# Handle array index
+				if self.current_tok.type == TT_IDENTIFIER:
+					index = VarAccessNode(self.current_tok)
+					index.is_array_index = True  # Mark as array index
+					res.register_advancement()
+					self.advance()
+				else:
+					index = res.register(self.expr())
+					if res.error: return res
 				
 				if self.current_tok.type != TT_RSQUARE:
 					return res.failure(InvalidSyntaxError(
@@ -1248,10 +1255,6 @@ class Parser:
 					
 				res.register_advancement()
 				self.advance()
-				
-				# Set array index flag if using a variable
-				if isinstance(index, VarAccessNode):
-					index.is_array_index = True
 				
 				atom = ArrayAccessNode(atom.var_name_tok, index)
 			else:
