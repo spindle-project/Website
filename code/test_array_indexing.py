@@ -15,20 +15,24 @@ def run_test():
     test_array = List([Number(x) for x in range(5)])
     global_symbol_table.set("numbers", test_array)
     
+    # Helper function for creating positions
+    def make_pos(idx, ln, col):
+        return Position(idx, ln, col, "<test>", "test code")
+    
     # Create loop variable token and end value
-    var_name_tok = Token(TT_IDENTIFIER, "i", Position(0, 0, 0, "<test>"), Position(0, 1, 0, "<test>"))
-    end_value = NumberNode(Token(TT_INT, "5", Position(0, 0, 0, "<test>"), Position(0, 1, 0, "<test>")))
+    var_name_tok = Token(TT_IDENTIFIER, "i", make_pos(0, 0, 0), make_pos(1, 0, 1))
+    end_value = NumberNode(Token(TT_INT, "5", make_pos(0, 0, 0), make_pos(1, 0, 1)))
     
     # Create array access node: numbers[i]
     array_access = ArrayAccessNode(
-        Token(TT_IDENTIFIER, "numbers", Position(0, 6, 0, "<test>"), Position(0, 13, 0, "<test>")),
+        Token(TT_IDENTIFIER, "numbers", make_pos(6, 0, 6), make_pos(13, 0, 13)),
         VarAccessNode(var_name_tok)
     )
     
     # Create body node: sum = sum + numbers[i]
     body_node = BinOpNode(
-        VarAccessNode(Token(TT_IDENTIFIER, "sum", Position(0, 0, 0, "<test>"), Position(0, 3, 0, "<test>"))),
-        Token(TT_PLUS, "+", Position(0, 4, 0, "<test>"), Position(0, 5, 0, "<test>")),
+        VarAccessNode(Token(TT_IDENTIFIER, "sum", make_pos(0, 0, 0), make_pos(3, 0, 3))),
+        Token(TT_PLUS, "+", make_pos(4, 0, 4), make_pos(5, 0, 5)),
         array_access
     )
     
