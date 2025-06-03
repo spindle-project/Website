@@ -515,11 +515,6 @@ class Lexer:
 				else:
 					return [], ExpectedCharError(self.pos, self.pos, "Expected number or identifier after '['")
 				
-				# Skip any whitespace
-				while self.current_char in ' \t':
-					print(f"DEBUG: Skipping whitespace: '{self.current_char}'")
-					self.advance()
-				
 				print(f"DEBUG: After whitespace, found: '{self.current_char}'")
 				
 				# Handle array indexing or array literal
