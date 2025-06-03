@@ -1066,13 +1066,39 @@ class Parser:
 		res.register_advancement()
 		self.advance()
 
-		if self.current_tok.type != TT_IDENTIFIER:
+		# Get end value first
+		end_value = res.register(self.expr())
+		if res.error: return res
+
+		# Look for TIMES keyword
+		if not self.current_tok.matches(TT_KEYWORD, 'TIMES'):
 			return res.failure(InvalidSyntaxError(
 				self.current_tok.pos_start, self.current_tok.pos_end,
-				f"Expected identifier 122"
+				f"Expected 'TIMES'"
 			))
 
-		var_name = self.current_tok
+		res.register_advancement()
+		self.advance()
+
+		# Check for optional WITH clause
+		var_name = None
+		if self.current_tok.matches(TT_KEYWORD, 'WITH'):
+			res.register_advancement()
+			self.advance()
+
+			if self.current_tok.type != TT_IDENTIFIER:
+				return res.failure(InvalidSyntaxError(
+					self.current_tok.pos_start, self.current_tok.pos_end,
+					f"Expected identifier after 'WITH'"
+				))
+
+			var_name = self.current_tok
+			res.register_advancement()
+			self.advance()
+		else:
+			# Create default 'i' token
+			var_name = Token(TT_IDENTIFIER, 'i', 
+				self.current_tok.pos_start, self.current_tok.pos_end)
 
 		
 		res.register_advancement()
