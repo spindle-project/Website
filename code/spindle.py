@@ -457,29 +457,29 @@ class Lexer:
 				self.advance()
 				
 				# Skip any whitespace
+				start_pos = self.pos.copy()
 				while self.current_char in ' \t':
 					self.advance()
 				
 				# Handle array indexing or array literal
 				if self.current_char in LETTERS:
-					# Create a token for the identifier
-					identifier_start = self.pos.copy()
+					# Store identifier characters
 					identifier = ''
-					
-					while self.current_char is not None and self.current_char in LETTERS_DIGITS:
+					while self.current_char is not None and (self.current_char in LETTERS_DIGITS or self.current_char == '_'):
 						identifier += self.current_char
 						self.advance()
-					
-					# Skip any whitespace before ]
+						
+					# Skip whitespace
 					while self.current_char in ' \t':
 						self.advance()
-					
+						
 					if self.current_char == ']':
-						tokens.append(Token(TT_IDENTIFIER, identifier, identifier_start, self.pos))
+						# Create identifier token and closing bracket
+						tokens.append(Token(TT_IDENTIFIER, identifier, start_pos, self.pos))
 						tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
 						self.advance()
 					else:
-						return [], ExpectedCharError(self.pos, self.pos, "Expected ']'")
+						return [], ExpectedCharError(self.pos, self.pos, f"Expected ']' after identifier '{identifier}'")
 				elif self.current_char in DIGITS:
 					# Array literal or numeric index
 					number = self.make_number()
