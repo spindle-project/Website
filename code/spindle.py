@@ -458,7 +458,6 @@ class Lexer:
 				
 				# Skip any whitespace
 				print(f"DEBUG: Processing array access/literal at position {self.pos}")
-				start_pos = self.pos.copy()
 				
 				# Skip any whitespace
 				while self.current_char in ' \t':
@@ -468,32 +467,24 @@ class Lexer:
 				
 				# Handle array indexing or array literal
 				if self.current_char in LETTERS:
-					# Store identifier characters
-					identifier_str = ''
-					identifier_start = self.pos.copy()
-					
-					while self.current_char is not None and (self.current_char in LETTERS_DIGITS or self.current_char == '_'):
-						print(f"DEBUG: Building identifier with char: '{self.current_char}'")
-						identifier_str += self.current_char
-						self.advance()
-					
-					print(f"DEBUG: Built identifier: '{identifier_str}'")
-					# Create and append identifier token
-					identifier_token = Token(TT_IDENTIFIER, identifier_str, identifier_start, self.pos)
-					tokens.append(identifier_token)
+					# Handle identifier using existing make_identifier
+					print(f"DEBUG: Found identifier start: '{self.current_char}'")
+					identifier = self.make_identifier()
+					print(f"DEBUG: Made identifier token: {identifier}")
+					tokens.append(identifier)
 					
 					# Skip whitespace before ]
 					while self.current_char in ' \t':
 						self.advance()
 					
-					print(f"DEBUG: Found char after identifier: '{self.current_char}'")
+					print(f"DEBUG: Looking for closing bracket, found: '{self.current_char}'")
 					if self.current_char == ']':
 						print("DEBUG: Found closing bracket")
 						tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
 						self.advance()
 					else:
 						print(f"DEBUG: Missing closing bracket, found '{self.current_char}'")
-						return [], ExpectedCharError(self.pos, self.pos, f"Expected ']' after identifier '{identifier_str}'")
+						return [], ExpectedCharError(self.pos, self.pos, f"Expected ']' after identifier")
 				elif self.current_char in DIGITS:
 					# Array literal or numeric index
 					number = self.make_number()
