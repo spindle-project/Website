@@ -466,14 +466,20 @@ class Lexer:
 				# Parse array literal or array index
 				if self.current_char in DIGITS:
 					print(f"DEBUG: Starting array literal with number: '{self.current_char}'")
-					number = self.make_number()
-					tokens.append(number)
-					
 					while True:
-						# Skip whitespace
+						# Make current number token
+						number = self.make_number()
+						if not number:
+							return [], ExpectedCharError(self.pos, self.pos, "Invalid number in array")
+						tokens.append(number)
+						
+						# Skip whitespace after number
 						while self.current_char in ' \t':
 							self.advance()
-							
+						
+						print(f"DEBUG: After number, found: '{self.current_char}'")
+						
+						# Check for array termination or continuation
 						if self.current_char == ']':
 							tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
 							self.advance()
@@ -485,14 +491,13 @@ class Lexer:
 							# Skip whitespace after comma
 							while self.current_char in ' \t':
 								self.advance()
-								
+							
+							print(f"DEBUG: After comma, found: '{self.current_char}'")
+							# Next character must be a digit
 							if not self.current_char in DIGITS:
-								return [], ExpectedCharError(self.pos, self.pos, "Expected number after comma")
-								
-							number = self.make_number()
-							tokens.append(number)
+								return [], ExpectedCharError(self.pos, self.pos, "Expected number after comma in array")
 						else:
-							return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
+							return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']' in array")
 				elif self.current_char in LETTERS:
 					print(f"DEBUG: Found identifier in array access: '{self.current_char}'")
 					identifier = self.make_identifier()
