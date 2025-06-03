@@ -1,8 +1,4 @@
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from code.spindle import (
+from spindle import (
     Interpreter, SymbolTable, Context, Token, Position,
     NumberNode, ArrayAccessNode, VarAccessNode, ForNode,
     BinOpNode, List, Number, TT_IDENTIFIER, TT_INT, TT_PLUS
