@@ -464,7 +464,11 @@ class Lexer:
 				print(f"DEBUG: After whitespace, found '{self.current_char}'")
 				
 				# Parse array literal or array index
-				if self.current_char in DIGITS:
+				if self.current_char in DIGITS + ' \t':
+					while self.current_char in ' \t':
+						self.advance()
+					if not self.current_char in DIGITS:
+						return [], ExpectedCharError(self.pos, self.pos, "Expected number in array")
 					number = self.make_number()
 					if not number:
 						return [], ExpectedCharError(self.pos, self.pos, "Invalid number in array")
