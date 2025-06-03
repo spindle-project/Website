@@ -473,8 +473,6 @@ class Lexer:
 						while self.current_char in ' \t':
 							self.advance()
 						
-						print(f"DEBUG: After number, found: '{self.current_char}'")
-						
 						# Check for array termination or continuation
 						if self.current_char == ']':
 							tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
@@ -488,14 +486,12 @@ class Lexer:
 							while self.current_char in ' \t':
 								self.advance()
 							
-							print(f"DEBUG: After comma, found: '{self.current_char}'")
 							# Next character must be a digit
 							if not self.current_char in DIGITS:
 								return [], ExpectedCharError(self.pos, self.pos, "Expected number after comma in array")
 						else:
 							return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']' in array")
 				elif self.current_char in LETTERS:
-					print(f"DEBUG: Found identifier in array access: '{self.current_char}'")
 					identifier = self.make_identifier()
 					tokens.append(identifier)
 					
