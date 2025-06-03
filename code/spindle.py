@@ -1249,6 +1249,10 @@ class Parser:
 				res.register_advancement()
 				self.advance()
 				
+				# Set array index flag if using a variable
+				if isinstance(index, VarAccessNode):
+					index.is_array_index = True
+				
 				atom = ArrayAccessNode(atom.var_name_tok, index)
 			else:
 				break
