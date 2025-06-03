@@ -30,10 +30,16 @@ def run_test():
     )
     
     # Create body node: sum = sum + numbers[i]
-    body_node = BinOpNode(
+    add_operation = BinOpNode(
         VarAccessNode(Token(TT_IDENTIFIER, "sum", make_pos(0, 0, 0), make_pos(3, 0, 3))),
         Token(TT_PLUS, "+", make_pos(4, 0, 4), make_pos(5, 0, 5)),
         array_access
+    )
+    
+    # Create assignment node: sum = (sum + numbers[i])
+    body_node = VarAssignNode(
+        Token(TT_IDENTIFIER, "sum", make_pos(0, 0, 0), make_pos(3, 0, 3)),
+        add_operation
     )
     
     # Create ForNode (REPEAT loop)
