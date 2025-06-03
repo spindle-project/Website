@@ -516,12 +516,6 @@ class Lexer:
 					return [], ExpectedCharError(self.pos, self.pos, "Expected number or identifier after '['")
 				
 				# Skip any whitespace
-				print(f"DEBUG: Processing array at pos {self.pos}, char='{self.current_char}'")
-				pos_start = self.pos.copy()
-				tokens.append(Token(TT_LSQUARE, pos_start=pos_start))
-				self.advance()
-				
-				# Skip any whitespace
 				while self.current_char in ' \t':
 					print(f"DEBUG: Skipping whitespace: '{self.current_char}'")
 					self.advance()
