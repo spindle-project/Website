@@ -494,8 +494,45 @@ class Lexer:
 						print(f"DEBUG: Missing closing bracket, found '{self.current_char}'")
 						return [], ExpectedCharError(self.pos, self.pos, f"Expected ']' after identifier '{id_str}'")
 				elif self.current_char in DIGITS:
-					# Array literal or numeric index
+					# Handle array literal or numeric index
 					number = self.make_number()
+					tokens.append(number)
+					
+					# Skip whitespace
+					while self.current_char in ' \t':
+						self.advance()
+					
+					if self.current_char == ']':
+						tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
+						self.advance()
+					elif self.current_char == ',':
+						tokens.append(Token(TT_COMMA, pos_start=self.pos))
+						self.advance()
+						# Continue processing array literal
+						while True:
+							# Skip whitespace
+							while self.current_char in ' \t':
+								self.advance()
+							if not self.current_char in DIGITS:
+								return [], ExpectedCharError(self.pos, self.pos, "Expected number after comma")
+							
+							number = self.make_number()
+							tokens.append(number)
+							
+							while self.current_char in ' \t':
+								self.advance()
+							
+							if self.current_char == ']':
+								tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
+								self.advance()
+								break
+							elif self.current_char == ',':
+								tokens.append(Token(TT_COMMA, pos_start=self.pos))
+								self.advance()
+							else:
+								return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
+					else:
+						return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
 					tokens.append(number)
 					
 					while self.current_char in ' \t':
