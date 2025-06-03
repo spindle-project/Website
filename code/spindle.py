@@ -1100,22 +1100,10 @@ class Parser:
 			var_name = Token(TT_IDENTIFIER, 'i', 
 				self.current_tok.pos_start, self.current_tok.pos_end)
 
-		# Check for opening brace
-		if not self.current_tok.type == TT_LBRACE:
-			return res.failure(InvalidSyntaxError(
-				self.current_tok.pos_start, self.current_tok.pos_end,
-				"Expected '{'"
-			))
-		
-		if not self.current_tok.type == TT_LBRACE:
-			return res.failure(InvalidSyntaxError(
-				self.current_tok.pos_start, self.current_tok.pos_end,
-				"Expected '{'"
-			))
-		else:
-			res.register_advancement()
-			self.advance()
-		
+		# Process opening brace and body
+		res.register_advancement()
+		self.advance()
+
 		if self.current_tok.type == TT_NEWLINE:
 			res.register_advancement()
 			self.advance()
@@ -1125,16 +1113,28 @@ class Parser:
 
 			if not self.current_tok.type == TT_RBRACE:
 				return res.failure(InvalidSyntaxError(
-				self.current_tok.pos_start, self.current_tok.pos_end,
-				"Expected '}'"
+					self.current_tok.pos_start, self.current_tok.pos_end,
+					"Expected '}'"
 				))
 
 			res.register_advancement()
 			self.advance()
 
-			return res.success(ForNode(var_name, start_value, end_value, step_value, body, True))
+			return res.success(ForNode(var_name, 0, end_value, None, body, True))
+		else:
+			body = res.register(self.statement())
+			if res.error: return res
 
-		body = res.register(self.statement())
+			if not self.current_tok.type == TT_RBRACE:
+				return res.failure(InvalidSyntaxError(
+					self.current_tok.pos_start, self.current_tok.pos_end,
+					"Expected '}'"
+				))
+
+			res.register_advancement()
+			self.advance()
+
+			return res.success(ForNode(var_name, 0, end_value, None, body, False))
 		if res.error: return res
 
 		if not self.current_tok.type == TT_RBRACE:
