@@ -1,21 +1,20 @@
 #######################################
+# Spindle Interpreter
 #######################################
-# SPECIFIC TO THE WEB VERSION
-# Override the normal print() function with display_res() in the 
-#######################################
-# This is the shell, to run any sparkle program:
-# 1. Ensure you have sparkle.py in the same directory
-# 2. Run shell.py
-# 3. Type "RUN(" + [the file you want to run with the .spkl extension] + ")"
-#       - Example: RUN("HELLO_SPARKLE.spkl")
-# 4. Press enter, and if everything works correctly, you should get an output!
 
-import pyodide
-import js
-import builtins
-from pyscript import window
+# Web-specific imports (conditional)
+try:
+    import pyodide
+    import js
+    import builtins
+    from pyscript import window
+    WEB_MODE = True
+except ImportError:
+    WEB_MODE = False
 
 def run_python_code(e):
+    if not WEB_MODE:
+        return
     # Load and execute the code from my_module.py
     text_input = js.document.getElementById('codeInput').value
     js.document.getElementById('output').textContent = ""
@@ -607,6 +606,13 @@ class Lexer:
 # NODES
 # The actual datatypes in Spindle, you should never have to touch this. 
 #######################################
+
+class ArrayAccessNode:
+	def __init__(self, array_name_tok, index_node):
+		self.array_name_tok = array_name_tok
+		self.index_node = index_node
+		self.pos_start = array_name_tok.pos_start
+		self.pos_end = index_node.pos_end if index_node else array_name_tok.pos_end
 
 class NumberNode: # Handles numbers, and their repersentations
 	def __init__(self, tok):
@@ -2149,19 +2155,31 @@ class Context:
 # Keeps track of varibles, lists, functions and their values
 #######################################		
 class SymbolTable:
-	def __init__(self, parent = None):
+	def __init__(self, parent=None):
 		self.symbols = {}
 		self.parent = parent
-
+		self.logger = None  # Will be set by interpreter
+		
 	def get(self, name):
 		value = self.symbols.get(name, None)
 		if value == None and self.parent:
 			return self.parent.get(name)
 		return value
-	
+
 	def set(self, name, value):
 		self.symbols[name] = value
-	
+		if self.logger:
+			self.logger.log_symbol_update(name, value, self)
+
+	def get_array_element(self, array_name, index):
+		array = self.get(array_name)
+		if array and hasattr(array, 'elements') and 0 <= index < len(array.elements):
+			value = array.elements[index]
+			if self.logger:
+				self.logger.log_array_access(array_name, index, value, self)
+			return value
+		return None
+
 	def remove(self, name):
 		del self.symbols[name]
 #######################################
@@ -2170,13 +2188,60 @@ class SymbolTable:
 #######################################
 
 class Interpreter:
+	def __init__(self):
+		from spindle_logger import SpindleLogger
+		self.logger = SpindleLogger(verbosity=2)
+
 	def visit(self, node, context):
+		# Ensure context's symbol table has logger
+		if context and hasattr(context, 'symbol_table'):
+			context.symbol_table.logger = self.logger
+			
 		method_name = f'visit_{type(node).__name__}'
 		method = getattr(self, method_name, self.no_visit_method)
 		return method(node, context)
 
 	def no_visit_method(self, node, context):
 		raise Exception(f'No visit_{type(node).__name__} method defined')
+
+	def get_logs(self):
+		return self.logger.get_logs()
+
+	def clear_logs(self):
+		self.logger.clear_logs()
+
+	def visit_ArrayAccessNode(self, node, context):
+		res = RTResult()
+		
+		# Get array name and index
+		array_name = node.array_name_tok.value
+		
+		# If index_node is a variable (like our loop variable), resolve it
+		if isinstance(node.index_node, VarAccessNode):
+			index_value = context.symbol_table.get(node.index_node.var_name_tok.value)
+			if not index_value:
+				return res.failure(RTError(
+					node.pos_start, node.pos_end,
+					f"Variable '{node.index_node.var_name_tok.value}' is not defined",
+					context
+				))
+			index = int(str(index_value.value))
+		else:
+			# Direct number access
+			index_value = res.register(self.visit(node.index_node, context))
+			if res.should_return(): return res
+			index = int(str(index_value.value))
+		
+		# Get array value using our new get_array_element method
+		value = context.symbol_table.get_array_element(array_name, index)
+		if value is None:
+			return res.failure(RTError(
+				node.pos_start, node.pos_end,
+				f"Array access error: index {index} out of bounds or '{array_name}' is not an array",
+				context
+			))
+			
+		return res.success(value)
 
 	###################################
 	def visit_Number(self, node, context):
@@ -2316,11 +2381,11 @@ class Interpreter:
 	def visit_ForNode(self, node, context):
 		res = RTResult()
 		elements = []
-		#start_value = 0
-		start_value =  Number(0)
-		start_value.value =  Number(0)
+		
+		# Initialize loop variable
+		start_value = Number(0)
 		end_value = res.register(self.visit(node.end_value_node, context))
-		if res.should_return(): end_value = 1
+		if res.should_return(): end_value = Number(1)
 
 		if node.step_value_node:
 			step_value = res.register(self.visit(node.step_value_node, context))
@@ -2330,23 +2395,37 @@ class Interpreter:
 
 		i = start_value.value
 
+		# Set up loop condition
 		if step_value.value >= 0:
 			condition = lambda: int(str(i)) < int(str(end_value.value))
 		else:
 			condition = lambda: i > end_value.value
 		
+		# Main loop
 		while condition():
-			context.symbol_table.set(node.var_name_tok.value, Number(i))
-			i = int(str(i))
-			i += int(str(step_value.value))
+			# Set and log loop variable
+			loop_var_value = Number(i)
+			context.symbol_table.set(node.var_name_tok.value, loop_var_value)
+			if self.logger:
+				self.logger.log_loop_iteration(node.var_name_tok.value, i, context)
 
-			value = (res.register(self.visit(node.body_node, context)))
-			if res.should_return() and res.loop_should_continue == False and res.loop_should_break == False: return res
+			# Convert for array indexing
+			i = int(str(i))
+			
+			# Execute loop body
+			value = res.register(self.visit(node.body_node, context))
+			
+			# Handle control flow
+			if res.should_return() and not res.loop_should_continue and not res.loop_should_break:
+				return res
 			if res.loop_should_continue:
+				i += int(str(step_value.value))
 				continue
 			if res.loop_should_break:
 				break
+				
 			elements.append(value)
+			i += int(str(step_value.value))
 		return res.success(
 			Number.null if node.should_return_null else
 			List(elements).set_context(context).set_pos(node.pos_start, node.pos_end))
