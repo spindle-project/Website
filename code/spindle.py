@@ -294,8 +294,9 @@ class Lexer:
 	def make_tokens(self):
 		tokens = [] # <-- List of tokens
 		while self.current_char != None:
+			print(f"DEBUG: Processing char: '{self.current_char}' at position {self.pos}")
 			if self.current_char in ' \t':
-				self.advance() # Igore
+				self.advance()
 			elif self.current_char == "#":
 				self.skip_comment() # This denotes a comment, ignore it and any letters after it until a newline
 			elif self.current_char in";\n": # For ternimal use only, ";" may represent a newline
