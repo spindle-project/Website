@@ -607,6 +607,13 @@ class Lexer:
 # The actual datatypes in Spindle, you should never have to touch this. 
 #######################################
 
+class ArrayAccessNode:
+	def __init__(self, array_name_tok, index_node):
+		self.array_name_tok = array_name_tok
+		self.index_node = index_node
+		self.pos_start = array_name_tok.pos_start
+		self.pos_end = index_node.pos_end if index_node else array_name_tok.pos_end
+
 class NumberNode: # Handles numbers, and their repersentations
 	def __init__(self, tok):
 		self.tok = tok
