@@ -31,9 +31,13 @@
       </div>
       <div class="playground-wrapper">
         <div class="code-input-wrapper">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px">
             <h2 style="color: var(--text-primary); font-size: 1.2rem; margin: 0;">Input</h2>
-            <span style="color: var(--text-secondary); font-size: 0.9rem;">Spindle Code</span>
+            <span style="color: var(--text-primary); background-color: var(--background); font-size: 0.9rem;  height: 25px; width: 100px;
+display: flex;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 5px;">Spindle Code</span>
           </div>
           <textarea
             id="codeInput"
@@ -45,16 +49,22 @@ PROCEDURE calculate_sum(numbers) {
     REPEAT length(numbers) TIMES {
         sum <-- sum + numbers[i]
     }
-    RETURN sum
+    DISPLAY sum
 }"
-          ></textarea>
+          >PROCEDURE calculate_sum(numbers) {
+    sum <-- 0
+    REPEAT length(numbers) TIMES {
+        sum <-- sum + 2
+    }
+    DISPLAY sum
+}</textarea>
         </div>
         <div class="code-output-wrapper" style="position: relative;">
+          
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <h2 style="color: var(--text-primary); font-size: 1.2rem; margin: 0;">Output</h2>
             <div class="test-code-button" id="runButton" py-click="run_python_code">
-              <span class="material-symbols-rounded">play_arrow</span>
-            </div>
+Run Code            </div>
           </div>
           <div id="output" class="code-output">
             Run your code to see the output here...

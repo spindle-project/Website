@@ -39,7 +39,7 @@ section {
   border-radius: 5px;
 }
 button {
-  background-color: #2ecc71;
+  background-color: var(--accent-blue);
   color: white;
   padding: 20px;
   border: none !important;

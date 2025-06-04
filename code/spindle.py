@@ -1,20 +1,21 @@
 #######################################
-# Spindle Interpreter
 #######################################
+# SPECIFIC TO THE WEB VERSION
+# Override the normal print() function with display_res() in the 
+#######################################
+# This is the shell, to run any sparkle program:
+# 1. Ensure you have sparkle.py in the same directory
+# 2. Run shell.py
+# 3. Type "RUN(" + [the file you want to run with the .spkl extension] + ")"
+#       - Example: RUN("HELLO_SPARKLE.spkl")
+# 4. Press enter, and if everything works correctly, you should get an output!
 
-# Web-specific imports (conditional)
-try:
-    import pyodide
-    import js
-    import builtins
-    from pyscript import window
-    WEB_MODE = True
-except ImportError:
-    WEB_MODE = False
+import pyodide
+import js
+import builtins
+from pyscript import window
 
 def run_python_code(e):
-    if not WEB_MODE:
-        return
     # Load and execute the code from my_module.py
     text_input = js.document.getElementById('codeInput').value
     js.document.getElementById('output').textContent = ""
@@ -294,9 +295,8 @@ class Lexer:
 	def make_tokens(self):
 		tokens = [] # <-- List of tokens
 		while self.current_char != None:
-			print(f"DEBUG: Processing char: '{self.current_char}' at position {self.pos}")
 			if self.current_char in ' \t':
-				self.advance()
+				self.advance() # Igore
 			elif self.current_char == "#":
 				self.skip_comment() # This denotes a comment, ignore it and any letters after it until a newline
 			elif self.current_char in";\n": # For ternimal use only, ";" may represent a newline
@@ -453,150 +453,8 @@ class Lexer:
 						return [], ExpectedCharError( self.pos, self.pos, f"Expected ']' got {self.current_char}")
 
 			elif self.current_char == '[':
-				pos_start = self.pos.copy()
-				tokens.append(Token(TT_LSQUARE, pos_start=pos_start))
+				tokens.append(Token(TT_LSQUARE, pos_start=self.pos))
 				self.advance()
-				
-				# Skip whitespace after [
-				while self.current_char in ' \t':
-					self.advance()
-				
-				# Parse array literal or array index
-				if self.current_char in DIGITS:
-					while True:
-						# Get current number
-						number = self.make_number()
-						if not number:
-							return [], ExpectedCharError(self.pos, self.pos, "Invalid number in array")
-						tokens.append(number)
-						
-						# Skip whitespace
-						while self.current_char in ' \t':
-							self.advance()
-						
-						# Check for array termination or continuation
-						if self.current_char == ']':
-							tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
-							self.advance()
-							break
-						elif self.current_char == ',':
-							tokens.append(Token(TT_COMMA, pos_start=self.pos))
-							self.advance()
-							# Skip whitespace after comma
-							while self.current_char in ' \t':
-								self.advance()
-							if not self.current_char in DIGITS:
-								return [], ExpectedCharError(self.pos, self.pos, "Expected number after comma")
-						else:
-							return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
-				elif self.current_char in LETTERS:
-					identifier = self.make_identifier()
-					tokens.append(identifier)
-					
-					# Skip whitespace before ]
-					while self.current_char in ' \t':
-						self.advance()
-						
-					if self.current_char != ']':
-						return [], ExpectedCharError(self.pos, self.pos, "Expected ']'")
-						
-					tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
-					self.advance()
-				else:
-					return [], ExpectedCharError(self.pos, self.pos, "Expected number or identifier after '['")
-				
-				print(f"DEBUG: After whitespace, found: '{self.current_char}'")
-				
-				# Handle array indexing or array literal
-				if self.current_char in LETTERS:
-					id_str = ''
-					pos_start = self.pos.copy()
-					
-					# Collect identifier characters
-					while self.current_char != None and self.current_char in LETTERS_DIGITS + '_':
-						print(f"DEBUG: Adding char to identifier: '{self.current_char}'")
-						id_str += self.current_char
-						self.advance()
-					
-					print(f"DEBUG: Built identifier: '{id_str}'")
-					tokens.append(Token(TT_IDENTIFIER, id_str, pos_start, self.pos))
-					
-					# Skip whitespace before ]
-					while self.current_char in ' \t':
-						self.advance()
-					
-					print(f"DEBUG: Looking for closing bracket, found: '{self.current_char}'")
-					if self.current_char == ']':
-						print("DEBUG: Found closing bracket")
-						tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
-						self.advance()
-					else:
-						print(f"DEBUG: Missing closing bracket, found '{self.current_char}'")
-						return [], ExpectedCharError(self.pos, self.pos, f"Expected ']' after identifier '{id_str}'")
-				elif self.current_char in DIGITS + ' ':
-					print(f"DEBUG: Processing array literal starting with: '{self.current_char}'")
-					# Handle array literal or numeric index
-					while True:
-						# Skip whitespace
-						while self.current_char in ' \t':
-							self.advance()
-						
-						if not self.current_char in DIGITS:
-							return [], ExpectedCharError(self.pos, self.pos, "Expected number")
-						
-						print(f"DEBUG: Making number from: '{self.current_char}'")
-						number = self.make_number()
-						tokens.append(number)
-						
-						# Skip whitespace
-						while self.current_char in ' \t':
-							self.advance()
-						
-						print(f"DEBUG: After number, found: '{self.current_char}'")
-						if self.current_char == ']':
-							tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
-							self.advance()
-							break
-						elif self.current_char == ',':
-							tokens.append(Token(TT_COMMA, pos_start=self.pos))
-							self.advance()
-						else:
-							return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
-					
-					if self.current_char == ']':
-						tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
-						self.advance()
-					elif self.current_char == ',':
-						tokens.append(Token(TT_COMMA, pos_start=self.pos))
-						self.advance()
-						while self.current_char in ' \t':
-							self.advance()
-						# Continue processing array literal
-						while True:
-							if self.current_char in DIGITS:
-								number = self.make_number()
-								tokens.append(number)
-								
-								while self.current_char in ' \t':
-									self.advance()
-								
-								if self.current_char == ']':
-									tokens.append(Token(TT_RSQUARE, pos_start=self.pos))
-									self.advance()
-									break
-								elif self.current_char == ',':
-									tokens.append(Token(TT_COMMA, pos_start=self.pos))
-									self.advance()
-									while self.current_char in ' \t':
-										self.advance()
-								else:
-									return [], ExpectedCharError(self.pos, self.pos, "Expected ',' or ']'")
-							else:
-								return [], ExpectedCharError(self.pos, self.pos, "Expected number")
-					else:
-						return [], ExpectedCharError(self.pos, self.pos, "Expected ']'")
-				else:
-					return [], ExpectedCharError(self.pos, self.pos, "Expected identifier or number")
 			elif self.current_char == '!':
 				tok, error = self.make_not_equals()
 				if error: return [], error
@@ -749,13 +607,6 @@ class Lexer:
 # NODES
 # The actual datatypes in Spindle, you should never have to touch this. 
 #######################################
-
-class ArrayAccessNode:
-	def __init__(self, array_name_tok, index_node):
-		self.array_name_tok = array_name_tok
-		self.index_node = index_node
-		self.pos_start = array_name_tok.pos_start
-		self.pos_end = index_node.pos_end if index_node else array_name_tok.pos_end
 
 class NumberNode: # Handles numbers, and their repersentations
 	def __init__(self, tok):
@@ -1209,44 +1060,42 @@ class Parser:
 		res.register_advancement()
 		self.advance()
 
-		# Get end value first
-		end_value = res.register(self.expr())
-		if res.error: return res
+		if self.current_tok.type != TT_IDENTIFIER:
+			return res.failure(InvalidSyntaxError(
+				self.current_tok.pos_start, self.current_tok.pos_end,
+				f"Expected identifier 122"
+			))
 
-		# Look for TIMES keyword
+		var_name = self.current_tok
+
+		
+		res.register_advancement()
+		self.advance()
+
+		start_value = 0
+		if res.error: return res
+		a = res.register(self.expr())
+		end_value = a
+		if res.error: return res
+		step_value = None
 		if not self.current_tok.matches(TT_KEYWORD, 'TIMES'):
 			return res.failure(InvalidSyntaxError(
 				self.current_tok.pos_start, self.current_tok.pos_end,
-				f"Expected 'TIMES'"
+				f"Your REPEAT or REPEAT UNTIL loop has the wrong syntax. Please deouble check that everything is spelled correctly."
 			))
 
 		res.register_advancement()
 		self.advance()
-
-		# Check for optional WITH clause
-		var_name = None
-		if self.current_tok.matches(TT_KEYWORD, 'WITH'):
-			res.register_advancement()
-			self.advance()
-
-			if self.current_tok.type != TT_IDENTIFIER:
-				return res.failure(InvalidSyntaxError(
-					self.current_tok.pos_start, self.current_tok.pos_end,
-					f"Expected identifier after 'WITH'"
-				))
-
-			var_name = self.current_tok
-			res.register_advancement()
-			self.advance()
+		
+		if not self.current_tok.type == TT_LBRACE:
+			return res.failure(InvalidSyntaxError(
+				self.current_tok.pos_start, self.current_tok.pos_end,
+				"Expected '{'"
+			))
 		else:
-			# Create default 'i' token
-			var_name = Token(TT_IDENTIFIER, 'i', 
-				self.current_tok.pos_start, self.current_tok.pos_end)
-
-		# Process opening brace and body
-		res.register_advancement()
-		self.advance()
-
+			res.register_advancement()
+			self.advance()
+		
 		if self.current_tok.type == TT_NEWLINE:
 			res.register_advancement()
 			self.advance()
@@ -1256,28 +1105,16 @@ class Parser:
 
 			if not self.current_tok.type == TT_RBRACE:
 				return res.failure(InvalidSyntaxError(
-					self.current_tok.pos_start, self.current_tok.pos_end,
-					"Expected '}'"
+				self.current_tok.pos_start, self.current_tok.pos_end,
+				"Expected '}'"
 				))
 
 			res.register_advancement()
 			self.advance()
 
-			return res.success(ForNode(var_name, 0, end_value, None, body, True))
-		else:
-			body = res.register(self.statement())
-			if res.error: return res
+			return res.success(ForNode(var_name, start_value, end_value, step_value, body, True))
 
-			if not self.current_tok.type == TT_RBRACE:
-				return res.failure(InvalidSyntaxError(
-					self.current_tok.pos_start, self.current_tok.pos_end,
-					"Expected '}'"
-				))
-
-			res.register_advancement()
-			self.advance()
-
-			return res.success(ForNode(var_name, 0, end_value, None, body, False))
+		body = res.register(self.statement())
 		if res.error: return res
 
 		if not self.current_tok.type == TT_RBRACE:
@@ -1338,78 +1175,45 @@ class Parser:
 
 		if self.current_tok.type == TT_RBRACE:
 			return res.success(Number.null)
-			
 		atom = res.register(self.atom())
 		if res.error: return res
+		if self.current_tok.type == TT_LPAREN:
+			res.register_advancement()
+			self.advance()
+			arg_nodes = []
 
-		while True:
-			if self.current_tok.type == TT_LPAREN:
-				# Function call handling
+			if self.current_tok.type == TT_RPAREN:
 				res.register_advancement()
 				self.advance()
-				arg_nodes = []
-
-				if self.current_tok.type == TT_RPAREN:
-					res.register_advancement()
-					self.advance()
-				else:
-					arg_nodes.append(res.register(self.expr()))
-					if res.error:
-						return res.failure(InvalidSyntaxError(
-							self.current_tok.pos_start, self.current_tok.pos_end,
-							"Expected ')', '[', 'VARIBLE IDENTIFIFER', 'IF', 'REPEAT', 'REPEAT UNTIL', 'PROCEDURE', int, float, identifier, '+', '-', '(' or 'NOT'"
-						))
-
-					while self.current_tok.type == TT_COMMA:
-						res.register_advancement()
-						self.advance()
-
-						arg_nodes.append(res.register(self.expr()))
-						if res.error: return res
-					if self.current_tok.type != TT_RPAREN:
-						return res.failure(InvalidSyntaxError(
-							self.current_tok.pos_start, self.current_tok.pos_end,
-							f"Expected ',' or ')'"
-						))
-
-					res.register_advancement()
-					self.advance()
-				atom = CallNode(atom, arg_nodes)
-			elif self.current_tok.type == TT_LSQUARE:
-				# Array indexing handling
-				res.register_advancement()
-				self.advance()
-				
-				# Handle array index
-				if self.current_tok.type == TT_IDENTIFIER:
-					index = VarAccessNode(self.current_tok)
-					index.is_array_index = True  # Mark as array index
-					res.register_advancement()
-					self.advance()
-				else:
-					index = res.register(self.expr())
-					if res.error: return res
-				
-				if self.current_tok.type != TT_RSQUARE:
+			else:
+				arg_nodes.append(res.register(self.expr()))
+				if res.error:
 					return res.failure(InvalidSyntaxError(
 						self.current_tok.pos_start, self.current_tok.pos_end,
-						"Expected ']'"
+						"Expected ')', '[', 'VARIBLE IDENTIFIFER', 'IF', 'REPEAT', 'REPEAT UNTIL', 'PROCEDURE', int, float, identifier, '+', '-', '(' or 'NOT'"
 					))
-					
+
+				while self.current_tok.type == TT_COMMA:
+					res.register_advancement()
+					self.advance()
+
+					arg_nodes.append(res.register(self.expr()))
+					if res.error: return res
+				if self.current_tok.type != TT_RPAREN:
+					return res.failure(InvalidSyntaxError(
+						self.current_tok.pos_start, self.current_tok.pos_end,
+						f"Expected ',' or ')'"
+					))
+
 				res.register_advancement()
 				self.advance()
-				
-				atom = ArrayAccessNode(atom.var_name_tok, index)
-			else:
-				break
-
+			return res.success(CallNode(atom, arg_nodes))
 		return res.success(atom)
 
 # Do things with numbers, while handling REPEAT, WHILE, and PROCEDURE
 	def atom(self):
 		res = ParseResult()
 		tok = self.current_tok
-
 		if tok.type in (TT_INT, TT_FLOAT):
 			res.register_advancement()
 			self.advance()
@@ -1421,9 +1225,9 @@ class Parser:
 			return res.success(StringNode(tok))
 		
 		elif tok.matches(TT_KEYWORD, 'IF'):
-			if_expr = res.register(self.if_expr())
-			if res.error: return res
-			return res.success(if_expr)
+					if_expr = res.register(self.if_expr())
+					if res.error: return res
+					return res.success(if_expr)
 		
 		elif tok.matches(TT_KEYWORD, 'REPEAT'):
 			for_expr = res.register(self.for_expr())
@@ -1441,30 +1245,9 @@ class Parser:
 			return res.success(func_def)
 		
 		elif tok.type == TT_IDENTIFIER:
-			node = VarAccessNode(tok)
 			res.register_advancement()
 			self.advance()
-			
-			# Check for array indexing
-			if self.current_tok.type == TT_LSQUARE:
-				res.register_advancement()
-				self.advance()
-				
-				index_expr = res.register(self.expr())
-				if res.error: return res
-				
-				if self.current_tok.type != TT_RSQUARE:
-					return res.failure(InvalidSyntaxError(
-						self.current_tok.pos_start, self.current_tok.pos_end,
-						"Expected ']'"
-					))
-					
-				res.register_advancement()
-				self.advance()
-				
-				return res.success(ArrayAccessNode(node.var_name_tok, index_expr))
-				
-			return res.success(node)
+			return res.success(VarAccessNode(tok))
 
 		elif tok.type == TT_LPAREN:
 			res.register_advancement()
@@ -2366,31 +2149,19 @@ class Context:
 # Keeps track of varibles, lists, functions and their values
 #######################################		
 class SymbolTable:
-	def __init__(self, parent=None):
+	def __init__(self, parent = None):
 		self.symbols = {}
 		self.parent = parent
-		self.logger = None  # Will be set by interpreter
-		
+
 	def get(self, name):
 		value = self.symbols.get(name, None)
 		if value == None and self.parent:
 			return self.parent.get(name)
 		return value
-
+	
 	def set(self, name, value):
 		self.symbols[name] = value
-		if self.logger:
-			self.logger.log_symbol_update(name, value, self)
-
-	def get_array_element(self, array_name, index):
-		array = self.get(array_name)
-		if array and hasattr(array, 'elements') and 0 <= index < len(array.elements):
-			value = array.elements[index]
-			if self.logger:
-				self.logger.log_array_access(array_name, index, value, self)
-			return value
-		return None
-
+	
 	def remove(self, name):
 		del self.symbols[name]
 #######################################
@@ -2399,71 +2170,13 @@ class SymbolTable:
 #######################################
 
 class Interpreter:
-	def __init__(self):
-		from spindle_logger import SpindleLogger
-		self.logger = SpindleLogger(verbosity=2)
-
 	def visit(self, node, context):
-		# Ensure context's symbol table has logger
-		if context and hasattr(context, 'symbol_table'):
-			context.symbol_table.logger = self.logger
-			
 		method_name = f'visit_{type(node).__name__}'
 		method = getattr(self, method_name, self.no_visit_method)
 		return method(node, context)
 
 	def no_visit_method(self, node, context):
 		raise Exception(f'No visit_{type(node).__name__} method defined')
-
-	def get_logs(self):
-		return self.logger.get_logs()
-
-	def clear_logs(self):
-		self.logger.clear_logs()
-
-	def visit_ArrayAccessNode(self, node, context):
-		res = RTResult()
-		
-		# Get array name
-		array_name = node.array_name_tok.value
-		array = context.symbol_table.get(array_name)
-		if not array:
-			return res.failure(RTError(
-				node.pos_start, node.pos_end,
-				f"Array '{array_name}' is not defined",
-				context
-			))
-		
-		# Visit index node to get its value
-		index_res = res.register(self.visit(node.index_node, context))
-		if res.should_return(): return res
-		
-		# Convert index to integer
-		try:
-			index = int(str(index_res.value))
-		except:
-			return res.failure(RTError(
-				node.pos_start, node.pos_end,
-				f"Array index must be an integer",
-				context
-			))
-		
-		# Check array bounds
-		if not hasattr(array, 'elements') or not 0 <= index < len(array.elements):
-			return res.failure(RTError(
-				node.pos_start, node.pos_end,
-				f"Array index {index} out of bounds",
-				context
-			))
-		
-		# Get array element
-		value = array.elements[index]
-		
-		# Log array access if logger is available
-		if self.logger:
-			self.logger.log_array_access(array_name, index, value, context)
-			
-		return res.success(value)
 
 	###################################
 	def visit_Number(self, node, context):
@@ -2498,20 +2211,15 @@ class Interpreter:
 		res = RTResult()
 		var_name = node.var_name_tok.value
 		value = context.symbol_table.get(var_name)
-
 		if not value:
 			return res.failure(RTError(
 				node.pos_start, node.pos_end,
 				f"'{var_name}' is not defined",
 				context
 			))
-
-		# If this is being used as an array index, convert to integer
-		if isinstance(value, Number) and getattr(node, 'is_array_index', False):
-			value = Number(int(str(value.value)))
-
-		value = value.copy().set_pos(node.pos_start, node.pos_end).set_context(context)
-		return res.success(value)
+		else:
+			value = value.copy().set_pos(node.pos_start, node.pos_end).set_context(context)
+			return res.success(value)
 		
 		
 	def visit_VarAssignNode(self, node, context): # Set the value of a varible
@@ -2608,11 +2316,11 @@ class Interpreter:
 	def visit_ForNode(self, node, context):
 		res = RTResult()
 		elements = []
-		
-		# Initialize loop variable
-		start_value = Number(0)
+		#start_value = 0
+		start_value =  Number(0)
+		start_value.value =  Number(0)
 		end_value = res.register(self.visit(node.end_value_node, context))
-		if res.should_return(): end_value = Number(1)
+		if res.should_return(): end_value = 1
 
 		if node.step_value_node:
 			step_value = res.register(self.visit(node.step_value_node, context))
@@ -2622,37 +2330,23 @@ class Interpreter:
 
 		i = start_value.value
 
-		# Set up loop condition
 		if step_value.value >= 0:
 			condition = lambda: int(str(i)) < int(str(end_value.value))
 		else:
 			condition = lambda: i > end_value.value
 		
-		# Main loop
 		while condition():
-			# Set and log loop variable
-			loop_var_value = Number(i)
-			context.symbol_table.set(node.var_name_tok.value, loop_var_value)
-			if self.logger:
-				self.logger.log_loop_iteration(node.var_name_tok.value, i, context)
-
-			# Convert for array indexing
+			context.symbol_table.set(node.var_name_tok.value, Number(i))
 			i = int(str(i))
-			
-			# Execute loop body
-			value = res.register(self.visit(node.body_node, context))
-			
-			# Handle control flow
-			if res.should_return() and not res.loop_should_continue and not res.loop_should_break:
-				return res
+			i += int(str(step_value.value))
+
+			value = (res.register(self.visit(node.body_node, context)))
+			if res.should_return() and res.loop_should_continue == False and res.loop_should_break == False: return res
 			if res.loop_should_continue:
-				i += int(str(step_value.value))
 				continue
 			if res.loop_should_break:
 				break
-				
 			elements.append(value)
-			i += int(str(step_value.value))
 		return res.success(
 			Number.null if node.should_return_null else
 			List(elements).set_context(context).set_pos(node.pos_start, node.pos_end))
@@ -2844,51 +2538,37 @@ def add_else_to_if(text):
 # This function handles RUN commands and calls the run_program for each semi parse generated by the semi_parse_string function
 # this function DOES NOT actually run the program, just the text it was given. 
 def run(fn, text):
-    program_text = ""
-    proc_flag = False
-    
-    if text.strip() == "":
-        return None
-        
-    # Create tokens and print for debugging
-    tokens = generate_tokens('<stdin>', text)
-    print("DEBUG: Generated tokens:")
-    for i, token in enumerate(tokens):
-        print(f"  {i}: {token}")
-    if tokens and str(tokens[0]) == "IDENTIFIER:RUN":  # Test whether the current script has a RUN FILE function
-        text = str(get_file_text(str(tokens[2]).split(":")[1])).replace("{","{ \n")
-    else: 
-        text = text.replace("{","{ \n")
-        
-    # Test whether or not code contains a function
-    if "PROCEDURE" in text:  # There's a procedure!!! Use sublists
-        proc_flag = True
-        program_text = semi_parse_string(text)
-    else:
-        program_text = semi_parse_string(add_else_to_if(text))[0]
-        # Convert text to tokens for the else statement insertion
-        result, error = run_program('<stdin>', program_text)
-        if error:
-            if WEB_MODE:
-                display_res(error.as_string())
-            else:
-                print(error.as_string())
-            return None
-        return result
+	program_text = ""
+	proc_flag = False
+	if text.strip() == "":
+		return
 
-    if proc_flag:
-        proc_flag = False
-        for i in range(len(program_text)):  # Run each part of the text separately
-            if program_text[i].strip() == "":
-                continue
-            result, error = run_program('<stdin>', add_else_to_if(program_text[i]))
-            if error:
-                if WEB_MODE:
-                    display_res(error.as_string())
-                else:
-                    print(error.as_string())
-                break
-        return result
+    # Create tokens just for the sake of figuring out wheter we're dealing with a RUN command or a procedure
+	tokens = generate_tokens('<stdin>', text)
+	if str(tokens[0]) == "IDENTIFIER:RUN": # Test wheter the current script has a RUN FILE function
+		text = str(get_file_text(str(tokens[2]).split(":")[1])).replace("{","{ \n")
+	else: 
+		text = text.replace("{","{ \n")
+    # Test wheater or not code contains a function.
+	if "PROCEDURE" in text: # There's a procedure!!! Use sublists
+		proc_flag = True
+		program_text = semi_parse_string(text)
+	else :
+		program_text = semi_parse_string(add_else_to_if(text))[0]
+		# Convert text to tokens for the else statement inserition
+		result,error = run_program('<stdin>', program_text)
+		if error: 
+			display_res(error.as_string())
+
+	if proc_flag:
+		proc_flag = False
+		for i in range(len(program_text)): # Run each part of the text seperatly
+			if program_text[i].strip() == "":
+				continue
+			result,error = run_program('<stdin>', add_else_to_if(program_text[i]))
+			if error: 
+				display_res(error.as_string())
+				break
 
 
 # Runs the program given to it by the programmer. This function is called by the run function and actually "runs" the program
@@ -2962,6 +2642,3 @@ def execute_run(self, exec_ctx):
 			))
 
 		return RTResult().success(Number.null) 
-
-
-
