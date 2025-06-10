@@ -7,8 +7,9 @@
 
 body {
     font-family: "noto sans", Arial, Helvetica, sans-serif;
-  background-color: var(--md-sys-color-surface-dim);
-  color: var(--md-sys-color-on-background);
+ background: radial-gradient(at top left, var(--md-sys-color-surface-dim), #4a00e0 70%), /* Using the new variable as the first color */
+              radial-gradient(at bottom right, #8e2de2, var(--background) 80%);
+  background-color: var(--background); /* Fallback */  color: var(--md-sys-color-on-background);
   overflow-x: hidden;
   padding-top: 0px;
   margin-top: 0px;
@@ -94,15 +95,27 @@ padding: 0px;
   width: 50%;
 }
 .example-spdl-container {
-  background-color: #1f1f1f;
-  color: white;
-  position: relative;
-  font-family: "JetBrains Mono", monospace !important;
-}
-.example-spdl-code-header {
-  font-size: 1.25rem;
   width: 100%;
-  padding: 5px;
+  display:flex;
+  background-color: rgba(31, 31, 31, 0.6); /* Semi-transparent for frosted look */
+  -webkit-backdrop-filter: blur(var(--frosted-glass-blur));
+  backdrop-filter: blur(var(--frosted-glass-blur));
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  position: relative;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+
+    box-shadow:  15px rgba(75, 156, 255, 1); /* Subtle shadow for depth */
+
+  transition: box-shadow 0.3s ease-in-out; /* Smooth transition for potential hover effects or dynamic changes */
+}
+
+.example-spdl-container:hover {
+    box-shadow: 0 0 50px rgba(75, 156, 255, 0.6), /* Stronger main glow on hover */
+                0 0 100px rgba(75, 156, 255, 0.2); /* Stronger wider glow on hover */
 }
 .test-code-button {
   width: 50px;

@@ -1,18 +1,50 @@
+
+
 .playground-wrapper {
   display: flex;
   height: calc(100vh - 200px);
   width: 100vw;
+  /* Optional: Add a subtle inner gradient or shadow to the wrapper if desired */
+  /* background: radial-gradient(at center center, rgba(var(--accent-blue-rgb), 0.05), transparent 70%); */
 }
 
+/* Modern Button Styling (General) */
 button {
-  background-color: var(--md-sys-color-on-primary-container);
-  color: var(--md-sys-color-on-primary-container);
-  border: 1px solid var(--md-sys-color-on-primary-container);
-  margin-top: 10px;
+  display: inline-flex; /* Allows centering content (like text and icons) */
+  align-items: center;
+  justify-content: center; /* Centers content horizontally */
+  gap: 0.5rem; /* Space between text and icon */
+  background-color: var(--accent-blue); /* Use accent blue for consistency with other buttons */
+  color: var(--text-primary); /* Ensures text is visible and consistent */
+  border: none; /* Remove default border */
+  border-radius: var(--border-radius); /* Apply modern border-radius */
+  padding: 0.8rem 1.5rem; /* Consistent button padding */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 1rem;
+  box-shadow: 0 5px 15px rgba(75, 156, 255, 0.2); /* Subtle button glow/shadow */
+  margin-top: 10px; /* Keep existing margin */
 }
+
+button:hover {
+  background-color: #3a8fe5; /* Slightly darker blue on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(75, 156, 255, 0.3); /* Stronger shadow on hover */
+}
+
+button:focus,
+button:active {
+  outline: none; /* Disable default browser outline */
+  box-shadow: 0 0 0 3px rgba(75, 156, 255, 0.5); /* Custom focus ring for accessibility */
+  -webkit-tap-highlight-color: transparent; /* For mobile browsers */
+}
+
 .material-symbols-rounded {
-     vertical-align: bottom;
+  vertical-align: bottom; /* Keep existing alignment for icons */
 }
+
+/* Code Input/Output Wrappers: Frosted Glass & Glow Effect */
 .code-input-wrapper,
 .code-output-wrapper {
   width: 100%;
@@ -20,57 +52,124 @@ button {
   padding: 20px;
   font-size: 1rem;
   font-family: "JetBrains Mono", monospace;
-  background-color: #1d1d1d;
-background-color: var(--code-bg);
-  color:var(--md-sys-color-on-surface-container-low);  line-height: 1.5rem;
-  position: relative;
+  /* Frosted Glass Effect */
+  background-color: rgba(28, 29, 41, 0.6); /* Semi-transparent background (similar to card/nav) */
+  backdrop-filter: blur(var(--frosted-glass-blur));
+  -webkit-backdrop-filter: blur(var(--frosted-glass-blur)); /* For Safari */
+  border-radius: var(--border-radius); /* Apply global border-radius */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border for definition */
 
+  /* Glow Effect */
+  box-shadow: 0 0 30px rgba(75, 156, 255, 0.15), /* Subtle initial glow */
+              0 0 60px rgba(75, 156, 255, 0.08); /* Wider, softer glow */
+  transition: box-shadow 0.3s ease-in-out, transform 0.2s ease; /* Smooth transitions */
+
+  color: var(--md-sys-color-on-surface-container-low); /* Keep original text color variable */
+  line-height: 1.5rem;
+  position: relative;
 }
-.code-input-wrapper {
-  flex-grow: 3;
+
+.code-input-wrapper:hover,
+.code-output-wrapper:hover {
+  box-shadow: 0 0 40px rgba(75, 156, 255, 0.25), /* Stronger main glow on hover */
+              0 0 80px rgba(75, 156, 255, 0.12); /* Stronger wider glow on hover */
+  transform: translateY(-3px); /* Subtle lift effect on hover */
 }
+
+/* Inherited styles for code input/output areas */
 .code-input,
 .code-output {
   width: 100%;
   border: none;
-  background-color: inherit;
+  background-color: inherit; /* Inherits semi-transparent background from wrapper */
   color: inherit;
   font-family: inherit;
   font-size: inherit;
   padding-left: 0px;
   max-width: 80vw;
-      font-variant-ligatures: none;
-  
-
+  font-variant-ligatures: none;
 }
 .code-input {
-  height: calc(100% - 24px);
+  height: calc(100% - 24px); /* Adjusted for wrapper padding */
   min-width: 40vw;
 }
 .code-input:focus {
-  outline: none;
+  outline: none; /* Keep specific outline removal for textareas */
   border: none;
 }
 textarea {
   resize: horizontal;
 }
+
+/* Specific Test Code Button Overrides */
 .test-code-button {
-right: calc(50% - calc(min(calc(100% - 30px), 150px) / 2) - 10px);
-background-color: var(--accent-blue) !important;
-border-radius: 5px;
-height: 25px;
-width: 100px;
-display: flex;
+  /* Override general button styles for specific dimensions */
+  right: calc(50% - calc(min(calc(100% - 30px), 150px) / 2) - 10px);
+  background-color: var(--accent-blue) !important; /* Keep original !important override */
+  border-radius: 5px; /* Keep original, smaller border-radius */
+  height: 25px; /* Keep original height */
+  width: 100px; /* Keep original width */
+  padding: 0; /* Remove general button padding to fit dimensions */
+  font-size: 0.85rem; /* Adjust font size to fit smaller button */
+  font-weight: bold; /* Keep font bold */
+ display: flex
+;
     justify-content: center;
-    font-weight: bold;
+  /* display: flex; justify-content: center; are inherited from general button */
+}
+
+/* Adjust hover/focus for this specific button */
+.test-code-button:hover {
+    background-color: #3a8fe5 !important; /* Ensure hover also overrides with !important */
+    transform: translateY(-1px); /* More subtle lift for smaller button */
+    box-shadow: 0 3px 10px rgba(75, 156, 255, 0.4); /* Smaller glow for smaller button */
+}
+
+.test-code-button:focus,
+.test-code-button:active {
+    box-shadow: 0 0 0 2px rgba(75, 156, 255, 0.6); /* Smaller focus ring */
 }
 
 
 .test-code-button > span {
-  font-size: 4rem !important;
+  font-size: 1rem !important; /* Make the icon fit the button (4rem was too big) */
 }
 
 h2 {
   margin-bottom: 15px; /* Add some space after headings */
+  color: var(--text-primary); /* Ensure headings have primary text color */
 }
+@media (max-width: 768px) {
+  .playground-wrapper {
+    flex-direction: column; /* Stacks items vertically */
+    height: auto; /* Allows the wrapper to grow taller as content stacks */
+    padding: 10px; /* Add some padding to the wrapper itself */
+  }
 
+  .code-input-wrapper,
+  .code-output-wrapper {
+    width: auto; /* Allows them to take full available width in column layout */
+    margin: 10px 10px; /* Adjust margin for vertical stacking, keep horizontal */
+    max-width: unset; /* Remove max-width constraint if it was causing issues */
+  }
+
+  .code-input {
+    min-width: unset; /* Remove minimum width constraint for smaller screens */
+    height: 300px; /* Give a fixed height to the input area on smaller screens */
+    resize: vertical; /* Allow vertical resizing only */
+  }
+
+  .code-output {
+    height: 200px; /* Give a fixed height to the output area on smaller screens */
+    overflow-y: auto; /* Add scrollbar if content overflows */
+  }
+
+  /* Adjust positioning of the test-code-button for vertical layout */
+  .test-code-button {
+    position: static; /* Remove absolute positioning if it was set */
+    margin: 10px auto; /* Center button horizontally in the flow */
+    right: auto; /* Remove specific right positioning */
+    left: auto; /* Remove specific left positioning */
+    transform: none; /* Remove any transform that positioned it */
+  }
+}

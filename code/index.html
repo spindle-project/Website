@@ -46,18 +46,21 @@ display: flex;
             
 PROCEDURE calculate_sum(numbers) {
     sum <-- 0
-    REPEAT length(numbers) TIMES {
-        sum <-- sum + numbers[i]
-    }
-    DISPLAY sum
-}"
-          >PROCEDURE calculate_sum(numbers) {
-    sum <-- 0
-    REPEAT length(numbers) TIMES {
+    REPEAT LENGTH(numbers) TIMES {
         sum <-- sum + 2
     }
-    DISPLAY sum
-}</textarea>
+    DISPLAY(sum)
+}
+calculate_sum([8,4,2])"
+          >PROCEDURE calculate_sum(numbers) {
+    sum <-- 0
+    REPEAT LENGTH(numbers) TIMES {
+        sum <-- sum + 2
+    }
+    DISPLAY(sum)
+}
+calculate_sum([8,4,2])
+</textarea>
         </div>
         <div class="code-output-wrapper" style="position: relative;">
           

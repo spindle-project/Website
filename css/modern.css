@@ -6,7 +6,25 @@
   --accent-blue: #4b9cff;
   --code-bg: #1f1f1f;
   --card-bg: #1c1d29;
-  --border-radius: 8px;
+  --border-radius: 12px; /* Slightly larger border-radius for a softer look */
+  --frosted-glass-blur: 10px; /* Frosted glass effect blur amount */
+  --frosted-glass-alpha: 0.15; /* Frosted glass background transparency */
+}
+
+/* Page Gradients */
+body {
+  /* More obvious radial gradients */
+  background: radial-gradient(at top left, #4a00e0, transparent 70%), /* A vibrant purple */
+              radial-gradient(at bottom right, #8e2de2, var(--background) 80%); /* Another vibrant purple/pink blend */
+  background-color: var(--background); /* Fallback */
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  /* Soft pattern on body */
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5zM6 0H5zm0 6h-1V5z'/%3E%3C/g%3E%3C/svg%3E"); /* Slightly increased pattern opacity */
+  background-attachment: fixed;
+  background-blend-mode: overlay; /* Blends the gradient and pattern for more impact */
 }
 
 .content-section {
@@ -23,7 +41,7 @@ h1, h2, h3 {
 
 p {
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.7; /* Slightly increased line-height for better readability */
   margin-bottom: 1rem;
 }
 
@@ -32,6 +50,7 @@ blockquote {
   border-left: 4px solid var(--accent-blue);
   padding: 1rem;
   margin: 1rem 0;
+  border-radius: var(--border-radius); /* Apply border-radius to blockquote */
 }
 
 ul, ol {
@@ -40,10 +59,12 @@ ul, ol {
 }
 
 code {
-  background: var(--code-bg);
   padding: 0.2rem 0.4rem;
-  border-radius: 4px;
+  border-radius: 6px; /* Slightly larger border-radius for code snippets */
   font-family: "JetBrains Mono", monospace;
+  font-size: 0.9em; /* Slightly smaller font size for code */
+  display: flex;
+  width: 100%;
 }
 
 .docs-hero {
@@ -51,78 +72,83 @@ code {
   align-items: flex-start;
   gap: 2rem;
 }
+
 .docs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   width: 100%;
 }
+
 .docs-button {
   display: inline-block;
   margin-top: 1rem;
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Inter", sans-serif; /* Modern font choice */
 }
 
-body {
-  background-color: var(--background);
-  color: var(--text-primary);
-  margin: 10px;
-  padding: 0;
-  min-height: 100vh;
-}
 .markdown-body {
-  margin-top: 75px;
+  margin-top: 90px; /* Adjust margin to account for fixed navbar height */
   padding: 15px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
+
 #navBar {
-  background-color: var(--nav-bg);
+  background-color: rgba(28, 29, 41, 0.8); /* Semi-transparent background for frosted effect */
+  backdrop-filter: blur(var(--frosted-glass-blur)); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(var(--frosted-glass-blur)); /* For Safari support */
   padding: 1rem 2rem;
   border-radius: 0;
   position: fixed;
   width: 100%;
   top: 0;
-  height: 64px;
+  height: 70px; /* Slightly taller nav bar */
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
 }
+
 #pageOptions {
   display: flex;
-
   width: 100%;
+  justify-content: flex-end; /* Align links to the right */
+  gap: 1.5rem; /* Space out nav links */
 }
+
 #logoMark {
   color: var(--accent-blue);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.6rem; /* Slightly larger logo */
+  font-weight: 800; /* Bolder logo */
   padding: 0;
+  letter-spacing: -0.5px; /* Slight letter spacing for modern feel */
 }
 
 .page-link {
   color: var(--text-primary);
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1.2rem; /* Slightly more padding for links */
   border-radius: var(--border-radius);
-  transition: background-color 0.2s;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smoother transitions */
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-weight: 500;
 }
 
 .page-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px); /* Subtle hover effect */
 }
 
 .hero-section {
-  padding: 8rem 4rem 4rem 4rem;
+  padding: 10rem 4rem 6rem 4rem; /* More vertical padding */
   display: flex;
   align-items: center;
   gap: 4rem;
@@ -135,40 +161,53 @@ body {
 }
 
 .hero-left-side h3 {
-  font-size: 3rem;
+  font-size: 3.5rem; /* Larger hero heading */
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  background: linear-gradient(90deg, #ffffff 0%, #a0a0a0 100%); /* Text gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-left-side p {
   color: var(--text-secondary);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  font-size: 1.15rem; /* Slightly larger hero paragraph */
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
 }
 
 .primary-button {
   background-color: var(--accent-blue);
   color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
+  padding: 1rem 2rem; /* Larger buttons */
   border-radius: var(--border-radius);
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1.05rem;
+  box-shadow: 0 5px 15px rgba(75, 156, 255, 0.2); /* Subtle shadow for depth */
 }
 
 .primary-button.outline {
   background: transparent;
   border: 1px solid var(--accent-blue);
+  color: var(--accent-blue);
+  box-shadow: none;
+}
+
+.primary-button:hover {
+  background-color: #3a8fe5; /* Slightly darker blue on hover */
+  transform: translateY(-2px);
+}
+
+.primary-button.outline:hover {
+  background-color: rgba(75, 156, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 .text-secondary {
   color: var(--text-secondary);
-}
-
-.primary-button:hover {
-  opacity: 0.9;
 }
 
 .hero-right-side {
@@ -176,29 +215,41 @@ body {
 }
 
 .example-spdl-container {
-  background-color: var(--code-bg);
+  background-color: rgba(31, 31, 31, 0.6); /* Semi-transparent for frosted look */
+  backdrop-filter: blur(var(--frosted-glass-blur));
+  -webkit-backdrop-filter: blur(var(--frosted-glass-blur));
   border-radius: var(--border-radius);
   padding: 1.5rem;
   position: relative;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.9rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
 }
 
 .card {
-  background-color: var(--card-bg);
+  background-color: rgba(28, 29, 41, 0.6); /* Semi-transparent for frosted look */
+  backdrop-filter: blur(var(--frosted-glass-blur));
+  -webkit-backdrop-filter: blur(var(--frosted-glass-blur));
   border-radius: var(--border-radius);
-  padding: 1.5rem;
+  padding: 1.8rem; /* More padding for cards */
   display: flex;
   gap: 1rem;
   align-items: flex-start;
   flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .card .icon {
-  background-color: rgba(75, 156, 255, 0.1);
+  background-color: rgba(75, 156, 255, 0.15); /* Slightly more opaque icon background */
   color: var(--accent-blue);
-  padding: 0.8rem;
+  padding: 0.9rem; /* Larger icon padding */
   border-radius: var(--border-radius);
 }
 
@@ -208,13 +259,13 @@ body {
   padding: 2rem 4rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: 2rem; /* Increased gap for sub-hero section */
 }
 
 @media (max-width: 768px) {
   .hero-section {
     flex-direction: column;
-    padding: 6rem 2rem 2rem 2rem;
+    padding: 8rem 2rem 4rem 2rem; /* Adjusted padding for smaller screens */
   }
 
   .nav-bar-text {
@@ -223,5 +274,14 @@ body {
 
   #subHeroSection {
     padding: 2rem;
+  }
+
+  #navBar {
+    height: 60px; /* Smaller nav bar on mobile */
+    padding: 0.8rem 1rem;
+  }
+
+  #logoMark {
+    font-size: 1.4rem;
   }
 }

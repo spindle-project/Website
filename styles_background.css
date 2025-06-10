@@ -27,3 +27,119 @@
     max-width: 1200px;
     margin: 0 auto;
   }
+  /* --- Info Section Styling --- */
+.info-section {
+  /* Apply frosted glass effect */
+  background-color: rgba(28, 29, 41, 0.6); /* Semi-transparent background matching cards/nav */
+  backdrop-filter: blur(var(--frosted-glass-blur));
+  -webkit-backdrop-filter: blur(var(--frosted-glass-blur)); /* For Safari */
+
+  padding: 4rem 2rem; /* Generous padding for content */
+  margin-top: 2rem; /* Spacing from the section above */
+  border-top: 1px solid rgba(255, 255, 255, 0.08); /* Subtle top border for separation */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Subtle bottom border for separation */
+}
+
+/* Ensure these text styles are defined for consistency */
+.section-title {
+  color: linear-gradient(90deg, #ffffff 0%, #a0a0a0 100%);
+  margin-bottom: 2rem; /* Space below the main title */
+  color: var(--text-primary);
+  text-align: center; /* Typically a section title is centered */
+}
+
+.section-heading {
+  margin-bottom: 1rem;
+  /* color: var(--accent-blue); is already applied via .text-accent class */
+  color: var(--text-primary); /* Default text color, .text-accent will override */
+}
+
+.section-text {
+  color: var(--text-secondary);
+  line-height: 1.7; /* Good readability */
+}
+
+/* Ensure the grid gap class is well-defined if it wasn't already */
+.grid-3-col-gap-large {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem; /* The larger gap as per your HTML */
+}
+
+/* Ensure the max-width container is defined */
+.content-section-max-width {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cta-bottom-section {
+      display: flex
+;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.grid-3-col-gap {
+    display: flex
+;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;}
+    /* Disable recently clicked link highlight */
+a:focus,
+a:active {
+  outline: none; /* Removes the default browser outline */
+  background-color: transparent; /* Ensures no background color is added on click/focus */
+  box-shadow: none; /* Ensures no shadow is added on click/focus */
+  -webkit-tap-highlight-color: transparent; /* For mobile browsers (iOS Safari specifically) */
+}
+
+/* If you have specific link classes, apply it there too for safety */
+.page-link:focus,
+.page-link:active {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.1); /* Keep your desired hover background if it applies here */
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+/* --- Link Styling within Cards --- */
+
+/* Style links specifically within the .card element to look like buttons */
+.card a {
+  display: flex; /* Essential to allow padding and width/height */
+  color: white; /* Button text color */
+  border: none;
+  width: 100%;
+  padding: 0.8rem 1.5rem; /* Standard button padding */
+  border-radius: var(--border-radius); /* Use your defined border-radius */
+  font-weight: 600;
+  text-decoration: none; /* Remove underline */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transitions */
+  font-size: 1rem; /* Standard button font size */
+  box-shadow: 0 5px 15px rgba(75, 156, 255, 0.2); /* Subtle shadow for depth */
+}
+
+.card a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(75, 156, 255, 0.3); /* Slightly stronger shadow on hover */
+}
+.grid-3-col-gap .card {
+  margin-bottom: 12px;
+}
+.content-section-center {
+  width: 100%;
+    display: flex
+;
+    flex-direction: column;
+    align-content: space-around;
+    align-items: center;
+    justify-content: center;
+}
+.card {
+  width: 100%;
+  align-items: center
+
+}
