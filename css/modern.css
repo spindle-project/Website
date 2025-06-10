@@ -1,21 +1,21 @@
 :root {
-  --background: #13141f;
-  --nav-bg: #1c1d29;
-  --text-primary: #ffffff;
-  --text-secondary: #8b8c91;
-  --accent-blue: #4b9cff;
-  --code-bg: #1f1f1f;
-  --card-bg: #1c1d29;
-  --border-radius: 12px; /* Slightly larger border-radius for a softer look */
-  --frosted-glass-blur: 10px; /* Frosted glass effect blur amount */
-  --frosted-glass-alpha: 0.15; /* Frosted glass background transparency */
+  --background: #0D0F1A;
+  --nav-bg: #1A1C29;
+  --text-primary: #E0E6F7;
+  --text-secondary: #9FA6B2;
+  --accent-blue: #5D8FDB; /* Slightly darker and still fancy blue */
+  --code-bg: #161823;
+  --card-bg: #1A1C29;
+  --border-radius: 12px;
+  --frosted-glass-blur: 15px;
+  --frosted-glass-alpha: 0.1;
 }
 
 /* Page Gradients */
 body {
   /* More obvious radial gradients */
   background: radial-gradient(at top left, #4a00e0, transparent 70%), /* A vibrant purple */
-              radial-gradient(at bottom right, #8e2de2, var(--background) 80%); /* Another vibrant purple/pink blend */
+              radial-gradient(at bottom right, #8e2de2, var(--background) 100%); /* Another vibrant purple/pink blend */
   background-color: var(--background); /* Fallback */
   color: var(--text-primary);
   margin: 0;
@@ -25,6 +25,7 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5zM6 0H5zm0 6h-1V5z'/%3E%3C/g%3E%3C/svg%3E"); /* Slightly increased pattern opacity */
   background-attachment: fixed;
   background-blend-mode: overlay; /* Blends the gradient and pattern for more impact */
+  
 }
 
 .content-section {
@@ -32,6 +33,7 @@ body {
   margin: 0 auto;
   padding: 2rem;
 }
+
 
 h1, h2, h3 {
   color: var(--text-primary);
@@ -148,12 +150,13 @@ code {
 }
 
 .hero-section {
-  padding: 10rem 4rem 6rem 4rem; /* More vertical padding */
+  padding: 6rem 4rem 6rem 4rem; /* More vertical padding */
   display: flex;
   align-items: center;
   gap: 4rem;
   max-width: 1200px;
   margin: 0 auto;
+  
 }
 
 .hero-left-side {
@@ -161,12 +164,13 @@ code {
 }
 
 .hero-left-side h3 {
-  font-size: 3.5rem; /* Larger hero heading */
+  font-size: 3rem; /* Larger hero heading */
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  background: linear-gradient(90deg, #ffffff 0%, #a0a0a0 100%); /* Text gradient */
+  background-color: #ffffff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  
 }
 
 .hero-left-side p {
@@ -239,6 +243,7 @@ code {
   flex-direction: column;
   border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 5px rgba(75, 156, 255, 0.1);
 }
 
 .card:hover {
@@ -260,8 +265,38 @@ code {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem; /* Increased gap for sub-hero section */
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5zM6 0H5zm0 6h-1V5z'/%3E%3C/g%3E%3C/svg%3E"); /* Slightly increased pattern opacity */
+
 }
 
+.middle-highlight {
+ width: 1px;
+position: absolute;
+left: 69%;
+  box-shadow: rgba(72, 135, 202, 0.8) 0 50px 1480px 250px;
+  z-index: -1;
+}
+.glow {
+    box-shadow: rgba(72, 135, 202, 0.8) 0 0 90px 33px;
+}
+.inset-glow {
+  box-shadow: inset rgba(72, 135, 202, 0.8) 1px 0px 33px;
+  width: 100%;
+  border-radius: var(--frosted-glass-blur);
+}
+main { 
+background-image:  url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5zM6 0H5zm0 6h-1V5z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.grid-gap {
+  
+    display: flex
+;
+    flex-direction: row;
+}
+.grid-gap > .card {
+  margin-left: var(--frosted-glass-blur);
+  box-shadow: 0 5px 15px rgba(75, 156, 255, 0.2);
+}
 @media (max-width: 768px) {
   .hero-section {
     flex-direction: column;

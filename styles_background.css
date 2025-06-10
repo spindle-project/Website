@@ -42,7 +42,6 @@
 
 /* Ensure these text styles are defined for consistency */
 .section-title {
-  color: linear-gradient(90deg, #ffffff 0%, #a0a0a0 100%);
   margin-bottom: 2rem; /* Space below the main title */
   color: var(--text-primary);
   text-align: center; /* Typically a section title is centered */
