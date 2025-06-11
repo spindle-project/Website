@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockly Custom Blocks Demo</title>
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Blockly Code Generator (AP CSP Syntax)</h1>
+    </header>
+    <div class="main-content">
+      <div id="blocklyDiv"></div>
+      <div class="output-container">
+        <h2>Generated Code</h2>
+        <pre id="codeOutput"></pre>
+        <div class="controls">
+          <button onclick="generateCode()">Generate Code</button>
+          <button onclick="runCode()">Run Code</button>
+        </div>
+      </div>
+    </div>
+
+    <xml id="toolbox" style="display: none">
+      <category name="Variables & I/O" colour="330">
+        <block type="apcsp_number"></block>
+        <block type="apcsp_boolean"></block>
+        <block type="apcsp_string"></block>
+        <block type="apcsp_assign"></block>
+        <block type="apcsp_display"></block>
+        <block type="apcsp_input"></block>
+        <block type="apcsp_get_variable"></block>
+      </category>
+
+      <category name="Math Operations" colour="230">
+        <block type="apcsp_add"></block>
+        <block type="apcsp_subtract"></block>
+        <block type="apcsp_multiply"></block>
+        <block type="apcsp_divide"></block>
+        <block type="apcsp_mod"></block>
+        <block type="apcsp_random"></block>
+        <block type="apcsp_sqrt"></block>
+        <block type="apcsp_abs"></block>
+        <block type="apcsp_round"></block>
+        <block type="apcsp_floor"></block>
+        <block type="apcsp_ceiling"></block>
+        <block type="apcsp_power"></block>
+        <block type="apcsp_min"></block>
+        <block type="apcsp_max"></block>
+      </category>
+
+      <category name="Logic & Comparison" colour="210">
+        <block type="apcsp_equal"></block>
+        <block type="apcsp_not_equal"></block>
+        <block type="apcsp_greater"></block>
+        <block type="apcsp_less"></block>
+        <block type="apcsp_greater_equal"></block>
+        <block type="apcsp_less_equal"></block>
+        <block type="apcsp_not"></block>
+        <block type="apcsp_and"></block>
+        <block type="apcsp_or"></block>
+      </category>
+
+      <category name="Control Flow" colour="120">
+        <block type="apcsp_if"></block>
+        <block type="apcsp_if_else"></block>
+        <block type="apcsp_repeat_n_times"></block>
+        <block type="apcsp_repeat_until"></block>
+        <block type="apcsp_for_each"></block>
+      </category>
+
+      <category name="Lists" colour="260">
+        <block type="apcsp_empty_list"></block>
+        <block type="apcsp_list_get"></block>
+        <block type="apcsp_list_assign_index"></block>
+        <block type="apcsp_list_append"></block>
+        <block type="apcsp_list_insert"></block>
+        <block type="apcsp_list_remove"></block>
+        <block type="apcsp_list_length"></block>
+        <block type="apcsp_list_index_of"></block>
+        <block type="apcsp_list_contains"></block>
+        <block type="apcsp_list_sort"></block>
+        <block type="apcsp_list_reverse"></block>
+        <block type="apcsp_list_sum"></block>
+        <block type="apcsp_list_average"></block>
+      </category>
+
+      <category name="Strings" colour="160">
+        <block type="apcsp_concat"></block>
+        <block type="apcsp_substring"></block>
+        <block type="apcsp_uppercase"></block>
+        <block type="apcsp_lowercase"></block>
+      </category>
+
+      <category name="Procedures" colour="290">
+        <block type="apcsp_procedure_no_return"></block>
+        <block type="apcsp_procedure_definition"></block>
+        <block type="apcsp_return"></block>
+        <block type="apcsp_procedure_call"></block>
+        <block type="apcsp_function_call"></block>
+      </category>
+
+      <category name="Comments" colour="0">
+        <block type="apcsp_comment"></block>
+      </category>
+    </xml>
+  </body>
+</html>

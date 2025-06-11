@@ -1,0 +1,227 @@
+/* ==========================================================================
+   General HTML & Body Styles
+   These apply to your entire page, not just Blockly.
+   ========================================================================== */
+body {
+  font-family: "Consolas", "Monaco", "Lucida Console", monospace; /* Monospaced for code consistency */
+  background-color: #f8f8f8; /* Very light grey background */
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #4caf50; /* Green header, common for educational apps */
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px; /* Space between Blockly and output */
+}
+
+/* ==========================================================================
+   Blockly Workspace Container
+   ========================================================================== */
+#blocklyDiv {
+  flex: 3; /* Takes up more space */
+  min-width: 500px; /* Ensure a minimum width */
+  height: 600px; /* Fixed height for the workspace */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff; /* White background for the workspace */
+  overflow: hidden; /* Important for containing Blockly's SVG */
+}
+
+/* ==========================================================================
+   Generated Code Output Area
+   ========================================================================== */
+.output-container {
+  flex: 2; /* Takes less space than Blockly */
+  min-width: 300px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.output-container h2 {
+  margin-top: 0;
+  color: #555;
+  font-size: 1.4em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+#codeOutput {
+  background-color: #fdfdfd; /* A subtle off-white for code */
+  border: 1px solid #eee;
+  padding: 15px;
+  min-height: 250px;
+  overflow: auto; /* Scroll for long code */
+  white-space: pre-wrap; /* Allows lines to wrap */
+  word-break: break-all; /* Breaks long words if needed */
+  font-family: "Consolas", "Monaco", "Lucida Console", monospace;
+  font-size: 1em; /* Slightly larger font for code */
+  color: #2a2a2a; /* Darker text */
+  border-radius: 4px;
+  flex-grow: 1; /* Allows it to expand */
+}
+
+/* AP CSP Pseudocode specific text styling (for the generated output) */
+#codeOutput strong,
+#codeOutput .ap-keyword {
+  /* If your JS generator wraps keywords */
+  font-weight: bold;
+  color: #007bff; /* A distinct blue for keywords */
+}
+#codeOutput .ap-string {
+  /* If your JS generator wraps strings */
+  color: #28a745; /* Green for strings */
+}
+#codeOutput .ap-comment {
+  /* If your JS generator wraps comments */
+  color: #6c757d; /* Grey for comments */
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Control Buttons
+   ========================================================================== */
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.controls button {
+  background-color: #007bff; /* Primary blue button */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.controls button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.controls button:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Blockly UI Elements (Limited CSS Scope)
+   These target Blockly's internally generated SVG/HTML elements.
+   ========================================================================== */
+
+/* Overall font for block text */
+.blocklyText {
+  font-family: "Arial", sans-serif; /* A clean sans-serif for block labels */
+  font-size: 14pt; /* Make block text larger for readability */
+  font-weight: normal; /* Default is usually good, AP CSP isn't heavily bolded */
+  fill: #333; /* Dark grey for block text */
+}
+
+/* Input fields within blocks (like variable names or numbers) */
+.blocklyEditableText {
+  font-weight: bold; /* Make these stand out */
+  fill: #000; /* Black for editable text */
+}
+
+/* Category background in the toolbox */
+.blocklyFlyoutBackground {
+  fill: #e8e8e8; /* Light grey for the toolbox background */
+}
+
+/* Toolbox category names (e.g., "Variables & I/O") */
+.blocklyTreeLabel {
+  font-family: "Arial", sans-serif;
+  font-size: 14pt;
+  font-weight: bold;
+  fill: #444; /* Darker text for categories */
+}
+
+/* Toolbox category rows */
+.blocklyTreeRow {
+  height: 40px; /* Make category rows a bit taller */
+  line-height: 40px; /* Vertically center text */
+  padding-left: 15px; /* Indent category names */
+  transition: background-color 0.2s ease;
+}
+
+.blocklyTreeRow:hover {
+  background-color: #e0e0e0; /* Subtle hover effect for categories */
+}
+
+/* Block path styles (the actual shape outlines/fills) */
+/* These are the general block styles, not type-specific colors */
+/* Blockly assigns colors via JS `setColour()`, these will be overridden if JS uses it.
+   If `setColour()` is NOT used in JS, then this might apply a default.
+   However, your HTML specifies `colour="..."` in the XML, which is also JS-driven. */
+.blocklyPath {
+  stroke: #ccc; /* Light grey border for all blocks */
+  stroke-width: 1px;
+}
+
+/* Connections and highlights */
+.blocklyPathLight {
+  stroke: rgba(255, 255, 255, 0.5); /* Whiter highlight on block edges */
+  stroke-width: 1.5px;
+}
+
+.blocklyPathDark {
+  stroke: rgba(0, 0, 0, 0.1); /* Very subtle dark shadow on block edges */
+  stroke-width: 0.5px;
+}
+
+/* Shadow blocks (e.g., default value inputs) */
+.blocklyPath.blocklyShadowBlock {
+  fill: #e0e0e0; /* A slightly darker grey for shadow blocks */
+  stroke: #bbb;
+}
+.blocklyPath.blocklyShadowBlock .blocklyText {
+  fill: #777; /* Lighter text for shadow blocks */
+}
+
+/* Selected block outline */
+.blocklySelected > .blocklyPath {
+  stroke: #ffda00; /* Bright yellow/orange border for selected blocks */
+  stroke-width: 3px;
+}
+
+/* Comments (if rendered as default Blockly comments) */
+.blocklyCommentForeignObject .blocklyText {
+  font-style: italic;
+  fill: #6c757d;
+}
+.blocklyCommentBodyBackground {
+  fill: #ffffc0;
+  stroke: #a0a0a0;
+}
