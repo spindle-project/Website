@@ -270,11 +270,11 @@ code {
   width: 100%;
   top: 0;
   height: 70px; /* Slightly taller nav bar */
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
 }
 
 #pageOptions {

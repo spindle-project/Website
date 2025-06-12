@@ -32,20 +32,57 @@ html {
   body {
     font-size: 0.9rem;
     padding: 0 10px;
+    padding-top: 85px;
   }
   
   #navBar {
-    height: auto;
-    min-height: 60px;
-    flex-direction: column;
-    padding: 10px;
-    gap: 10px;
+    height: 70px;
+    padding: 0 15px;
+    position: fixed;
   }
   
-  #pageOptions {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: var(--md-sys-color-primary-container);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 20px 20px;
+    z-index: 999;
+  }
+  
+  .nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav-menu .page-link {
+    display: block;
+    padding: 15px 20px;
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+  }
+  
+  .nav-menu .page-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
   
   .nav-bar-header {
@@ -103,27 +140,36 @@ html {
   body {
     font-size: 0.85rem;
     padding: 0 5px;
+    padding-top: 75px;
   }
   
   #navBar {
-    height: auto;
-    min-height: 50px;
-    padding: 8px;
-    gap: 8px;
+    height: 60px;
+    padding: 0 10px;
   }
   
   .nav-bar-header {
     font-size: 1.3rem;
-    padding-left: 5px;
   }
   
-  #pageOptions {
-    gap: 10px;
+  .nav-menu {
+    top: 60px;
+    padding: 15px 0;
   }
   
-  .page-link {
-    padding: 5px 10px;
-    font-size: 0.9rem;
+  .nav-menu .page-link {
+    padding: 12px 15px;
+    font-size: 1rem;
+  }
+  
+  .mobile-menu-toggle {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .hamburger-line {
+    width: 20px;
+    height: 2px;
   }
   
   .hero-section {
@@ -205,20 +251,37 @@ html {
   body {
     font-size: 0.8rem;
     padding: 0 2px;
+    padding-top: 65px;
   }
   
   #navBar {
-    min-height: 45px;
-    padding: 5px;
+    height: 50px;
+    padding: 0 8px;
   }
   
   .nav-bar-header {
     font-size: 1.1rem;
   }
   
-  .page-link {
-    padding: 3px 8px;
-    font-size: 0.8rem;
+  .nav-menu {
+    top: 50px;
+    padding: 10px 0;
+  }
+  
+  .nav-menu .page-link {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .mobile-menu-toggle {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .hamburger-line {
+    width: 18px;
+    height: 2px;
+    margin: 2px 0;
   }
   
   .card {
@@ -283,26 +346,74 @@ button {
     justify-content: flex-end;
 }
 #navBar {
-    background-color: var(--md-sys-color-primary-container);
+  background-color: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-on-primary-container);
   font-weight: bold;
   height: 75px;
-padding: 0px; 
+  padding: 0 20px;
   border-left: solid var(--md-sys-color-primary-container) 5px;
-    border-right: solid var(--md-sys-color-primary-container) 5px;
-
+  border-right: solid var(--md-sys-color-primary-container) 5px;
   display: flex;
   width: 100%;
-  margin: 0px;
-  position: relative;
-  top: -20px;
-  left: 0px;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   align-items: center;
   justify-content: space-between;
-  align-content: center;
   flex-direction: row;
-  flex-wrap: nowrap;
   border-radius: 0px 0px 20px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile menu toggle button */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: var(--md-sys-color-on-primary-container);
+  margin: 3px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Hamburger animation when active */
+.mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Adjust body padding for fixed navbar */
+body {
+  padding-top: 95px;
 }
 
 .hero-section {

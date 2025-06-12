@@ -13,11 +13,55 @@
     />
     <link rel="stylesheet" href="css/modern.css" />
     <link rel="stylesheet" href="./styles_background.css" />
+    <script>
+      // Mobile Navigation Toggle Functionality
+      document.addEventListener('DOMContentLoaded', function() {
+          const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+          const navMenu = document.getElementById('pageOptions');
+          
+          if (mobileMenuToggle && navMenu) {
+              mobileMenuToggle.addEventListener('click', function() {
+                  mobileMenuToggle.classList.toggle('active');
+                  navMenu.classList.toggle('active');
+              });
+              
+              const navLinks = navMenu.querySelectorAll('.page-link');
+              navLinks.forEach(link => {
+                  link.addEventListener('click', function() {
+                      mobileMenuToggle.classList.remove('active');
+                      navMenu.classList.remove('active');
+                  });
+              });
+              
+              document.addEventListener('click', function(event) {
+                  const isClickInsideNav = navMenu.contains(event.target);
+                  const isClickOnToggle = mobileMenuToggle.contains(event.target);
+                  
+                  if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
+                      mobileMenuToggle.classList.remove('active');
+                      navMenu.classList.remove('active');
+                  }
+              });
+              
+              window.addEventListener('resize', function() {
+                  if (window.innerWidth > 768) {
+                      mobileMenuToggle.classList.remove('active');
+                      navMenu.classList.remove('active');
+                  }
+              });
+          }
+      });
+    </script>
   </head>
   <body>
     <nav id="navBar">
       <a class="page-link" href="/"><div id="logoMark">Spindle</div></a>
-      <div id="pageOptions">
+      <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <div id="pageOptions" class="nav-menu">
         <a class="page-link" href="/ide">IDE</a>
         <a class="page-link" href="/docs">Documentation</a>
         <a class="page-link" href="/exam-prep">Exam Prep</a>
