@@ -142,3 +142,143 @@ a:active {
   align-items: center
 
 }
+/* Responsive design for background styles */
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .hero-cta {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    align-items: center;
+  }
+  
+  .ide-header {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 0.8rem;
+  }
+  
+  .run-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .benefits-section {
+    padding: 2rem 1rem;
+  }
+  
+  .benefits-title {
+    margin-bottom: 2rem;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .info-section {
+    padding: 2rem 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .grid-3-col-gap-large {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .cta-bottom-section {
+    padding: 1rem;
+  }
+  
+  .card {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .card a {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile phones (480px and below) */
+@media (max-width: 480px) {
+  .hero-cta {
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  
+  .hero-cta button {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .ide-header {
+    gap: 8px;
+  }
+  
+  .run-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .benefits-section {
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .benefits-title {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .benefits-grid {
+    gap: 1rem;
+  }
+  
+  .info-section {
+    padding: 1.5rem 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .section-title {
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+  }
+  
+  .section-heading {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+  }
+  
+  .grid-3-col-gap-large {
+    gap: 1.5rem;
+  }
+  
+  .content-section-max-width {
+    padding: 0 10px;
+  }
+  
+  .card {
+    margin-bottom: 10px;
+  }
+  
+  .card a {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Large tablets (992px and below) */
+@media (max-width: 992px) {
+  .benefits-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .grid-3-col-gap-large {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .info-section {
+    padding: 3rem 1.5rem;
+  }
+}

@@ -50,3 +50,103 @@
         color: var(--text-secondary);
         margin: 0.5rem 0;
       }
+/* Responsive design for documentation */
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  body {
+    margin-top: 60px;
+  }
+  
+  .content-section {
+    max-width: 100%;
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    margin-top: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+    margin-top: 1.2rem;
+  }
+  
+  pre {
+    padding: 0.8rem;
+    overflow-x: auto;
+    font-size: 0.9rem;
+  }
+  
+  code {
+    font-size: 0.9rem;
+  }
+  
+  details {
+    padding: 0.8rem;
+  }
+}
+
+/* Mobile phones (480px and below) */
+@media (max-width: 480px) {
+  body {
+    margin-top: 50px;
+  }
+  
+  .content-section {
+    padding: 0.5rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+    margin-top: 1rem;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+  
+  p {
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+  }
+  
+  pre {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+    margin: 0.8rem 0;
+  }
+  
+  code {
+    font-size: 0.8rem;
+  }
+  
+  details {
+    padding: 0.6rem;
+    margin: 0.8rem 0;
+  }
+  
+  ol li {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+  }
+}
+
+/* Large tablets (992px and below) */
+@media (max-width: 992px) {
+  .content-section {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+}

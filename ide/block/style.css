@@ -334,3 +334,118 @@ color: var(--text-primary);
 	fill: #ffffc0;
 	stroke: #a0a0a0;
 }
+
+/* Responsive design for IDE block interface */
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  body {
+    margin-top: 60px !important;
+    height: calc(100% - 60px) !important;
+  }
+  
+  .main-content {
+    padding: 10px;
+    gap: 10px;
+    height: calc(100vh - 120px);
+  }
+  
+  .main-content.side-by-side {
+    flex-direction: column;
+  }
+  
+  #blocklyDiv {
+    min-width: 300px;
+    margin: 5px;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .options-container {
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .options-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .options-group select {
+    width: 100%;
+  }
+  
+  h1 {
+    font-size: 1.5em;
+  }
+  
+  header {
+    padding: 10px 15px;
+  }
+}
+
+/* Mobile phones (480px and below) */
+@media (max-width: 480px) {
+  body {
+    margin-top: 50px !important;
+    height: calc(100% - 50px) !important;
+  }
+  
+  .main-content {
+    padding: 5px;
+    gap: 5px;
+    height: calc(100vh - 100px);
+  }
+  
+  #blocklyDiv {
+    min-width: 250px;
+    margin: 2px;
+    padding: 5px;
+    font-size: 0.8rem;
+  }
+  
+  .options-container {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .options-group label {
+    margin-right: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .options-group select {
+    padding: 3px;
+    font-size: 0.85rem;
+  }
+  
+  h1 {
+    font-size: 1.3em;
+  }
+  
+  header {
+    padding: 8px 10px;
+  }
+  
+  .blocklyToolbox {
+    border-radius: 8px;
+  }
+}
+
+/* Large tablets (992px and below) */
+@media (max-width: 992px) {
+  .main-content {
+    padding: 15px;
+    gap: 15px;
+  }
+  
+  #blocklyDiv {
+    min-width: 350px;
+  }
+  
+  .options-container {
+    gap: 15px;
+  }
+}

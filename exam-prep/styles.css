@@ -100,6 +100,114 @@ button {
   margin-top: 1rem;
 }
 
+/* Responsive design for exam-prep page */
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  body {
+    padding: 5px;
+  }
+  
+  header {
+    padding: 15px 0;
+  }
+  
+  section {
+    padding: 15px;
+    margin: 15px 5px;
+  }
+  
+  #question-mangager {
+    flex-direction: column;
+  }
+  
+  #question-mangager > * {
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  #user-answer {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+  
+  button {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+  
+  #choices-container button {
+    margin: 3px;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+  
+  .hero-description {
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
+/* Mobile phones (480px and below) */
+@media (max-width: 480px) {
+  body {
+    padding: 2px;
+  }
+  
+  header {
+    padding: 10px 0;
+    font-size: 0.9rem;
+  }
+  
+  section {
+    padding: 10px;
+    margin: 10px 2px;
+  }
+  
+  #user-answer {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+  
+  button {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+  
+  #choices-container button {
+    margin: 2px;
+    padding: 5px 8px;
+    font-size: 0.8rem;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  
+  #feedback-container {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .hero-section {
+    padding-bottom: 0;
+    text-align: center;
+  }
+}
+
+/* Large tablets (992px and below) */
+@media (max-width: 992px) {
+  section {
+    margin: 20px 10px;
+  }
+  
+  #question-mangager {
+    flex-direction: column;
+  }
+  
+  #question-mangager > * {
+    margin: 15px 0;
+  }
+}
+
 .accent {
   color: var(--accent-blue);
 }

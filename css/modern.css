@@ -100,6 +100,114 @@ code {
   line-height: 1.6;
 }
 
+/* Responsive design for modern theme */
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .content-section {
+    max-width: 100%;
+    padding: 1rem;
+  }
+  
+  .docs-hero {
+    gap: 1.5rem;
+    text-align: center;
+  }
+  
+  .docs-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+  }
+  
+  .markdown-body {
+    margin-top: 70px;
+    padding: 10px;
+  }
+  
+  blockquote {
+    padding: 0.8rem;
+    margin: 0.8rem 0;
+  }
+  
+  code {
+    font-size: 0.8em;
+    overflow-x: auto;
+  }
+}
+
+/* Mobile phones (480px and below) */
+@media (max-width: 480px) {
+  .content-section {
+    padding: 0.5rem;
+  }
+  
+  .docs-hero {
+    gap: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+  }
+  
+  p {
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+  
+  .markdown-body {
+    margin-top: 60px;
+    padding: 8px;
+  }
+  
+  blockquote {
+    padding: 0.6rem;
+    margin: 0.6rem 0;
+  }
+  
+  code {
+    font-size: 0.75em;
+    padding: 0.15rem 0.3rem;
+  }
+  
+  .docs-button {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.8rem;
+  }
+}
+
+/* Large tablets (992px and below) */
+@media (max-width: 992px) {
+  .content-section {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .docs-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
 #navBar {
   background-color: rgba(28, 29, 41, 0.8); /* Semi-transparent background for frosted effect */
   backdrop-filter: blur(var(--frosted-glass-blur)); /* Frosted glass effect */

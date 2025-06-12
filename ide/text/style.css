@@ -289,3 +289,107 @@ h2 {
     transform: none; /* Remove any transform that positioned it */
   }
 }
+/* Responsive design for text IDE interface */
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .playground-wrapper {
+    flex-direction: column;
+    height: calc(100vh - 150px);
+    width: calc(100% - 20px);
+  }
+  
+  .code-input-wrapper,
+  .code-output-wrapper {
+    width: 100%;
+    margin: 5px;
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+  
+  .code-input,
+  .code-output {
+    max-width: 90vw;
+    padding-top: 15px;
+    padding-left: 15px;
+  }
+  
+  .code-input {
+    min-width: 90vw;
+    height: calc(100% - 20px);
+  }
+  
+  button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .test-code-button {
+    bottom: -80px !important;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Mobile phones (480px and below) */
+@media (max-width: 480px) {
+  .playground-wrapper {
+    height: calc(100vh - 120px);
+    width: calc(100% - 10px);
+  }
+  
+  .code-input-wrapper,
+  .code-output-wrapper {
+    margin: 2px;
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+  
+  .code-input,
+  .code-output {
+    max-width: 95vw;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 0.8rem;
+  }
+  
+  .code-input {
+    min-width: 95vw;
+    height: calc(100% - 15px);
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .test-code-button {
+    bottom: -60px !important;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .test-code-button > * {
+    font-size: 2.5rem;
+  }
+  
+  .material-symbols-rounded {
+    font-size: 1.2rem;
+  }
+}
+
+/* Large tablets (992px and below) */
+@media (max-width: 992px) {
+  .playground-wrapper {
+    height: calc(100vh - 180px);
+    width: calc(100% - 25px);
+  }
+  
+  .code-input-wrapper,
+  .code-output-wrapper {
+    padding: 18px;
+  }
+  
+  .code-input {
+    min-width: 45vw;
+  }
+}
