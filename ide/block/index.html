@@ -6,15 +6,86 @@
     <title>Blockly Custom Blocks Demo</title>
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
+      <link rel="stylesheet" href="style.css">
+
   </head>
   <body>
     <header>
       <h1>Blockly Code Generator (AP CSP Syntax)</h1>
     </header>
-    <div class="main-content">
+    <div class="options-container">
+      <div class="options-group">
+        <label for="outputPlacement">Output Placement:</label>
+        <select id="outputPlacement">
+          <option value="bottom">Bottom of Input</option>
+          <option value="side">Side-by-Side</option>
+        </select>
+      </div>
+
+      <div class="options-group">
+        <label for="outputSize">Output Size:</label>
+        <select id="outputSize">
+          <option value="medium">Medium</option>
+          <option value="small">Small</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const playgroundWrapper = document.getElementById("playgroundWrapper"); // Changed ID
+        const outputWrapper = document.getElementById("outputWrapper"); // Changed ID
+        const outputPlacementSelect =
+          document.getElementById("outputPlacement");
+        const outputSizeSelect = document.getElementById("outputSize");
+
+        /**
+         * Applies the selected output placement and size settings to the DOM.
+         */
+        function applyOutputSettings() {
+          const placement = outputPlacementSelect.value;
+          const size = outputSizeSelect.value;
+
+          // Reset placement classes
+          playgroundWrapper.classList.remove("side-by-side");
+
+          // Apply placement class
+          if (placement === "side") {
+            playgroundWrapper.classList.add("side-by-side");
+          }
+
+          // Reset size classes
+          outputWrapper.classList.remove(
+            "output-small",
+            "output-medium",
+            "output-large"
+          );
+
+          // Apply size class
+          //if (placement === "side") {
+            // Only apply specific size classes if side-by-side
+            if (size === "small") {
+              outputWrapper.classList.add("output-small");
+            } else if (size === "medium") {
+              outputWrapper.classList.add("output-medium");
+            } else if (size === "large") {
+              outputWrapper.classList.add("output-large");
+            }
+        //  }
+          // If not side-by-side, outputWrapper's default flex: 1 will make it full width
+        }
+
+        // Initial application of settings when the page loads
+        applyOutputSettings();
+
+        // Event listeners for changes in dropdowns
+        outputPlacementSelect.addEventListener("change", applyOutputSettings);
+        outputSizeSelect.addEventListener("change", applyOutputSettings);
+      });
+    </script>
+    <div class="main-content" id="playgroundWrapper">
       <div id="blocklyDiv"></div>
-      <div class="output-container">
+      <div class="output-container" id="outputWrapper">
         <h2>Generated Code</h2>
         <pre id="codeOutput"></pre>
         <div class="controls">
