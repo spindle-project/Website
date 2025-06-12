@@ -75,51 +75,51 @@ if (!Blockly.JavaScript.ORDER_ATOMIC) {
 const AP_CSP_IMAGE_THEME = new Blockly.Theme("ap_csp_image_theme", {
   variables_io_style: {
     // Corresponds to colour="330" (Reddish-purple)
-    colourPrimary: "#EE00EE", // Example: Vibrant Magenta
-    colourSecondary: "#FF33FF", // Lighter
-    colourTertiary: "#BB00BB", // Darker
+    colourPrimary: "#a55b5b", // Example: Vibrant Magenta
+    colourSecondary: "#a55b5b", // Lighter
+    colourTertiary: "#a55b5b", // Darker
   },
   math_style: {
     // Corresponds to colour="230" (Blue)
-    colourPrimary: "#0000FF", // Example: Pure Blue
-    colourSecondary: "#3333FF", // Lighter
-    colourTertiary: "#0000CC", // Darker
+    colourPrimary: "#a5935b", // Example: Pure Blue
+    colourSecondary: "#a5935b", // Lighter
+    colourTertiary: "#a5935b", // Darker
   },
   logic_style: {
     // Corresponds to colour="210" (Light Blue/Cyan)
-    colourPrimary: "#00CCFF", // Example: Cyan
-    colourSecondary: "#33DDFF", // Lighter
-    colourTertiary: "#0099CC", // Darker
+    colourPrimary: "#80a55b", // Example: Cyan
+    colourSecondary: "#80a55b", // Lighter
+    colourTertiary: "#80a55b", // Darker
   },
   control_flow_style: {
     // Corresponds to colour="120" (Green)
-    colourPrimary: "#66CC00", // Example: Lime Green
-    colourSecondary: "#99FF33", // Lighter
-    colourTertiary: "#339900", // Darker
+    colourPrimary: "#5ba56d", // Example: Lime Green
+    colourSecondary: "#5ba56d", // Lighter
+    colourTertiary: "#5ba56d", // Darker
   },
   list_style: {
     // Corresponds to colour="260" (Purple)
-    colourPrimary: "#8000FF", // Example: Deep Purple
-    colourSecondary: "#A040FF", // Lighter
-    colourTertiary: "#6000CC", // Darker
+    colourPrimary: "#5ba5a5", // Example: Deep Purple
+    colourSecondary: "#5ba5a5", // Lighter
+    colourTertiary: "#5ba5a5", // Darker
   },
   strings_style: {
     // Corresponds to colour="160" (Yellow-Green)
-    colourPrimary: "#CCAA00", // Example: Goldenrod
-    colourSecondary: "#FFDD00", // Lighter
-    colourTertiary: "#998800", // Darker
+    colourPrimary: "#5b6da5", // Example: Goldenrod
+    colourSecondary: "#5b6da5", // Lighter
+    colourTertiary: "#5b6da5", // Darker
   },
   procedures_style: {
     // Corresponds to colour="290" (Magenta/Pink)
-    colourPrimary: "#FF00AA", // Example: Bright Pink/Rose
-    colourSecondary: "#FF33CC", // Lighter
-    colourTertiary: "#CC0088", // Darker
+    colourPrimary: "#805ba5", // Example: Bright Pink/Rose
+    colourSecondary: "#805ba5", // Lighter
+    colourTertiary: "#805ba5", // Darker
   },
   comments_style: {
     // Corresponds to colour="0" (Red)
-    colourPrimary: "#FF0000", // Example: Pure Red
-    colourSecondary: "#FF3333", // Lighter
-    colourTertiary: "#CC0000", // Darker
+    colourPrimary: "#a55b93", // Example: Pure Red
+    colourSecondary: "#a55b93", // Lighter
+    colourTertiary: "#a55b93", // Darker
   },
   // You might also want a generic 'value_block_style' if some value blocks don't fit
   // perfectly into other categories, or if you want to override specific block colours.

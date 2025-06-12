@@ -1,9 +1,11 @@
-
+body {
+  overflow-x: hidden;
+}
 
 .playground-wrapper {
   display: flex;
   height: calc(100vh - 200px);
-  width: 100vw;
+  width: calc(100% - 30px);
   /* Optional: Add a subtle inner gradient or shadow to the wrapper if desired */
   /* background: radial-gradient(at center center, rgba(var(--accent-blue-rgb), 0.05), transparent 70%); */
 }
@@ -237,6 +239,7 @@ h2 {
         margin-bottom: 20px;
         align-items: center;
         flex-wrap: wrap; /* Allow options to wrap on smaller screens */
+            justify-content: center;
       }
 
       .options-group label {

@@ -6,13 +6,20 @@
     <title>Blockly Custom Blocks Demo</title>
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
     <script src="script.js" defer></script>
+    
       <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="/css/modern.css">
 
   </head>
   <body>
-    <header>
-      <h1>Blockly Code Generator (AP CSP Syntax)</h1>
-    </header>
+     <nav id="navBar">
+      <a class="page-link" href="/"><div id="logoMark">Spindle</div></a>
+      <div id="pageOptions">
+        <a class="page-link" href="/ide">IDE</a>
+        <a class="page-link" href="/docs">Documentation</a>
+        <a class="page-link" href="/exam-prep">Exam Prep</a>
+      </div>
+    </nav>
     <div class="options-container">
       <div class="options-group">
         <label for="outputPlacement">Output Placement:</label>
@@ -86,17 +93,19 @@
     <div class="main-content" id="playgroundWrapper">
       <div id="blocklyDiv"></div>
       <div class="output-container" id="outputWrapper">
-        <h2>Generated Code</h2>
-        <pre id="codeOutput"></pre>
         <div class="controls">
-          <button onclick="generateCode()">Generate Code</button>
-          <button onclick="runCode()">Run Code</button>
+                  <h2>Generated Code</h2>
+          <button onclick="runCode()">Run Code</button></span>
+        
+
         </div>
+                <pre id="codeOutput"></pre>
+
       </div>
     </div>
 
     <xml id="toolbox" style="display: none">
-      <category name="Variables & I/O" colour="330">
+      <category name="Variables & I/O" colour="0">
         <block type="apcsp_number"></block>
         <block type="apcsp_boolean"></block>
         <block type="apcsp_string"></block>
@@ -106,7 +115,7 @@
         <block type="apcsp_get_variable"></block>
       </category>
 
-      <category name="Math Operations" colour="230">
+      <category name="Math Operations" colour="45">
         <block type="apcsp_add"></block>
         <block type="apcsp_subtract"></block>
         <block type="apcsp_multiply"></block>
@@ -123,7 +132,7 @@
         <block type="apcsp_max"></block>
       </category>
 
-      <category name="Logic & Comparison" colour="210">
+      <category name="Logic & Comparison" colour="90">
         <block type="apcsp_equal"></block>
         <block type="apcsp_not_equal"></block>
         <block type="apcsp_greater"></block>
@@ -135,7 +144,7 @@
         <block type="apcsp_or"></block>
       </category>
 
-      <category name="Control Flow" colour="120">
+      <category name="Control Flow" colour="135">
         <block type="apcsp_if"></block>
         <block type="apcsp_if_else"></block>
         <block type="apcsp_repeat_n_times"></block>
@@ -143,7 +152,7 @@
         <block type="apcsp_for_each"></block>
       </category>
 
-      <category name="Lists" colour="260">
+      <category name="Lists" colour="180">
         <block type="apcsp_empty_list"></block>
         <block type="apcsp_list_get"></block>
         <block type="apcsp_list_assign_index"></block>
@@ -159,14 +168,14 @@
         <block type="apcsp_list_average"></block>
       </category>
 
-      <category name="Strings" colour="160">
+      <category name="Strings" colour="225">
         <block type="apcsp_concat"></block>
         <block type="apcsp_substring"></block>
         <block type="apcsp_uppercase"></block>
         <block type="apcsp_lowercase"></block>
       </category>
 
-      <category name="Procedures" colour="290">
+      <category name="Procedures" colour="270">
         <block type="apcsp_procedure_no_return"></block>
         <block type="apcsp_procedure_definition"></block>
         <block type="apcsp_return"></block>
@@ -174,7 +183,7 @@
         <block type="apcsp_function_call"></block>
       </category>
 
-      <category name="Comments" colour="0">
+      <category name="Comments" colour="315">
         <block type="apcsp_comment"></block>
       </category>
     </xml>
