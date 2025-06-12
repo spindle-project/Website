@@ -11,7 +11,8 @@ body {
 	padding: 0;
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
+	min-height: 0px !important;
+  height: calc(100% - 75px) !important;
 } 
 
 header {
@@ -68,16 +69,17 @@ justify-content: flex-start
    Main Content Layout (Blockly + Output)
    ========================================================================== */
 .main-content {
-	flex-grow: 1;
-	display: flex;
-	flex-direction: column; /* Default to bottom placement (stacked) */
-	padding: 20px;
-  padding-top: 0px;
-	gap: 20px; /* Space between Blockly and output */
-	height: 100vh;
-  border:none;
-  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5zM6 0H5zm0 6h-1V5z'/%3E%3C/g%3E%3C/svg%3E");
-}
+	    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    gap: 20px;
+    height: calc(100vh - 145px);
+    border: none;
+    overflow: hidden;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5zM6 0H5zm0 6h-1V5z'/%3E%3C/g%3E%3C/svg%3E");}
 
 /* Side-by-side placement when this class is applied */
 .main-content.side-by-side {
@@ -90,8 +92,7 @@ justify-content: flex-start
    ========================================================================== */
 #blocklyDiv {
 	min-width: 400px; /* Ensure a minimum width for Blockly */
-	height: 600px; /* Fixed height for the workspace */
-	overflow: hidden; /* Important for containing Blockly's SVG */
+height: 100%;	overflow: hidden; /* Important for containing Blockly's SVG */
     width: 100%;
     margin: 10px;
     padding: 20px;
@@ -131,6 +132,7 @@ justify-content: flex-start
     color: var(--md-sys-color-on-surface-container-low);
     line-height: 1.5rem;
     position: relative;
+    overflow-y: auto;
 }
 
 /* Styles for side-by-side mode (controlled by JS adding classes to output-container) */
