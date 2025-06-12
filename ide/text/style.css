@@ -1,9 +1,11 @@
-
+body {
+  overflow-x: hidden;
+}
 
 .playground-wrapper {
   display: flex;
   height: calc(100vh - 200px);
-  width: 100vw;
+  width: calc(100% - 30px);
   /* Optional: Add a subtle inner gradient or shadow to the wrapper if desired */
   /* background: radial-gradient(at center center, rgba(var(--accent-blue-rgb), 0.05), transparent 70%); */
 }
@@ -140,6 +142,119 @@ h2 {
   margin-bottom: 15px; /* Add some space after headings */
   color: var(--text-primary); /* Ensure headings have primary text color */
 }
+
+ /* Body and Main to enable full height layout */
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Ensures body takes full viewport height */
+      }
+
+      main {
+        flex-grow: 1; /* Allows main to take all available vertical space */
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 20px; /* Add some padding at the bottom */
+      }
+
+      /* New styles for layout options */
+      .playground-wrapper {
+        display: flex;
+        flex-direction: column; /* Default to top/bottom */
+        gap: 20px; /* Space between input and output */
+        flex-grow: 1; /* Allows playground-wrapper to take remaining vertical space in 'main' */
+        min-height: 0; /* Important for flex items to shrink correctly */
+      }
+
+      .playground-wrapper.side-by-side {
+        flex-direction: row;
+        flex-wrap: wrap; /* On small screens, allow wrapping to stack again */
+      }
+
+      .playground-wrapper.side-by-side .code-input-wrapper,
+      .playground-wrapper.side-by-side .code-output-wrapper {
+        flex: 1; /* Distribute space equally when side-by-side */
+        min-width: 300px; /* Ensure minimum width for readability */
+        min-height: 0; /* Allow content to shrink if needed */
+      }
+
+      .code-input-wrapper {
+        display: flex; /* Make input wrapper a flex container */
+        flex-direction: column;
+        flex-grow: 1; /* Allow input wrapper to take available space */
+        min-height: 0; /* Important for flex items to shrink correctly */
+      }
+
+      .code-input { /* This is the textarea */
+        flex-grow: 1; /* Allow textarea to fill its parent (code-input-wrapper) */
+        height: auto; /* Override fixed height if any, let flex-grow manage */
+        min-height: 150px; /* Ensure a minimum visible height for the textarea */
+      }
+
+      .code-output-wrapper {
+        min-height: 100px; /* Default minimum height */
+      }
+
+      /* Output sizing for column layout */
+      .code-output-wrapper.output-small {
+        min-height: 80px;
+        max-height: 150px;
+        overflow-y: auto;
+      }
+
+      .code-output-wrapper.output-medium {
+        min-height: 150px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      .code-output-wrapper.output-large {
+        min-height: 300px;
+        max-height: 600px; /* Or whatever large means in your context */
+        overflow-y: auto;
+      }
+
+      /* Output sizing for side-by-side layout (adjusting flex-grow) */
+      .playground-wrapper.side-by-side .code-input-wrapper {
+        flex-grow: 1; /* Input takes remaining space */
+      }
+
+      .playground-wrapper.side-by-side .code-output-wrapper.output-small {
+        flex-grow: 0.3; /* Example: output takes 30% of total flex-grow units, input takes 1 */
+        max-width: 30%; /* Restrict max width */
+      }
+      .playground-wrapper.side-by-side .code-output-wrapper.output-medium {
+        flex-grow: 0.5;
+        max-width: 50%;
+      }
+      .playground-wrapper.side-by-side .code-output-wrapper.output-large {
+        flex-grow: 0.7;
+        max-width: 70%;
+      }
+      
+      /* Styles for the options container */
+      .options-container {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+        align-items: center;
+        flex-wrap: wrap; /* Allow options to wrap on smaller screens */
+            justify-content: center;
+      }
+
+      .options-group label {
+        margin-right: 10px;
+        font-weight: bold;
+      }
+
+      .options-group select {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid var(--text-secondary);
+        background-color: var(--background-secondary);
+        color: var(--text-primary);
+      }
+      
 @media (max-width: 768px) {
   .playground-wrapper {
     flex-direction: column; /* Stacks items vertically */

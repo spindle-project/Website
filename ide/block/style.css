@@ -1,0 +1,336 @@
+/* ==========================================================================
+   General HTML & Body Styles
+   These apply to your entire page, not just Blockly.
+   ========================================================================== */
+body {
+	font-family: "Consolas", "Monaco", "Lucida Console", monospace; /* Monospaced for code consistency */
+	background-color: var(--background); /* Very light grey background */
+	color: var(--text-primary);
+	line-height: 1.6;
+	margin-top: 75px !important;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 0px !important;
+  height: calc(100% - 75px) !important;
+} 
+
+header {
+	color: white;
+	padding: 15px 20px;
+	text-align: center;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+	margin: 0;
+	font-size: 1.8em;
+}
+ /* Styles for the options container */
+      .options-container {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+        margin-top: 5px;
+        align-items: center;
+        flex-wrap: wrap; /* Allow options to wrap on smaller screens */
+        justify-content: center;
+      }
+
+      .options-group label {
+        margin-right: 10px;
+        font-weight: bold;
+      }
+
+      .options-group select {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid var(--text-secondary);
+        background-color: var(--background-secondary);
+        color: var(--text-primary);
+      }
+.blocklyMainBackground {
+	fill: var(--code-bg) !important;
+  stroke: none !important;
+}
+.blocklyToolbox {
+	background-color: var(--card-bg);
+  border-radius: var(--frosted-glass-blur); 
+  display: flex !important;
+      flex-direction: column;
+justify-content: flex-start
+
+}
+
+.injectionDiv {
+  padding: 1px;
+}
+/* ==========================================================================
+   Main Content Layout (Blockly + Output)
+   ========================================================================== */
+.main-content {
+	    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    gap: 20px;
+    height: calc(100vh - 145px);
+    border: none;
+    overflow: hidden;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5zM6 0H5zm0 6h-1V5z'/%3E%3C/g%3E%3C/svg%3E");}
+
+/* Side-by-side placement when this class is applied */
+.main-content.side-by-side {
+	flex-direction: row;
+	align-items: flex-start; /* Align items to the top in row layout */
+}
+
+/* ==========================================================================
+   Blockly Workspace Container
+   ========================================================================== */
+#blocklyDiv {
+	min-width: 400px; /* Ensure a minimum width for Blockly */
+height: 100%;	overflow: hidden; /* Important for containing Blockly's SVG */
+    width: 100%;
+    margin: 10px;
+    padding: 20px;
+    font-size: 1rem;
+    font-family: "JetBrains Mono", monospace;
+    background-color: rgba(28, 29, 41, 0.6);
+    backdrop-filter: blur(var(--frosted-glass-blur));
+    -webkit-backdrop-filter: blur(var(--frosted-glass-blur));
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 30px rgba(75, 156, 255, 0.15), /* Subtle initial glow */
+              0 0 60px rgba(75, 156, 255, 0.08);
+    transition: box-shadow 0.3s ease-in-out, transform 0.2s ease;
+    color: var(--md-sys-color-on-surface-container-low);
+    line-height: 1.5rem;
+    position: relative;
+}
+
+/* ==========================================================================
+   Generated Code Output Area
+   ========================================================================== */
+.output-container {
+	
+	    width: 100%;
+    margin: 10px;
+    padding: 20px;
+    font-size: 1rem;
+    font-family: "JetBrains Mono", monospace;
+    background-color: rgba(28, 29, 41, 0.6);
+    backdrop-filter: blur(var(--frosted-glass-blur));
+    -webkit-backdrop-filter: blur(var(--frosted-glass-blur));
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 30px rgba(75, 156, 255, 0.15), /* Subtle initial glow */
+              0 0 60px rgba(75, 156, 255, 0.08);
+    transition: box-shadow 0.3s ease-in-out, transform 0.2s ease;
+    color: var(--md-sys-color-on-surface-container-low);
+    line-height: 1.5rem;
+    position: relative;
+    overflow-y: auto;
+}
+
+/* Styles for side-by-side mode (controlled by JS adding classes to output-container) */
+.side-by-side #blocklyDiv {
+	flex: 3; /* Blockly takes more space when side-by-side */
+}
+
+.side-by-side .output-small {
+	flex: 0.5; /* Smaller output when side-by-side */
+	width: 20%; /* Cap width for small */
+}
+
+.side-by-side .output-medium {
+	flex: 1; /* Medium output when side-by-side */
+	width: 40%; /* Cap width for medium */
+}
+
+.side-by-side .output-large {
+	flex: 2; /* Larger output when side-by-side */
+	width: 60%; /* Cap width for large */
+}
+.side-by-side {
+	width: 100% !important;
+	height: 100% !important;
+}
+.output-small {
+	height: 20%; /* Cap width for small */
+}
+
+.output-medium {
+	height: 40%; /* Cap width for medium */
+}
+
+.output-large {
+	height: 60%; /* Cap width for large */
+}
+
+.output-container h2 {
+	margin-top: 0;
+	font-size: 1.4em;
+}
+
+#codeOutput {
+	background-color: var(--code-bg); /* A subtle off-white for code */
+
+
+	padding: 15px;
+	overflow: auto; /* Scroll for long code */
+	white-space: pre-wrap; /* Allows lines to wrap */
+	word-break: break-all; /* Breaks long words if needed */
+	font-family: "Consolas", "Monaco", "Lucida Console", monospace;
+	font-size: 1em; /* Slightly larger font for code */
+	color: var(--text-primary); /* Darker text */
+	border-radius: 4px;
+	flex-grow: 1; /* Allows it to expand */
+}
+
+/* AP CSP Pseudocode specific text styling (for the generated output) */
+#codeOutput strong,
+#codeOutput .ap-keyword {
+	/* If your JS generator wraps keywords */
+	font-weight: bold;
+	color: #007bff; /* A distinct blue for keywords */
+}
+#codeOutput .ap-string {
+	/* If your JS generator wraps strings */
+	color: #28a745; /* Green for strings */
+}
+#codeOutput .ap-comment {
+	/* If your JS generator wraps comments */
+	color: #6c757d; /* Grey for comments */
+	font-style: italic;
+}
+
+/* ==========================================================================
+   Control Buttons
+   ========================================================================== */
+.controls {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 15px;
+	flex-direction: row;
+}
+.controls span {
+  display: flex;
+}
+.controls button {
+display:inline-flex;
+color: var(--text-primary);
+    background-color: var(--accent-blue) !important;
+    border-radius: 5px;
+    height: 25px;
+    width: 100px;
+    padding: 0;
+    font-size: 0.85rem;
+    font-weight: bold;
+    display: flex
+;
+    justify-content: center;
+
+}
+
+.controls button:hover {
+	background-color: #0056b3;
+	transform: translateY(-1px);
+}
+
+.controls button:active {
+	transform: translateY(0);
+}
+
+/* ==========================================================================
+   Blockly UI Elements (Limited CSS Scope)
+   These target Blockly's internally generated SVG/HTML elements.
+   ========================================================================== */
+
+/* Overall font for block text */
+.blocklyText {
+	font-family: "Arial", sans-serif; /* A clean sans-serif for block labels */
+	font-size: 14pt; /* Make block text larger for readability */
+	font-weight: normal; /* Default is usually good, AP CSP isn't heavily bolded */
+	fill: #333; /* Dark grey for block text */
+}
+
+/* Input fields within blocks (like variable names or numbers) */
+.blocklyEditableText {
+	font-weight: bold; /* Make these stand out */
+	fill: #000; /* Black for editable text */
+}
+
+/* Category background in the toolbox */
+.blocklyFlyoutBackground {
+	fill: var(--card-bg); /* Light grey for the toolbox background */
+}
+
+/* Toolbox category names (e.g., "Variables & I/O") */
+.blocklyTreeLabel {
+	font-family: "Arial", sans-serif;
+	font-size: 14pt;
+	font-weight: bold;
+	fill: #444; /* Darker text for categories */
+}
+
+/* Toolbox category rows */
+.blocklyTreeRow {
+	height: 40px; /* Make category rows a bit taller */
+	line-height: 40px; /* Vertically center text */
+	padding-left: 15px; /* Indent category names */
+	transition: background-color 0.2s ease;
+}
+
+.blocklyTreeRow:hover {
+	background-color: #e0e0e0; /* Subtle hover effect for categories */
+}
+
+/* Block path styles (the actual shape outlines/fills) */
+/* These are the general block styles, not type-specific colors */
+/* Blockly assigns colors via JS `setColour()`, these will be overridden if JS uses it.
+   If `setColour()` is NOT used in JS, then this might apply a default.
+   However, your HTML specifies `colour="..."` in the XML, which is also JS-driven. */
+.blocklyPath {
+	stroke: #ccc; /* Light grey border for all blocks */
+	stroke-width: 1px;
+}
+
+/* Connections and highlights */
+.blocklyPathLight {
+	stroke: rgba(255, 255, 255, 0.5); /* Whiter highlight on block edges */
+	stroke-width: 1.5px;
+}
+
+.blocklyPathDark {
+	stroke: rgba(0, 0, 0, 0.1); /* Very subtle dark shadow on block edges */
+	stroke-width: 0.5px;
+}
+
+/* Shadow blocks (e.g., default value inputs) */
+.blocklyPath.blocklyShadowBlock {
+	fill: #e0e0e0; /* A slightly darker grey for shadow blocks */
+	stroke: #bbb;
+}
+.blocklyPath.blocklyShadowBlock .blocklyText {
+	fill: #777; /* Lighter text for shadow blocks */
+}
+
+/* Selected block outline */
+.blocklySelected > .blocklyPath {
+	stroke: #ffda00; /* Bright yellow/orange border for selected blocks */
+	stroke-width: 3px;
+}
+
+/* Comments (if rendered as default Blockly comments) */
+.blocklyCommentForeignObject .blocklyText {
+	font-style: italic;
+	fill: #6c757d;
+}
+.blocklyCommentBodyBackground {
+	fill: #ffffc0;
+	stroke: #a0a0a0;
+}
