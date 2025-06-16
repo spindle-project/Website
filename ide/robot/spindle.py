@@ -15,6 +15,7 @@ import js
 from js import execute_robo_commands
 import builtins
 from pyscript import window
+import json
 
 def run_python_code(e):
     # Load and execute the code from my_module.py
@@ -1984,7 +1985,7 @@ class BuiltInFunction(BaseFunction):
 
 	def execute_rotate_right(self,exec_ctx):
 		global robo_commands
-		robo_commands.append("MF")
+		robo_commands.append("RR")
 		return RTResult().success(Number.null)
 	execute_rotate_right.arg_names = []
 
@@ -2634,7 +2635,7 @@ def run_program(fn, text):
 	context.symbol_table = global_symbol_table
 	result = interpreter.visit(ast.node, context)
 	if robo_mode:
-		execute_robo_commands(str(robo_commands))
+		execute_robo_commands(json.dumps(robo_commands))
 		robo_commands = []
 	return result.value, result.error
 

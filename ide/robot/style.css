@@ -1,3 +1,98 @@
+/* --- Grid Specific Styles --- */
+#grid-container {
+    display: grid;
+    /* grid-template-columns and grid-template-rows will be set by JavaScript */
+    border: 1px solid var(--text-secondary); /* A border around the entire grid */
+    min-height: 100px; /* Minimum height for visibility */
+    overflow: auto; /* Scroll if content exceeds container */
+    max-height: 400px; /* Default max height, adjusted by output size */
+    width: 100%;
+    box-sizing: border-box; /* Include padding/border in element's total size */
+    background-color: var(--background-secondary); /* A slightly different background for grid */
+    border-radius: 8px; /* Rounded corners for the grid container */
+}
+
+.grid-cell {
+    border: 1px solid var(--card-bg); /* Border for individual cells */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em; /* Adjust font size for cell content */
+    padding: 2px;
+    box-sizing: border-box;
+    text-align: center;
+    word-break: break-all; /* Prevents long words from overflowing */
+    background-color: var(--background); /* Default background color for cells */
+    color: var(--text-primary); /* Default text color for cells */
+    transition: background-color 0.2s ease; /* Smooth transition for cell colors */
+}
+
+/* Optional: Adjustments for different output sizes */
+.output-small #grid-container {
+    max-height: 200px;
+}
+
+.output-medium #grid-container {
+    max-height: 400px;
+}
+
+.output-large #grid-container {
+    max-height: 600px; /* Makes the grid taller for 'large' output */
+}
+
+/* Styles for the dynamically added button */
+.options-group #generateGridBtn {
+    margin-left: 10px; /* Space it out from the input */
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--accent-blue);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.options-group #generateGridBtn:hover {
+    background-color: var(--accent-blue-dark);
+    transform: translateY(-1px);
+}
+
+.options-group #generateGridBtn:active {
+    transform: translateY(0);
+}
+
+/* Ensure the side-by-side layout works with the new grid structure */
+.playground-wrapper.side-by-side {
+    display: flex;
+    gap: 20px; /* Space between input and output */
+}
+
+.playground-wrapper.side-by-side .code-input-wrapper,
+.playground-wrapper.side-by-side #outputWrapper {
+    flex: 1; /* Allows them to take equal space */
+    min-width: 0; /* Prevents overflow issues */
+}
+
+
+#gridOutputContainer {
+  border: 1px red solid;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 body {
   overflow-x: hidden;
 }
@@ -289,3 +384,17 @@ h2 {
     transform: none; /* Remove any transform that positioned it */
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
