@@ -12,6 +12,7 @@
 
 import pyodide
 import js
+from js import execute_robo_commands
 import builtins
 from pyscript import window
 
@@ -2599,7 +2600,7 @@ def run(fn, text):
 	else :
 		program_text = semi_parse_string(add_else_to_if(text))[0]
 		# Convert text to tokens for the else statement inserition
-		result,error = run_program('<stdin>', program_text)
+		program_output,error = run_program('<stdin>', program_text)
 		if error: 
 			display_res(error.as_string())
 
@@ -2608,7 +2609,7 @@ def run(fn, text):
 		for i in range(len(program_text)): # Run each part of the text seperatly
 			if program_text[i].strip() == "":
 				continue
-			result,error = run_program('<stdin>', add_else_to_if(program_text[i]))
+			program_output,error = run_program('<stdin>', add_else_to_if(program_text[i]))
 			if error: 
 				display_res(error.as_string())
 				break
@@ -2616,6 +2617,7 @@ def run(fn, text):
 
 # Runs the program given to it by the programmer. This function is called by the run function and actually "runs" the program
 def run_program(fn, text):
+	global robo_commands
 	if not isinstance(text, list):
 	# Generate tokens
 		lexer = Lexer(fn, text)
@@ -2636,7 +2638,8 @@ def run_program(fn, text):
 	context = Context('<program>')
 	context.symbol_table = global_symbol_table
 	result = interpreter.visit(ast.node, context)
-
+	execute_robo_commands(str(robo_commands))
+	robo_commands = []
 	return result.value, result.error
 
 def generate_tokens(fn,text):
