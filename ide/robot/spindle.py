@@ -1973,28 +1973,24 @@ class BuiltInFunction(BaseFunction):
 	def execute_move_forward(self,exec_ctx):
 		global robo_commands
 		robo_commands.append("MF")
-		display_res("Move Forward Ran")
 		return RTResult().success(Number.null)
 	execute_move_forward.arg_names = []
 
 	def execute_rotate_left(self,exec_ctx):
 		global robo_commands
 		robo_commands.append("RL")
-		display_res("Move Left Ran")
 		return RTResult().success(Number.null)
 	execute_rotate_left.arg_names = []
 
 	def execute_rotate_right(self,exec_ctx):
 		global robo_commands
 		robo_commands.append("MF")
-		display_res("Move Right Ran")
 		return RTResult().success(Number.null)
 	execute_rotate_right.arg_names = []
 
 	def execute_can_move(self,exec_ctx):
 		global robo_commands
-		robo_commands.append("CM")
-		display_res("Move Forward Ran, DIR = " + str(exec_ctx.symbol_table.get('direction')))
+		robo_commands.append("CM"+str(exec_ctx.symbol_table.get('direction')))
 		return RTResult().success(Number.null)
 	execute_can_move.arg_names = ["direction"]
  
@@ -2626,7 +2622,6 @@ def run_program(fn, text):
 		if error: return None, error
 	else:
 		tokens = text
-	
 	# Generate AST
 	parser = Parser(tokens)
 	ast = parser.parse()
@@ -2638,8 +2633,9 @@ def run_program(fn, text):
 	context = Context('<program>')
 	context.symbol_table = global_symbol_table
 	result = interpreter.visit(ast.node, context)
-	execute_robo_commands(str(robo_commands))
-	robo_commands = []
+	if robo_mode:
+		execute_robo_commands(str(robo_commands))
+		robo_commands = []
 	return result.value, result.error
 
 def generate_tokens(fn,text):
