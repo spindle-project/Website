@@ -65,6 +65,7 @@ overflow-y: auto;
 	margin-left: 10px;
 	padding: 8px 15px;
 	border: none;
+	width: 100%;
 	border-radius: 5px;
 	background-color: var(--accent-blue);
 	color: white;
@@ -92,7 +93,13 @@ overflow-y: auto;
 	flex-grow: 1; /* Allows playground-wrapper to take remaining vertical space in 'main' */
 	min-height: 0;
 }
-
+input {
+	padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--text-secondary);
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
+}
 /* General button styling (already good) */
 button {
 	display: inline-flex;
