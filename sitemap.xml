@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+<url>
+  <loc>http://spdl.netlify.app/</loc>
+</url>
+<url>
+  <loc>http://spdl.netlify.app/ide</loc>
+</url>
+<url>
+  <loc>http://spdl.netlify.app/docs</loc>
+</url>
+<url>
+  <loc>http://spdl.netlify.app/exam-prep</loc>
+</url>
+<url>
+  <loc>http://spdl.netlify.app/docs/user</loc>
+</url>
+<url>
+  <loc>http://spdl.netlify.app/ide/text</loc>
+</url>
+<url>
+  <loc>http://spdl.netlify.app/ide/block</loc>
+</url>
+<url>
+  <loc>http://spdl.netlify.app/ide/robot</loc>
+</url>
+</urlset>
