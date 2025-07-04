@@ -30,25 +30,25 @@ const selectStudyMethod = (choosenStudyMethod) => {
   // and redirest the user
   switch (choosenStudyMethod) {
     case "Game":
-      window.location.replace("/review/game/");
+      window.location.replace("/student-resources/review/game/");
       break;
     case "Flashcard":
-      window.location.replace("/review/flashcard/");
+      window.location.replace("/student-resources/review/flashcard/");
       break;
     case "Match":
-      window.location.replace("/review/match/");
+      window.location.replace("/student-resources/review/match/");
       break;
     case "Quiz":
-      window.location.replace("/review/quiz/");
+      window.location.replace("/student-resources/review/quiz/");
       break;
     // Share the set
     case "Print":
-      window.location.replace("/print");
+      window.location.replace("/student-resources/print");
       break;
     case "Share":
       createPopup("info", "🔗 Copied Link!");
       navigator.clipboard.writeText(
-        `https://ace-it.glitch.me/?${studySet.title.replace(/ /g, "%20")}`
+        `https://studyweave.netlify.app/?${studySet.title.replace(/ /g, "%20")}`
       );
       break;
   }
