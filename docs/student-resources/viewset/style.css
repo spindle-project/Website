@@ -1,0 +1,241 @@
+body {
+  transition: opacity 0.5s;
+}
+
+h3 {
+  display: flex;
+  width: 100%;
+  margin: 5px;
+  font-size: 24px;
+  padding: 0px;
+}
+#lobbyForm {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 10px);
+  padding: 5px;
+  align-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#lobbyForm div {
+  width: 100%;
+  align-items: center;
+}
+.studyActiviesChoices {
+  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, max(100px, 16%));
+  gap: 5px;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  width: 100%;
+  overflow: hidden;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+}
+
+.studyActiviesChoices span {
+  display: block;
+  margin-right: 10px;
+  margin-left: 5px;
+  font-size: 28px;
+}
+.studyActiviesChoices > button {
+  width: 100%;
+  border: none;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  font-size: 24px;
+  height: 75px;
+  padding: 5px;
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  flex-direction: column;
+  font-weight: bold;
+}
+#flashcardTerm {
+  max-width: calc(100% - 10px);
+  max-height: calc(100% - 10px);
+}
+#flashcardDiv {
+  aspect-ratio: 1.75/1;
+  font-size: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 5px;
+  padding-top: 50px;
+  max-height: 300px;
+  background-color: var(--mixed-burple);
+  color: white;
+  position: relative;
+}
+#flashcardWrapper {
+  height: 60%;
+  margin-top: 10px;
+  width: 100% !important;
+}
+
+#flashcardUI {
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  font-size: 24px;
+  text-align: center;
+  height: 50px;
+  background-color: var(--muted-gray);
+}
+#flashcardSpeakUI span {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--md-ref-palette-primary40);
+  font-size: 28px;
+  z-index: 1;
+}
+#flashcardShuffleUI span {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--md-ref-palette-primary40);
+  font-size: 28px;
+  z-index: 1;
+}
+.term-def-pair {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--muted-gray);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+}
+.term {
+  font-weight: bold;
+  font-size: 18px;
+}
+.term,
+.def {
+  display: inline-block;
+  width: 100%;
+}
+
+.number {
+  width: 50px !important;
+  height: 50px !important;
+  min-width: 50px !important;
+  min-height: 50px !important;
+  margin-right: 15px;
+  margin-top: 5px;
+  font-size: 24px;
+  display: inline-block;
+  font-weight: bold;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  color: white;
+  border-radius: inherit;
+  background-color: var(--mixed-burple);
+}
+.mobile-only-number {
+  display: none;
+}
+
+#contentWrapper {
+  display: flex;
+  width: 100%;
+}
+.generated-content-with-preview .setContainer {
+  opacity: 90%;
+}
+#previewPlane {
+  width: 100%;
+  display: block;
+  height: 100px;
+  border: solid var(--modern-white) 10px;
+  position: relative;
+  border-top: 5px solid var(--modern-white);
+}
+#SetTitle {
+  font-size: 34px;
+  font-weight: bold;
+}
+#setDescription {
+  font-size: 24px;
+}
+#SetTitle,
+#setDescription {
+  display: flex;
+  justify-content: center;
+}
+.activitySectionDivider {
+  padding-bottom: 5px;
+  padding-top: 10px;
+}
+/*animations*/
+.flip-horizontal-bottom {
+  -webkit-animation: flip-horizontal-bottom 0.2s
+    cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  animation: flip-horizontal-bottom 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    both;
+}
+
+@-webkit-keyframes flip-horizontal-bottom {
+  0% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+  }
+}
+@keyframes flip-horizontal-bottom {
+  0% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+  }
+}
+@media screen and (max-width: 1200px) {
+  #flashcardDiv {
+    aspect-ratio: 1/1;
+  }
+}

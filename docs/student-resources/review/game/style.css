@@ -1,0 +1,263 @@
+body {
+  overflow: hidden;
+  transition: * 0.25s;
+  height: 100%;
+}
+#theMasterContainer {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  row-gap: 5px;
+  text-align: center;
+}
+#questionHeader {
+  font-size: 48px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+#theOptionChoicesContainer {
+  width: 100%;
+  overflow: hidden;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
+  row-gap: 5px;
+}
+#theOptionChoicesContainer > div {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  opacity: 95%;
+  display: flex;
+  padding: 5px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  min-height: 75px;
+  position: relative;
+  background-color: var(--mixed-burple);
+  color: white;
+  border-bottom: 10px solid rgba(0, 0, 0, 0.6);
+}
+#theOptionChoicesContainer > div:hover {
+  filter: brightness(125%);
+}
+
+#gameStats {
+  justify-content: flex-end;
+}
+#gameStats > div {
+  display: flex;
+  line-height: 50px;
+  float: right;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 24px;
+}
+#streakUI::before {
+  content: "bolt";
+  font-family: "Material Symbols Rounded", serif;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 50;
+}
+#answerRightUI::before {
+  content: "done";
+  font-family: "Material Symbols Rounded", serif;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 50;
+}
+#answerWrongUI::before {
+  content: "close";
+  font-family: "Material Symbols Rounded", serif;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 50;
+}
+/*Disable select*/
+.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+/*Animation*/
+.cardFlipRight {
+  animation: cardFlipRight 2.5s ease-in-out both;
+}
+.cardFlipWrong {
+  animation: cardFlipWrong 2.5s ease-in-out both;
+}
+.cardFlipPickedWrong {
+  animation: cardFlipPickedWrong 2.5s ease-in-out both;
+}
+.RightAnswerMarker {
+  width: 50px !important;
+  height: 50px !important;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  accent-color: var(--md-sys-color-primary-container) !important;
+  border: 0px solid black;
+}
+#submit1 {
+  display: flex;
+  width: 50%;
+  height: 75px;
+  font-size: 48px;
+  font-family: inherit;
+  margin-top: 10px;
+  background-color: var(--md-sys-color-primary-container-dark);
+  color: var(--md-sys-color-on-primary-container-dark);
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+.TrueOrFalseChoice {
+  height: 150px;
+  font-size: 48px;
+}
+.exactChoice {
+  width: calc(100% - 20px);
+  padding: 10px;
+  height: 150px;
+  font-family: inherit;
+  font-size: 48px;
+  background-color: var(--mixed-burple);
+  color: white;
+  border-bottom: 10px solid rgba(0, 0, 0, 0.6);
+}
+@keyframes cardFlipPickedWrong {
+  0% {
+    background-color: inherit;
+  }
+  5% {
+    background-color: darkred;
+  }
+  95% {
+    background-color: darkred;
+    transform: scale(0.95);
+  }
+  100% {
+    background-color: inherit;
+  }
+}
+@keyframes cardFlipRight {
+  0% {
+    background-color: inherit;
+  }
+  5% {
+    background-color: darkgreen;
+    font-weight: bold;
+  }
+  95% {
+    background-color: darkgreen;
+    font-weight: bold;
+  }
+  100% {
+    background-color: inherit;
+  }
+}
+@keyframes cardFlipWrong {
+  0% {
+    background-color: inherit;
+    opacity: 0%;
+  }
+  5% {
+    opacity: 20%;
+    background-color: var(--muted-gray);
+    transform: scale(0.001);
+    flex: 0;
+    min-height: 0px;
+    height: 0px;
+    flex-basis: 1px;
+  }
+
+  95% {
+    opacity: 0%;
+    transform: scale(0.001);
+    min-height: 0px;
+    height: 0px;
+    flex-basis: 1px;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+#pointsWrapper {
+  position: absolute;
+  margin-top: 10px;
+  top: 50px;
+  right: 10px;
+  width: 100px;
+  height: 25px;
+  display: flex;
+}
+#pointsValue {
+  width: 100%;
+}
+#timeLimitVisualization {
+  width: 100%;
+  opacity: 30%;
+}
+#timeLimitWrapper {
+  width: 100%;
+  height: calc(100% - 50px);
+  opacity: 60%;
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;
+  margin-top: 10px;
+  top: 50px;
+  left: 10px;
+  align-items: flex-end;
+}
+#timeLimitWrapper span {
+  padding-right: 10px; /*Timer styles*/
+}
+
+@keyframes timerVisualization {
+  0% {
+    height: 0vh;
+    background-color: purple;
+  }
+  20% {
+    background-color: blue;
+  }
+  45% {
+    background-color: orange;
+    opacity: 75%;
+  }
+  99% {
+    height: 100vh;
+    background-color: darkred;
+    opacity: 85%;
+  }
+  100% {
+    height: 100vh;
+    background-color: var(--modern-white);
+    opacity: 0%;
+  }
+}
+.timerTick {
+  animation-name: timerVisualization;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+@media screen and (min-width: 1000px) {
+  #theOptionChoicesContainer > div {
+    min-height: 100px;
+  }
+}

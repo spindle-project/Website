@@ -1,0 +1,211 @@
+body {
+  overflow: auto;
+}
+#flashcardTerm {
+  max-width: calc(100% - 5px);
+  max-height: calc(100% - 5px);
+}
+#flashcardDiv {
+  aspect-ratio: 1/1;
+  font-size: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 5px;
+      padding: 60px 25px 25px;
+  max-height: 300px;
+    background-color: var(--mixed-burple);
+    color: white;
+      position: relative;
+}
+#flashcardWrapper {
+     height: 60%;
+    margin-top: 10px;
+    width: 100% !important;
+}
+
+#flashcardUI {
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  font-size: 24px;
+  text-align: center;
+  height: 50px;
+  background-color: var(--muted-gray);
+  padding: 25px;
+}/*
+#flashcardSpeakUI,
+#flashcardShuffleUI {
+  width: 10% !important;
+}
+#flashcardGoForwardUI,
+#flashcardGoBackwardUI,
+#flashcardPositionUI {
+  width: 20% !important;
+}
+#flashcardGoForwardUI,
+#flashcardGoBackwardUI {
+  border: solid 2.5px var(--md-sys-color-secondary-container);
+  padding: 5px;
+}*/
+#flashcardSpeakUI span {    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--dodgerblue);
+    font-size: 28px;
+z-index: 1;
+}
+#flashcardShuffleUI span {    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--dodgerblue);
+    font-size: 28px;
+z-index: 1;
+}
+.term-def-pair {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--muted-gray);
+
+}
+.content {
+  display: flex;
+  flex-direction: column;
+}
+.term {
+  font-weight: bold;
+  font-size: 18px;
+}
+.term,
+.def {
+  display: inline-block;
+  width: 100%;
+}
+
+.number {
+  width: 50px !important;
+  height: 50px !important;
+  min-width: 50px !important;
+  min-height: 50px !important;
+  margin-right: 15px;
+  margin-top: 5px;
+  display: inline-block;
+  font-weight: bold;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  color: white;
+  border-radius: inherit;
+  background-color: var(--dodgerblue);
+}
+.mobile-only-number {
+  display: none;
+}
+
+#contentWrapper {
+  display: flex;
+  width: 100%;
+}
+.generated-content-with-preview {
+  min-width: 325px;
+  align-content: flex-start;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.generated-content-with-preview .setContainer {
+  opacity: 90%;
+}
+.preview-active {
+  width: 100%;
+  display: block;
+  border: solid var(--modern-white) 10px;
+  position: relative;
+  border-top: 5px solid var(--modern-white);
+}
+/*animations*/
+.flip-horizontal-bottom {
+  -webkit-animation: flip-horizontal-bottom 0.2s
+    cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  animation: flip-horizontal-bottom 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    both;
+}
+
+@-webkit-keyframes flip-horizontal-bottom {
+  0% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+  }
+}
+@keyframes flip-horizontal-bottom {
+  0% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+  }
+}
+@media screen and (max-width: 1000px) {
+  .generated-content-with-preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+  }
+  .preview-active {
+    width: 100%;
+    display: block;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: var(--modern-white);
+    border: solid var(--modern-white) 10px;
+  }
+  #contentWrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .number {
+    display: none;
+  }
+  .mobile-only-number {
+    display: inline;
+  }
+}

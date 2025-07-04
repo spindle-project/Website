@@ -1,0 +1,142 @@
+label {
+  width: 100%;
+  display: flex;
+  padding-bottom: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#modelPopup {
+  background-color: var(--muted-gray);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-color: var(--dodger-blue);
+  width: calc(100% - 40px);
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  position: absolute;
+  top: 25%;
+}
+#modelPopup label {
+  justify-content: space-between;
+}
+
+#modelPopup input {
+  width: 50px;
+  aspect-ratio: 1/1;
+}
+
+#submitPopupModel {
+    width: 50%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 25%;
+  font-size: 24px;
+  color: white;
+  background-color: var(--mixed-burple);
+}
+.question {
+  font-weight: bold;
+  text-indent: 25px;
+  margin: 10px;
+}
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  border-radius: 5px;
+  height: 25px;
+  min-width: 25px !important;
+  min-height: 25px !important;
+  border: 2px solid #000000;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  margin-right: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="radio"]:checked {
+  border: 2px solid var(--mixed-burple);
+  background-color: var(--mixed-burple);
+  color: white !important;
+}
+.blockA::before,
+.blockB::before,
+.blockC::before,
+.blockD::before,
+.blockE::before {
+  text-align: center;
+  font-size: 18px;
+  color: black;
+  font-weight: bold
+}
+
+.blockA::before {
+  content: "A";
+}
+.blockB::before {
+  content: "B";
+}
+.blockC::before {
+  content: "C";
+}
+.blockD::before {
+  content: "D";
+}
+.blockE::before {
+  content: "E";
+}
+
+input[type="radio"]:checked::before {
+  color: white;
+}
+.questionBlock {
+  background-color: var(--muted-gray);
+  padding: 5px;
+  margin-bottom: 10px;
+  border-color: var(--dodger-blue);
+}
+.correct {
+  background-color: darkgreen !important;
+  font-size: 18px;
+  color: white !important;
+}
+.userPickedwrong {
+  background-color: orange !important;
+}
+.wrong {
+  display: none;
+}
+#gradingDiv {
+  background-color: var(--muted-gray);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.correctBlock {
+  display: none;
+}
+.submitButton {
+  width: 50%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 25%;
+  font-size: 24px;
+  color: white;
+  background-color: var(--mixed-burple);
+}

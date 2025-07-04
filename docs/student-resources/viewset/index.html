@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <title>Launch Session - StudyWeave</title>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/viewset/style.css" />
+    <link rel="stylesheet" href="/Global/style.css" />
+    <!-- import the webpage's javascript file -->
+    <script src="/Global/script.js" defer=""></script>
+    <script src="/viewset/script.js" defer=""></script>
+
+    <!-- Importanting the icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="icon" type="image/png"  href="https://cdn.glitch.global/930d3be6-c667-4ce7-99e2-b129dd9b79b2/noBgWhite%20(3).png?v=1737682977458">
+<link rel="apple-touch-icon" href="https://cdn.glitch.global/930d3be6-c667-4ce7-99e2-b129dd9b79b2/noBgWhite%20(3).png?v=1737682977458" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body onload="decideAnimation()">
+    <div id="lobbyForm" class="slideInFromBottom">
+      <div id="SetTitle">Null</div>
+      <div id="setDescription">Undefined</div>
+
+      <div id="studyActivies">
+        <h3 class="activitySectionDivider">Self-Study Activities</h3>
+        <div class="studyActiviesChoices">
+          <button
+            onclick="selectStudyMethod('Game')"
+            type="button"
+            value="Game"
+            class="rowOneButton secondary-container selectedChoice"
+          >
+            <svg width="24" height="24"  fill="var(--md-sys-color-on-primary-container)" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3.02945 8.39184C3.32965 6.44051 5.00865 5.00007 6.98294 5.00007L17.0171 5C18.9914 5 20.6704 6.44044 20.9706 8.39177L22 15.0831C22.236 16.6168 21.0493 18 19.4975 18C18.826 18 18.182 17.7332 17.7072 17.2584L16.6203 16.1716C15.8702 15.4214 13.9553 15.0001 12.8944 15.0001H10.2081C9.14725 15.0001 8.12983 15.4215 7.37969 16.1716L6.29284 17.2585C5.81802 17.7333 5.17401 18.0001 4.5025 18.0001C2.95072 18.0001 1.76406 16.6169 2.00002 15.0831L3.02945 8.39184ZM17 7C18.1046 7 19 7.89543 19 9C19 10.1046 18.1046 11 17 11C15.8954 11 15 10.1046 15 9C15 7.89543 15.8954 7 17 7ZM9 9C9 7.89543 8.10457 7 7 7C5.89543 7 5 7.89543 5 9C5 10.1046 5.89543 11 7 11C8.10457 11 9 10.1046 9 9Z" />
+</svg> Play
+          </button>
+          <button
+            onclick="selectStudyMethod('Flashcard')"
+            type="button"
+            value="Flashcard"
+            class="rowOneButton secondary-container"
+          >
+            <span class="material-symbols-rounded"> visibility </span> View
+          </button>
+          <button
+            onclick="selectStudyMethod('Quiz')"
+            type="button"
+            value="Quiz"
+            class="rowOneButton secondary-container"
+          >
+            <span class="material-symbols-rounded"> quiz </span> Quiz
+          </button>
+          <button
+            onclick="selectStudyMethod('Match')"
+            type="button"
+            value="Match"
+            class="rowOneButton secondary-container"
+          >
+            <svg width="22" height="22"  fill="var(--md-sys-color-on-primary-container)" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.25 0.25V9.75H9.75V0.25H0.25Z" fill="var(--md-sys-color-on-primary-container)"/>
+<path d="M0.25 12.25V21.75H9.75V12.25H0.25Z" fill="var(--md-sys-color-on-primary-container)"/>
+<path d="M12.25 0.25H21.75V9.75H12.25V0.25Z" fill="var(--md-sys-color-on-primary-container)"/>
+<path d="M12.5 12.5H15.5V15.5H12.5V12.5Z" fill="var(--md-sys-color-on-primary-container)"/>
+<path d="M18.5 15.5H15.5V18.5H12.5V21.5H15.5V18.5H18.5V21.5H21.5V18.5H18.5V15.5Z" fill="var(--md-sys-color-on-primary-container)"/>
+<path d="M18.5 15.5V12.5H21.5V15.5H18.5Z" fill="var(--md-sys-color-on-primary-container)"/>
+</svg>
+ Match
+          </button>
+        
+ 
+          <button
+            onclick="selectStudyMethod('Print')"
+            type="button"
+            value="Match"
+            class="rowOneButton secondary-container"
+          >
+            <span class="material-symbols-rounded"> print </span> Print
+          </button>
+           <button
+            onclick="selectStudyMethod('Share')"
+            type="button"
+            value="Match"
+            class="rowOneButton secondary-container"
+          >
+            <svg width="24" height="24"  fill="var(--md-sys-color-on-primary-container)" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9038 7.85355C12.2188 7.53857 11.9957 7 11.5503 7H7C4.79086 7 3 8.79086 3 11V17C3 19.2091 4.79086 21 7 21H13C15.2091 21 17 19.2091 17 17V12.4497C17 12.0043 16.4614 11.7812 16.1464 12.0962L14.1213 14.1213C12.9497 15.2929 11.0503 15.2929 9.87868 14.1213C8.70711 12.9497 8.70711 11.0503 9.87868 9.87868L11.9038 7.85355Z" fill="var(--md-sys-color-on-primary-container)"/>
+<path d="M14 3C13.4477 3 13 3.44772 13 4C13 4.55228 13.4477 5 14 5H17.1029C17.2811 5 17.3704 5.21543 17.2444 5.34142L11.2929 11.2929C10.9024 11.6834 10.9024 12.3166 11.2929 12.7071C11.6834 13.0976 12.3166 13.0976 12.7071 12.7071L18.6586 6.75563C18.7846 6.62964 19 6.71888 19 6.89706V10C19 10.5523 19.4477 11 20 11C20.5523 11 21 10.5523 21 10V4C21 3.72612 20.8899 3.47796 20.7115 3.29736C20.7086 3.29437 20.7056 3.2914 20.7026 3.28845C20.6078 3.19478 20.4989 3.12392 20.3828 3.07588C20.2649 3.02699 20.1356 3 20 3H14Z" fill="var(--md-sys-color-on-primary-container)"/>
+</svg>
+  Share
+          </button>
+        </div>
+        <br />
+        <!-- View Flashcards:-->
+        <div id="flashcardWrapper">
+          <div
+            id="flashcardDiv"
+            class="secondary-container"
+            onclick="flipFlashcard()"
+          >
+            <div id="flashcardTerm"></div>
+            <div id="flashcardSpeakUI" onclick="speakCard()">
+              <span id="flashcardSpeakUIIcon" class="material-symbols-rounded">
+                volume_up
+              </span>
+            </div>
+            <div id="flashcardShuffleUI" onclick="shuffleCards()">
+              <span
+                id="flashcardShuffleUIIcon"
+                class="material-symbols-rounded"
+              >
+                shuffle
+              </span>
+            </div>
+          </div>
+          <div id="flashcardUI">
+            <div id="flashcardGoBackwardUI" onclick="getNewCard('backward')">
+              <span class="material-symbols-rounded"> arrow_back </span>
+            </div>
+            <div id="flashcardPositionUI">11/60</div>
+            <div id="flashcardGoForwardUI" onclick="getNewCard('forward')">
+              <span class="material-symbols-rounded"> arrow_forward </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h3 style="margin-left: 25px">Terms</h3>
+    <!-- TERMS -->
+    <div id="previewPlane"></div>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Quiz Review - StudyWeave</title>
+     <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/review/quiz/style.css"/>
+    <link rel="stylesheet" href="/Global/style.css" />
+    <!-- import the webpage's javascript file -->
+    <script src="/Global/script.js" defer=""></script>
+    <script src="/review/quiz/script.js" defer=""></script>
+    <link rel="icon" type="image/png"  href="https://cdn.glitch.global/930d3be6-c667-4ce7-99e2-b129dd9b79b2/noBgWhite%20(3).png?v=1737682977458">
+<link rel="apple-touch-icon" href="https://cdn.glitch.global/930d3be6-c667-4ce7-99e2-b129dd9b79b2/noBgWhite%20(3).png?v=1737682977458" />
+  </head>
+
+  <body class="">
+    <div id="modelPopup">
+		<h3 id="popupTitle"><svg width="24" height="24"  fill="var(--md-sys-color-on-background);" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M13 2.5774C12.3812 2.22013 11.6188 2.22013 11 2.5774L4.33974 6.4227C3.72094 6.77996 3.33974 7.44022 3.33974 8.15475V15.8453C3.33974 16.5599 3.72094 17.2201 4.33974 17.5774L11 21.4227C11.6188 21.78 12.3812 21.78 13 21.4227L19.6603 17.5774C20.2791 17.2201 20.6603 16.5599 20.6603 15.8453V8.15475C20.6603 7.44022 20.2791 6.77996 19.6603 6.4227L13 2.5774ZM12 16C14.2091 16 16 14.2092 16 12C16 9.79091 14.2091 8.00005 12 8.00005C9.79086 8.00005 8 9.79091 8 12C8 14.2092 9.79086 16 12 16Z" fill="var(--md-sys-color-on-background)"/>
+</svg>
+Quiz Settings</h3>
+		<div id="option2">
+			<label class="option" >
+				<span id="maxQuestionLabel">Questions (max null)</span>
+				<input id="maxQuestionsNum" type="number" min="5" value="9" max="56" />
+			</label>
+		</div>
+		<div id="option1">
+			<label class="option">
+				Allow 5 Multiple Choice Options
+				<input id="allowMoreAnswers" type="checkbox" />
+			</label>
+		</div>
+			<button id="submitPopupModel" onclick="submitPopupModel()">Submit</button>
+	</div> 
+    <div class="">
+      <div class="">
+        <h1 id="title"></h1>
+        <i id="meta" class="text-size-h5"> </i>
+<div id="gradingDiv" class="gradingDiv questionBlock" style="display: none">
+    </div>
+        <!-- Added margin-bottom -->
+
+        <form id="quizForm" required onsubmit="return false">
+          
+        </form>
+        
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png"  href="https://cdn.glitch.global/930d3be6-c667-4ce7-99e2-b129dd9b79b2/noBgWhite%20(3).png?v=1737682977458">
+<link rel="apple-touch-icon" href="https://cdn.glitch.global/930d3be6-c667-4ce7-99e2-b129dd9b79b2/noBgWhite%20(3).png?v=1737682977458" />
+    <title>Flashcard Review - StudyWeave</title>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/review/flashcard/style.css" />
+    <link rel="stylesheet" href="/Global/style.css" />
+    <!-- import the webpage's javascript file -->
+    <script src="/Global/script.js" defer></script>
+    <script
+      src="/Optional Functionality/Default_Reviewly_Data.js"
+      defer
+    ></script>
+    <script src="/review/flashcard/script.js" defer></script>
+    <!-- Importanting the icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <div id="flashcardWrapper">
+      <div
+        id="flashcardDiv"
+        class="secondary-container"
+        onclick="flipFlashcard()"
+      >
+        <div id="flashcardTerm"></div>
+        <div id="flashcardSpeakUI" onclick="speakCard()">
+          <span id="flashcardSpeakUIIcon" class="material-symbols-rounded">
+            volume_up
+          </span>
+        </div>
+        <div id="flashcardShuffleUI" onclick="shuffleCards()">
+          <span id="flashcardShuffleUIIcon" class="material-symbols-rounded">
+            shuffle
+          </span>
+        </div>
+      </div>
+      <div id="flashcardUI">
+        <div id="flashcardGoBackwardUI" onclick="getNewCard('backward')">
+          <span class="material-symbols-rounded"> close </span>
+        </div>
+        <div id="flashcardPositionUI">11/60</div>
+        <div id="flashcardGoForwardUI" onclick="getNewCard('forward')">
+          <span class="material-symbols-rounded"> check </span>
+        </div>
+      </div>
+    </div>
+    <div id="generatedContent" class="generated-content-no-preview">
+      
+    </div>
+    <div id="previewPlane">
+    </div>
+  </body>
+</html>
