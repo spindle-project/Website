@@ -1,0 +1,156 @@
+body {
+  overflow-x: hidden;
+}
+/*Actual container for the sets with in the container div*/
+.setContainer {
+  background-color: var(--muted-gray);
+  padding: 10px;
+  aspect-ratio: 1.75/1;
+  overflow: hidden;
+  position: relative;
+  width: 350px;
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.12),
+    0 1px 2px rgba(255, 255, 255, 0.24);
+}
+.setContainer:hover {
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background-color: rgba(255, 255, 255, 0.04);
+}
+/* Style for any set title */
+.setTitle {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  font-weight: bold;
+  height: fit-content;
+  align-items: center;
+}
+/*Styles for the set metadata*/
+.setMetaData {
+  padding: 5px;
+  margin: 0px;
+  overflow: hidden;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  z-index: 1;
+  bottom: 5px;
+  flex-wrap: nowrap;
+  flex-direction: row-reverse;
+}
+.stat-chip {
+  display: flex;
+  background-color: var(--mixed-burple);
+  margin-left: 5px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 14px;
+  font-weight: normal;
+  color: white;
+}
+.setDescription {
+  margin-left: 5px;
+  display: block;
+  font-weight: normal;
+}
+#createNewSet {
+      margin-top: 10px;
+  width: 100%;
+  height: 50px;
+color: var(--md-sys-color-inverse-primary);
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+#searchOrCreateSetWrapper{
+  width: 100%;
+  display: flex;
+      flex-direction: column;
+
+}
+#setSearchWrapper {
+    height: 50px;
+}
+#searchSets {
+  width: 100%;
+  border: none;
+  position: relative;
+  background-color: var(--muted-gray);
+  border-radius: 50px;
+  border-left: 50px solid var(--muted-gray);
+  color: inherit;
+  min-height: 50px;
+  font: inherit;
+  align-items: start;
+  display: flex;
+  align-content: start;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  margin-left: 0.4em;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+  cursor: pointer;
+}
+.setSearchButton {
+  color: inherit;
+  width: 50px;
+  height: 50px;
+  font-size: 32px;
+  position: relative;
+  top: -40px;
+  left: 10px;
+  color: var(--dodger-blue);
+}
+#results {
+  max-height: 200px;
+  display: flex;
+  overflow-x: auto;
+  margin-bottom: 30px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: calc(100% - 20px);
+  margin-top: 5px;
+}
+#results span {
+  background-color: var(--muted-gray);
+  padding: 5px;
+  margin: 5px;
+}
+#contentWrapper {
+  display: flex;
+  width: 100%;
+}
+#generatedContent,
+#recentSetsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 350px);
+  width: 100%;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+#recentSetsContainer {
+  width: calc(100vw - 40px);
+}
+#recentSetsContainer div {
+  display: inline-block;
+}
+#recentSetsContainer .setMetaData {
+  display: inline-flex;
+}
+#userInfoSegmeant {
+  margin-bottom: 25px;
+}
