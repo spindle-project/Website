@@ -1,46 +1,69 @@
 
-// Generate header -- Create a new div element with the class "header".
-const header = document.createElement('div');
-header.classList.add('header');
+function addSpindleNavBar() {
+  // Create a link element for the stylesheet
 
-// Create a new anchor element with the class "logo" and the href attribute set to "#default".
-const logo = document.createElement('img');
-logo.classList.add('logo');
-logo.src = "https://cdn.glitch.global/930d3be6-c667-4ce7-99e2-b129dd9b79b2/noBgWhite%20(3).png?v=1737682977458"
+    var linkElement = document.createElement('link');
+  linkElement.rel = 'stylesheet';
+  linkElement.href = '/css/modern.css';
+  document.head.prepend(linkElement); // Append to the head element
+    var linkElement = document.createElement('link');
+  linkElement.rel = 'stylesheet';
+  linkElement.href = '/styles.css';
+  document.head.prepend(linkElement); // Append to the head element
+  document.body.style.margin = '75px'; // Adjust body padding to prevent content overlap with the navbar
+  // Create the nav element-*/.
+  const navBar = document.createElement('nav');
+  navBar.id = 'navBar';
+
+  // Create the logo link and div
+  const logoLink = document.createElement('a');
+  logoLink.className = 'page-link';
+  logoLink.href = '/';
+  const logoMark = document.createElement('div');
+  logoMark.id = 'logoMark';
+  logoMark.textContent = 'Spindle';
+  logoLink.appendChild(logoMark);
+  navBar.appendChild(logoLink);
+
+  // Create the page options div
+  const pageOptions = document.createElement('div');
+  pageOptions.id = 'pageOptions';
+
+  // Create and append the IDE link
+  const ideLink = document.createElement('a');
+  ideLink.className = 'page-link';
+  ideLink.href = '/ide';
+  ideLink.textContent = 'IDE';
+  pageOptions.appendChild(ideLink);
+
+  // Create and append the Documentation link
+  const docsLink = document.createElement('a');
+  docsLink.className = 'page-link';
+  docsLink.href = '/docs';
+  docsLink.textContent = 'Documentation';
+  pageOptions.appendChild(docsLink);
+
+  // Create and append the Exam Prep link
+  const examPrepLink = document.createElement('a');
+  examPrepLink.className = 'page-link';
+  examPrepLink.href = '/exam-prep';
+  examPrepLink.textContent = 'Exam Prep';
+  pageOptions.appendChild(examPrepLink);
+
+  navBar.appendChild(pageOptions);
+
+  // Append the nav bar to the body
+  document.body.prepend(navBar);
+
+  // Add the break tags for spacing
+  document.body.appendChild(document.createElement('br'));
+  document.body.appendChild(document.createElement('br'));
+  document.body.appendChild(document.createElement('br'));
+}
 
 
-// Create a new div element with the class "header-right".
-const headerRight = document.createElement('div');
-headerRight.classList.add('header-right');
-
-const unregistedAccountContainer = document.createElement('div');
-unregistedAccountContainer.classList.add('unreg-account-container');
-
-// Create a new anchor element with the href attribute set to "#home".
-
-
-const signUpLink = document.createElement('a');
-signUpLink.href = '/signin/index.html';
-signUpLink.textContent = "Sign up";
-const logInLink = document.createElement('a');
-logInLink.href = '/signin/index.html';
-logInLink.textContent = "Login";
-
-
-
-
-
-// Append the logo and header-right elements to the header element.
-header.appendChild(logo);
-header.appendChild(headerRight);
-
-// Append the signInLink element to the header-right element.
-headerRight.appendChild(unregistedAccountContainer);
-unregistedAccountContainer.appendChild(logInLink)
-
-unregistedAccountContainer.appendChild(signUpLink);
-// Append the header element to the document body.
-document.body.prepend(header);
+// To use this function, simply call it when your page loads, for example:
+ addSpindleNavBar();
 
 // User notification
 const createPopup = (type, message) => {

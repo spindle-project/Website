@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"
+      defer
+    ></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png"  href="https://cdn.glitch.global/930d3be6-c667-4ce7-99e2-b129dd9b79b2/noBgWhite%20(3).png?v=1737682977458">
+<link rel="apple-touch-icon" href="https://cdn.glitch.global/930d3be6-c667-4ce7-99e2-b129dd9b79b2/noBgWhite%20(3).png?v=1737682977458" />    <title>StudyWeave</title>
+    <!-- The website stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="/Global/style.css" />
+    <link rel="stylesheet" href="/signin/style.css" />
+    <link rel="stylesheet" href="/Global/style.css" />
+
+    <!-- The website JavaScript file Data-->
+    <script src="/Global/firebase.js" type="module" defer></script>
+    <script src="/Global/script.js" type="module" defer></script>
+
+    <script src="https://unpkg.com/@descope/web-component@3.1.0/dist/index.js"></script>
+    <script src="https://unpkg.com/@descope/web-js-sdk@1.7.0/dist/index.umd.js"></script>
+  </head>
+  <body>
+    <script type="module">
+      import { syncData } from "/signin/script.js";
+
+      let colorMode = "light";
+      if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        colorMode = "dark";
+      }
+      document.body.innerHTML =
+        `<descope-wc
+	project-id="P2zQUEjQNrGY5qbKFqMlm9MQ35I8"
+	flow-id="sign-up-or-in"
+	theme=${colorMode}
+/>` + document.body.innerHTML;
+      const wcElement = document.getElementsByTagName("descope-wc")[0];
+
+      const onSuccess = (e) => {
+        syncData(e.detail.user.userId, e.detail.user.name);
+      };
+      const onError = (err) => console.log(err);
+
+      wcElement.addEventListener("success", onSuccess);
+      wcElement.addEventListener("error", onError);
+    </script>
+ 
+    
+  </body>
+</html>

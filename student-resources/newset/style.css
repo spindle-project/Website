@@ -1,0 +1,302 @@
+input {
+  padding-left: 15px; 
+  padding-right: 15px;
+  background-color: var(--md-sys-color-primary-container);
+  border: none;
+  color: var(--md-sys-color-on-primary-container) !important;
+  width: 100%;
+  height: 50px;
+  font-weight: normal;
+  font-size: 1rem;
+}
+#titleSetting,
+#descSetting,
+#subjectsSetting {
+  width: 100%;
+  padding: 15px;
+  margin: 0px;
+  background-color: var(--muted-gray);
+}
+#settings {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  background-color: var(--muted-gray);
+}
+#CardList {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 40px);
+  flex-direction: column;
+}
+
+.CardAnswerWrapper > div,
+.CardToolbar {
+  position: relative;
+}
+#CreateNewCardButton {
+  position: sticky;
+  z-index: 100;
+  top: 5px;
+  left: 5px;
+  width: 100% !important;
+  margin: 15px;
+  height: 50px;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: space-evenly;
+}
+#CreateNewCardButton div {
+  display: flex;
+  font-size: 24px !important;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  margin-left: 5px;
+  margin-right: 5px;
+  justify-content: space-evenly;
+  width: calc(100% - 5px);
+  background-color: var(--muted-gray);
+  color: var(--mixed-burple);
+  font-weight: bold;
+}
+#CreateNewCardButton span {
+  font-size: 24px !important;
+}
+
+.CardToolbar,
+.CardModifiers,
+.cardNumber {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.CardToolbar {
+  justify-content: space-evenly;
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+}
+
+.CardModifiers {
+  overflow: hidden;
+  justify-content: flex-end;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 50px;
+}
+
+.cardNumber {
+  overflow: hidden;
+  justify-content: center;
+  position: absolute;
+  left: 10px;
+  top: 0px;
+    background-color: var(--dodger-blue);
+  color: var(--md-sys-color-on-primary);
+  height: 50px;
+  width: 50px;
+  font-size: 24px;
+}
+
+.CardQuestionWrapper > input {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 5px;
+}
+.CardModifiers div input {
+    color: var(--modern-white) !important;
+  border: none;
+  background-color: inherit;
+  color: inherit;
+  width: 100%;
+  margin-left: 15px;
+  justify-content: flex-end;
+  font-size: 48px;
+  height: 50px;
+  font: inherit;
+}
+.CardModifiers div {
+  height: 50px !important;
+  width: 125px;
+  padding-left: 10px;
+  margin-right: 10px;
+  background-color: var(--dodger-blue);
+  color: var(--modern-white);
+  font-weight: bold;
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: center;
+}
+label span {
+  margin-right: 5px;
+  height: 100%;
+  aspect-ratio: 1/1;
+}
+.CardModifiers div span {
+  vertical-align: middle;
+  display: flex;
+  width: 50px;
+}
+
+.CardQuestionWrapper {
+  margin: 10px 0;
+}
+
+.RightAnswerMarker4 {
+  accent-color: #dd827d !important;
+}
+.CardQuestion,
+.CardAnswer {
+  border: none;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.6);
+  font: inherit;
+  width: 100%;
+  height: 100px;
+  font-weight: bold;
+  padding-left: 15px;
+}
+
+input::placeholder,textarea::placeholder {
+  font-weight: bold;
+  color: var(--md-sys-color-on-primary-container);
+  font-size: inherit;
+    font-family: "Noto Sans", sans-serif;
+}
+
+.CardQuestionWrapper textarea {
+  height: 50px;
+}
+.CardQuestionWrapper textarea,
+.CardAnswerWrapper textarea {
+  background-color: var(--md-sys-color-primary-container);
+font-size: 1rem;
+  color: var(--md-sys-color-on-primary-container) !important;
+  width: 100%;
+  resize: none;
+  font-family: "Noto Sans", sans-serif;
+  padding: 15px;
+    font: inherit;
+
+}
+
+.exactAnswer {
+  width: 100%;
+  height: 100px;
+}
+label {
+  padding-bottom: 7px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  color: var(--dodger-blue);
+}
+
+#FormSettings {
+  display: flex;
+}
+#FormSettings > input {
+  width: calc(100% - 20px);
+  margin-bottom: 10px;
+  height: 75px;
+  font-weight: bold;
+}
+
+#CreateNewCardButton div span {
+  font-size: 64px;
+}
+
+.TrueOrFalse {
+  height: 150px;
+  font-size: 48px;
+  font-weight: bold;
+}
+#createSetButton {
+      color: unset !important;
+    background-color: unset;
+  border-left: 0px;
+    border-right: 0px;
+    font-weight: unset;
+  padding: 0px;
+  margin: 0px;
+      font: inherit;
+}
+.surface {
+  background-color: var(--muted-gray);
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+    margin-bottom: 10px;
+}
+#createCardOrSetWrapper {
+  width: calc(100% - 40px);
+  padding: 10px;
+  display: flex;
+    background-color: var(--muted-gray);
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  color: var(--dodger-blue);
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+#createCardOrSetWrapper div {
+      width: 33%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+      color: white;
+    background-color: var(--mixed-burple);
+  padding: 5px;
+}
+#CreateNewCardButton div:hover {
+  background-color: var(--md-sys-color-on-tertiary-container);
+  color: var(--md-sys-color-tertiary-container);
+}
+#signInPromt {
+  display: flex;
+    align-items: center;
+    width: calc(100% - 40px);
+    flex-direction: column;
+    background-color: var(--muted-gray);
+}
+#signInPromt button{
+      font-size: 26px;
+    background-color: var(--mixed-burple);
+    color: white;
+  border: none;
+  margin: 5px;
+  display: flex;
+}
+#bodyContainer{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+
+}
+.disabled {
+  display: none !important;
+}
+@media screen and (max-device-width: 750px), screen and (max-width: 750px) {
+  #CardList {
+    width: 100%;
+  }
+}
