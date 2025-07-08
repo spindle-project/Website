@@ -30,20 +30,20 @@ const selectStudyMethod = (choosenStudyMethod) => {
   // and redirest the user
   switch (choosenStudyMethod) {
     case "Game":
-      window.location.replace("/student-resources/review/game/");
+      window.location.replace("/study/flashcards/review/game/");
       break;
     case "Flashcard":
-      window.location.replace("/student-resources/review/flashcard/");
+      window.location.replace("/study/flashcards/review/flashcard/");
       break;
     case "Match":
-      window.location.replace("/student-resources/review/match/");
+      window.location.replace("/study/flashcards/review/match/");
       break;
     case "Quiz":
-      window.location.replace("/student-resources/review/quiz/");
+      window.location.replace("/study/flashcards/review/quiz/");
       break;
     // Share the set
     case "Print":
-      window.location.replace("/student-resources/print");
+      window.location.replace("/study/flashcards/print");
       break;
     case "Share":
       createPopup("info", "🔗 Copied Link!");

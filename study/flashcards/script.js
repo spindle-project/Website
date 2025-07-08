@@ -70,12 +70,12 @@ const ChooseSet = (title, scope) => {
   if (scope == "g") {
     let e = getGlobalData(`/${title}.json`, (data) => {
       sessionStorage.setItem("ChoosenSet", data);
-      window.location.assign("/student-resources/viewset/");
+      window.location.assign("/study/flashcards/viewset/");
     });
   } else {
     let e = getData(`/${title}.json`, userInfo.id, (data) => {
       sessionStorage.setItem("ChoosenSet", data);
-      window.location.assign("/student-resources/viewset/");
+      window.location.assign("/study/flashcards/viewset/");
     });
   }
 };
