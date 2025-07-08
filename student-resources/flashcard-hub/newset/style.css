@@ -1,4 +1,4 @@
-input {
+input, select {
   padding-left: 15px; 
   padding-right: 15px;
   background-color: var(--md-sys-color-primary-container);

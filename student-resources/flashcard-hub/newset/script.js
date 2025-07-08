@@ -217,7 +217,7 @@ function createCardExact() {
 document
   .querySelector("#createSetButton")
   .addEventListener("click", function () {
-    createSet("u"); // u for user, g for global: TODO - add a toggle to switch between user and global.
+    createSet("g"); // u for user, g for global: TODO - add a toggle to switch between user and global.
   });
 
 document

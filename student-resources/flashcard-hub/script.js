@@ -26,6 +26,9 @@ const setUpUserGreeting = (userInfo) => {
           set.category,
           "u"
         );
+          if (set.category.substring(0, 8) != "APCSP - ") {
+      continue
+    }
         document
           .getElementById("recentSetsContainer")
           .appendChild(ResultingSet);
@@ -56,6 +59,9 @@ if(window.location.href.split("/?").length > 1 && set.title == window.location.h
       set.category,
       "g"
     );
+    if (set.category.substring(0, 8) != "APCSP - ") {
+      continue
+    }
     document.getElementById("generatedContent").appendChild(ResultingSet);
   }
 }
