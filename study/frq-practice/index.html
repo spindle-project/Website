@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ultimate FRQ Practice - Spindle</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/modern.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
+</head>
+<body>
+  <nav id="navBar"></nav>
+  <main>
+    <div class="hero-section">
+      <div class="hero-content">
+        <h1>Ultimate FRQ Practice</h1>
+        <p class="hero-description">
+          Practice AP CSP Free Response Questions (FRQs) with real code snippets. Write your own code and explanations, just like the real exam!
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="frq-stats">
+        <div class="stat-card">
+          <span class="material-symbols-rounded">code_blocks</span>
+          <div class="stat-info">
+            <h3>FRQ</h3>
+            <p id="frqNumber">1 / 10</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="material-symbols-rounded">edit</span>
+          <div class="stat-info">
+            <h3>Your Attempts</h3>
+            <p id="attemptCount">0</p>
+          </div>
+        </div>
+      </div>
+      <div class="frq-area" id="frqArea">
+        <div class="frq-header">
+          <div class="frq-nav">
+            <button id="prevFrq" class="frq-nav-btn" title="Previous FRQ"><span class="material-symbols-rounded">chevron_left</span></button>
+            <span id="currentFrqTitle">FRQ 1: Data Abstraction</span>
+            <button id="nextFrq" class="frq-nav-btn" title="Next FRQ"><span class="material-symbols-rounded">chevron_right</span></button>
+          </div>
+        </div>
+        <div class="frq-question" id="frqQuestion">
+          <h2>FRQ Prompt</h2>
+          <p id="frqPrompt">Describe how the following code uses data abstraction. Explain your reasoning in detail.</p>
+        </div>
+        <div class="frq-code-section">
+          <h3>Example Code Snippet (Editable)</h3>
+          <textarea id="frqCode" class="code-editor" placeholder="Spindle code will appear here..." rows="8"></textarea>
+        </div>
+        <div class="frq-response-section">
+          <h3>Your Written Response</h3>
+          <textarea id="frqResponse" placeholder="Write your explanation here..." rows="7"></textarea>
+        </div>
+        <div class="frq-actions">
+          <button id="submitFrq" class="submit-btn">
+            <span class="material-symbols-rounded">send</span>
+            Submit Response
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="script.js"></script>
+  <script src="../../shared/navbar.js"></script>
+</body>
+</html> 

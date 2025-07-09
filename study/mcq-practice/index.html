@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T65RS9DSM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-3T65RS9DSM');
+  </script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="../../css/modern.css" />
+  <link rel="stylesheet" href="style.css" />
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <title>MCQ Practice Game - Spindle</title>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="AP CSP MCQ Practice Game - Spindle">
+  <meta name="description" content="Practice AP Computer Science Principles with 500+ multiple choice questions. Test your knowledge with timed challenges and earn points!">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spdl.netlify.app/study/mcq-practice/">
+  <meta property="og:title" content="AP CSP MCQ Practice Game - Spindle">
+  <meta property="og:description" content="Practice AP Computer Science Principles with 500+ multiple choice questions. Test your knowledge with timed challenges and earn points!">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://spdl.netlify.app/study/mcq-practice/">
+  <meta property="twitter:title" content="AP CSP MCQ Practice Game - Spindle">
+  <meta property="twitter:description" content="Practice AP Computer Science Principles with 500+ multiple choice questions. Test your knowledge with timed challenges and earn points!">
+</head>
+
+<body>
+  <nav id="navBar"></nav>
+  <main>
+    <div class="hero-section">
+      <div class="hero-content">
+        <h1>AP CSP MCQ Practice Game</h1>
+        <p class="hero-description">
+          Test your knowledge with 500+ College Board AP CSP multiple choice questions. Answer quickly to earn bonus points!
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Game Stats -->
+      <div class="game-stats">
+        <div class="stat-card">
+          <span class="material-symbols-rounded">stars</span>
+          <div class="stat-info">
+            <h3>Score</h3>
+            <p id="currentScore">0</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="material-symbols-rounded">emoji_events</span>
+          <div class="stat-info">
+            <h3>High Score</h3>
+            <p id="highScore">0</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="material-symbols-rounded">quiz</span>
+          <div class="stat-info">
+            <h3>Questions</h3>
+            <p id="questionNumber">0 / 500</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="material-symbols-rounded">timer</span>
+          <div class="stat-info">
+            <h3>Time</h3>
+            <p id="questionTimer">30s</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Area -->
+      <div class="game-area" id="gameArea">
+        <!-- Welcome Screen -->
+        <div class="welcome-screen" id="welcomeScreen">
+          <div class="welcome-content">
+            <h2>Ready to Test Your Knowledge?</h2>
+            <p>Practice with 500+ AP CSP multiple choice questions</p>
+            <div class="game-rules">
+              <h3>How to Play:</h3>
+              <ul>
+                <li>Answer questions within 30 seconds</li>
+                <li>Correct answers: +10 points + time bonus</li>
+                <li>Wrong answers: -5 points</li>
+                <li>Faster answers = more points!</li>
+                <li>Try to beat your high score!</li>
+              </ul>
+            </div>
+            <button class="start-button" id="startButton">
+              <span class="material-symbols-rounded">play_arrow</span>
+              Start Game
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Screen -->
+        <div class="question-screen" id="questionScreen" style="display: none;">
+          <div class="question-container">
+            <div class="question-header">
+              <div class="question-counter">
+                Question <span id="currentQuestionNumber">1</span> of 500
+              </div>
+              <div class="timer-container">
+                <div class="timer-bar">
+                  <div class="timer-fill" id="timerFill"></div>
+                </div>
+                <span class="timer-text" id="timerText">30</span>
+              </div>
+            </div>
+            
+            <div class="question-content">
+              <h3 id="questionText">Loading question...</h3>
+            </div>
+            
+            <div class="answer-options" id="answerOptions">
+              <!-- Answer options will be populated by JavaScript -->
+            </div>
+            
+            <div class="question-footer">
+              <button class="skip-button" id="skipButton">
+                <span class="material-symbols-rounded">skip_next</span>
+                Skip Question
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div class="result-screen" id="resultScreen" style="display: none;">
+          <div class="result-content">
+            <div class="result-icon" id="resultIcon">
+              <span class="material-symbols-rounded">check_circle</span>
+            </div>
+            <h2 id="resultTitle">Correct!</h2>
+            <p id="resultMessage">Great job! You earned points.</p>
+            <div class="result-details">
+              <div class="result-stat">
+                <span>Points Earned:</span>
+                <span id="pointsEarned">+10</span>
+              </div>
+              <div class="result-stat">
+                <span>Time Bonus:</span>
+                <span id="timeBonus">+5</span>
+              </div>
+              <div class="result-stat">
+                <span>Answer Time:</span>
+                <span id="answerTime">2.5s</span>
+              </div>
+            </div>
+            <div class="correct-answer" id="correctAnswer">
+              <h4>Correct Answer:</h4>
+              <p id="correctAnswerText">A</p>
+            </div>
+            <div class="explanation" id="explanation">
+              <h4>Explanation:</h4>
+              <p id="explanationText">This is the explanation for the correct answer.</p>
+            </div>
+            <button class="next-button" id="nextButton">
+              <span class="material-symbols-rounded">arrow_forward</span>
+              Next Question
+            </button>
+          </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div class="game-over-screen" id="gameOverScreen" style="display: none;">
+          <div class="game-over-content">
+            <h2>Game Over!</h2>
+            <div class="final-stats">
+              <div class="final-stat">
+                <span class="stat-label">Final Score:</span>
+                <span class="stat-value" id="finalScore">0</span>
+              </div>
+              <div class="final-stat">
+                <span class="stat-label">Questions Answered:</span>
+                <span class="stat-value" id="questionsAnswered">0</span>
+              </div>
+              <div class="final-stat">
+                <span class="stat-label">Correct Answers:</span>
+                <span class="stat-value" id="correctAnswers">0</span>
+              </div>
+              <div class="final-stat">
+                <span class="stat-label">Accuracy:</span>
+                <span class="stat-value" id="accuracy">0%</span>
+              </div>
+            </div>
+            <div class="game-over-actions">
+              <button class="play-again-button" id="playAgainButton">
+                <span class="material-symbols-rounded">replay</span>
+                Play Again
+              </button>
+              <button class="home-button" id="homeButton">
+                <span class="material-symbols-rounded">home</span>
+                Back to Study
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-section">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <p class="progress-text">Progress: <span id="progressText">0%</span></p>
+      </div>
+
+      <!-- Leaderboard -->
+      <div class="leaderboard-section">
+        <h3>Your Best Scores</h3>
+        <div class="leaderboard" id="leaderboard">
+          <!-- Leaderboard entries will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Additional Resources -->
+      <div class="resources-section">
+        <h3>Need More Practice?</h3>
+        <div class="resources-grid">
+          <a href="/study/flashcards" class="resource-link">
+            <span class="material-symbols-rounded">quiz</span>
+            <span>Flashcards</span>
+          </a>
+          <a href="/study/exam-format" class="resource-link">
+            <span class="material-symbols-rounded">assignment</span>
+            <span>Exam Format</span>
+          </a>
+          <a href="/study/create-task-checklist" class="resource-link">
+            <span class="material-symbols-rounded">checklist</span>
+            <span>Create Task</span>
+          </a>
+          <a href="/study/exam-prep" class="resource-link">
+            <span class="material-symbols-rounded">school</span>
+            <span>Exam Prep</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="../../shared/navbar.js"></script>
+</body>
+
+</html> 
