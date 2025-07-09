@@ -192,3 +192,25 @@ background-color: var(--md-sys-color-surface-container-high);
   font-size: 24px;
 }
 
+.ides-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .ides-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+}
+
+@media (max-width: 600px) {
+  .ides-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+  }
+}
+
