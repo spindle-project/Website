@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Install Spindle Natively | Spindle Native IDE</title>
+  <meta name="description" content="Learn how to install and run Spindle natively on your computer. Step-by-step instructions for Windows, Mac, and Linux.">
+  <link rel="stylesheet" href="/css/modern.css">
+  <link rel="stylesheet" href="/Global/style.css">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    body {
+      background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5zM6 0H5zm0 6h-1V5z'/%3E%3C/g%3E%3C/svg%3E") !important;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: inherit;
+    }
+    main {
+      margin-top: 75px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: inset rgba(72, 135, 202, 0.8) 1px 0px 33px;
+      border-radius: var(--frosted-glass-blur);
+      overflow-y: auto;
+      min-height: 0px !important;
+      padding: 20px;
+    }
+    .native-card {
+      background: var(--md-sys-color-surface-container-low);
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(59,130,246,0.08);
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2.5rem 2rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .material-symbols-rounded {
+      font-size: 3.5rem;
+      color: var(--accent-blue);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.7rem;
+      text-align: center;
+    }
+    ol {
+      font-size: 1.08rem;
+      line-height: 1.7;
+      margin: 0 0 1.5rem 0;
+      padding-left: 1.2rem;
+    }
+    .native-buttons {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      width: 100%;
+    }
+    .native-buttons a {
+      min-width: 160px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <nav id="navBar"></nav>
+  <main>
+    <div class="native-card">
+      <span class="material-symbols-rounded">build</span>
+      <h1 class="text-gradient">Install & Run Spindle Natively</h1>
+      <p style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2rem; text-align: center;">Run Spindle directly on your computer for the most flexible and powerful experience. Follow these steps to get started:</p>
+      <h2>Native Method (Running on Desktop)</h2>
+      <ol>
+        <li><b>Download Spindle:</b><br>
+          Go to our <a href="https://github.com/matthewl580/Spindle/releases" target="_blank" rel="noopener">Releases page</a> and download <code>Spindle.py</code> and <code>shell.py</code>.<br>
+          Make sure you also have <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">Python installed</a>.
+        </li>
+        <li><b>Create a Project Folder:</b><br>
+          Make a new folder (name it anything you like) for your Spindle files.
+        </li>
+        <li><b>Extract Spindle Files:</b><br>
+          Put <code>Spindle.py</code> and <code>shell.py</code> in your folder.
+        </li>
+        <li><b>Write Your Spindle Code:</b><br>
+          Make a new text file ending in <code>.spdl</code> (e.g., <code>my_first_program.spdl</code>) and write your code.
+        </li>
+        <li><b>Run Your Code:</b><br>
+          <b>Simple Method:</b>
+          <ul>
+            <li>Run <code>shell.py</code> (double-click or use Python).</li>
+            <li>Type <code>RUN("[FILENAME].spdl")</code> (replace <code>[FILENAME]</code> with your code file).</li>
+          </ul>
+          <b>Advanced Method:</b>
+          <ul>
+            <li>Open a terminal or command prompt.</li>
+            <li>Use <code>cd</code> to go to your folder.</li>
+            <li>Run:<br>
+              <code>python shell.py RUN("[FILENAME].spdl")</code>
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <div class="native-buttons">
+        <a href="https://github.com/matthewl580/Spindle/releases" class="primary-button" target="_blank" rel="noopener">Download Spindle</a>
+        <a href="/ide" class="primary-button outline">Back to IDEs</a>
+      </div>
+    </div>
+  </main>
+  <script src="/shared/navbar.js"></script>
+</body>
+</html> 

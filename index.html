@@ -142,44 +142,52 @@ greet("World")</code></pre>
           const days = Math.floor(diff / (1000 * 60 * 60 * 24));
           const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
           const minutes = Math.floor((diff / (1000 * 60)) % 60);
-          document.getElementById('examCountdown').textContent = `${days}d ${hours}h ${minutes}m`;
+          let display = '';
+          if (days >= 30) {
+            display = `${days}d`;
+          } else if (days >= 3) {
+            display = `${days}d ${hours}h`;
+          } else {
+            display = `${days}d ${hours}h ${minutes}m`;
+          }
+          document.getElementById('examCountdown').textContent = display;
         }
         setInterval(updateExamCountdown, 1000);
         updateExamCountdown();
       </script>
-      <section class="ides-section" style="width: 100vw; margin: 3rem 0 0 50%; transform: translateX(-50%);">
-        <h2 class="section-title text-center" style="width: 100vw; max-width: 100vw; margin-left: 50%; transform: translateX(-50%);">Explore Spindle's Four IDEs</h2>
-        <div class="ides-grid" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
-          <div class="card" style="width: 270px;">
-            <span class="material-symbols-rounded">text_fields</span>
-            <div class="container">
+      <section class="ides-section" style="max-width: 1200px; margin: 3rem auto 0 auto; padding: 0 2rem; width: auto;">
+        <h2 class="section-title text-center">Explore Spindle's Four IDEs</h2>
+        <div class="ides-grid" style="display: grid !important; grid-template-columns: repeat(4, 1fr); gap: 2rem; justify-items: center; width: 100%; align-items: stretch;">
+          <div class="card" style="width: 270px; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+            <span class="material-symbols-rounded" style="font-size: 4.5rem; margin-bottom: 0.5rem; color: var(--accent-blue);">text_fields</span>
+            <div class="container" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
               <b>Text IDE</b>
               <p>Write and run code in a traditional text editor, just like the AP CSP exam.</p>
-              <a href="/ide/text/" class="primary-button" style="margin-top: 1rem;">Try Text IDE</a>
+              <a href="/ide/text/" class="primary-button" style="margin-top: auto; align-self: stretch;">Start with Text IDE</a>
             </div>
           </div>
-          <div class="card" style="width: 270px;">
-            <span class="material-symbols-rounded">view_module</span>
-            <div class="container">
+          <div class="card" style="width: 270px; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+            <span class="material-symbols-rounded" style="font-size: 4.5rem; margin-bottom: 0.5rem; color: var(--accent-blue);">view_module</span>
+            <div class="container" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
               <b>Block IDE</b>
               <p>Drag and drop blocks to build programs visually—perfect for beginners and visual learners.</p>
-              <a href="/ide/block/" class="primary-button" style="margin-top: 1rem;">Try Block IDE</a>
+              <a href="/ide/block/" class="primary-button" style="margin-top: auto; align-self: stretch;">Explore Block IDE</a>
             </div>
           </div>
-          <div class="card" style="width: 270px;">
-            <span class="material-symbols-rounded">smart_toy</span>
-            <div class="container">
+          <div class="card" style="width: 270px; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+            <span class="material-symbols-rounded" style="font-size: 4.5rem; margin-bottom: 0.5rem; color: var(--accent-blue);">smart_toy</span>
+            <div class="container" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
               <b>Robot IDE</b>
               <p>Program a virtual robot to solve challenges and see your code in action.</p>
-              <a href="/ide/robot/" class="primary-button" style="margin-top: 1rem;">Try Robot IDE</a>
+              <a href="/ide/robot/" class="primary-button" style="margin-top: auto; align-self: stretch;">Try Robot IDE</a>
             </div>
           </div>
-          <div class="card" style="width: 270px;">
-            <span class="material-symbols-rounded">build</span>
-            <div class="container">
-              <b>DIY IDE</b>
-              <p>Experiment, tinker, and create your own coding environment—customize your learning experience.</p>
-              <a href="/ide/" class="primary-button" style="margin-top: 1rem;">Try DIY IDE</a>
+          <div class="card" style="width: 270px; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+            <span class="material-symbols-rounded" style="font-size: 4.5rem; margin-bottom: 0.5rem; color: var(--accent-blue);">build</span>
+            <div class="container" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
+              <b>Native IDE</b>
+              <p>Install and run Spindle directly on your computer for the most flexible experience.</p>
+              <a href="/ide/native/" class="primary-button" style="margin-top: auto; align-self: stretch;">Set Up Native IDE</a>
             </div>
           </div>
         </div>
