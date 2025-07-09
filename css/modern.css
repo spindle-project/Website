@@ -297,26 +297,106 @@ background-image:  url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='
   margin-left: var(--frosted-glass-blur);
   box-shadow: 0 5px 15px rgba(75, 156, 255, 0.2);
 }
-@media (max-width: 768px) {
+/* --- Responsive Layout Improvements --- */
+@media (max-width: 1200px) {
+  .hero-section,
+  #subHeroSection {
+    max-width: 1000px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (max-width: 900px) {
+  .hero-section,
+  #subHeroSection {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    gap: 2rem;
+  }
   .hero-section {
     flex-direction: column;
-    padding: 8rem 2rem 4rem 2rem; /* Adjusted padding for smaller screens */
+    align-items: stretch;
+    padding-top: 6rem;
+    padding-bottom: 2rem;
   }
-
-  .nav-bar-text {
-    display: none;
+  .hero-left-side, .hero-right-side {
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: unset !important;
   }
-
+  .ides-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    align-items: stretch !important;
+    padding: 0 !important;
+  }
+  main {
+    padding: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .hero-section {
+    padding: 4rem 0.5rem 2rem 0.5rem;
+    gap: 1.2rem;
+  }
+  .ides-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1.2rem;
+  }
+  .card {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 1rem !important;
+    margin: 0 auto 1rem auto !important;
+  }
   #subHeroSection {
-    padding: 2rem;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    padding: 1rem 0.5rem;
   }
-
   #navBar {
-    height: 60px; /* Smaller nav bar on mobile */
-    padding: 0.8rem 1rem;
+    height: 56px;
+    padding: 0.5rem 0.5rem;
+    font-size: 1rem;
   }
-
-  #logoMark {
-    font-size: 1.4rem;
+}
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 2rem 0.2rem 1rem 0.2rem;
+    gap: 0.7rem;
+  }
+  .card {
+    padding: 0.7rem !important;
+    font-size: 0.95rem;
+  }
+  #subHeroSection {
+    padding: 0.5rem 0.2rem;
+    gap: 0.7rem;
+  }
+  #navBar {
+    height: 48px;
+    padding: 0.2rem 0.2rem;
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 480px) {
+  .hero-section, #subHeroSection, main {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .card {
+    padding: 0.4rem !important;
+    font-size: 0.9rem;
+  }
+  #navBar {
+    height: 44px;
+    font-size: 0.9rem;
   }
 }

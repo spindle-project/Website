@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Basics - Spindle</title>
+    <meta name="description" content="Learn the fundamental concepts of programming with clear examples and explanations">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="stylesheet" href="/Global/material-ui/tokens.css">
+    <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav id="navBar" aria-label="Main navigation"></nav>
+    <main>
+        <article class="content-section">
+            <h1>Programming Basics</h1>
+
+            <section>
+                <h2>Introduction to Programming</h2>
+                <p>Programming is the process of creating a set of instructions that tell a computer how to perform a task. These instructions are called programs, and they are written in special languages called programming languages.</p>
+
+                <div class="concept-box">
+                    <h3>Key Programming Concepts</h3>
+                    <ul>
+                        <li>Sequence - Instructions executed in order</li>
+                        <li>Selection - Making decisions in code</li>
+                        <li>Iteration - Repeating actions</li>
+                        <li>Variables - Storing and manipulating data</li>
+                        <li>Functions - Reusable blocks of code</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Variables and Data Types</h2>
+                <div class="concept-explanation">
+                    <h3>Understanding Variables</h3>
+                    <p>Variables are containers for storing data values. Think of them as labeled boxes that can hold different types of information.</p>
+
+                    <div class="example-code">
+                        <h4>Variable Declaration Examples:</h4>
+                        <pre><code>
+# Number variables
+score <-- 100
+temperature <-- 98.6
+
+# Text variables
+name <-- "Alice"
+message <-- "Hello, World!"
+
+# Boolean variables
+is_student <-- 1  # TRUE
+has_passed <-- 0  # FALSE
+
+# Lists
+numbers <-- [1, 2, 3, 4, 5]
+names <-- ["Alice", "Bob", "Charlie"]
+                        </code></pre>
+                    </div>
+
+                    <div class="data-types-table">
+                        <h4>Common Data Types</h4>
+                        <table>
+                            <tr>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                            <tr>
+                                <td>Integer</td>
+                                <td>Whole numbers</td>
+                                <td>42, -17, 1000</td>
+                            </tr>
+                            <tr>
+                                <td>Float</td>
+                                <td>Decimal numbers</td>
+                                <td>3.14, -0.001, 2.0</td>
+                            </tr>
+                            <tr>
+                                <td>String</td>
+                                <td>Text data</td>
+                                <td>"Hello", 'World'</td>
+                            </tr>
+                            <tr>
+                                <td>Boolean</td>
+                                <td>True/False values</td>
+                                <td>True, False</td>
+                            </tr>
+                            <tr>
+                                <td>List</td>
+                                <td>Ordered collection</td>
+                                <td>[1, 2, 3]</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Control Structures</h2>
+
+                <div class="subsection">
+                    <h3>If Statements (Selection)</h3>
+                    <p>If statements allow your program to make decisions based on conditions.</p>
+
+                    <div class="example-code">
+                        <pre><code>
+# Basic if statement
+age <-- 18
+IF age >= 18 {
+    DISPLAY("You are an adult")
+} ELSE {
+    DISPLAY("You are a minor")
+}
+
+# Multiple conditions
+score <-- 85
+IF score >= 90 {
+    grade <-- "A"
+} ELSE IF score >= 80 {
+    grade <-- "B"
+} ELSE IF score >= 70 {
+    grade <-- "C"
+} ELSE {
+    grade <-- "F"
+}
+                        </code></pre>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Loops (Iteration)</h3>
+                    <p>Loops allow you to repeat a block of code multiple times.</p>
+
+                    <div class="example-code">
+                        <h4>For Loop Example:</h4>
+                        <pre><code>
+# Counting from 1 to 5
+REPEAT 5 TIMES {
+    DISPLAY(i)
+}
+
+# Iterating through a list
+fruits <-- ["apple", "banana", "orange"]
+length <-- LENGTH(fruits)
+i <-- 1
+REPEAT length TIMES {
+    DISPLAY(fruits[i])
+    i <-- i + 1
+}
+                        </code></pre>
+
+                        <h4>While Loop Example:</h4>
+                        <pre><code>
+# Counting down from 5
+count <-- 5
+REPEAT UNTIL (count <= 0) {
+    DISPLAY(count)
+    count <-- count - 1
+}
+                        </code></pre>
+                    </div>
+
+                    <div class="comparison-table">
+                        <h4>For vs While Loops</h4>
+                        <table>
+                            <tr>
+                                <th>For Loop</th>
+                                <th>While Loop</th>
+                            </tr>
+                            <tr>
+                                <td>Used when number of iterations is known</td>
+                                <td>Used when number of iterations is unknown</td>
+                            </tr>
+                            <tr>
+                                <td>Iterates over a sequence</td>
+                                <td>Continues until condition is false</td>
+                            </tr>
+                            <tr>
+                                <td>Simpler syntax for counting</td>
+                                <td>More flexible for complex conditions</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Functions</h2>
+                <p>Functions are reusable blocks of code that perform specific tasks. They help organize code and reduce repetition.</p>
+
+                <div class="example-code">
+                    <h3>Function Examples</h3>
+                    <pre><code>
+# Simple procedure with no parameters
+PROCEDURE SAY_HELLO() {
+    DISPLAY("Hello, World!")
+}
+
+# Procedure with parameters
+PROCEDURE GREET(name) {
+    DISPLAY("Hello, " + name + "!")
+}
+
+# Procedure with return value
+PROCEDURE ADD_NUMBERS(a, b) {
+    result <-- a + b
+    RETURN result
+}
+
+# Procedure with multiple parameters
+PROCEDURE CALCULATE_GRADE(scores) {
+    total <-- 0
+    i <-- 1
+    REPEAT LENGTH(scores) TIMES {
+        total <-- total + scores[i]
+        i <-- i + 1
+    }
+    average <-- total / LENGTH(scores)
+    
+    IF average >= 90 {
+        RETURN "A"
+    } ELSE IF average >= 80 {
+        RETURN "B"
+    } ELSE {
+        RETURN "C"
+    }
+}
+                    </code></pre>
+                </div>
+
+                <div class="concept-box">
+                    <h3>Function Components</h3>
+                    <ul>
+                        <li>Name - Identifies the function</li>
+                        <li>Parameters - Input values (optional)</li>
+                        <li>Body - Code to be executed</li>
+                        <li>Return value - Output (optional)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Working with Lists</h2>
+                <p>Lists are ordered collections that can store multiple items of any type.</p>
+
+                <div class="example-code">
+                    <h3>List Operations</h3>
+                    <pre><code>
+# Creating lists
+numbers <-- [1, 2, 3, 4, 5]
+mixed <-- [1, "hello", 1, 3.14]  # TRUE is 1
+
+# Accessing elements (note: Spindle uses 1-based indexing)
+first <-- numbers[1]  # Gets 1
+last <-- numbers[LENGTH(numbers)]  # Gets 5
+
+# Modifying lists
+numbers[LENGTH(numbers) + 1] <-- 6    # Adds 6 to end
+numbers[1] <-- 0  # Changes first element to 0
+
+# List operations
+length <-- LENGTH(numbers)     # Length of list
+                    </code></pre>
+                </div>
+
+                <div class="common-operations">
+                    <h3>Common List Methods</h3>
+                    <table>
+                        <tr>
+                            <th>Method</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                        <tr>
+                            <td>append()</td>
+                            <td>Add item to end</td>
+                            <td>list.append(item)</td>
+                        </tr>
+                        <tr>
+                            <td>insert()</td>
+                            <td>Add item at position</td>
+                            <td>list.insert(index, item)</td>
+                        </tr>
+                        <tr>
+                            <td>remove()</td>
+                            <td>Remove first occurrence</td>
+                            <td>list.remove(item)</td>
+                        </tr>
+                        <tr>
+                            <td>pop()</td>
+                            <td>Remove and return item</td>
+                            <td>list.pop(index)</td>
+                        </tr>
+                        <tr>
+                            <td>sort()</td>
+                            <td>Sort list in place</td>
+                            <td>list.sort()</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>Common Programming Patterns</h2>
+                <div class="pattern-examples">
+                    <h3>Counter Pattern</h3>
+                    <pre><code>
+# Counting specific items
+numbers = [1, 2, 2, 3, 2, 4, 5]
+count = 0
+for num in numbers:
+    if num == 2:
+        count += 1
+print(f"Number 2 appears {count} times")
+                    </code></pre>
+
+                    <h3>Accumulator Pattern</h3>
+                    <pre><code>
+# Calculating sum of even numbers
+numbers = [1, 2, 3, 4, 5, 6]
+sum_even = 0
+for num in numbers:
+    if num % 2 == 0:
+        sum_even += num
+print(f"Sum of even numbers: {sum_even}")
+                    </code></pre>
+
+                    <h3>Search Pattern</h3>
+                    <pre><code>
+# Finding an element
+names = ["Alice", "Bob", "Charlie"]
+search_name = "Bob"
+found = False
+for name in names:
+    if name == search_name:
+        found = True
+        break
+print(f"Name {search_name} {'found' if found else 'not found'}")
+                    </code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h2>Debugging Techniques</h2>
+                <div class="debugging-tips">
+                    <h3>Common Debugging Strategies</h3>
+                    <ul>
+                        <li>Print statements to track variable values</li>
+                        <li>Check for off-by-one errors in loops</li>
+                        <li>Verify correct data types are being used</li>
+                        <li>Test edge cases (empty lists, zero, negative numbers)</li>
+                        <li>Use meaningful variable names</li>
+                    </ul>
+
+                    <div class="example-code">
+                        <h4>Debugging Example:</h4>
+                        <pre><code>
+PROCEDURE CALCULATE_AVERAGE(scores) {
+    # Debug print
+    DISPLAY("Input scores: ")
+    DISPLAY(scores)
+    
+    IF LENGTH(scores) == 0 {  # Check for empty list
+        DISPLAY("Warning: Empty score list")
+        RETURN 0
+    }
+    
+    total <-- 0
+    i <-- 1
+    REPEAT LENGTH(scores) TIMES {
+        total <-- total + scores[i]
+        i <-- i + 1
+    }
+    DISPLAY("Sum of scores: ")
+    DISPLAY(total)
+    
+    count <-- LENGTH(scores)
+    DISPLAY("Number of scores: ")
+    DISPLAY(count)
+    
+    average <-- total / count
+    DISPLAY("Calculated average: ")
+    DISPLAY(average)
+    
+    RETURN average
+}
+                    </code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Practice Exercises</h2>
+                <div class="exercise-section">
+                    <div class="exercise">
+                        <h3>Exercise 1: Temperature Converter</h3>
+                        <p>Write a function that converts Celsius to Fahrenheit.</p>
+                        <div class="example-code">
+                            <pre><code>
+PROCEDURE CELSIUS_TO_FAHRENHEIT(celsius) {
+    RETURN (celsius * 9/5) + 32
+}
+
+# Test the procedure
+temperatures <-- [0, 100, 37]
+i <-- 1
+REPEAT LENGTH(temperatures) TIMES {
+    temp <-- temperatures[i]
+    fahrenheit <-- CELSIUS_TO_FAHRENHEIT(temp)
+    DISPLAY(temp + "°C = " + fahrenheit + "°F")
+    i <-- i + 1
+}
+                            </code></pre>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h3>Exercise 2: List Processing</h3>
+                        <p>Write a function that finds the average of numbers in a list.</p>
+                        <div class="example-code">
+                            <pre><code>
+PROCEDURE CALCULATE_AVERAGE(numbers) {
+    IF LENGTH(numbers) == 0 {
+        RETURN 0
+    }
+    
+    total <-- 0
+    i <-- 1
+    REPEAT LENGTH(numbers) TIMES {
+        total <-- total + numbers[i]
+        i <-- i + 1
+    }
+    RETURN total / LENGTH(numbers)
+}
+
+# Test the procedure
+test_numbers <-- [1, 2, 3, 4, 5]
+average <-- CALCULATE_AVERAGE(test_numbers)
+DISPLAY("Average: ")
+DISPLAY(average)
+                            </code></pre>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h3>Exercise 3: String Manipulation</h3>
+                        <p>Write a function that counts vowels in a string.</p>
+                        <div class="example-code">
+                            <pre><code>
+PROCEDURE COUNT_VOWELS(text) {
+    vowels <-- "aeiouAEIOU"
+    count <-- 0
+    i <-- 1
+    REPEAT LENGTH(text) TIMES {
+        char <-- text[i]
+        j <-- 1
+        REPEAT LENGTH(vowels) TIMES {
+            IF char == vowels[j] {
+                count <-- count + 1
+            }
+            j <-- j + 1
+        }
+        i <-- i + 1
+    }
+    RETURN count
+}
+
+# Test the procedure
+text <-- "Hello World"
+vowel_count <-- COUNT_VOWELS(text)
+DISPLAY("Number of vowels: ")
+DISPLAY(vowel_count)
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Ready to Practice?</h2>
+                <p>Now that you understand the basics, try these next steps:</p>
+                <div class="button-group">
+                    <a href="/ide/text" class="primary-button">Try the Text IDE</a>
+                    <a href="/study/mcq-practice" class="primary-button">Practice MCQs</a>
+                    <a href="/articles/binary-and-data" class="primary-button">Learn About Data</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="/shared/navbar.js"></script>
+</body>
+</html> 

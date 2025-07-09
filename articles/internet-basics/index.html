@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet Basics - Spindle</title>
+    <meta name="description" content="Learn about how the Internet works, including protocols, networking, and cybersecurity">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="stylesheet" href="/Global/material-ui/tokens.css">
+    <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav id="navBar" aria-label="Main navigation"></nav>
+    <main>
+        <article class="content-section">
+            <h1>The Internet: How It Works</h1>
+
+            <section>
+                <h2>Introduction to the Internet</h2>
+                <p>The Internet is a global network of interconnected computers that communicate using standardized protocols. It enables the sharing of information and resources across the world.</p>
+
+                <div class="concept-box">
+                    <h3>Key Internet Concepts</h3>
+                    <ul>
+                        <li>Packet-switched network</li>
+                        <li>Distributed system architecture</li>
+                        <li>Protocol-based communication</li>
+                        <li>Client-server model</li>
+                        <li>IP addressing system</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Internet Protocol (IP) Addressing</h2>
+                <div class="ip-addressing">
+                    <h3>IPv4 Address Structure</h3>
+                    <p>IPv4 addresses are 32-bit numbers divided into four octets, displayed as decimal numbers separated by dots.</p>
+
+                    <div class="ip-example">
+                        <table>
+                            <tr>
+                                <th>IP Address</th>
+                                <th>Binary Representation</th>
+                                <th>Type</th>
+                            </tr>
+                            <tr>
+                                <td>192.168.1.1</td>
+                                <td>11000000.10101000.00000001.00000001</td>
+                                <td>Private Network</td>
+                            </tr>
+                            <tr>
+                                <td>8.8.8.8</td>
+                                <td>00001000.00001000.00001000.00001000</td>
+                                <td>Public DNS (Google)</td>
+                            </tr>
+                            <tr>
+                                <td>127.0.0.1</td>
+                                <td>01111111.00000000.00000000.00000001</td>
+                                <td>Localhost</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <h3>IPv6 Addressing</h3>
+                    <p>IPv6 uses 128-bit addresses to provide a vastly larger address space, written in hexadecimal format.</p>
+                    <div class="ipv6-example">
+                        <pre>Example IPv6: 2001:0db8:85a3:0000:0000:8a2e:0370:7334</pre>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Network Protocols</h2>
+                <div class="protocols">
+                    <h3>TCP/IP Protocol Suite</h3>
+                    <div class="protocol-layers">
+                        <table>
+                            <tr>
+                                <th>Layer</th>
+                                <th>Protocols</th>
+                                <th>Function</th>
+                            </tr>
+                            <tr>
+                                <td>Application</td>
+                                <td>HTTP, FTP, SMTP, DNS</td>
+                                <td>User-level services</td>
+                            </tr>
+                            <tr>
+                                <td>Transport</td>
+                                <td>TCP, UDP</td>
+                                <td>End-to-end communication</td>
+                            </tr>
+                            <tr>
+                                <td>Internet</td>
+                                <td>IP, ICMP</td>
+                                <td>Routing and addressing</td>
+                            </tr>
+                            <tr>
+                                <td>Network Access</td>
+                                <td>Ethernet, Wi-Fi</td>
+                                <td>Physical transmission</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="protocol-details">
+                        <h4>Common Protocols Explained</h4>
+                        <ul>
+                            <li><strong>HTTP (Hypertext Transfer Protocol)</strong>
+                                <ul>
+                                    <li>Web page transfer</li>
+                                    <li>Request-response model</li>
+                                    <li>Stateless protocol</li>
+                                </ul>
+                            </li>
+                            <li><strong>DNS (Domain Name System)</strong>
+                                <ul>
+                                    <li>Domain name resolution</li>
+                                    <li>Hierarchical naming system</li>
+                                    <li>Distributed database</li>
+                                </ul>
+                            </li>
+                            <li><strong>TCP (Transmission Control Protocol)</strong>
+                                <ul>
+                                    <li>Reliable data delivery</li>
+                                    <li>Connection-oriented</li>
+                                    <li>Flow control</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Domain Name System (DNS)</h2>
+                <div class="dns-explanation">
+                    <h3>DNS Resolution Process</h3>
+                    <div class="process-steps">
+                        <ol>
+                            <li>User enters domain name (e.g., www.example.com)</li>
+                            <li>Local DNS cache check</li>
+                            <li>Query to DNS resolver</li>
+                            <li>Root server query</li>
+                            <li>TLD server query</li>
+                            <li>Authoritative server query</li>
+                            <li>IP address returned</li>
+                        </ol>
+                    </div>
+
+                    <div class="domain-structure">
+                        <h4>Domain Name Structure</h4>
+                        <table>
+                            <tr>
+                                <th>Part</th>
+                                <th>Example</th>
+                                <th>Purpose</th>
+                            </tr>
+                            <tr>
+                                <td>Subdomain</td>
+                                <td>www</td>
+                                <td>Service identifier</td>
+                            </tr>
+                            <tr>
+                                <td>Domain</td>
+                                <td>example</td>
+                                <td>Organization name</td>
+                            </tr>
+                            <tr>
+                                <td>TLD</td>
+                                <td>com</td>
+                                <td>Type of organization</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Web Technologies</h2>
+                <div class="web-tech">
+                    <h3>Core Technologies</h3>
+                    <div class="tech-grid">
+                        <div class="tech-card">
+                            <h4>HTML</h4>
+                            <p>Structure and content of web pages</p>
+                            <div class="code-example">
+                                <pre><code>
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Hello World&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                                </code></pre>
+                            </div>
+                        </div>
+
+                        <div class="tech-card">
+                            <h4>CSS</h4>
+                            <p>Styling and layout of web pages</p>
+                            <div class="code-example">
+                                <pre><code>
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+h1 {
+    color: blue;
+    text-align: center;
+}
+                                </code></pre>
+                            </div>
+                        </div>
+
+                        <div class="tech-card">
+                            <h4>JavaScript</h4>
+                            <p>Interactive behavior and functionality</p>
+                            <div class="code-example">
+                                <pre><code>
+function greet() {
+    let name = prompt("Enter your name");
+    alert("Hello, " + name + "!");
+}
+                                </code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Network Security</h2>
+                <div class="security-section">
+                    <h3>Common Security Threats</h3>
+                    <div class="threats-list">
+                        <div class="threat-card">
+                            <h4>Malware</h4>
+                            <ul>
+                                <li>Viruses</li>
+                                <li>Trojans</li>
+                                <li>Ransomware</li>
+                                <li>Spyware</li>
+                            </ul>
+                        </div>
+
+                        <div class="threat-card">
+                            <h4>Network Attacks</h4>
+                            <ul>
+                                <li>DDoS attacks</li>
+                                <li>Man-in-the-middle</li>
+                                <li>Packet sniffing</li>
+                                <li>Port scanning</li>
+                            </ul>
+                        </div>
+
+                        <div class="threat-card">
+                            <h4>Social Engineering</h4>
+                            <ul>
+                                <li>Phishing</li>
+                                <li>Pretexting</li>
+                                <li>Baiting</li>
+                                <li>Quid pro quo</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Security Measures</h3>
+                    <div class="security-measures">
+                        <table>
+                            <tr>
+                                <th>Measure</th>
+                                <th>Purpose</th>
+                                <th>Example</th>
+                            </tr>
+                            <tr>
+                                <td>Encryption</td>
+                                <td>Data protection</td>
+                                <td>HTTPS, SSL/TLS</td>
+                            </tr>
+                            <tr>
+                                <td>Firewalls</td>
+                                <td>Network protection</td>
+                                <td>Packet filtering</td>
+                            </tr>
+                            <tr>
+                                <td>Authentication</td>
+                                <td>Access control</td>
+                                <td>2FA, passwords</td>
+                            </tr>
+                            <tr>
+                                <td>Updates</td>
+                                <td>Vulnerability patching</td>
+                                <td>Security patches</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Internet of Things (IoT)</h2>
+                <div class="iot-section">
+                    <h3>IoT Components</h3>
+                    <div class="component-grid">
+                        <div class="component-card">
+                            <h4>Sensors</h4>
+                            <ul>
+                                <li>Temperature</li>
+                                <li>Motion</li>
+                                <li>Light</li>
+                                <li>Humidity</li>
+                            </ul>
+                        </div>
+
+                        <div class="component-card">
+                            <h4>Connectivity</h4>
+                            <ul>
+                                <li>Wi-Fi</li>
+                                <li>Bluetooth</li>
+                                <li>Zigbee</li>
+                                <li>5G</li>
+                            </ul>
+                        </div>
+
+                        <div class="component-card">
+                            <h4>Processing</h4>
+                            <ul>
+                                <li>Edge computing</li>
+                                <li>Cloud processing</li>
+                                <li>Data analytics</li>
+                                <li>AI/ML</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>IoT Applications</h3>
+                    <div class="applications-list">
+                        <ul>
+                            <li>Smart homes</li>
+                            <li>Industrial automation</li>
+                            <li>Healthcare monitoring</li>
+                            <li>Agricultural systems</li>
+                            <li>Smart cities</li>
+                            <li>Transportation</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Future of the Internet</h2>
+                <div class="future-section">
+                    <h3>Emerging Technologies</h3>
+                    <div class="tech-trends">
+                        <div class="trend-card">
+                            <h4>5G and Beyond</h4>
+                            <ul>
+                                <li>Higher speeds</li>
+                                <li>Lower latency</li>
+                                <li>More connections</li>
+                                <li>New applications</li>
+                            </ul>
+                        </div>
+
+                        <div class="trend-card">
+                            <h4>Web3</h4>
+                            <ul>
+                                <li>Decentralization</li>
+                                <li>Blockchain</li>
+                                <li>Smart contracts</li>
+                                <li>Digital assets</li>
+                            </ul>
+                        </div>
+
+                        <div class="trend-card">
+                            <h4>AI Integration</h4>
+                            <ul>
+                                <li>Smart networks</li>
+                                <li>Automated systems</li>
+                                <li>Predictive analytics</li>
+                                <li>Enhanced security</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Ready to Learn More?</h2>
+                <p>Explore these related topics:</p>
+                <div class="button-group">
+                    <a href="/articles/binary-and-data" class="primary-button">Learn About Data</a>
+                    <a href="/study/mcq-practice" class="primary-button">Practice MCQs</a>
+                    <a href="/articles/programming-basics" class="primary-button">Programming Basics</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="/shared/navbar.js"></script>
+</body>
+</html> 

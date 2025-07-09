@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary & Data - Spindle</title>
+    <meta name="description" content="Learn about binary numbers, data representation, and how computers store information">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="stylesheet" href="/Global/material-ui/tokens.css">
+    <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav id="navBar" aria-label="Main navigation"></nav>
+    <main>
+        <article class="content-section">
+            <h1>Binary and Data Representation</h1>
+
+            <section>
+                <h2>Understanding Binary</h2>
+                <p>Binary is the fundamental language of computers, using only two digits (0 and 1) to represent all data. Each binary digit (bit) represents a state that can be either on (1) or off (0).</p>
+
+                <div class="concept-box">
+                    <h3>Key Binary Concepts</h3>
+                    <ul>
+                        <li>Binary digits (bits) - The smallest unit of data (0 or 1)</li>
+                        <li>Bytes - 8 bits grouped together</li>
+                        <li>Binary patterns - Sequences of bits that represent data</li>
+                        <li>Base-2 number system - Powers of 2 (1, 2, 4, 8, 16, etc.)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Binary Number System</h2>
+                <div class="binary-conversion">
+                    <h3>Converting Between Binary and Decimal</h3>
+                    <div class="example-table">
+                        <table>
+                            <tr>
+                                <th>Binary</th>
+                                <th>Calculation</th>
+                                <th>Decimal</th>
+                            </tr>
+                            <tr>
+                                <td>0001</td>
+                                <td>0×8 + 0×4 + 0×2 + 1×1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>0101</td>
+                                <td>0×8 + 1×4 + 0×2 + 1×1</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>1000</td>
+                                <td>1×8 + 0×4 + 0×2 + 0×1</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td>1111</td>
+                                <td>1×8 + 1×4 + 1×2 + 1×1</td>
+                                <td>15</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="conversion-steps">
+                        <h4>Decimal to Binary Conversion Steps:</h4>
+                        <ol>
+                            <li>Divide the number by 2</li>
+                            <li>Keep track of remainders (0 or 1)</li>
+                            <li>Continue dividing quotient by 2</li>
+                            <li>Read remainders from bottom to top</li>
+                        </ol>
+
+                        <div class="example-conversion">
+                            <h5>Example: Converting 13 to Binary</h5>
+                            <pre>
+13 ÷ 2 = 6 remainder 1
+6 ÷ 2 = 3  remainder 0
+3 ÷ 2 = 1  remainder 1
+1 ÷ 2 = 0  remainder 1
+
+Reading from bottom up: 1101</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Data Representation</h2>
+                <div class="data-types">
+                    <h3>Text Representation (ASCII)</h3>
+                    <p>ASCII (American Standard Code for Information Interchange) uses 7 bits to represent characters.</p>
+                    <div class="ascii-table">
+                        <table>
+                            <tr>
+                                <th>Character</th>
+                                <th>ASCII (Decimal)</th>
+                                <th>Binary</th>
+                            </tr>
+                            <tr>
+                                <td>A</td>
+                                <td>65</td>
+                                <td>1000001</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>66</td>
+                                <td>1000010</td>
+                            </tr>
+                            <tr>
+                                <td>a</td>
+                                <td>97</td>
+                                <td>1100001</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>49</td>
+                                <td>0110001</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <h3>Color Representation (RGB)</h3>
+                    <p>Colors are represented using three bytes, one each for Red, Green, and Blue values (0-255).</p>
+                    <div class="color-examples">
+                        <table>
+                            <tr>
+                                <th>Color</th>
+                                <th>Red</th>
+                                <th>Green</th>
+                                <th>Blue</th>
+                                <th>Hex Code</th>
+                            </tr>
+                            <tr>
+                                <td style="background-color: red;">Red</td>
+                                <td>255</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>#FF0000</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: purple;">Purple</td>
+                                <td>128</td>
+                                <td>0</td>
+                                <td>128</td>
+                                <td>#800080</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: white;">White</td>
+                                <td>255</td>
+                                <td>255</td>
+                                <td>255</td>
+                                <td>#FFFFFF</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <h3>Image Representation</h3>
+                    <p>Digital images are grids of pixels, where each pixel is represented by color values.</p>
+                    <div class="image-representation">
+                        <h4>Image Storage Components:</h4>
+                        <ul>
+                            <li>Resolution (width × height in pixels)</li>
+                            <li>Color depth (bits per pixel)</li>
+                            <li>Compression method (lossy or lossless)</li>
+                            <li>File format (JPEG, PNG, GIF, etc.)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Data Storage Units</h2>
+                <div class="storage-units">
+                    <table>
+                        <tr>
+                            <th>Unit</th>
+                            <th>Size</th>
+                            <th>Example Usage</th>
+                        </tr>
+                        <tr>
+                            <td>Bit (b)</td>
+                            <td>1 or 0</td>
+                            <td>Single binary digit</td>
+                        </tr>
+                        <tr>
+                            <td>Byte (B)</td>
+                            <td>8 bits</td>
+                            <td>Single character</td>
+                        </tr>
+                        <tr>
+                            <td>Kilobyte (KB)</td>
+                            <td>1,024 bytes</td>
+                            <td>Short text document</td>
+                        </tr>
+                        <tr>
+                            <td>Megabyte (MB)</td>
+                            <td>1,024 KB</td>
+                            <td>Digital photo</td>
+                        </tr>
+                        <tr>
+                            <td>Gigabyte (GB)</td>
+                            <td>1,024 MB</td>
+                            <td>Movie file</td>
+                        </tr>
+                        <tr>
+                            <td>Terabyte (TB)</td>
+                            <td>1,024 GB</td>
+                            <td>Large database</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>Data Compression</h2>
+                <div class="compression-types">
+                    <h3>Lossless Compression</h3>
+                    <p>Reduces file size while preserving all original data. Commonly used for text and program files.</p>
+                    <div class="compression-example">
+                        <h4>Run-Length Encoding Example:</h4>
+                        <pre>
+Original: AAAAAABBBCC
+Compressed: 6A3B2C
+(Saves space while maintaining all information)</pre>
+                    </div>
+
+                    <h3>Lossy Compression</h3>
+                    <p>Reduces file size by removing some data, typically used for media files where small quality loss is acceptable.</p>
+                    <div class="compression-example">
+                        <h4>Common Lossy Formats:</h4>
+                        <ul>
+                            <li>JPEG - Images</li>
+                            <li>MP3 - Audio</li>
+                            <li>MP4 - Video</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Error Detection and Correction</h2>
+                <div class="error-detection">
+                    <h3>Parity Bits</h3>
+                    <p>A simple error detection method that adds an extra bit to make the total number of 1s even or odd.</p>
+                    <div class="parity-example">
+                        <table>
+                            <tr>
+                                <th>Data</th>
+                                <th>Count of 1s</th>
+                                <th>Even Parity Bit</th>
+                                <th>Result</th>
+                            </tr>
+                            <tr>
+                                <td>1101</td>
+                                <td>3</td>
+                                <td>1</td>
+                                <td>11011</td>
+                            </tr>
+                            <tr>
+                                <td>1001</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>10010</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <h3>Checksum</h3>
+                    <p>A more advanced error detection method that creates a value based on the data being transmitted.</p>
+                    <div class="checksum-example">
+                        <pre>
+Data: 10110
+Checksum calculation: 1+0+1+1+0 = 3
+Transmitted: 10110 (data) + 11 (checksum in binary)</pre>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Practice Problems</h2>
+                <div class="practice-section">
+                    <div class="problem">
+                        <h3>Problem 1: Binary Conversion</h3>
+                        <p>Convert the decimal number 25 to binary.</p>
+                        <div class="solution">
+                            <details>
+                                <summary>Solution</summary>
+                                <pre>
+25 ÷ 2 = 12 remainder 1
+12 ÷ 2 = 6  remainder 0
+6 ÷ 2 = 3   remainder 0
+3 ÷ 2 = 1   remainder 1
+1 ÷ 2 = 0   remainder 1
+
+Binary: 11001</pre>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="problem">
+                        <h3>Problem 2: Data Storage</h3>
+                        <p>Calculate the storage required for a 1920×1080 image with 24-bit color depth.</p>
+                        <div class="solution">
+                            <details>
+                                <summary>Solution</summary>
+                                <pre>
+Pixels: 1920 × 1080 = 2,073,600
+Bits per pixel: 24
+Total bits: 2,073,600 × 24 = 49,766,400
+Total bytes: 49,766,400 ÷ 8 = 6,220,800
+Total MB: 6,220,800 ÷ 1,024,000 ≈ 6.07 MB</pre>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="problem">
+                        <h3>Problem 3: Error Detection</h3>
+                        <p>Add an even parity bit to the binary number 1011001.</p>
+                        <div class="solution">
+                            <details>
+                                <summary>Solution</summary>
+                                <pre>
+Data: 1011001
+Count of 1s: 4 (even)
+Even parity bit needed: 0
+Result: 10110010</pre>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Ready to Learn More?</h2>
+                <p>Explore these related topics:</p>
+                <div class="button-group">
+                    <a href="/articles/internet-basics" class="primary-button">Learn About Networks</a>
+                    <a href="/study/mcq-practice" class="primary-button">Practice MCQs</a>
+                    <a href="/articles/programming-basics" class="primary-button">Programming Basics</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="/shared/navbar.js"></script>
+</body>
+</html> 
