@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structures - Spindle</title>
+    <meta name="description" content="Learn about fundamental data structures including arrays, linked lists, stacks, queues, and trees">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="stylesheet" href="/Global/material-ui/tokens.css">
+    <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../code-container.css">
+    <script src="../code-container.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav id="navBar" aria-label="Main navigation"></nav>
+    <main>
+        <article class="content-section">
+            <h1>Data Structures</h1>
+
+            <section>
+                <h2>What are Data Structures?</h2>
+                <p>Data structures are specialized formats for organizing, processing, retrieving, and storing data. They provide efficient ways to access and modify data based on specific use cases.</p>
+
+                <div class="concept-box">
+                    <h3>Why Data Structures Matter</h3>
+                    <ul>
+                        <li>Efficient data organization</li>
+                        <li>Fast search and retrieval</li>
+                        <li>Optimal memory usage</li>
+                        <li>Problem-specific solutions</li>
+                        <li>Algorithm optimization</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Arrays (Lists)</h2>
+                <p>Arrays are the most fundamental data structure - a collection of elements stored in contiguous memory locations. In Spindle, we use lists which behave like arrays.</p>
+
+                <h3>Creating Arrays</h3>
+                <p>Arrays can store any type of data: numbers, strings, or even mixed types.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">creating_arrays.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Creating different types of arrays
+numbers <- [1, 2, 3, 4, 5]
+names <- ["Alice", "Bob", "Charlie"]
+mixed <- [1, "hello", 3.14, 0]
+DISPLAY("Numbers array: ")
+DISPLAY(numbers)
+DISPLAY("Names array: ")
+DISPLAY(names)
+DISPLAY("Mixed array: ")
+DISPLAY(mixed)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Accessing Array Elements</h3>
+                <p>Array elements are accessed using their index. Spindle uses 1-based indexing, meaning the first element is at index 1.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">accessing_elements.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Accessing elements (1-based indexing)
+numbers <- [10, 20, 30, 40, 50]
+first_element <- numbers[1]
+second_element <- numbers[2]
+last_element <- numbers[5]
+DISPLAY("First element: ")
+DISPLAY(first_element)
+DISPLAY("Second element: ")
+DISPLAY(second_element)
+DISPLAY("Last element: ")
+DISPLAY(last_element)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Modifying Array Elements</h3>
+                <p>You can change the value of any element in an array by assigning a new value to its index.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">modifying_elements.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Modifying array elements
+numbers <- [1, 2, 3, 4, 5]
+DISPLAY("Original: ")
+DISPLAY(numbers)
+
+numbers[1] <- 100
+DISPLAY("After changing first element: ")
+DISPLAY(numbers)
+
+numbers[3] <- 300
+DISPLAY("After changing third element: ")
+DISPLAY(numbers)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Adding Elements to Arrays</h3>
+                <p>You can add new elements to the end of an array by using an index beyond the current length.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">adding_elements.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Adding elements to an array
+numbers <- [1, 2, 3]
+DISPLAY("Original array: ")
+DISPLAY(numbers)
+
+APPEND(numbers, 4)
+DISPLAY("After adding 4: ")
+DISPLAY(numbers)
+
+APPEND(numbers, 5)
+DISPLAY("After adding 5: ")
+DISPLAY(numbers)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Array Length</h3>
+                <p>The LENGTH function returns the number of elements in an array.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">array_length.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Getting array length
+numbers <- [1, 2, 3, 4, 5]
+names <- ["Alice", "Bob"]
+length_numbers <- LENGTH(numbers)
+length_names <- LENGTH(names)
+DISPLAY("Numbers array length: ")
+DISPLAY(length_numbers)
+DISPLAY("Names array length: ")
+DISPLAY(length_names)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Linked Lists</h2>
+                <p>Linked lists are linear data structures where elements are stored in nodes, and each node points to the next node in the sequence. We can simulate linked lists using arrays in Spindle.</p>
+
+                <h3>Creating a Linked List</h3>
+                <p>We'll use an array to store the data and implement linked list operations.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">linked_list_create.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Creating a linked list using an array
+linked_list <- []
+
+PROCEDURE APPEND(data) {
+    # Add data to the end of the list
+    linked_list[LENGTH(linked_list) + 1] <- data
+    DISPLAY("Added: ")
+    DISPLAY(data)
+}
+
+# Add some elements
+APPEND(10)
+APPEND(20)
+APPEND(30)
+
+DISPLAY("Linked list: ")
+DISPLAY(linked_list)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Displaying a Linked List</h3>
+                <p>We can traverse the linked list to display all elements with arrow notation.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">linked_list_display.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Displaying linked list with arrows
+linked_list <- [10, 20, 30, 40]
+
+PROCEDURE DISPLAY_LIST() {
+    DISPLAY("Linked List:")
+    i <- 1
+    REPEAT LENGTH(linked_list) TIMES {
+        DISPLAY(linked_list[i] + " -> ")
+        i <- i + 1
+    }
+    DISPLAY("None")
+}
+
+DISPLAY_LIST()</code></pre>
+                  </div>
+                </div>
+
+                <h3>Searching in a Linked List</h3>
+                <p>We can search for a specific element and return its position in the list.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">linked_list_search.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Searching in linked list
+linked_list <- [10, 20, 30, 40]
+
+PROCEDURE SEARCH(target) {
+    i <- 1
+    position <- 1
+    
+    REPEAT LENGTH(linked_list) TIMES {
+        IF (linked_list[i] == target) {
+            RETURN position
+        }
+        i <- i + 1
+        position <- position + 1
+    }
+    RETURN -1
+}
+
+# Search for elements
+position_30 <- SEARCH(30)
+position_50 <- SEARCH(50)
+
+DISPLAY("30 found at position: ")
+DISPLAY(position_30)
+DISPLAY("50 found at position: ")
+DISPLAY(position_50)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Stacks</h2>
+                <p>Stacks follow the Last-In-First-Out (LIFO) principle, where the last element added is the first one removed. Think of it like a stack of plates.</p>
+
+                <h3>Creating a Stack</h3>
+                <p>We'll implement a stack using an array with push and pop operations.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">stack_create.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Creating a stack
+stack <- []
+
+PROCEDURE PUSH(item) {
+    # Add item to top of stack
+    stack[LENGTH(stack) + 1] <- item
+    DISPLAY("Pushed: ")
+    DISPLAY(item)
+}
+
+PROCEDURE POP() {
+    # Remove and return top item
+    IF (LENGTH(stack) == 0) {
+        DISPLAY("Stack is empty!")
+        RETURN "EMPTY"
+    }
+    
+    top_item <- stack[LENGTH(stack)]
+    DISPLAY("Popped: ")
+    DISPLAY(top_item)
+    RETURN top_item
+}
+
+# Add some elements
+PUSH("First")
+PUSH("Second")
+PUSH("Third")
+
+DISPLAY("Stack: ")
+DISPLAY(stack)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Stack Operations</h3>
+                <p>Let's see how push and pop operations work in sequence.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">stack_operations.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Stack operations demonstration
+stack <- []
+
+PROCEDURE PUSH(item) {
+    stack[LENGTH(stack) + 1] <- item
+    DISPLAY("Pushed: ")
+    DISPLAY(item)
+}
+
+PROCEDURE POP() {
+    IF (LENGTH(stack) == 0) {
+        RETURN "EMPTY"
+    }
+    top_item <- stack[LENGTH(stack)]
+    DISPLAY("Popped: ")
+    DISPLAY(top_item)
+    RETURN top_item
+}
+
+# Demonstrate LIFO behavior
+PUSH("A")
+PUSH("B")
+PUSH("C")
+
+DISPLAY("Stack before popping: ")
+DISPLAY(stack)
+POP()
+POP()
+POP()</code></pre>
+                  </div>
+                </div>
+
+                <h3>Checking Stack Status</h3>
+                <p>We can check if a stack is empty and peek at the top element without removing it.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">stack_status.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Stack status operations
+stack <- []
+
+PROCEDURE IS_EMPTY() {
+    RETURN LENGTH(stack) == 0
+}
+
+PROCEDURE PEEK() {
+    IF (LENGTH(stack) == 0) {
+        RETURN "Stack is empty"
+    }
+    RETURN stack[LENGTH(stack)]
+}
+
+PROCEDURE PUSH(item) {
+    stack[LENGTH(stack) + 1] <- item
+}
+
+# Test stack status
+DISPLAY("Is empty: ")
+DISPLAY(IS_EMPTY())
+PUSH("Hello")
+DISPLAY("Is empty: ")
+DISPLAY(IS_EMPTY())
+DISPLAY("Top element: ")
+DISPLAY(PEEK())</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Queues</h2>
+                <p>Queues follow the First-In-First-Out (FIFO) principle, where the first element added is the first one removed. Think of it like a line of people.</p>
+
+                <h3>Creating a Queue</h3>
+                <p>We'll implement a queue using an array with enqueue and dequeue operations.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">queue_create.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Creating a queue
+queue <- []
+
+PROCEDURE ENQUEUE(item) {
+    # Add item to back of queue
+    queue[LENGTH(queue) + 1] <- item
+    DISPLAY("Enqueued: ")
+    DISPLAY(item)
+}
+
+PROCEDURE DEQUEUE() {
+    # Remove and return front item
+    IF (LENGTH(queue) == 0) {
+        DISPLAY("Queue is empty!")
+        RETURN "EMPTY"
+    }
+    
+    front_item <- queue[1]
+    DISPLAY("Dequeued: ")
+    DISPLAY(front_item)
+    RETURN front_item
+}
+
+# Add some elements
+ENQUEUE("First")
+ENQUEUE("Second")
+ENQUEUE("Third")
+
+DISPLAY("Queue: ")
+DISPLAY(queue)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Queue Operations</h3>
+                <p>Let's see how enqueue and dequeue operations work in sequence.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">queue_operations.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Queue operations demonstration
+queue <- []
+
+PROCEDURE ENQUEUE(item) {
+    queue[LENGTH(queue) + 1] <- item
+    DISPLAY("Enqueued: ")
+    DISPLAY(item)
+}
+
+PROCEDURE DEQUEUE() {
+    IF (LENGTH(queue) == 0) {
+        RETURN "EMPTY"
+    }
+    front_item <- queue[1]
+    DISPLAY("Dequeued: ")
+    DISPLAY(front_item)
+    RETURN front_item
+}
+
+# Demonstrate FIFO behavior
+ENQUEUE("A")
+ENQUEUE("B")
+ENQUEUE("C")
+
+DISPLAY("Queue before dequeuing: ")
+DISPLAY(queue)
+DEQUEUE()
+DEQUEUE()
+DEQUEUE()</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Common Data Structure Operations</h2>
+                <p>Let's look at some common operations you'll perform on data structures.</p>
+
+                <h3>Traversing Arrays</h3>
+                <p>Traversing means visiting each element in a data structure exactly once.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">array_traversal.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Traversing an array
+numbers <- [10, 20, 30, 40, 50]
+
+DISPLAY("Traversing array:")
+i <- 1
+REPEAT LENGTH(numbers) TIMES {
+    DISPLAY("Element ")
+    DISPLAY(i)
+    DISPLAY(": ")
+    DISPLAY(numbers[i])
+    i <- i + 1
+}</code></pre>
+                  </div>
+                </div>
+
+                <h3>Finding Maximum Value</h3>
+                <p>We can find the maximum value in an array by comparing each element.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">find_maximum.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Finding maximum value in array
+numbers <- [5, 12, 3, 8, 15]
+maximum <- numbers[1]
+REPEAT 5 TIMES {
+    IF ((numbers[n] > maximum)) {
+        maximum <- numbers[n]
+    }
+}
+DISPLAY("Maximum value: ")
+DISPLAY(maximum)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Counting Elements</h3>
+                <p>We can count how many times a specific element appears in an array.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">count_elements.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Counting occurrences of an element
+numbers <- [1, 2, 2, 3, 2, 4, 2]
+count_2 <- 0
+REPEAT 7 TIMES {
+    IF ((numbers[n] == 2)) {
+        count_2 <- count_2 + 1
+    }
+}
+DISPLAY("Number 2 appears ")
+DISPLAY(count_2)
+DISPLAY(" times")</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Practice Exercises</h2>
+                <p>Practice implementing these data structure operations to reinforce your understanding.</p>
+
+                <div class="exercise-section">
+                    <div class="exercise">
+                        <h3>Exercise 1: Reverse an Array</h3>
+                        <p>Write a function that reverses the elements in an array.</p>
+                        <div class="code-container">
+                          <div class="code-header">
+                            <span class="code-filename">reverse_array.spdl</span>
+                            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                              Run
+                            </button>
+                          </div>
+                          <div class="code-content">
+                            <pre><code>PROCEDURE REVERSE_ARRAY(arr) {
+    reversed <- []
+    i <- LENGTH(arr)
+    
+    REPEAT LENGTH(arr) TIMES {
+        reversed[LENGTH(reversed) + 1] <- arr[i]
+        i <- i - 1
+    }
+    RETURN reversed
+}
+
+# Test the function
+original <- [1, 2, 3, 4, 5]
+reversed <- REVERSE_ARRAY(original)
+DISPLAY("Original: ")
+DISPLAY(original)
+DISPLAY("Reversed: ")
+DISPLAY(reversed)</code></pre>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h3>Exercise 2: Check if Array is Sorted</h3>
+                        <p>Write a function that checks if an array is sorted in ascending order.</p>
+                        <div class="code-container">
+                          <div class="code-header">
+                            <span class="code-filename">check_sorted.spdl</span>
+                            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                              Run
+                            </button>
+                          </div>
+                          <div class="code-content">
+                            <pre><code>PROCEDURE IS_SORTED(arr) {
+    i <- 1
+    REPEAT (LENGTH(arr) - 1) TIMES {
+        IF (arr[i] > arr[i + 1]) {
+            RETURN 0  # Not sorted
+        }
+        i <- i + 1
+    }
+    RETURN 1  # Sorted
+}
+
+# Test the function
+sorted_array <- [1, 2, 3, 4, 5]
+unsorted_array <- [3, 1, 4, 2, 5]
+
+DISPLAY("Is [1,2,3,4,5] sorted? ")
+DISPLAY(IS_SORTED(sorted_array))
+DISPLAY("Is [3,1,4,2,5] sorted? ")
+DISPLAY(IS_SORTED(unsorted_array))</code></pre>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h3>Exercise 3: Remove Duplicates</h3>
+                        <p>Write a function that removes duplicate elements from an array.</p>
+                        <div class="code-container">
+                          <div class="code-header">
+                            <span class="code-filename">remove_duplicates.spdl</span>
+                            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                              Run
+                            </button>
+                          </div>
+                          <div class="code-content">
+                            <pre><code>PROCEDURE REMOVE_DUPLICATES(arr) {
+    unique <- []
+    i <- 1
+    
+    REPEAT LENGTH(arr) TIMES {
+        # Check if element already exists
+        found <- 0
+        j <- 1
+        REPEAT LENGTH(unique) TIMES {
+            IF (arr[i] == unique[j]) {
+                found <- 1
+                BREAK
+            }
+            j <- j + 1
+        }
+        
+        IF (found == 0) {
+            APPEND(unique, arr[i])
+        }
+        i <- i + 1
+    }
+    RETURN unique
+}
+
+# Test the function
+with_duplicates <- [1, 2, 2, 3, 4, 4, 5]
+without_duplicates <- REMOVE_DUPLICATES(with_duplicates)
+DISPLAY("Original: ")
+DISPLAY(with_duplicates)
+DISPLAY("Without duplicates: ")
+DISPLAY(without_duplicates)</code></pre>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Ready to Learn More?</h2>
+                <p>Now that you understand data structures, explore these related topics:</p>
+                <div class="button-group">
+                    <a href="/articles/algorithm-complexity" class="primary-button">Algorithm Complexity</a>
+                    <a href="/articles/abstraction" class="primary-button">Abstraction</a>
+                    <a href="/study/mcq-practice" class="primary-button">Practice MCQs</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="/Global/navigation.js"></script>
+</body>
+</html> 

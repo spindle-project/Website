@@ -2,6 +2,10 @@
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
+    flex-wrap: wrap;
+
+
+
   }
   .ide-header {
     display: flex;

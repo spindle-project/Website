@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption and Cryptography - Spindle</title>
+    <meta name="description" content="Learn about encryption, cryptography, and how to secure data">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="stylesheet" href="/Global/material-ui/tokens.css">
+    <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../code-container.css">
+    <script src="../code-container.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav id="navBar" aria-label="Main navigation"></nav>
+    <main>
+        <article class="content-section">
+            <h1>Encryption and Cryptography</h1>
+
+            <section>
+                <h2>What is Encryption?</h2>
+                <p>Encryption is the process of converting plaintext (readable data) into ciphertext (unreadable data) to protect information from unauthorized access. Cryptography is the science of secure communication.</p>
+
+                <div class="concept-box">
+                    <h3>Key Concepts</h3>
+                    <ul>
+                        <li>Plaintext - Original readable message</li>
+                        <li>Ciphertext - Encrypted unreadable message</li>
+                        <li>Key - Secret value used for encryption/decryption</li>
+                        <li>Algorithm - Mathematical process for encryption</li>
+                        <li>Decryption - Converting ciphertext back to plaintext</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Caesar Cipher</h2>
+                <p>The Caesar cipher is one of the oldest encryption methods, shifting each letter by a fixed number of positions in the alphabet.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">caesar_cipher.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code>PROCEDURE CAESAR_ENCRYPT(message, shift) {
+    alphabet <-- "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    encrypted <-- ""
+    i <-- 1
+    
+    REPEAT LENGTH(message) TIMES {
+        char <-- message[i]
+        char <-- UPPERCASE(char)
+        
+        # Find position in alphabet
+        pos <-- 1
+        found <-- 0
+        REPEAT LENGTH(alphabet) TIMES {
+            IF (alphabet[pos] == char) {
+                found <-- 1
+                # Apply shift
+                new_pos <-- ((pos - 1 + shift) % 26) + 1
+                encrypted <-- encrypted + alphabet[new_pos]
+            }
+            pos <-- pos + 1
+        }
+        
+        IF (found == 0) {
+            encrypted <-- encrypted + char
+        }
+        i <-- i + 1
+    }
+    RETURN encrypted
+}
+
+PROCEDURE CAESAR_DECRYPT(message, shift) {
+    RETURN CAESAR_ENCRYPT(message, 26 - shift)
+}
+
+# Testing Caesar cipher
+original <-- "HELLO WORLD"
+shift <-- 3
+
+encrypted <-- CAESAR_ENCRYPT(original, shift)
+decrypted <-- CAESAR_DECRYPT(encrypted, shift)
+
+DISPLAY("Original: ")
+DISPLAY(original)
+DISPLAY("Encrypted: ")
+DISPLAY(encrypted)
+DISPLAY("Decrypted: ")
+DISPLAY(decrypted)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Substitution Cipher</h2>
+                <p>A substitution cipher replaces each letter with another letter according to a predefined mapping.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">substitution_cipher.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Substitution Cipher in Spindle
+# Simple substitution cipher implementation
+
+# Create a simple substitution key (A->X, B->Y, C->Z, etc.)
+key <-- ["X", "Y", "Z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W"]
+
+PROCEDURE SUBSTITUTION_ENCRYPT(message) {
+    encrypted <-- ""
+    i <-- 1
+    
+    REPEAT LENGTH(message) TIMES {
+        char <-- message[i]
+        
+        # Convert character to position (A=1, B=2, etc.)
+        char_pos <-- char - 64  # ASCII A is 65, so subtract 64
+        
+        IF (char_pos >= 1 AND char_pos <= 26) {
+            # Apply substitution
+            encrypted <-- encrypted + key[char_pos]
+        } ELSE {
+            # Keep non-alphabetic characters
+            encrypted <-- encrypted + char
+        }
+        i <-- i + 1
+    }
+    RETURN encrypted
+}
+
+PROCEDURE SUBSTITUTION_DECRYPT(message) {
+    decrypted <-- ""
+    i <-- 1
+    
+    REPEAT LENGTH(message) TIMES {
+        char <-- message[i]
+        
+        # Find position in key array
+        j <-- 1
+        found <-- 0
+        REPEAT 26 TIMES {
+            IF (key[j] == char) {
+                # Convert back to original character
+                decrypted <-- decrypted + (j + 64)
+                found <-- 1
+                BREAK
+            }
+            j <-- j + 1
+        }
+        
+        IF (found == 0) {
+            # Keep non-alphabetic characters
+            decrypted <-- decrypted + char
+        }
+        i <-- i + 1
+    }
+    RETURN decrypted
+}
+
+# Using substitution cipher
+DISPLAY("Substitution key: ")
+DISPLAY(key)
+
+message <-- "HELLO WORLD"
+encrypted <-- SUBSTITUTION_ENCRYPT(message)
+decrypted <-- SUBSTITUTION_DECRYPT(encrypted)
+
+DISPLAY("Original: ")
+DISPLAY(message)
+DISPLAY("Encrypted: ")
+DISPLAY(encrypted)
+DISPLAY("Decrypted: ")
+DISPLAY(decrypted)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Vigenère Cipher</h2>
+                <p>The Vigenère cipher uses a keyword to shift letters, making it more secure than the Caesar cipher.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">vigenere_cipher.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Vigenère Cipher in Spindle
+# Uses a keyword to shift letters
+
+PROCEDURE VIGENERE_ENCRYPT(message, key) {
+    encrypted <-- ""
+    key_index <-- 1
+    i <-- 1
+    
+    REPEAT LENGTH(message) TIMES {
+        char <-- message[i]
+        
+        # Check if character is alphabetic
+        char_pos <-- char - 64  # ASCII A is 65
+        
+        IF (char_pos >= 1 AND char_pos <= 26) {
+            # Get key character position
+            key_char <-- key[key_index]
+            key_pos <-- key_char - 64
+            
+            # Apply shift
+            encrypted_pos <-- ((char_pos + key_pos - 1) % 26) + 1
+            encrypted <-- encrypted + (encrypted_pos + 64)
+            
+            # Move to next key character
+            key_index <-- (key_index % LENGTH(key)) + 1
+        } ELSE {
+            # Keep non-alphabetic characters
+            encrypted <-- encrypted + char
+        }
+        i <-- i + 1
+    }
+    RETURN encrypted
+}
+
+PROCEDURE VIGENERE_DECRYPT(message, key) {
+    decrypted <-- ""
+    key_index <-- 1
+    i <-- 1
+    
+    REPEAT LENGTH(message) TIMES {
+        char <-- message[i]
+        
+        # Check if character is alphabetic
+        char_pos <-- char - 64  # ASCII A is 65
+        
+        IF (char_pos >= 1 AND char_pos <= 26) {
+            # Get key character position
+            key_char <-- key[key_index]
+            key_pos <-- key_char - 64
+            
+            # Apply reverse shift
+            decrypted_pos <-- ((char_pos - key_pos + 25) % 26) + 1
+            decrypted <-- decrypted + (decrypted_pos + 64)
+            
+            # Move to next key character
+            key_index <-- (key_index % LENGTH(key)) + 1
+        } ELSE {
+            # Keep non-alphabetic characters
+            decrypted <-- decrypted + char
+        }
+        i <-- i + 1
+    }
+    RETURN decrypted
+}
+
+# Using Vigenère cipher
+message <-- "HELLO WORLD"
+key <-- "SECRET"
+
+encrypted <-- VIGENERE_ENCRYPT(message, key)
+decrypted <-- VIGENERE_DECRYPT(encrypted, key)
+
+DISPLAY("Original: ")
+DISPLAY(message)
+DISPLAY("Key: ")
+DISPLAY(key)
+DISPLAY("Encrypted: ")
+DISPLAY(encrypted)
+DISPLAY("Decrypted: ")
+DISPLAY(decrypted)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Hash Functions</h2>
+                <p>Hash functions convert data of any size into a fixed-size string, commonly used for password storage and data integrity.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">hash_functions.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Hash Functions in Spindle
+# Simple hash function implementations
+
+PROCEDURE SIMPLE_HASH(data) {
+    # Simple hash function for demonstration
+    hash_value <-- 0
+    i <-- 1
+    
+    REPEAT LENGTH(data) TIMES {
+        char <-- data[i]
+        hash_value <-- ((hash_value * 31) + char) % 1000000
+        i <-- i + 1
+    }
+    RETURN hash_value
+}
+
+PROCEDURE MD5_HASH(data) {
+    # Simplified MD5-like hash (not actual MD5)
+    hash_value <-- 0
+    i <-- 1
+    
+    REPEAT LENGTH(data) TIMES {
+        char <-- data[i]
+        hash_value <-- ((hash_value * 17) + char) % 1000000000
+        i <-- i + 1
+    }
+    RETURN "md5_" + hash_value
+}
+
+PROCEDURE SHA256_HASH(data) {
+    # Simplified SHA-256-like hash (not actual SHA-256)
+    hash_value <-- 0
+    i <-- 1
+    
+    REPEAT LENGTH(data) TIMES {
+        char <-- data[i]
+        hash_value <-- ((hash_value * 23) + char) % 1000000000
+        i <-- i + 1
+    }
+    RETURN "sha256_" + hash_value
+}
+
+PROCEDURE VERIFY_PASSWORD(password, stored_hash) {
+    # Verify password against stored hash
+    password_hash <-- SHA256_HASH(password)
+    IF (password_hash == stored_hash) {
+        RETURN "True"
+    } ELSE {
+        RETURN "False"
+    }
+}
+
+# Testing hash functions
+message <-- "Hello, World!"
+password <-- "mypassword123"
+
+DISPLAY("Original message: ")
+DISPLAY(message)
+DISPLAY("Simple hash: ")
+DISPLAY(SIMPLE_HASH(message))
+DISPLAY("MD5 hash: ")
+DISPLAY(MD5_HASH(message))
+DISPLAY("SHA-256 hash: ")
+DISPLAY(SHA256_HASH(message))
+
+# Password verification
+stored_hash <-- SHA256_HASH(password)
+DISPLAY("Stored hash: ")
+DISPLAY(stored_hash)
+DISPLAY("Password verification: ")
+DISPLAY(VERIFY_PASSWORD(password, stored_hash))
+DISPLAY("Wrong password verification: ")
+DISPLAY(VERIFY_PASSWORD("wrongpass", stored_hash))</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Symmetric vs Asymmetric Encryption</h2>
+                <div class="encryption-types">
+                    <h3>Symmetric Encryption</h3>
+                    <p>Uses the same key for encryption and decryption. Fast but requires secure key exchange.</p>
+                    
+                    <h3>Asymmetric Encryption</h3>
+                    <p>Uses public and private key pairs. Slower but provides better security for key exchange.</p>
+                </div>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">encryption_types.py</span>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Symmetric encryption example (AES-like)
+def symmetric_encrypt(message, key):
+    # Simplified symmetric encryption
+    encrypted = ""
+    for i, char in enumerate(message):
+        key_char = key[i % len(key)]
+        encrypted_char = chr((ord(char) + ord(key_char)) % 256)
+        encrypted += encrypted_char
+    return encrypted
+
+def symmetric_decrypt(encrypted, key):
+    # Simplified symmetric decryption
+    decrypted = ""
+    for i, char in enumerate(encrypted):
+        key_char = key[i % len(key)]
+        decrypted_char = chr((ord(char) - ord(key_char)) % 256)
+        decrypted += decrypted_char
+    return decrypted
+
+# Asymmetric encryption simulation
+class RSA:
+    def __init__(self):
+        # Simplified RSA with small numbers
+        self.public_key = (17, 3233)  # (e, n)
+        self.private_key = (2753, 3233)  # (d, n)
+    
+    def encrypt(self, message):
+        e, n = self.public_key
+        encrypted = []
+        for char in message:
+            m = ord(char)
+            c = pow(m, e, n)
+            encrypted.append(c)
+        return encrypted
+    
+    def decrypt(self, encrypted):
+        d, n = self.private_key
+        decrypted = ""
+        for c in encrypted:
+            m = pow(c, d, n)
+            decrypted += chr(m)
+        return decrypted
+
+# Testing encryption types
+message = "Hello"
+symmetric_key = "SECRET"
+
+# Symmetric encryption
+sym_encrypted = symmetric_encrypt(message, symmetric_key)
+sym_decrypted = symmetric_decrypt(sym_encrypted, symmetric_key)
+
+print("Symmetric Encryption:")
+print(f"Original: {message}")
+print(f"Encrypted: {sym_encrypted}")
+print(f"Decrypted: {sym_decrypted}")
+
+# Asymmetric encryption
+rsa = RSA()
+asym_encrypted = rsa.encrypt(message)
+asym_decrypted = rsa.decrypt(asym_encrypted)
+
+print("\nAsymmetric Encryption:")
+print(f"Original: {message}")
+print(f"Encrypted: {asym_encrypted}")
+print(f"Decrypted: {asym_decrypted}")</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Digital Signatures</h2>
+                <p>Digital signatures provide authentication and integrity verification for digital messages.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">digital_signatures.py</span>
+                  </div>
+                  <div class="code-content">
+                    <pre><code>import hashlib
+
+class DigitalSignature:
+    def __init__(self):
+        self.private_key = "my_private_key_123"
+        self.public_key = "my_public_key_456"
+    
+    def sign_message(self, message):
+        """Create a digital signature"""
+        # Combine message with private key
+        data_to_sign = message + self.private_key
+        # Create hash
+        signature = hashlib.sha256(data_to_sign.encode()).hexdigest()
+        return signature
+    
+    def verify_signature(self, message, signature):
+        """Verify a digital signature"""
+        # Recreate signature with public key
+        data_to_verify = message + self.public_key
+        expected_signature = hashlib.sha256(data_to_verify.encode()).hexdigest()
+        return signature == expected_signature
+    
+    def create_signed_message(self, message):
+        """Create a message with its signature"""
+        signature = self.sign_message(message)
+        return {
+            'message': message,
+            'signature': signature,
+            'sender': 'Alice'
+        }
+
+# Using digital signatures
+ds = DigitalSignature()
+
+# Create and sign a message
+original_message = "Hello, this is a secret message!"
+signed_msg = ds.create_signed_message(original_message)
+
+print("Digital Signature Example:")
+print(f"Original message: {signed_msg['message']}")
+print(f"Signature: {signed_msg['signature']}")
+print(f"Sender: {signed_msg['sender']}")
+
+# Verify the signature
+is_valid = ds.verify_signature(signed_msg['message'], signed_msg['signature'])
+print(f"Signature valid: {is_valid}")
+
+# Try to verify with tampered message
+tampered_message = "Hello, this is a tampered message!"
+is_valid_tampered = ds.verify_signature(tampered_message, signed_msg['signature'])
+print(f"Tampered message valid: {is_valid_tampered}")</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>SSL/TLS Protocol</h2>
+                <p>SSL/TLS provides secure communication over networks, commonly used for HTTPS connections.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">ssl_tls.py</span>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Simplified SSL/TLS handshake simulation
+import random
+import hashlib
+
+class SSLHandshake:
+    def __init__(self):
+        self.session_key = None
+    
+    def client_hello(self):
+        """Client initiates connection"""
+        client_random = random.getrandbits(128)
+        supported_ciphers = ['AES-256', 'AES-128', '3DES']
+        return {
+            'type': 'ClientHello',
+            'client_random': client_random,
+            'supported_ciphers': supported_ciphers
+        }
+    
+    def server_hello(self, client_hello):
+        """Server responds to client"""
+        server_random = random.getrandbits(128)
+        chosen_cipher = 'AES-256'
+        server_certificate = "Server's public certificate"
+        
+        return {
+            'type': 'ServerHello',
+            'server_random': server_random,
+            'chosen_cipher': chosen_cipher,
+            'server_certificate': server_certificate
+        }
+    
+    def key_exchange(self, client_random, server_random):
+        """Generate session key"""
+        # Simplified key generation
+        combined = str(client_random) + str(server_random) + "session_secret"
+        self.session_key = hashlib.sha256(combined.encode()).hexdigest()[:32]
+        return self.session_key
+    
+    def encrypt_message(self, message):
+        """Encrypt message with session key"""
+        if not self.session_key:
+            return "No session key established"
+        
+        # Simplified encryption
+        encrypted = ""
+        for i, char in enumerate(message):
+            key_char = self.session_key[i % len(self.session_key)]
+            encrypted_char = chr((ord(char) + ord(key_char)) % 256)
+            encrypted += encrypted_char
+        return encrypted
+    
+    def decrypt_message(self, encrypted):
+        """Decrypt message with session key"""
+        if not self.session_key:
+            return "No session key established"
+        
+        # Simplified decryption
+        decrypted = ""
+        for i, char in enumerate(encrypted):
+            key_char = self.session_key[i % len(self.session_key)]
+            decrypted_char = chr((ord(char) - ord(key_char)) % 256)
+            decrypted += decrypted_char
+        return decrypted
+
+# Simulating SSL/TLS handshake
+ssl = SSLHandshake()
+
+print("SSL/TLS Handshake Simulation:")
+print("1. Client Hello...")
+client_hello = ssl.client_hello()
+print(f"   Client Random: {client_hello['client_random']}")
+
+print("2. Server Hello...")
+server_hello = ssl.server_hello(client_hello)
+print(f"   Server Random: {server_hello['server_random']}")
+print(f"   Chosen Cipher: {server_hello['chosen_cipher']}")
+
+print("3. Key Exchange...")
+session_key = ssl.key_exchange(client_hello['client_random'], server_hello['server_random'])
+print(f"   Session Key: {session_key[:16]}...")
+
+print("4. Secure Communication...")
+message = "Hello, secure world!"
+encrypted = ssl.encrypt_message(message)
+decrypted = ssl.decrypt_message(encrypted)
+
+print(f"   Original: {message}")
+print(f"   Encrypted: {encrypted}")
+print(f"   Decrypted: {decrypted}")</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Cryptographic Best Practices</h2>
+                <div class="best-practices">
+                    <h3>Security Guidelines</h3>
+                    <ul>
+                        <li>Use established cryptographic libraries</li>
+                        <li>Never implement your own crypto algorithms</li>
+                        <li>Use strong, random keys</li>
+                        <li>Keep private keys secure</li>
+                        <li>Use appropriate key lengths</li>
+                        <li>Regularly update cryptographic protocols</li>
+                        <li>Use salt for password hashing</li>
+                        <li>Implement proper key management</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Practice Problems</h2>
+                <div class="practice-section">
+                    <div class="problem">
+                        <h3>Problem 1: Password Strength Checker</h3>
+                        <p>Create a function to check password strength based on various criteria.</p>
+                        <div class="solution">
+                            <details>
+                                <summary>Solution</summary>
+                                <div class="code-container">
+                                  <div class="code-header">
+                                    <span class="code-filename">password_checker.py</span>
+
+                                  </div>
+                                  <div class="code-content">
+                                    <pre><code>def check_password_strength(password):
+    score = 0
+    feedback = []
+    
+    # Length check
+    if len(password) >= 8:
+        score += 1
+    else:
+        feedback.append("Password should be at least 8 characters")
+    
+    # Uppercase check
+    if any(c.isupper() for c in password):
+        score += 1
+    else:
+        feedback.append("Include uppercase letters")
+    
+    # Lowercase check
+    if any(c.islower() for c in password):
+        score += 1
+    else:
+        feedback.append("Include lowercase letters")
+    
+    # Digit check
+    if any(c.isdigit() for c in password):
+        score += 1
+    else:
+        feedback.append("Include numbers")
+    
+    # Special character check
+    special_chars = "!@#$%^&*()_+-=[]{}|;:,.<>?"
+    if any(c in special_chars for c in password):
+        score += 1
+    else:
+        feedback.append("Include special characters")
+    
+    # Strength rating
+    if score <= 2:
+        strength = "Weak"
+    elif score <= 4:
+        strength = "Medium"
+    else:
+        strength = "Strong"
+    
+    return {
+        'score': score,
+        'strength': strength,
+        'feedback': feedback
+    }
+
+# Testing password strength
+passwords = ["password", "Password123", "P@ssw0rd!", "abc123"]
+
+for pwd in passwords:
+    result = check_password_strength(pwd)
+    print(f"Password: {pwd}")
+    print(f"Score: {result['score']}/5")
+    print(f"Strength: {result['strength']}")
+    print(f"Feedback: {result['feedback']}")
+    print()</code></pre>
+                                  </div>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Ready to Learn More?</h2>
+                <p>Explore these related topics:</p>
+                <div class="button-group">
+                    <a href="/articles/cybersecurity" class="primary-button">Cybersecurity</a>
+                    <a href="/articles/networking" class="primary-button">Networking</a>
+                    <a href="/study/mcq-practice" class="primary-button">Practice MCQs</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="/Global/navigation.js"></script>
+</body>
+</html> 

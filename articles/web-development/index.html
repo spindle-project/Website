@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development - Spindle</title>
+    <meta name="description" content="Learn about web development, HTML, CSS, JavaScript, and modern web technologies">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="stylesheet" href="/Global/material-ui/tokens.css">
+    <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../code-container.css">
+    <script src="../code-container.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav id="navBar" aria-label="Main navigation"></nav>
+    <main>
+        <article class="content-section">
+            <h1>Web Development</h1>
+
+            <section>
+                <h2>Frontend Development</h2>
+                <p>Frontend development focuses on creating the user interface and user experience of web applications.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">web_app.html</span>
+
+                  </div>
+                  <div class="code-content">
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Web App&lt;/title&gt;
+    &lt;style&gt;
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        button { padding: 10px 20px; margin: 5px; }
+        #result { margin-top: 20px; padding: 10px; background: #f0f0f0; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;h1&gt;Simple Web App&lt;/h1&gt;
+        &lt;button onclick="sayHello()"&gt;Say Hello&lt;/button&gt;
+        &lt;button onclick="calculateSum()"&gt;Calculate Sum&lt;/button&gt;
+        &lt;div id="result"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        function sayHello() {
+            document.getElementById('result').innerHTML = 'Hello, World!';
+        }
+        
+        function calculateSum() {
+            const a = 5;
+            const b = 3;
+            const sum = a + b;
+            document.getElementById('result').innerHTML = 
+                `${a} + ${b} = ${sum}`;
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Ready to Learn More?</h2>
+                <p>Explore these related topics:</p>
+                <div class="button-group">
+                    <a href="/articles/database-systems" class="primary-button">Database Systems</a>
+                    <a href="/articles/user-interface" class="primary-button">User Interface</a>
+                    <a href="/study/mcq-practice" class="primary-button">Practice MCQs</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="/Global/navigation.js"></script>
+</body>
+</html> 

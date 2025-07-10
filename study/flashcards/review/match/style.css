@@ -1,0 +1,57 @@
+body {
+  height: 100%;
+}
+/* Track */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+#matchBoard {
+  display: grid;
+  width: 100%;
+  height: calc(100vh - 150px);
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 5px;
+  overflow-wrap: anywhere;
+}
+#matchBoard > div {
+  background-color: var(--mixed-burple);
+  color: white;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-evenly;
+  align-content: center;
+  width: 100%;
+  overflow: hidden;
+  height: calc(100%);
+}
+.matchedElement {
+  background-color: green !important;
+}
+.wrongChoice {
+  background-color: darkred !important;
+  color: red;
+  font-weight: bold;
+}
+.clickedElement {
+  background-color: var(--dodger-blue) !important;
+  color: #000000 !important;
+  font-weight: bold;
+}
+@media screen and (max-width: 750px) {
+  body {
+    background-color: red;
+  }
+  #matchBoard {
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

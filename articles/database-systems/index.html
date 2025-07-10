@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Systems - Spindle</title>
+    <meta name="description" content="Learn about database systems, SQL, and data management">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="stylesheet" href="/Global/material-ui/tokens.css">
+    <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../code-container.css">
+    <script src="../code-container.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav id="navBar" aria-label="Main navigation"></nav>
+    <main>
+        <article class="content-section">
+            <h1>Database Systems</h1>
+
+            <section>
+                <h2>SQL Database Operations</h2>
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">database_operations.sql</span>
+
+                  </div>
+                  <div class="code-content">
+                    <pre><code>-- Create a table
+CREATE TABLE students (
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(100),
+    age INTEGER,
+    grade DECIMAL(3,2)
+);
+
+-- Insert data
+INSERT INTO students (id, name, age, grade) VALUES
+(1, 'Alice', 18, 3.8),
+(2, 'Bob', 19, 3.5),
+(3, 'Charlie', 18, 3.9);
+
+-- Query data
+SELECT * FROM students WHERE age = 18;
+
+-- Update data
+UPDATE students SET grade = 4.0 WHERE name = 'Alice';
+
+-- Delete data
+DELETE FROM students WHERE id = 3;
+
+-- Join tables
+SELECT s.name, c.course_name 
+FROM students s 
+JOIN enrollments e ON s.id = e.student_id
+JOIN courses c ON e.course_id = c.id;</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Ready to Learn More?</h2>
+                <p>Explore these related topics:</p>
+                <div class="button-group">
+                    <a href="/articles/data-structures" class="primary-button">Data Structures</a>
+                    <a href="/articles/web-development" class="primary-button">Web Development</a>
+                    <a href="/study/mcq-practice" class="primary-button">Practice MCQs</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="/Global/navigation.js"></script>
+</body>
+</html> 

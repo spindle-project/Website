@@ -130,6 +130,7 @@ Run Code            </div>
         const outputWrapper = document.getElementById('outputWrapper');
         const outputPlacementSelect = document.getElementById('outputPlacement');
         const outputSizeSelect = document.getElementById('outputSize');
+        const codeInput = document.getElementById('codeInput');
 
         /**
          * Applies the selected output placement and size settings to the DOM.
@@ -159,8 +160,71 @@ Run Code            </div>
           }
         }
 
+        /**
+         * Loads code from URL parameter if present
+         */
+        function loadCodeFromURL() {
+          const urlParams = new URLSearchParams(window.location.search);
+          const codeParam = urlParams.get('code');
+          
+          if (codeParam) {
+            try {
+              const decodedCode = decodeURIComponent(codeParam);
+              codeInput.value = decodedCode;
+              
+              // Show a brief notification that code was loaded
+              showNotification('Code loaded from documentation!');
+            } catch (error) {
+              console.error('Error decoding code from URL:', error);
+            }
+          }
+        }
+
+        /**
+         * Shows a notification message
+         */
+        function showNotification(message) {
+          const notification = document.createElement('div');
+          notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+          `;
+          notification.textContent = message;
+          
+          document.body.appendChild(notification);
+          
+          // Animate in
+          setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+          }, 100);
+          
+          // Remove after 3 seconds
+          setTimeout(() => {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+              if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+              }
+            }, 300);
+          }, 3000);
+        }
+
         // Initial application of settings when the page loads
         applyOutputSettings();
+        
+        // Load code from URL if present
+        loadCodeFromURL();
 
         // Event listeners for changes in dropdowns
         outputPlacementSelect.addEventListener('change', applyOutputSettings);

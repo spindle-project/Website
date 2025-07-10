@@ -26,12 +26,15 @@ h2 {
 html {
   padding: 0px;
 }
-@media (max-width: 750px) {
+@media (max-width: 950px) {
   .playground-wrapper {
     flex-direction: column;
   }
   .test-code-button {
     bottom: -100px !important;
+  }
+  .moble-resize {
+    flex-direction: column !important;
   }
 }
 
@@ -190,5 +193,52 @@ background-color: var(--md-sys-color-surface-container-high);
 }
 .card b {
   font-size: 24px;
+}
+
+.ides-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .ides-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+}
+
+@media (max-width: 600px) {
+  .ides-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    flex-direction: column;
+    padding: 3rem 1rem 2rem 1rem;
+    gap: 2rem;
+    align-items: stretch;
+  }
+  .hero-left-side, .hero-right-side {
+    min-width: 0;
+    width: 100%;
+    flex: unset;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 2rem 0.5rem 1.5rem 0.5rem;
+    gap: 1.2rem;
+  }
+  .hero-left-side, .hero-right-side {
+    width: 100%;
+    min-width: 0;
+  }
 }
 

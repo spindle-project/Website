@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artificial Intelligence - Spindle</title>
+    <meta name="description" content="Learn about artificial intelligence, machine learning, and neural networks">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="stylesheet" href="/Global/material-ui/tokens.css">
+    <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../code-container.css">
+    <script src="../code-container.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav id="navBar" aria-label="Main navigation"></nav>
+    <main>
+        <article class="content-section">
+            <h1>Artificial Intelligence</h1>
+
+            <section>
+                <h2>Simple Neural Network</h2>
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">neural_network.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Simple Neural Network in Spindle
+# This demonstrates basic AI concepts using Spindle's capabilities
+
+# Initialize weights for a simple XOR neural network
+weights1 <- [0.5, 0.3, -0.2, 0.1, -0.4, 0.6, 0.2, -0.3]
+weights2 <- [0.4, -0.5, 0.3, 0.1]
+
+# Sigmoid activation function
+PROCEDURE sigmoid(x) {
+    # Simple approximation of sigmoid function
+    IF (x > 0) {
+        result <- 1
+    } ELSE {
+        result <- 0
+    }
+    RETURN result
+}
+
+# Forward pass through the network
+PROCEDURE forward_pass(input1, input2) {
+    # Hidden layer calculations
+    hidden1 <- (input1 * weights1[1]) + (input2 * weights1[2])
+    hidden2 <- (input1 * weights1[3]) + (input2 * weights1[4])
+    hidden3 <- (input1 * weights1[5]) + (input2 * weights1[6])
+    hidden4 <- (input1 * weights1[7]) + (input2 * weights1[8])
+    
+    # Apply activation function
+    hidden1 <- sigmoid(hidden1)
+    hidden2 <- sigmoid(hidden2)
+    hidden3 <- sigmoid(hidden3)
+    hidden4 <- sigmoid(hidden4)
+    
+    # Output layer
+    output <- (hidden1 * weights2[1]) + (hidden2 * weights2[2]) + 
+              (hidden3 * weights2[3]) + (hidden4 * weights2[4])
+    output <- sigmoid(output)
+    
+    RETURN output
+}
+
+# Test XOR problem
+DISPLAY("XOR Neural Network Results:")
+
+# Test case 1: 0 XOR 0 = 0
+result1 <- forward_pass(0, 0)
+DISPLAY("Input: [0, 0], Output: ")
+DISPLAY(result1)
+
+# Test case 2: 0 XOR 1 = 1
+result2 <- forward_pass(0, 1)
+DISPLAY("Input: [0, 1], Output: ")
+DISPLAY(result2)
+
+# Test case 3: 1 XOR 0 = 1
+result3 <- forward_pass(1, 0)
+DISPLAY("Input: [1, 0], Output: ")
+DISPLAY(result3)
+
+# Test case 4: 1 XOR 1 = 0
+result4 <- forward_pass(1, 1)
+DISPLAY("Input: [1, 1], Output: ")
+DISPLAY(result4)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Ready to Learn More?</h2>
+                <p>Explore these related topics:</p>
+                <div class="button-group">
+                    <a href="/articles/algorithm-complexity" class="primary-button">Algorithm Complexity</a>
+                    <a href="/articles/data-structures" class="primary-button">Data Structures</a>
+                    <a href="/study/mcq-practice" class="primary-button">Practice MCQs</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="/Global/navigation.js"></script>
+</body>
+</html> 
