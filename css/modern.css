@@ -14,17 +14,14 @@
 /* Page Gradients */
 body {
   /* More obvious radial gradients */
-  background: radial-gradient(at top left, #4a00e0, transparent 70%), /* A vibrant purple */
-              radial-gradient(at bottom right, #8e2de2, var(--background) 100%); /* Another vibrant purple/pink blend */
+  background: radial-gradient(at top left, #5D8FDB, transparent 70%), /* A vibrant purple */
+              radial-gradient(at bottom right, #6c2de2, var(--background) 100%); /* Another vibrant purple/pink blend */
   background-color: var(--background); /* Fallback */
   color: var(--text-primary);
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  /* Soft pattern on body */
-  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5zM6 0H5zm0 6h-1V5z'/%3E%3C/g%3E%3C/svg%3E"); /* Slightly increased pattern opacity */
-  background-attachment: fixed;
-  background-blend-mode: overlay; /* Blends the gradient and pattern for more impact */
+  
   
 }
 
