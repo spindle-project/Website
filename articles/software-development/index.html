@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Development - Spindle</title>
+    <meta name="description" content="Learn about software development methodologies, version control, and best practices">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="stylesheet" href="/Global/material-ui/tokens.css">
+    <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../code-container.css">
+    <script src="../code-container.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav id="navBar" aria-label="Main navigation"></nav>
+    <main>
+        <article class="content-section">
+            <h1>Software Development</h1>
+
+            <section>
+                <h2>Software Development Life Cycle</h2>
+                <p>The software development life cycle (SDLC) is a process used by software development teams to design, develop, and test high-quality software.</p>
+
+                <div class="concept-box">
+                    <h3>SDLC Phases</h3>
+                    <ul>
+                        <li>Requirements Analysis</li>
+                        <li>Design</li>
+                        <li>Implementation</li>
+                        <li>Testing</li>
+                        <li>Deployment</li>
+                        <li>Maintenance</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Version Control with Git</h2>
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">git_commands.txt</span>
+
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Initialize a new Git repository
+git init
+
+# Add files to staging area
+git add filename.py
+git add .
+
+# Commit changes
+git commit -m "Initial commit"
+
+# Create and switch to a new branch
+git checkout -b feature-branch
+
+# Switch between branches
+git checkout main
+
+# Merge branches
+git merge feature-branch
+
+# View commit history
+git log
+
+# View status of working directory
+git status
+
+# Push changes to remote repository
+git push origin main
+
+# Pull changes from remote repository
+git pull origin main</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Ready to Learn More?</h2>
+                <p>Explore these related topics:</p>
+                <div class="button-group">
+                    <a href="/articles/software-testing" class="primary-button">Software Testing</a>
+                    <a href="/articles/web-development" class="primary-button">Web Development</a>
+                    <a href="/study/mcq-practice" class="primary-button">Practice MCQs</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="/shared/navbar.js"></script>
+</body>
+</html> 

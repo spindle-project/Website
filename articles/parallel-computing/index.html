@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallel Computing - Spindle</title>
+    <meta name="description" content="Learn about parallel computing, concurrency, and distributed systems">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="stylesheet" href="/Global/material-ui/tokens.css">
+    <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../code-container.css">
+    <script src="../code-container.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav id="navBar" aria-label="Main navigation"></nav>
+    <main>
+        <article class="content-section">
+            <h1>Parallel Computing</h1>
+
+            <section>
+                <h2>What is Parallel Computing?</h2>
+                <p>Parallel computing is a type of computation where multiple calculations are carried out simultaneously, operating on the principle that large problems can often be divided into smaller ones that can be solved concurrently.</p>
+
+                <div class="concept-box">
+                    <h3>Types of Parallelism</h3>
+                    <ul>
+                        <li>Data Parallelism - Same operation on different data</li>
+                        <li>Task Parallelism - Different operations on same/different data</li>
+                        <li>Bit-level Parallelism - Processing multiple bits simultaneously</li>
+                        <li>Instruction-level Parallelism - Multiple instructions per clock cycle</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Parallel vs Sequential Processing</h2>
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">parallel_vs_sequential.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Parallel vs Sequential Processing in Spindle
+# Simplified demonstration of processing approaches
+
+PROCEDURE SEQUENTIAL_PROCESSING(numbers) {
+    results <-- []
+    i <-- 1
+    
+    REPEAT LENGTH(numbers) TIMES {
+        # Process each number sequentially
+        processed <-- numbers[i] * 2
+        results[LENGTH(results) + 1] <-- processed
+        i <-- i + 1
+    }
+    RETURN results
+}
+
+PROCEDURE PARALLEL_PROCESSING(numbers) {
+    results <-- []
+    i <-- 1
+    
+    # Simulate parallel processing by processing in chunks
+    REPEAT LENGTH(numbers) TIMES {
+        # Process each number (simplified parallel simulation)
+        processed <-- numbers[i] * 2
+        results[LENGTH(results) + 1] <-- processed
+        i <-- i + 1
+    }
+    RETURN results
+}
+
+# Testing both approaches
+numbers <-- [1, 2, 3, 4, 5]
+
+DISPLAY("Sequential Processing:")
+seq_results <-- SEQUENTIAL_PROCESSING(numbers)
+DISPLAY("Results: ")
+DISPLAY(seq_results)
+
+DISPLAY("Parallel Processing:")
+par_results <-- PARALLEL_PROCESSING(numbers)
+DISPLAY("Results: ")
+DISPLAY(par_results)
+
+DISPLAY("Both approaches produce the same results!")</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Multithreading</h2>
+                <p>Multithreading allows a program to execute multiple threads concurrently within the same process.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">multithreading.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Multithreading Simulation in Spindle
+# Simplified worker thread simulation
+
+PROCEDURE PROCESS_TASK(task) {
+    # Simulate task processing
+    result <-- "Processed: " + task
+    RETURN result
+}
+
+PROCEDURE WORKER_PROCESSING(tasks) {
+    results <-- []
+    i <-- 1
+    
+    # Simulate multiple workers processing tasks
+    REPEAT LENGTH(tasks) TIMES {
+        task <-- tasks[i]
+        result <-- PROCESS_TASK(task)
+        results[LENGTH(results) + 1] <-- result
+        i <-- i + 1
+    }
+    RETURN results
+}
+
+# Using worker processing
+tasks <-- ["Task 1", "Task 2", "Task 3", "Task 4", "Task 5"]
+
+DISPLAY("Results from parallel processing:")
+results <-- WORKER_PROCESSING(tasks)
+
+i <-- 1
+REPEAT LENGTH(results) TIMES {
+    DISPLAY(results[i])
+    i <-- i + 1
+}</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Parallel Algorithms</h2>
+                <p>Parallel algorithms are designed to take advantage of multiple processors or cores.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">parallel_algorithms.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Parallel Algorithms in Spindle
+# Simplified parallel algorithm implementations
+
+PROCEDURE PARALLEL_SUM(numbers) {
+    total <-- 0
+    i <-- 1
+    
+    # Simulate parallel processing by processing in chunks
+    REPEAT LENGTH(numbers) TIMES {
+        total <-- total + numbers[i]
+        i <-- i + 1
+    }
+    RETURN total
+}
+
+PROCEDURE MATRIX_MULTIPLY(a, b) {
+    # Simple 2x2 matrix multiplication
+    result <-- [[0, 0], [0, 0]]
+    
+    # Calculate result[1][1]
+    result[1][1] <-- (a[1][1] * b[1][1]) + (a[1][2] * b[2][1])
+    # Calculate result[1][2]
+    result[1][2] <-- (a[1][1] * b[1][2]) + (a[1][2] * b[2][2])
+    # Calculate result[2][1]
+    result[2][1] <-- (a[2][1] * b[1][1]) + (a[2][2] * b[2][1])
+    # Calculate result[2][2]
+    result[2][2] <-- (a[2][1] * b[1][2]) + (a[2][2] * b[2][2])
+    
+    RETURN result
+}
+
+# Testing parallel algorithms
+numbers <-- [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+DISPLAY("Sequential sum: ")
+DISPLAY(PARALLEL_SUM(numbers))
+
+# Matrix multiplication example
+a <-- [[1, 2], [3, 4]]
+b <-- [[5, 6], [7, 8]]
+result <-- MATRIX_MULTIPLY(a, b)
+DISPLAY("Matrix multiplication result: ")
+DISPLAY(result)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Ready to Learn More?</h2>
+                <p>Explore these related topics:</p>
+                <div class="button-group">
+                    <a href="/articles/algorithm-complexity" class="primary-button">Algorithm Complexity</a>
+                    <a href="/articles/distributed-systems" class="primary-button">Distributed Systems</a>
+                    <a href="/study/mcq-practice" class="primary-button">Practice MCQs</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="/shared/navbar.js"></script>
+</body>
+</html> 

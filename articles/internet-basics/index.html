@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/Global/material-ui/tokens.css">
     <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../code-container.css">
+    <script src="../code-container.js" defer></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
 <body>
@@ -187,47 +189,56 @@
                         <div class="tech-card">
                             <h4>HTML</h4>
                             <p>Structure and content of web pages</p>
-                            <div class="code-example">
-                                <pre><code>
-&lt;html&gt;
+                            <div class="code-container">
+                              <div class="code-header">
+                                <span class="code-filename">example.html</span>
+                              </div>
+                              <div class="code-content">
+                                <pre><code>&lt;html&gt;
     &lt;head&gt;
         &lt;title&gt;Page Title&lt;/title&gt;
     &lt;/head&gt;
     &lt;body&gt;
         &lt;h1&gt;Hello World&lt;/h1&gt;
     &lt;/body&gt;
-&lt;/html&gt;
-                                </code></pre>
+&lt;/html&gt;</code></pre>
+                              </div>
                             </div>
                         </div>
 
                         <div class="tech-card">
                             <h4>CSS</h4>
                             <p>Styling and layout of web pages</p>
-                            <div class="code-example">
-                                <pre><code>
-body {
+                            <div class="code-container">
+                              <div class="code-header">
+                                <span class="code-filename">styles.css</span>
+                              </div>
+                              <div class="code-content">
+                                <pre><code>body {
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
 }
 h1 {
     color: blue;
     text-align: center;
-}
-                                </code></pre>
+}</code></pre>
+                              </div>
                             </div>
                         </div>
 
                         <div class="tech-card">
                             <h4>JavaScript</h4>
                             <p>Interactive behavior and functionality</p>
-                            <div class="code-example">
-                                <pre><code>
-function greet() {
+                            <div class="code-container">
+                              <div class="code-header">
+                                <span class="code-filename">script.js</span>
+                              </div>
+                              <div class="code-content">
+                                <pre><code>function greet() {
     let name = prompt("Enter your name");
     alert("Hello, " + name + "!");
-}
-                                </code></pre>
+}</code></pre>
+                              </div>
                             </div>
                         </div>
                     </div>

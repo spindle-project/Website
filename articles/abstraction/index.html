@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstraction in Computer Science - Spindle</title>
+    <meta name="description" content="Learn about abstraction, a fundamental concept in computer science that helps manage complexity">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="stylesheet" href="/Global/material-ui/tokens.css">
+    <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../code-container.css">
+    <script src="../code-container.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav id="navBar" aria-label="Main navigation"></nav>
+    <main>
+        <article class="content-section">
+            <h1>Abstraction in Computer Science</h1>
+
+            <section>
+                <h2>What is Abstraction?</h2>
+                <p>Abstraction is a fundamental concept in computer science that involves hiding complex implementation details and showing only the essential features of a system. It allows programmers to work with high-level concepts without worrying about the underlying complexity.</p>
+
+                <div class="concept-box">
+                    <h3>Key Principles of Abstraction</h3>
+                    <ul>
+                        <li>Hide unnecessary details</li>
+                        <li>Show only essential features</li>
+                        <li>Provide a simple interface</li>
+                        <li>Reduce cognitive load</li>
+                        <li>Enable modular design</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Levels of Abstraction</h2>
+                <div class="abstraction-levels">
+                    <h3>Hardware Level</h3>
+                    <p>The lowest level where we deal with transistors, circuits, and electrical signals.</p>
+                    
+                    <h3>Machine Level</h3>
+                    <p>Assembly language and machine code that directly control hardware.</p>
+                    
+                    <h3>Programming Language Level</h3>
+                    <p>High-level languages like Python, Java, or Spindle that abstract away hardware details.</p>
+                    
+                    <h3>Application Level</h3>
+                    <p>User-facing applications that abstract away programming complexity.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Data Abstraction</h2>
+                <p>Data abstraction involves hiding the internal structure of data and providing a clean interface to work with it.</p>
+
+                <h3>Creating a Stack Interface</h3>
+                <p>We can create a stack data structure that hides its internal implementation. Let's start with the basic stack creation:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">stack_creation.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Abstract stack creation
+PROCEDURE CREATE_STACK() {
+    # Internal implementation hidden
+    stack <-- []
+}
+
+# Using the abstract interface
+my_stack <-- CREATE_STACK()
+DISPLAY("Stack created successfully")</code></pre>
+                  </div>
+                </div>
+
+                <p>Now let's add the push operation to add items to the stack:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">stack_push.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Push operation abstraction
+PROCEDURE PUSH(stack, item) {
+    # Add item to top of stack
+    stack[LENGTH(stack) + 1] <-- item
+    DISPLAY("Pushed: ")
+    DISPLAY(item)
+}
+
+# Test push operation
+stack <-- []
+PUSH(stack, "first")
+PUSH(stack, "second")</code></pre>
+                  </div>
+                </div>
+
+                <p>Finally, let's add the pop operation to remove items from the stack:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">stack_pop.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Pop operation abstraction
+PROCEDURE POP(stack) {
+    # Remove and return top item
+    IF (LENGTH(stack) == 0) {
+        RETURN "Stack is empty"
+    }
+    item <-- stack[LENGTH(stack)]
+    DISPLAY("Popped: ")
+    DISPLAY(item)
+    RETURN item
+}
+
+# Test pop operation
+stack <-- ["first", "second"]
+POP(stack)
+POP(stack)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Complete Stack Operations</h3>
+                <p>Now let's see how all the stack operations work together:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">complete_stack.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Complete stack abstraction
+PROCEDURE PUSH(stack, item) {
+    stack[LENGTH(stack) + 1] <-- item
+}
+
+PROCEDURE POP(stack) {
+    IF (LENGTH(stack) == 0) {
+        RETURN "Empty"
+    }
+    item <-- stack[LENGTH(stack)]
+    RETURN item
+}
+
+# User only sees simple operations
+stack <-- []
+PUSH(stack, "A")
+PUSH(stack, "B")
+PUSH(stack, "C")
+
+DISPLAY("Stack operations:")
+DISPLAY("Popped: ")
+DISPLAY(POP(stack))
+DISPLAY("Popped: ")
+DISPLAY(POP(stack))
+DISPLAY("Popped: ")
+DISPLAY(POP(stack))</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Procedural Abstraction</h2>
+                <p>Procedural abstraction involves creating functions that hide complex operations behind simple interfaces.</p>
+
+                <h3>Simple Function Interface</h3>
+                <p>A complex calculation is hidden behind a simple function call. Let's start with the basic structure:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">function_structure.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Function structure abstraction
+PROCEDURE CALCULATE_AVERAGE(scores) {
+    # Complex logic hidden from user
+    total <-- 0
+    i <-- 1
+    
+    REPEAT LENGTH(scores) TIMES {
+        total <-- total + scores[i]
+        i <-- i + 1
+    }
+    
+    average <-- total / LENGTH(scores)
+    RETURN average
+}
+
+# Simple interface for complex operation
+student_scores <-- [85, 92, 78, 95]
+average <-- CALCULATE_AVERAGE(student_scores)
+DISPLAY("Average score: ")
+DISPLAY(average)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Grade Calculation Abstraction</h3>
+                <p>A complex grading system is simplified into a single function call. Let's break it down:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">grade_function.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Grade calculation abstraction
+PROCEDURE CALCULATE_GRADE(score) {
+    # Complex grading logic hidden
+    IF (score >= 90) {
+        RETURN "A"
+    } ELSE IF (score >= 80) {
+        RETURN "B"
+    } ELSE IF (score >= 70) {
+        RETURN "C"
+    } ELSE IF (score >= 60) {
+        RETURN "D"
+    } ELSE {
+        RETURN "F"
+    }
+}
+
+# Simple interface
+test_score <-- 87
+grade <-- CALCULATE_GRADE(test_score)
+DISPLAY("Score ")
+DISPLAY(test_score)
+DISPLAY(" = Grade ")
+DISPLAY(grade)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Object-Oriented Abstraction</h2>
+                <p>Object-oriented programming provides powerful abstraction through classes and objects that encapsulate data and behavior.</p>
+
+                <h3>Bank Account Abstraction</h3>
+                <p>We can represent a bank account as an abstract object with simple operations. Let's start with account creation:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">account_creation.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Bank Account creation abstraction
+# Account represented as: [account_number, balance]
+PROCEDURE CREATE_ACCOUNT(account_number, initial_balance) {
+    RETURN [account_number, initial_balance]
+}
+
+# Using the abstract interface
+account <-- CREATE_ACCOUNT("12345", 1000)
+DISPLAY("Account created with balance: $")
+DISPLAY(account[2])</code></pre>
+                  </div>
+                </div>
+
+                <p>Now let's add the deposit operation:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">deposit_operation.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Deposit operation abstraction
+PROCEDURE DEPOSIT(account, amount) {
+    IF (amount > 0) {
+        account[2] <-- account[2] + amount
+        DISPLAY("Deposited: $")
+        DISPLAY(amount)
+        RETURN 1
+    }
+    RETURN 0
+}
+
+# Test deposit
+account <-- ["12345", 1000]
+DEPOSIT(account, 500)
+DISPLAY("New balance: $")
+DISPLAY(account[2])</code></pre>
+                  </div>
+                </div>
+
+                <p>Let's add the withdraw operation:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">withdraw_operation.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Withdraw operation abstraction
+PROCEDURE WITHDRAW(account, amount) {
+    IF (amount > 0 AND amount <= account[2]) {
+        account[2] <-- account[2] - amount
+        DISPLAY("Withdrew: $")
+        DISPLAY(amount)
+        RETURN 1
+    }
+    DISPLAY("Insufficient funds")
+    RETURN 0
+}
+
+# Test withdraw
+account <-- ["12345", 1500]
+WITHDRAW(account, 200)
+DISPLAY("Remaining balance: $")
+DISPLAY(account[2])</code></pre>
+                  </div>
+                </div>
+
+                <h3>Student Record Abstraction</h3>
+                <p>A student record can be abstracted into simple operations. Let's start with student creation:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">student_creation.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Student record creation abstraction
+# Student represented as: [name, id, grades]
+PROCEDURE CREATE_STUDENT(name, id) {
+    grades <-- []
+    RETURN [name, id, grades]
+}
+
+# Using student abstraction
+student <-- CREATE_STUDENT("Alice", "S001")
+DISPLAY("Student created: ")
+DISPLAY(student[1])</code></pre>
+                  </div>
+                </div>
+
+                <p>Now let's add the grade management:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">grade_management.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Grade management abstraction
+PROCEDURE ADD_GRADE(student, grade) {
+    student[3][LENGTH(student[3]) + 1] <-- grade
+    DISPLAY("Added grade: ")
+    DISPLAY(grade)
+}
+
+PROCEDURE GET_AVERAGE(student) {
+    IF (LENGTH(student[3]) == 0) {
+        RETURN 0
+    }
+    
+    total <-- 0
+    i <-- 1
+    REPEAT LENGTH(student[3]) TIMES {
+        total <-- total + student[3][i]
+        i <-- i + 1
+    }
+    RETURN total / LENGTH(student[3])
+}
+
+# Test grade management
+student <-- ["Alice", "S001", []]
+ADD_GRADE(student, 85)
+ADD_GRADE(student, 92)
+average <-- GET_AVERAGE(student)
+DISPLAY("Average: ")
+DISPLAY(average)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Layered Abstraction</h2>
+                <p>Complex systems can be built using multiple layers of abstraction, each hiding the complexity of the layer below.</p>
+
+                <h3>Simple Calculator Abstraction</h3>
+                <p>A calculator can be built using layers of abstraction. Let's start with the lowest level:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">low_level_operations.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Low-level operations (Layer 1)
+PROCEDURE ADD(a, b) {
+    RETURN a + b
+}
+
+PROCEDURE MULTIPLY(a, b) {
+    RETURN a * b
+}
+
+# Test low-level operations
+result1 <-- ADD(5, 3)
+result2 <-- MULTIPLY(4, 2)
+DISPLAY("5 + 3 = ")
+DISPLAY(result1)
+DISPLAY("4 * 2 = ")
+DISPLAY(result2)</code></pre>
+                  </div>
+                </div>
+
+                <p>Now let's build the middle layer using the low-level operations:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">middle_layer_operations.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Higher-level operations (Layer 2)
+PROCEDURE CALCULATE_AREA(length, width) {
+    RETURN MULTIPLY(length, width)
+}
+
+PROCEDURE CALCULATE_PERIMETER(length, width) {
+    length_plus_width <-- ADD(length, width)
+    RETURN MULTIPLY(2, length_plus_width)
+}
+
+# Test middle layer
+area <-- CALCULATE_AREA(5, 3)
+perimeter <-- CALCULATE_PERIMETER(5, 3)
+DISPLAY("Area: ")
+DISPLAY(area)
+DISPLAY("Perimeter: ")
+DISPLAY(perimeter)</code></pre>
+                  </div>
+                </div>
+
+                <p>Finally, let's create the user interface layer:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">user_interface_layer.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># User interface (Layer 3)
+# All complexity hidden from user
+length <-- 5
+width <-- 3
+area <-- CALCULATE_AREA(length, width)
+perimeter <-- CALCULATE_PERIMETER(length, width)
+
+DISPLAY("Rectangle: ")
+DISPLAY(length)
+DISPLAY(" x ")
+DISPLAY(width)
+DISPLAY("Area: ")
+DISPLAY(area)
+DISPLAY("Perimeter: ")
+DISPLAY(perimeter)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Benefits of Abstraction</h2>
+                <p>Abstraction provides several important benefits in software development.</p>
+
+                <h3>Code Reusability</h3>
+                <p>Abstract functions can be reused in different contexts. Let's see how:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">reusable_function.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Reusable abstraction
+PROCEDURE FIND_MAXIMUM(numbers) {
+    max_value <-- numbers[1]
+    i <-- 2
+    REPEAT (LENGTH(numbers) - 1) TIMES {
+        IF (numbers[i] > max_value) {
+            max_value <-- numbers[i]
+        }
+        i <-- i + 1
+    }
+    RETURN max_value
+}
+
+# Reused in different contexts
+test_scores <-- [85, 92, 78, 95, 88]
+temperatures <-- [72, 68, 75, 80, 65]
+
+highest_score <-- FIND_MAXIMUM(test_scores)
+highest_temp <-- FIND_MAXIMUM(temperatures)
+
+DISPLAY("Highest score: ")
+DISPLAY(highest_score)
+DISPLAY("Highest temperature: ")
+DISPLAY(highest_temp)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Maintainability</h3>
+                <p>Changes to implementation don't affect the interface. Let's see this in action:</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">maintainable_interface.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Interface stays the same, implementation can change
+PROCEDURE SORT_NUMBERS(numbers) {
+    # Implementation can be improved without changing interface
+    # Current: simple bubble sort
+    n <-- LENGTH(numbers)
+    i <-- 1
+    REPEAT n TIMES {
+        j <-- 1
+        REPEAT (n - 1) TIMES {
+            IF (numbers[j] > numbers[j + 1]) {
+                temp <-- numbers[j]
+                numbers[j] <-- numbers[j + 1]
+                numbers[j + 1] <-- temp
+            }
+            j <-- j + 1
+        }
+        i <-- i + 1
+    }
+    RETURN numbers
+}
+
+# Users don't need to know about the sorting algorithm
+unsorted <-- [5, 2, 8, 1, 9]
+sorted <-- SORT_NUMBERS(unsorted)
+DISPLAY("Sorted: ")
+DISPLAY(sorted)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Practice Exercises</h2>
+                <p>Practice creating abstractions with these exercises.</p>
+
+                <div class="exercise-section">
+                    <div class="exercise">
+                        <h3>Exercise 1: Queue Abstraction</h3>
+                        <p>Create an abstract queue data structure with enqueue and dequeue operations.</p>
+                        <div class="code-container">
+                          <div class="code-header">
+                            <span class="code-filename">queue_abstraction.spdl</span>
+                            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                              Run
+                            </button>
+                          </div>
+                          <div class="code-content">
+                            <pre><code># Queue abstraction
+PROCEDURE CREATE_QUEUE() {
+    RETURN []
+}
+
+PROCEDURE ENQUEUE(queue, item) {
+    queue[LENGTH(queue) + 1] <-- item
+    DISPLAY("Enqueued: ")
+    DISPLAY(item)
+}
+
+PROCEDURE DEQUEUE(queue) {
+    IF (LENGTH(queue) == 0) {
+        RETURN "Queue is empty"
+    }
+    item <-- queue[1]
+    DISPLAY("Dequeued: ")
+    DISPLAY(item)
+    RETURN item
+}
+
+# Test queue abstraction
+queue <-- CREATE_QUEUE()
+ENQUEUE(queue, "First")
+ENQUEUE(queue, "Second")
+ENQUEUE(queue, "Third")
+DEQUEUE(queue)
+DEQUEUE(queue)</code></pre>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h3>Exercise 2: Temperature Converter</h3>
+                        <p>Create an abstraction for temperature conversion that hides the conversion formulas.</p>
+                        <div class="code-container">
+                          <div class="code-header">
+                            <span class="code-filename">temperature_converter.spdl</span>
+                            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                              Run
+                            </button>
+                          </div>
+                          <div class="code-content">
+                            <pre><code># Temperature conversion abstraction
+PROCEDURE CELSIUS_TO_FAHRENHEIT(celsius) {
+    # Formula hidden from user
+    fahrenheit <-- (celsius * 9/5) + 32
+    RETURN fahrenheit
+}
+
+PROCEDURE FAHRENHEIT_TO_CELSIUS(fahrenheit) {
+    # Formula hidden from user
+    celsius <-- (fahrenheit - 32) * 5/9
+    RETURN celsius
+}
+
+# Simple interface
+celsius_temp <-- 25
+fahrenheit_temp <-- 77
+
+converted_f <-- CELSIUS_TO_FAHRENHEIT(celsius_temp)
+converted_c <-- FAHRENHEIT_TO_CELSIUS(fahrenheit_temp)
+
+DISPLAY(celsius_temp)
+DISPLAY("°C = ")
+DISPLAY(converted_f)
+DISPLAY("°F")
+DISPLAY(fahrenheit_temp)
+DISPLAY("°F = ")
+DISPLAY(converted_c)
+DISPLAY("°C")</code></pre>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h3>Exercise 3: Library System</h3>
+                        <p>Create an abstraction for a simple library book management system.</p>
+                        <div class="code-container">
+                          <div class="code-header">
+                            <span class="code-filename">library_system.spdl</span>
+                            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                              Run
+                            </button>
+                          </div>
+                          <div class="code-content">
+                            <pre><code># Library book abstraction
+# Book represented as: [title, author, available]
+PROCEDURE CREATE_BOOK(title, author) {
+    RETURN [title, author, 1]  # 1 = available
+}
+
+PROCEDURE CHECKOUT_BOOK(book) {
+    IF (book[3] == 1) {
+        book[3] <-- 0  # 0 = checked out
+        DISPLAY("Checked out: ")
+        DISPLAY(book[1])
+        RETURN 1
+    } ELSE {
+        DISPLAY("Book not available: ")
+        DISPLAY(book[1])
+        RETURN 0
+    }
+}
+
+PROCEDURE RETURN_BOOK(book) {
+    book[3] <-- 1
+    DISPLAY("Returned: ")
+    DISPLAY(book[1])
+}
+
+PROCEDURE IS_AVAILABLE(book) {
+    RETURN book[3] == 1
+}
+
+# Test library system
+book1 <-- CREATE_BOOK("The Hobbit", "Tolkien")
+book2 <-- CREATE_BOOK("1984", "Orwell")
+
+CHECKOUT_BOOK(book1)
+CHECKOUT_BOOK(book2)
+RETURN_BOOK(book1)
+CHECKOUT_BOOK(book1)</code></pre>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Ready to Learn More?</h2>
+                <p>Now that you understand abstraction, explore these related topics:</p>
+                <div class="button-group">
+                    <a href="/articles/data-structures" class="primary-button">Data Structures</a>
+                    <a href="/articles/algorithm-complexity" class="primary-button">Algorithm Complexity</a>
+                    <a href="/study/mcq-practice" class="primary-button">Practice MCQs</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="/shared/navbar.js"></script>
+</body>
+</html> 

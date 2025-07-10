@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Complexity and Big O Notation - Spindle</title>
+    <meta name="description" content="Learn about algorithm complexity, Big O notation, and how to analyze algorithm efficiency">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="stylesheet" href="/Global/material-ui/tokens.css">
+    <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../code-container.css">
+    <script src="../code-container.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav id="navBar" aria-label="Main navigation"></nav>
+    <main>
+        <article class="content-section">
+            <h1>Algorithm Complexity and Big O Notation</h1>
+
+            <section>
+                <h2>What is Algorithm Complexity?</h2>
+                <p>Algorithm complexity measures how the performance of an algorithm changes as the input size grows. It helps us understand the efficiency and scalability of different algorithms.</p>
+
+                <div class="concept-box">
+                    <h3>Why Analyze Complexity?</h3>
+                    <ul>
+                        <li>Compare algorithm efficiency</li>
+                        <li>Predict performance on large inputs</li>
+                        <li>Choose the best algorithm for a problem</li>
+                        <li>Optimize code performance</li>
+                        <li>Understand scalability limits</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Big O Notation</h2>
+                <p>Big O notation describes the upper bound of an algorithm's growth rate. It focuses on the worst-case scenario and ignores constant factors and lower-order terms.</p>
+
+                <div class="complexity-table">
+                    <h3>Common Complexity Classes</h3>
+                    <table>
+                        <tr>
+                            <th>Notation</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                        <tr>
+                            <td>O(1)</td>
+                            <td>Constant</td>
+                            <td>Time doesn't change with input size</td>
+                            <td>Array access</td>
+                        </tr>
+                        <tr>
+                            <td>O(log n)</td>
+                            <td>Logarithmic</td>
+                            <td>Time grows slowly with input size</td>
+                            <td>Binary search</td>
+                        </tr>
+                        <tr>
+                            <td>O(n)</td>
+                            <td>Linear</td>
+                            <td>Time grows proportionally with input</td>
+                            <td>Linear search</td>
+                        </tr>
+                        <tr>
+                            <td>O(n log n)</td>
+                            <td>Linearithmic</td>
+                            <td>Common in efficient sorting</td>
+                            <td>Merge sort</td>
+                        </tr>
+                        <tr>
+                            <td>O(n²)</td>
+                            <td>Quadratic</td>
+                            <td>Time grows with square of input</td>
+                            <td>Bubble sort</td>
+                        </tr>
+                        <tr>
+                            <td>O(2ⁿ)</td>
+                            <td>Exponential</td>
+                            <td>Time grows exponentially</td>
+                            <td>Recursive Fibonacci</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>O(1) - Constant Time</h2>
+                <p>Operations that take the same time regardless of input size. These are the most efficient operations.</p>
+
+                <h3>Array Access</h3>
+                <p>Accessing an element in an array by index is a constant time operation.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">array_access.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># O(1) - Constant time array access
+numbers <-- [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# These operations take the same time regardless of array size
+first_element <-- numbers[1]
+last_element <-- numbers[LENGTH(numbers)]
+
+DISPLAY("First element: ")
+DISPLAY(first_element)
+DISPLAY("Last element: ")
+DISPLAY(last_element)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Simple Arithmetic</h3>
+                <p>Basic arithmetic operations are constant time.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">arithmetic_operations.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># O(1) - Constant time arithmetic
+PROCEDURE CHECK_IF_EVEN(number) {
+    # Simple arithmetic operation - constant time
+    IF (number % 2 == 0) {
+        DISPLAY("Even")
+    } ELSE {
+        DISPLAY("Odd")
+    }
+}
+
+# Test with different numbers
+result1 <-- CHECK_IF_EVEN(42)
+result2 <-- CHECK_IF_EVEN(17)
+
+DISPLAY("42 is ")
+DISPLAY(result1)
+DISPLAY("17 is ")
+DISPLAY(result2)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>O(n) - Linear Time</h2>
+                <p>Operations where time grows linearly with input size. The algorithm must process each element once.</p>
+
+                <h3>Linear Search</h3>
+                <p>Searching through an array by checking each element is linear time.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">linear_search.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># O(n) - Linear search
+PROCEDURE LINEAR_SEARCH(array, target) {
+    # Must check each element until found
+    i <-- 1
+    REPEAT LENGTH(array) TIMES {
+        IF (array[i] == target) {
+            RETURN "Found at position " + i
+        }
+        i <-- i + 1
+    }
+    RETURN "Not found"
+}
+
+# Test linear search
+numbers <-- [10, 20, 30, 40, 50]
+search_result <-- LINEAR_SEARCH(numbers, 30)
+DISPLAY(search_result)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Array Sum</h3>
+                <p>Calculating the sum of all elements in an array requires visiting each element once.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">array_sum.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># O(n) - Sum all elements in array
+PROCEDURE SUM_ARRAY(array) {
+    total <-- 0
+    i <-- 1
+    REPEAT LENGTH(array) TIMES {
+        total <-- total + array[i]
+        i <-- i + 1
+    }
+    RETURN total
+}
+
+# Test array sum
+numbers <-- [1, 2, 3, 4, 5]
+sum_result <-- SUM_ARRAY(numbers)
+DISPLAY("Sum of array: ")
+DISPLAY(sum_result)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Finding Maximum</h3>
+                <p>Finding the maximum value in an array requires checking each element.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">find_maximum.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># O(n) - Find maximum value
+PROCEDURE FIND_MAX(array) {
+    max_value <-- array[1]
+    i <-- 2
+    REPEAT (LENGTH(array) - 1) TIMES {
+        IF (array[i] > max_value) {
+            max_value <-- array[i]
+        }
+        i <-- i + 1
+    }
+    RETURN max_value
+}
+
+# Test finding maximum
+numbers <-- [5, 12, 3, 8, 20, 1]
+maximum <-- FIND_MAX(numbers)
+DISPLAY("Maximum value: ")
+DISPLAY(maximum)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>O(n²) - Quadratic Time</h2>
+                <p>Operations where time grows with the square of input size. These often involve nested loops.</p>
+
+                <h3>Bubble Sort</h3>
+                <p>Bubble sort uses nested loops to compare and swap adjacent elements.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">bubble_sort.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># O(n²) - Bubble sort
+PROCEDURE BUBBLE_SORT(array) {
+    n <-- LENGTH(array)
+    i <-- 1
+    REPEAT n TIMES {
+        j <-- 1
+        REPEAT (n - 1) TIMES {
+            IF (array[j] > array[j + 1]) {
+                # Swap elements
+                temp <-- array[j]
+                array[j] <-- array[j + 1]
+                array[j + 1] <-- temp
+            }
+            j <-- j + 1
+        }
+        i <-- i + 1
+    }
+    RETURN array
+}
+
+# Test bubble sort
+numbers <-- [5, 2, 8, 1, 9]
+sorted <-- BUBBLE_SORT(numbers)
+DISPLAY("Sorted array: ")
+DISPLAY(sorted)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Finding Duplicates</h3>
+                <p>Checking for duplicates using nested loops creates quadratic complexity.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">find_duplicates.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># O(n²) - Find duplicates
+PROCEDURE FIND_DUPLICATES(array) {
+    duplicates <-- []
+    i <-- 1
+    REPEAT LENGTH(array) TIMES {
+        j <-- i + 1
+        REPEAT (LENGTH(array) - i) TIMES {
+            IF (array[i] == array[j]) {
+                APPEND(duplicates, array[i])
+                BREAK
+            }
+            j <-- j + 1
+        }
+        i <-- i + 1
+    }
+    RETURN duplicates
+}
+
+# Test finding duplicates
+numbers <-- [1, 2, 3, 2, 4, 5, 1]
+duplicates <-- FIND_DUPLICATES(numbers)
+DISPLAY("Duplicates: ")
+DISPLAY(duplicates)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>O(log n) - Logarithmic Time</h2>
+                <p>Operations where time grows logarithmically with input size. These algorithms divide the problem in half each step.</p>
+
+                <h3>Binary Search</h3>
+                <p>Binary search works on sorted arrays by dividing the search space in half each time.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">binary_search.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># O(log n) - Binary search
+PROCEDURE BINARY_SEARCH(array, target) {
+    left <-- 1
+    right <-- LENGTH(array)
+    
+    REPEAT UNTIL (left > right) {
+        mid <-- (left + right) / 2
+        
+        IF (array[mid] == target) {
+            RETURN "Found at position " + mid
+        } ELSE IF (array[mid] < target) {
+            left <-- mid + 1
+        } ELSE {
+            right <-- mid - 1
+        }
+    }
+    RETURN "Not found"
+}
+
+# Test binary search
+numbers <-- [1, 3, 5, 7, 9, 11, 13, 15]
+search_result <-- BINARY_SEARCH(numbers, 7)
+DISPLAY(search_result)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Comparing Complexities</h2>
+                <p>Let's compare how different algorithms perform on the same problem.</p>
+
+                <h3>Linear vs Binary Search</h3>
+                <p>Compare the number of steps needed for linear and binary search.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">search_comparison.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Compare linear vs binary search
+PROCEDURE LINEAR_SEARCH_STEPS(array, target) {
+    steps <-- 0
+    i <-- 1
+    REPEAT LENGTH(array) TIMES {
+        steps <-- steps + 1
+        IF (array[i] == target) {
+            RETURN steps
+        }
+        i <-- i + 1
+    }
+    RETURN steps
+}
+
+PROCEDURE BINARY_SEARCH_STEPS(array, target) {
+    steps <-- 0
+    left <-- 1
+    right <-- LENGTH(array)
+    
+    REPEAT UNTIL (left > right) {
+        steps <-- steps + 1
+        mid <-- (left + right) / 2
+        
+        IF (array[mid] == target) {
+            RETURN steps
+        } ELSE IF (array[mid] < target) {
+            left <-- mid + 1
+        } ELSE {
+            right <-- mid - 1
+        }
+    }
+    RETURN steps
+}
+
+# Test with sorted array
+numbers <-- [1, 2, 3, 4, 5, 6, 7, 8]
+target <-- 7
+
+linear_steps <-- LINEAR_SEARCH_STEPS(numbers, target)
+binary_steps <-- BINARY_SEARCH_STEPS(numbers, target)
+
+DISPLAY("Linear search took ")
+DISPLAY(linear_steps)
+DISPLAY(" steps")
+DISPLAY("Binary search took ")
+DISPLAY(binary_steps)
+DISPLAY(" steps")</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Space Complexity</h2>
+                <p>Space complexity measures how much additional memory an algorithm uses beyond the input.</p>
+
+                <h3>Constant Space</h3>
+                <p>Algorithms that use a fixed amount of extra space regardless of input size.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">constant_space.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># O(1) space complexity
+PROCEDURE FIND_MAX_MIN(array) {
+    # Uses only a few variables regardless of array size
+    max_val <-- array[1]
+    min_val <-- array[1]
+    i <-- 2
+    
+    REPEAT (LENGTH(array) - 1) TIMES {
+        IF (array[i] > max_val) {
+            max_val <-- array[i]
+        }
+        IF (array[i] < min_val) {
+            min_val <-- array[i]
+        }
+        i <-- i + 1
+    }
+    
+    DISPLAY("Maximum: ")
+    DISPLAY(max_val)
+    DISPLAY("Minimum: ")
+    DISPLAY(min_val)
+}
+
+# Test constant space algorithm
+numbers <-- [5, 12, 3, 8, 20, 1]
+FIND_MAX_MIN(numbers)</code></pre>
+                  </div>
+                </div>
+
+                <h3>Linear Space</h3>
+                <p>Algorithms that use space proportional to the input size.</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">linear_space.spdl</span>
+                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                      Run
+                    </button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># O(n) space complexity
+PROCEDURE REVERSE_ARRAY(array) {
+    # Creates a new array of same size
+    reversed <-- []
+    i <-- LENGTH(array)
+    
+    REPEAT LENGTH(array) TIMES {
+        APPEND(reversed, array[i])
+        i <-- i - 1
+    }
+    RETURN reversed
+}
+
+# Test linear space algorithm
+original <-- [1, 2, 3, 4, 5]
+reversed <-- REVERSE_ARRAY(original)
+DISPLAY("Original: ")
+DISPLAY(original)
+DISPLAY("Reversed: ")
+DISPLAY(reversed)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Practice Exercises</h2>
+                <p>Practice analyzing algorithm complexity with these exercises.</p>
+
+                <div class="exercise-section">
+                    <div class="exercise">
+                        <h3>Exercise 1: Analyze Complexity</h3>
+                        <p>Determine the time complexity of this algorithm.</p>
+                        <div class="code-container">
+                          <div class="code-header">
+                            <span class="code-filename">analyze_complexity.spdl</span>
+                            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                              Run
+                            </button>
+                          </div>
+                          <div class="code-content">
+                            <pre><code># What is the time complexity of this algorithm?
+PROCEDURE COUNT_PAIRS(array) {
+    count <-- 0
+    i <-- 1
+    REPEAT LENGTH(array) TIMES {
+        j <-- i + 1
+        REPEAT (LENGTH(array) - i) TIMES {
+            IF (array[i] == array[j]) {
+                count <-- count + 1
+            }
+            j <-- j + 1
+        }
+        i <-- i + 1
+    }
+    RETURN count
+}
+
+# Test the algorithm
+numbers <-- [1, 2, 1, 3, 2, 1]
+pairs <-- COUNT_PAIRS(numbers)
+DISPLAY("Number of pairs: ")
+DISPLAY(pairs)
+DISPLAY("Time complexity: O(n²) - nested loops")</code></pre>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h3>Exercise 2: Optimize Algorithm</h3>
+                        <p>Convert a quadratic algorithm to linear time.</p>
+                        <div class="code-container">
+                          <div class="code-header">
+                            <span class="code-filename">optimize_algorithm.spdl</span>
+                            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                              Run
+                            </button>
+                          </div>
+                          <div class="code-content">
+                            <pre><code># Optimized version using hash table concept
+PROCEDURE FIND_DUPLICATE_OPTIMIZED(array) {
+    # Use array to track seen elements
+    seen <-- []
+    i <-- 1
+    
+    REPEAT LENGTH(array) TIMES {
+        # Check if element already seen
+        found <-- 0
+        j <-- 1
+        REPEAT LENGTH(seen) TIMES {
+            IF (seen[j] == array[i]) {
+                found <-- 1
+                BREAK
+            }
+            j <-- j + 1
+        }
+        
+        IF (found == 1) {
+            RETURN "Duplicate found: " + array[i]
+        }
+        APPEND(seen, array[i])
+        i <-- i + 1
+    }
+    RETURN "No duplicates"
+}
+
+# Test optimized algorithm
+numbers <-- [1, 2, 3, 4, 2, 5]
+result <-- FIND_DUPLICATE_OPTIMIZED(numbers)
+DISPLAY(result)</code></pre>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h3>Exercise 3: Compare Algorithms</h3>
+                        <p>Compare the performance of different sorting algorithms.</p>
+                        <div class="code-container">
+                          <div class="code-header">
+                            <span class="code-filename">compare_sorting.spdl</span>
+                            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                              Run
+                            </button>
+                          </div>
+                          <div class="code-content">
+                            <pre><code># Simple selection sort (O(n²))
+PROCEDURE SELECTION_SORT(array) {
+    n <-- LENGTH(array)
+    i <-- 1
+    REPEAT n TIMES {
+        min_idx <-- i
+        j <-- i + 1
+        REPEAT (n - i) TIMES {
+            IF (array[j] < array[min_idx]) {
+                min_idx <-- j
+            }
+            j <-- j + 1
+        }
+        # Swap elements
+        temp <-- array[i]
+        array[i] <-- array[min_idx]
+        array[min_idx] <-- temp
+        i <-- i + 1
+    }
+    RETURN array
+}
+
+# Test selection sort
+numbers <-- [5, 2, 8, 1, 9]
+sorted <-- SELECTION_SORT(numbers)
+DISPLAY("Selection sort result: ")
+DISPLAY(sorted)
+DISPLAY("Time complexity: O(n²)")</code></pre>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Ready to Learn More?</h2>
+                <p>Now that you understand algorithm complexity, explore these related topics:</p>
+                <div class="button-group">
+                    <a href="/articles/data-structures" class="primary-button">Data Structures</a>
+                    <a href="/articles/abstraction" class="primary-button">Abstraction</a>
+                    <a href="/study/mcq-practice" class="primary-button">Practice MCQs</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="/shared/navbar.js"></script>
+</body>
+</html> 

@@ -5,6 +5,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="stylesheet" href="../../css/modern.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <script src="./script.js" defer></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -98,19 +100,29 @@
       <hr />
       In a sense:
     </p>
-    <pre><code>PROCEDURE add(a,b) {
-        IF (a == b) {
+    <div class="code-container">
+      <div class="code-header">
+        <span class="code-filename">example.spdl</span>
+        <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+          <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+          Run
+        </button>
+      </div>
+      <div class="code-content">
+        <pre><code>PROCEDURE add(a,b) {
+    IF (a == b) {
         RETURN
-        }
-        RETURN a + b
-        }
-        DISPLAY("hi")
-        add(10,40)
-        PROCEDURE sub(a,b) {
-        RETURN a - b
-        }
-        sub(40,10)
-        </code></pre>
+    }
+    RETURN a + b
+}
+DISPLAY("hi")
+add(10,40)
+PROCEDURE sub(a,b) {
+    RETURN a - b
+}
+sub(40,10)</code></pre>
+      </div>
+    </div>
     <p>Becomes (each code block is put into Spindle:</p>
     <pre><code>PROCEDURE add(a,b) {
         IF (a == b) {

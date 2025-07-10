@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Simulation - Spindle</title>
+    <meta name="description" content="Learn about computer simulation, modeling, and virtual environments">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="stylesheet" href="/Global/material-ui/tokens.css">
+    <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../code-container.css">
+    <script src="../code-container.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav id="navBar" aria-label="Main navigation"></nav>
+    <main>
+        <article class="content-section">
+            <h1>Computer Simulation</h1>
+
+            <section>
+                <h2>What is Computer Simulation?</h2>
+                <p>Computer simulation is the process of creating a mathematical model of a real-world system and using computers to predict how the system will behave under different conditions.</p>
+
+                <div class="concept-box">
+                    <h3>Types of Simulations</h3>
+                    <ul>
+                        <li>Discrete Event Simulation</li>
+                        <li>Continuous Simulation</li>
+                        <li>Monte Carlo Simulation</li>
+                        <li>Agent-based Modeling</li>
+                        <li>Physical Simulation</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Monte Carlo Simulation</h2>
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">monte_carlo.spdl</span>
+                    <button class="run-button" onclick="copyAndRun(this)">Run</button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Monte Carlo π estimation
+points_inside <- 0
+total_points <- 100
+
+REPEAT total_points TIMES {
+    x <- RANDOM(0, 1)
+    y <- RANDOM(0, 1)
+    distance <- (x * x + y * y) ^ 0.5
+    IF (distance <= 1) {
+        points_inside <- points_inside + 1
+    }
+}
+
+pi_est <- 4 * points_inside / total_points
+DISPLAY("Points: 100, π ≈ ")
+DISPLAY(pi_est)</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Monte Carlo Simulation</h2>
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-filename">monte_carlo.spdl</span>
+                    <button class="run-button" onclick="copyAndRun(this)">Run</button>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Dice roll simulation
+dice_results <- [0, 0, 0, 0, 0, 0]
+rolls <- 1000
+
+REPEAT rolls TIMES {
+    roll <- RANDOM(1, 6)
+    dice_results[roll] <- dice_results[roll] + 1
+}
+
+REPEAT 6 TIMES {
+    i <- n
+    probability <- dice_results[i] / rolls
+    DISPLAY("Face ")
+    DISPLAY(i)
+    DISPLAY(": ")
+    DISPLAY(dice_results[i])
+    DISPLAY(" times (")
+    DISPLAY(probability)
+    DISPLAY(")")</code></pre>
+                  </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Ready to Learn More?</h2>
+                <p>Explore these related topics:</p>
+                <div class="button-group">
+                    <a href="/articles/algorithm-complexity" class="primary-button">Algorithm Complexity</a>
+                    <a href="/articles/parallel-computing" class="primary-button">Parallel Computing</a>
+                    <a href="/study/mcq-practice" class="primary-button">Practice MCQs</a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="/shared/navbar.js"></script>
+</body>
+</html> 

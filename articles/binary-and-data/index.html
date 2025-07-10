@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/Global/material-ui/tokens.css">
     <link rel="stylesheet" href="/Global/material-ui/theme.dark.css" id="themeStylesheet">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../code-container.css">
+    <script src="../code-container.js" defer></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
 <body>
@@ -75,15 +77,19 @@
                             <li>Read remainders from bottom to top</li>
                         </ol>
 
-                        <div class="example-conversion">
-                            <h5>Example: Converting 13 to Binary</h5>
-                            <pre>
-13 ÷ 2 = 6 remainder 1
+                        <div class="code-container">
+                          <div class="code-header">
+                            <span class="code-filename">binary_conversion.txt</span>
+
+                          </div>
+                          <div class="code-content">
+                            <pre><code>13 ÷ 2 = 6 remainder 1
 6 ÷ 2 = 3  remainder 0
 3 ÷ 2 = 1  remainder 1
 1 ÷ 2 = 0  remainder 1
 
-Reading from bottom up: 1101</pre>
+Reading from bottom up: 1101</code></pre>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -221,12 +227,16 @@ Reading from bottom up: 1101</pre>
                 <div class="compression-types">
                     <h3>Lossless Compression</h3>
                     <p>Reduces file size while preserving all original data. Commonly used for text and program files.</p>
-                    <div class="compression-example">
-                        <h4>Run-Length Encoding Example:</h4>
-                        <pre>
-Original: AAAAAABBBCC
+                    <div class="code-container">
+                      <div class="code-header">
+                        <span class="code-filename">compression_example.txt</span>
+
+                      </div>
+                      <div class="code-content">
+                        <pre><code>Original: AAAAAABBBCC
 Compressed: 6A3B2C
-(Saves space while maintaining all information)</pre>
+(Saves space while maintaining all information)</code></pre>
+                      </div>
                     </div>
 
                     <h3>Lossy Compression</h3>
@@ -272,11 +282,16 @@ Compressed: 6A3B2C
 
                     <h3>Checksum</h3>
                     <p>A more advanced error detection method that creates a value based on the data being transmitted.</p>
-                    <div class="checksum-example">
-                        <pre>
-Data: 10110
+                    <div class="code-container">
+                      <div class="code-header">
+                        <span class="code-filename">checksum_example.txt</span>
+
+                      </div>
+                      <div class="code-content">
+                        <pre><code>Data: 10110
 Checksum calculation: 1+0+1+1+0 = 3
-Transmitted: 10110 (data) + 11 (checksum in binary)</pre>
+Transmitted: 10110 (data) + 11 (checksum in binary)</code></pre>
+                      </div>
                     </div>
                 </div>
             </section>
@@ -290,14 +305,24 @@ Transmitted: 10110 (data) + 11 (checksum in binary)</pre>
                         <div class="solution">
                             <details>
                                 <summary>Solution</summary>
-                                <pre>
-25 ÷ 2 = 12 remainder 1
+                                <div class="code-container">
+                                  <div class="code-header">
+                                    <span class="code-filename">problem1_solution.txt</span>
+                                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                                      Run
+                                    </button>
+                                  </div>
+                                  <div class="code-content">
+                                    <pre><code>25 ÷ 2 = 12 remainder 1
 12 ÷ 2 = 6  remainder 0
 6 ÷ 2 = 3   remainder 0
 3 ÷ 2 = 1   remainder 1
 1 ÷ 2 = 0   remainder 1
 
-Binary: 11001</pre>
+Binary: 11001</code></pre>
+                                  </div>
+                                </div>
                             </details>
                         </div>
                     </div>
@@ -308,12 +333,22 @@ Binary: 11001</pre>
                         <div class="solution">
                             <details>
                                 <summary>Solution</summary>
-                                <pre>
-Pixels: 1920 × 1080 = 2,073,600
+                                <div class="code-container">
+                                  <div class="code-header">
+                                    <span class="code-filename">problem2_solution.txt</span>
+                                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                                      Run
+                                    </button>
+                                  </div>
+                                  <div class="code-content">
+                                    <pre><code>Pixels: 1920 × 1080 = 2,073,600
 Bits per pixel: 24
 Total bits: 2,073,600 × 24 = 49,766,400
 Total bytes: 49,766,400 ÷ 8 = 6,220,800
-Total MB: 6,220,800 ÷ 1,024,000 ≈ 6.07 MB</pre>
+Total MB: 6,220,800 ÷ 1,024,000 ≈ 6.07 MB</code></pre>
+                                  </div>
+                                </div>
                             </details>
                         </div>
                     </div>
@@ -324,11 +359,21 @@ Total MB: 6,220,800 ÷ 1,024,000 ≈ 6.07 MB</pre>
                         <div class="solution">
                             <details>
                                 <summary>Solution</summary>
-                                <pre>
-Data: 1011001
+                                <div class="code-container">
+                                  <div class="code-header">
+                                    <span class="code-filename">problem3_solution.txt</span>
+                                    <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+                                      <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+                                      Run
+                                    </button>
+                                  </div>
+                                  <div class="code-content">
+                                    <pre><code>Data: 1011001
 Count of 1s: 4 (even)
 Even parity bit needed: 0
-Result: 10110010</pre>
+Result: 10110010</code></pre>
+                                  </div>
+                                </div>
                             </details>
                         </div>
                     </div>
