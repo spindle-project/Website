@@ -26,12 +26,15 @@ h2 {
 html {
   padding: 0px;
 }
-@media (max-width: 750px) {
+@media (max-width: 950px) {
   .playground-wrapper {
     flex-direction: column;
   }
   .test-code-button {
     bottom: -100px !important;
+  }
+  .moble-resize {
+    flex-direction: column !important;
   }
 }
 
