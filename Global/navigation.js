@@ -1,4 +1,4 @@
-// Shared Navigation Component
+// Combined Navigation Component for Spindle
 function createNavigation() {
   const navBar = document.getElementById('navBar');
   if (!navBar) return;
@@ -6,9 +6,9 @@ function createNavigation() {
   const navHtml = `
     <a class="page-link" href="/"><div id="logoMark">Spindle</div></a>
     <div id="pageOptions">
-      <a class="page-link" href="/features">Features</a>
-      <a class="page-link" href="/docs">Documentation</a>
-      <a class="page-link" href="/exam-prep">Exam Prep</a>
+      <a class="page-link" href="/ide">IDE</a>
+      <a class="page-link" href="/docs">Docs</a>
+      <a class="page-link" href="/study">Learn</a>
     </div>
   `;
 
@@ -36,4 +36,4 @@ footer.innerHTML = `
   </div>
   <a href="https://www.instagram.com/the_spindle_project/" target="_blank" rel="noopener" style="color: var(--accent-blue); text-decoration: underline; font-weight: 500;">Follow us on Instagram</a>
 `;
-document.body.appendChild(footer);
+document.body.appendChild(footer); 

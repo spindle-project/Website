@@ -40,7 +40,7 @@ This repository is organized as follows:
 *   `/exam-prep/`: Tools and resources for AP CSP exam preparation. `index.html` and `script.js` manage fetching and displaying practice questions and study tips.
 *   `/css/`: Contains various stylesheets, including `modern.css` for the overall look and feel, and theme-specific files like `light.css`, `dark.css`, and high-contrast versions.
 *   `/styles.css`, `/styles_background.css`: Additional main CSS files for the website's styling.
-*   `/shared/nav.js`: JavaScript for generating the common navigation bar used across the site.
+*   `/Global/navigation.js`: JavaScript for generating the common navigation bar and footer used across the site.
 *   `LICENSE.md`: The Mozilla Public License 2.0 governs this project.
 *   `.github/`: Contains GitHub-specific files such as issue templates (`bug_report.md`, `feature_request.md`) and the `CODE_OF_CONDUCT.md`.
 
