@@ -35,6 +35,7 @@ html {
   }
   .moble-resize {
     flex-direction: column !important;
+    gap: 1rem !important;
   }
 }
 
@@ -229,6 +230,10 @@ background-color: var(--md-sys-color-surface-container-high);
     width: 100%;
     flex: unset;
   }
+  .moble-resize {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
 }
 
 @media (max-width: 600px) {
@@ -239,6 +244,10 @@ background-color: var(--md-sys-color-surface-container-high);
   .hero-left-side, .hero-right-side {
     width: 100%;
     min-width: 0;
+  }
+  .moble-resize {
+    flex-direction: column !important;
+    gap: 1rem !important;
   }
 }
 
