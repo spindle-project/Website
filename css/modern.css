@@ -154,9 +154,8 @@ code {
   display: flex;
   align-items: center;
   gap: 4rem;
-  max-width: 1200px;
   margin: 0 auto;
-  
+  width: calc(100% - 4rem);
 }
 
 .hero-left-side {
