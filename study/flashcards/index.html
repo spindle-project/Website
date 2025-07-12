@@ -1,17 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T65RS9DSM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3T65RS9DSM');
+    </script>
+    
+    <!-- Primary Meta Tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>AP CSP Flashcard Hub - Study Sets & Create Your Own | Spindle</title>
+    <meta name="description" content="Access thousands of AP CSP flashcards created by students and teachers. Search, study, and create your own flashcard sets to master AP Computer Science Principles concepts." />
+    <meta name="keywords" content="AP CSP flashcards, AP Computer Science Principles flashcards, AP CSP study sets, AP CSP review cards, AP CSP exam prep flashcards, create flashcards, AP CSP study materials, AP CSP practice cards" />
+    <link rel="canonical" href="https://spdl.netlify.app/study/flashcards/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://spdl.netlify.app/study/flashcards/" />
+    <meta property="og:title" content="AP CSP Flashcard Hub - Study Sets & Create Your Own" />
+    <meta property="og:description" content="Access thousands of AP CSP flashcards created by students and teachers. Search, study, and create your own flashcard sets to master AP Computer Science Principles concepts." />
+    <meta property="og:image" content="https://spdl.netlify.app/android-chrome-512x512.png" />
+    <meta property="og:site_name" content="Spindle" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://spdl.netlify.app/study/flashcards/" />
+    <meta property="twitter:title" content="AP CSP Flashcard Hub - Study Sets & Create Your Own" />
+    <meta property="twitter:description" content="Access thousands of AP CSP flashcards created by students and teachers. Search, study, and create your own flashcard sets to master AP Computer Science Principles concepts." />
+    <meta property="twitter:image" content="https://spdl.netlify.app/android-chrome-512x512.png" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AP CSP Flashcard Hub",
+      "description": "Access thousands of AP CSP flashcards created by students and teachers. Search, study, and create your own flashcard sets to master AP Computer Science Principles concepts.",
+      "image": "https://spdl.netlify.app/android-chrome-512x512.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Spindle"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Spindle",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://spdl.netlify.app/android-chrome-512x512.png"
+        }
+      },
+      "datePublished": "2024-01-01T00:00:00Z",
+      "dateModified": "2024-12-19T00:00:00Z",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://spdl.netlify.app/study/flashcards/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "AP Computer Science Principles"
+        },
+        {
+          "@type": "Thing", 
+          "name": "Flashcards"
+        },
+        {
+          "@type": "Thing",
+          "name": "Study Tools"
+        }
+      ],
+      "educationalLevel": "High School",
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student"
+      },
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
     <script
       src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"
       defer
     ></script>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" type="image/png"  href="https://cdn.glitch.global/930d3be6-c667-4ce7-99e2-b129dd9b79b2/noBgWhite%20(3).png?v=1737682977458">
-<link rel="apple-touch-icon" href="https://cdn.glitch.global/930d3be6-c667-4ce7-99e2-b129dd9b79b2/noBgWhite%20(3).png?v=1737682977458" />
-<link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png"  href="https://cdn.glitch.global/930d3be6-c667-4ce7-99e2-b129dd9b79b2/noBgWhite%20(3).png?v=1737682977458">
+    <link rel="apple-touch-icon" href="https://cdn.glitch.global/930d3be6-c667-4ce7-99e2-b129dd9b79b2/noBgWhite%20(3).png?v=1737682977458" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 
-    <title>Student Hub Home</title>
     <!-- The website stylesheet -->
     <link
       rel="stylesheet"
