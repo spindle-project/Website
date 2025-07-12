@@ -72,8 +72,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"
     />
+
     <link rel="stylesheet" href="css/modern.css" />
     <link rel="stylesheet" href="./styles_background.css" />
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -81,11 +83,13 @@
   </head>
   <body>
     <nav id="navBar"></nav>
-    <main style="margin-top: 30px;">
-      <div class="hero-section glow inset-glow" style="flex-direction: column; align-items: stretch;  width: calc(100% - 40px);">
+    <main style="margin-top: 30px;">        
+
+      <div class="hero-section glow inset-glow" >
+        <h1 class="text-gradient" style="font-size: 3.5rem; line-height: 1.08; width: 100%; max-width: 100%; margin: 0 auto 0.6rem auto;">Crush Your AP CSP Exam with Spindle</h1>
+
         <div class="middle-highlight"></div>
         <div style="width: 100%; text-align: center; margin-bottom: 1.1rem;">
-          <h1 class="text-gradient" style="font-size: 3.5rem; line-height: 1.08; width: 100%; max-width: 100%; margin: 0 auto 0.6rem auto;">Crush Your AP CSP Exam with Spindle</h1>
         </div>
         <div class="moble-resize">
           <div class="hero-left-side" style="display: flex; flex-direction: column; justify-content: space-between; flex: 1; min-width: 320px;">
@@ -102,8 +106,8 @@
             <div class="exam-countdown" style="background: rgba(59,130,246,0.08); border-radius: 10px; padding: 1rem 1.5rem; display: inline-block; margin-top: 1.5rem;">
               <span class="material-symbols-rounded" style="vertical-align: middle; color: var(--accent-blue); font-size: 2rem;">hourglass_bottom</span>
               <span style="font-size: 1.1rem; margin-left: 0.5rem;">AP CSP Exam:</span>
-              <span id="examCountdown" style="font-weight: bold; font-size: 1.1rem; margin-left: 0.5rem;"></span>
-              <span style="margin-left: 0.5rem; color: var(--text-secondary);">(May 14, 2026, 12:00pm)</span>
+              <span id="examCountdown" style="font-weight: bold; font-size: 1.1rem; margin-left: 0.5rem;"></span> <br>
+              <span style=" color: var(--text-secondary);">  <i>May 14, 2026 at 12:00pm</i></span>
             </div>
           </div>
           <div class="hero-right-side" style="display: flex; flex-direction: column; justify-content: space-between; flex: 1; min-width: 320px;">
@@ -144,11 +148,11 @@ greet("World")</code></pre>
           const minutes = Math.floor((diff / (1000 * 60)) % 60);
           let display = '';
           if (days >= 30) {
-            display = `${days}d`;
+            display = `${days} Days`;
           } else if (days >= 3) {
-            display = `${days}d ${hours}h`;
+            display = `${days} Days ${hours} Hours`;
           } else {
-            display = `${days}d ${hours}h ${minutes}m`;
+            display = `${hours + (days * 24)} Hours ${minutes} Minutes`;
           }
           document.getElementById('examCountdown').textContent = display;
         }

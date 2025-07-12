@@ -2,32 +2,52 @@
 <html lang="en">
 	<head>
 		<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3T65RS9DSM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-3T65RS9DSM"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
 
-  gtag('config', 'G-3T65RS9DSM');
-</script>
-  <!-- Primary Meta Tags -->
-  <meta name="title" content="Spindle">
-  <meta name="description" content="An integrated learning platform with built-in IDE, comprehensive documentation, and exam prep resources designed for students, teachers, and self-learners.">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://spdl.netlify.app/">
-  <meta property="og:title" content="Spindle">
-  <meta property="og:description" content="An integrated learning platform with built-in IDE, comprehensive documentation, and exam prep resources designed for students, teachers, and self-learners.">
-  <meta property="og:image" content="blob:https://graygrids.com/fcd635a1-f169-4626-8a2d-7baf6864984a">
-  
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://spdl.netlify.app/">
-  <meta property="twitter:title" content="Spindle">
-  <meta property="twitter:description" content="An integrated learning platform with built-in IDE, comprehensive documentation, and exam prep resources designed for students, teachers, and self-learners.">
-  <meta property="twitter:image" content="blob:https://graygrids.com/6a3273bc-50c8-49ba-87a3-e58f035c4e0c">
-  
+			gtag("config", "G-3T65RS9DSM");
+		</script>
+		<!-- Primary Meta Tags -->
+		<meta name="title" content="Spindle" />
+		<meta
+			name="description"
+			content="An integrated learning platform with built-in IDE, comprehensive documentation, and exam prep resources designed for students, teachers, and self-learners."
+		/>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://spdl.netlify.app/" />
+		<meta property="og:title" content="Spindle" />
+		<meta
+			property="og:description"
+			content="An integrated learning platform with built-in IDE, comprehensive documentation, and exam prep resources designed for students, teachers, and self-learners."
+		/>
+		<meta
+			property="og:image"
+			content="blob:https://graygrids.com/fcd635a1-f169-4626-8a2d-7baf6864984a"
+		/>
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://spdl.netlify.app/" />
+		<meta property="twitter:title" content="Spindle" />
+		<meta
+			property="twitter:description"
+			content="An integrated learning platform with built-in IDE, comprehensive documentation, and exam prep resources designed for students, teachers, and self-learners."
+		/>
+		<meta
+			property="twitter:image"
+			content="blob:https://graygrids.com/6a3273bc-50c8-49ba-87a3-e58f035c4e0c"
+		/>
+
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -64,19 +84,35 @@
 			}
 			.container {
 				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;				
+				align-items: stretch;
 			}
 			.card {
 				width: 50%;
-				margin: 20px;
+				margin: 10px;
 				align-items: center;
-				padding-bottom: 80px;
+				padding-bottom: 60px !important;
+				text-align: center;
+				text-decoration: none;
 			}
-			.card a {
+			@media (min-width: 768px) {
+				div .card {
+					width: 46% !important;
+				}
+			}
+			.primary-button {
 				position: absolute;
-				bottom: 20px;
+				bottom: 10px;
+				width: calc(100% - 40px);
+				display: flex;
+				justify-content: center;
 			}
 			.material-symbols-rounded {
 				font-size: 2rem;
+			}
+			.card-title {
+				margin:5px;
 			}
 		</style>
 	</head>
@@ -108,7 +144,7 @@
 						>Start Text Coding</a
 					>
 				</div>
-				
+
 				<div class="card">
 					<b class="icon">
 						<span class="material-symbols-rounded">extension</span>
@@ -124,15 +160,14 @@
 						>Start Block Coding</a
 					>
 				</div>
-<div class="card">
+				<div class="card">
 					<b class="icon">
-						<span class="material-symbols-rounded"
-							>robot</span
-						>
+						<span class="material-symbols-rounded">robot</span>
 					</b>
 					<h2 class="card-title">Robot Coding</h2>
 					<p class="card-description">
-						Create programs in our puesdocode with with a robot that will react to the commands you give it.
+						Create programs in our puesdocode with with a robot that
+						will react to the commands you give it.
 					</p>
 					<a href="/ide/robot" class="primary-button"
 						>Start Robot Coding</a
@@ -144,9 +179,13 @@
 					</b>
 					<h2 class="card-title">Native IDE</h2>
 					<p class="card-description">
-						Install and run Spindle directly on your computer for the most flexible experience. Follow our step-by-step guide to get started with the Native IDE.
+						Install and run Spindle directly on your computer for
+						the most flexible experience. Follow our step-by-step
+						guide to get started with the Native IDE.
 					</p>
-					<a href="/ide/native/" class="primary-button">Set Up Native IDE</a>
+					<a href="/ide/native/" class="primary-button"
+						>Set Up Native IDE</a
+					>
 				</div>
 			</div>
 		</main>

@@ -148,14 +148,24 @@ code {
   background-color: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px); /* Subtle hover effect */
 }
-
-.hero-section {
-  padding: 6rem 4rem 6rem 4rem; /* More vertical padding */
+.hero-section { 
+  display:flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 20px;
+  width: 100%;
+  margin-top: 100px;
+}
+@media (min-width: 768px) {
+.moble-resize {
   display: flex;
-  align-items: center;
-  gap: 4rem;
-  margin: 0 auto;
-  width: calc(100% - 4rem);
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+  padding: 20px;
+  gap: 40px;
+
+}
 }
 
 .hero-left-side {
@@ -183,7 +193,7 @@ code {
   background-color: var(--accent-blue);
   color: white;
   border: none;
-  padding: 1rem 2rem; /* Larger buttons */
+  padding: 1rem 1rem; /* Larger buttons */
   border-radius: var(--border-radius);
   font-weight: 600;
   cursor: pointer;
@@ -272,8 +282,7 @@ code {
  width: 1px;
 position: absolute;
 left: 69%;
-  box-shadow: rgba(72, 135, 202, 0.8) 0 50px 1480px 250px;
-  z-index: -1;
+box-shadow: rgba(72, 135, 202, 0.8) -16px 20px 1480px 350px;  z-index: -1;
 }
 .glow {
     box-shadow: rgba(72, 135, 202, 0.8) 0 0 90px 33px;
@@ -297,33 +306,12 @@ background-image:  url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='
   box-shadow: 0 5px 15px rgba(75, 156, 255, 0.2);
 }
 /* --- Responsive Layout Improvements --- */
-@media (max-width: 1200px) {
-  .hero-section,
-  #subHeroSection {
-    max-width: 1000px;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
+
 @media (max-width: 900px) {
-  .hero-section,
-  #subHeroSection {
-    max-width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    gap: 2rem;
-  }
-  .hero-section {
-    flex-direction: column;
-    align-items: stretch;
-    padding-top: 6rem;
-    padding-bottom: 2rem;
-  }
-  .hero-left-side, .hero-right-side {
-    width: 100% !important;
-    min-width: 0 !important;
-    flex: unset !important;
-  }
+ 
+
+  
+  
   .ides-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
@@ -339,10 +327,7 @@ background-image:  url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='
     width: 100% !important;
     min-width: 0 !important;
   }
-  .hero-section {
-    padding: 4rem 0.5rem 2rem 0.5rem;
-    gap: 1.2rem;
-  }
+
   .ides-grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
@@ -367,10 +352,7 @@ background-image:  url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='
   }
 }
 @media (max-width: 600px) {
-  .hero-section {
-    padding: 2rem 0.2rem 1rem 0.2rem;
-    gap: 0.7rem;
-  }
+
   .card {
     padding: 0.7rem !important;
     font-size: 0.95rem;
@@ -386,10 +368,7 @@ background-image:  url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='
   }
 }
 @media (max-width: 480px) {
-  .hero-section, #subHeroSection, main {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
+
   .card {
     padding: 0.4rem !important;
     font-size: 0.9rem;
