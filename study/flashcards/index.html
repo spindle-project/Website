@@ -130,18 +130,20 @@
       </div>
     </div>
     <div id="searchOrCreateSetWrapper">
-    <div id="setSearchWrapper">
-      <input
-        id="searchSets"
-        type="search"
-        placeholder="Search for anything..."
-        class="secondary-container"
-      />
-      <span id="searchIcon" class="setSearchButton material-symbols-rounded">
-        search
-      </span>
-    </div>
-      <a id="createNewSet" href="/study/flashcards/newset/" >Don't see what you need? <u>Create a Flashcard Set</u></a>
+      <div id="setSearchWrapper">
+        <a href="/study/flashcards/newset/" class="plus-create-btn" title="Create a Flashcard Set" aria-label="Create a Flashcard Set">
+          <span class="material-symbols-rounded">add</span>
+        </a>
+        <input
+          id="searchSets"
+          type="search"
+          placeholder="What do you want to review?"
+          class="secondary-container"
+        />
+        <span id="searchIcon" class="setSearchButton material-symbols-rounded">
+          search
+        </span>
+      </div>
     </div>
 
     <i class="suggestions">

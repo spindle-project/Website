@@ -24,7 +24,8 @@ const setUpUserGreeting = (userInfo) => {
           set.description,
           set.numQuestions,
           set.category,
-          "u"
+          "u",
+          set.id // Pass the set ID
         );
           if (set.category.substring(0, 8) != "APCSP - ") {
       continue
@@ -57,7 +58,8 @@ if(window.location.href.split("/?").length > 1 && set.title == window.location.h
       set.description,
       set.numQuestions,
       set.category,
-      "g"
+      "g",
+      set.id // Pass the set ID
     );
     if (set.category.substring(0, 8) != "APCSP - ") {
       continue
@@ -88,6 +90,10 @@ const search = (str) => {
   let fullSetResults = [];
   const val = str.toLowerCase();
   for (let i = 0; i < globalLibary.length; i++) {
+    // Only include sets whose title starts with 'APCSP - '
+    if (!globalLibary[i].category.startsWith('APCSP - ')) {
+      continue;
+    }
     if (globalLibary[i].title.toLowerCase().indexOf(val) > -1) {
       results.push(globalLibary[i].title);
       fullSetResults.push(globalLibary[i]);
@@ -148,8 +154,11 @@ function BuildSet(
   description = "null",
   NOQ = 0,
   category = "null",
-  scope = "g"
+  scope = "g",
+  setId = null // Optionally pass a set ID for linking
 ) {
+  // Remove 'APCSP - ' prefix from category if present
+  let displayCategory = category.startsWith('APCSP - ') ? category.slice(8) : category;
   // -- Create a wrapper for the set
   let SetContainer = document.createElement("div");
   SetContainer.classList.add("setContainer");
@@ -160,40 +169,38 @@ function BuildSet(
   SetTitle.classList.add("text-size-h5");
   SetTitle.textContent = title;
   SetContainer.appendChild(SetTitle);
-  // -- ... and the metadata
-  let SetMetadataContainer = document.createElement("div");
-  SetMetadataContainer.classList.add("setMetaData");
-  SetMetadataContainer.classList.add("text-caption");
-  SetContainer.appendChild(SetMetadataContainer);
-  // -- now populate it with the set's metadata
-  // ==================== Creating the NOQ Stat ===========
-  // NOQ = Number Of Questions
-  let NOQContainer = document.createElement("b");
-  // Adding Data ===================================================
-  NOQContainer.innerHTML += `${NOQ} Terms`;
-  NOQContainer.classList.add("stat-chip");
-  SetMetadataContainer.appendChild(NOQContainer);
-  // ==================== End of NOQ Stat ===========
-  // ==================== Creating the category Stat ===========
-  // NOQ = Number Of Questions
-  let categoryContainer = document.createElement("b");
-  // Adding Data ===================================================
-  categoryContainer.innerHTML += category;
-  categoryContainer.classList.add("stat-chip");
-  SetMetadataContainer.appendChild(categoryContainer);
-  // ==================== End of category Stat ===========
   //==================== Creating set des
   let setDescription = document.createElement("b");
   setDescription.classList.add("setDescription");
   setDescription.classList.add("text-size-body");
   setDescription.textContent = description;
   SetContainer.appendChild(setDescription);
-
-  // Adding functionality for when clicked
-  SetContainer.addEventListener("click", function () {
-    ChooseSet(title, scope);
-  });
-  // Returning the element
+  // -- Bottom bar for metadata and button
+  let setBottomBar = document.createElement("div");
+  setBottomBar.classList.add("setBottomBar");
+  // -- Combined metadata section
+  let SetMetadataContainer = document.createElement("div");
+  SetMetadataContainer.classList.add("setMetaData");
+  SetMetadataContainer.classList.add("text-caption");
+  // Format: [category] ⸱ [numcards]
+  let metaText = document.createElement("span");
+  metaText.classList.add("meta-combined");
+  metaText.textContent = `${displayCategory} ⸱ ${NOQ} cards`;
+  SetMetadataContainer.appendChild(metaText);
+  setBottomBar.appendChild(SetMetadataContainer);
+  // Add the View Set button below the metadata
+  let viewSetBtn = document.createElement("a");
+  viewSetBtn.classList.add("view-set-btn");
+  viewSetBtn.textContent = "View Set";
+  if (setId) {
+    viewSetBtn.href = `/study/flashcards/viewset/?id=${setId}`;
+  } else {
+    viewSetBtn.href = `/study/flashcards/viewset/?title=${encodeURIComponent(title)}`;
+  }
+  viewSetBtn.setAttribute("tabindex", "0");
+  viewSetBtn.style.width = "100%";
+  setBottomBar.appendChild(viewSetBtn);
+  SetContainer.appendChild(setBottomBar);
   return SetContainer;
 }
 
