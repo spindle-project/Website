@@ -1989,10 +1989,45 @@ class BuiltInFunction(BaseFunction):
 		return RTResult().success(Number.null)
 	execute_rotate_right.arg_names = []
 
-	def execute_can_move(self,exec_ctx):
-		global robo_commands
-		robo_commands.append("CM"+str(exec_ctx.symbol_table.get('direction')))
-		return RTResult().success(Number.null)
+	def execute_can_move(self, exec_ctx):
+		direction_arg = exec_ctx.symbol_table.get('direction')
+		if direction_arg is None:
+			# Use JS canMoveForward for current direction
+			can_move = js.canMoveForward()
+			if can_move:
+				return RTResult().success(Number(1))
+			else:
+				return RTResult().success(Number(0))
+		# ... existing code for direction argument ...
+		robot_state = js.getRobotState()
+		x = int(robot_state.x)
+		y = int(robot_state.y)
+		direction = int(robot_state.direction)
+		grid_size = int(robot_state.gridSize)
+		dir_map = {"NORTH": 0, "EAST": 1, "SOUTH": 2, "WEST": 3}
+		if direction_arg is not None:
+			if hasattr(direction_arg, 'value'):
+				dir_str = str(direction_arg.value).upper()
+				if dir_str in dir_map:
+					direction = dir_map[dir_str]
+				else:
+					try:
+						direction = int(direction_arg.value)
+					except Exception:
+						pass
+		new_x, new_y = x, y
+		if direction == 0:
+			new_y -= 1
+		elif direction == 1:
+			new_x += 1
+		elif direction == 2:
+			new_y += 1
+		elif direction == 3:
+			new_x -= 1
+		if 0 <= new_x < grid_size and 0 <= new_y < grid_size:
+			return RTResult().success(Number(1))
+		else:
+			return RTResult().success(Number(0))
 	execute_can_move.arg_names = ["direction"]
  
  

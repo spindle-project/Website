@@ -317,23 +317,176 @@ SAY_HI(3)  # Outputs: Hi! Hi! Hi!</code></pre>
               </div>
             </div>
           </div>
-    <p>
+      <!-- Built-in Functions Section -->
       <div class="card" style="margin: 2rem 0;">
         <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">Built-in Functions</h4>
-        <ul style="list-style: none; padding: 0;">
-          <li style="margin-bottom: 0.5rem;"><code>DISPLAY(value)</code>: Display output to the console</li>
-          <li style="margin-bottom: 0.5rem;"><code>INPUT()</code>: Gets user input</li>
-          <li style="margin-bottom: 0.5rem;"><code>CLEAR()</code>: Clears the console</li>
-          <li style="margin-bottom: 0.5rem;"><code>IS_NUM(value)</code>: Returns 1 if value is a number, 0 otherwise</li>
-          <li style="margin-bottom: 0.5rem;"><code>IS_STR(value)</code>: Returns 1 if value is a string, 0 otherwise</li>
-          <li style="margin-bottom: 0.5rem;"><code>IS_LIST(value)</code>: Returns 1 if value is a list, 0 otherwise</li>
-          <li style="margin-bottom: 0.5rem;"><code>IS_FUNCTION(value)</code>: Returns 1 if value is a function, 0 otherwise</li>
-          <li style="margin-bottom: 0.5rem;"><code>APPEND(list, value)</code>: Adds value to the end of a list</li>
-          <li style="margin-bottom: 0.5rem;"><code>POP(list, index)</code>: Removes and returns the element at index from the list</li>
-          <li style="margin-bottom: 0.5rem;"><code>EXTEND(listA, listB)</code>: Adds all elements from listB to listA</li>
-          <li style="margin-bottom: 0.5rem;"><code>LENGTH(list)</code>: Returns the length of a list (starts at 1 per College Board)</li>
-          <li style="margin-bottom: 0.5rem;"><code>RUN("filename")</code>: Runs another Spindle file</li>
-        </ul>
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-filename">display.spdl</span>
+            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+              Run
+            </button>
+          </div>
+          <div class="code-content">
+            <pre><code>DISPLAY(value)</code></pre>
+          </div>
+        </div>
+        <p><b>DISPLAY(value):</b> Outputs the value to the console. You can display numbers, strings, lists, or the result of an expression.</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-filename">input.spdl</span>
+            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+              Run
+            </button>
+          </div>
+          <div class="code-content">
+            <pre><code>INPUT()</code></pre>
+          </div>
+        </div>
+        <p><b>INPUT():</b> Prompts the user for input and returns the value entered. Useful for interactive programs.</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-filename">is_num.spdl</span>
+            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+              Run
+            </button>
+          </div>
+          <div class="code-content">
+            <pre><code>IS_NUM(value)</code></pre>
+          </div>
+        </div>
+        <p><b>IS_NUM(value):</b> Returns 1 if the value is a number, 0 otherwise. Useful for checking data types before performing calculations.</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-filename">is_str.spdl</span>
+            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+              Run
+            </button>
+          </div>
+          <div class="code-content">
+            <pre><code>IS_STR(value)</code></pre>
+          </div>
+        </div>
+        <p><b>IS_STR(value):</b> Returns 1 if the value is a string, 0 otherwise. Use this to check if a variable contains text.</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-filename">is_list.spdl</span>
+            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+              Run
+            </button>
+          </div>
+          <div class="code-content">
+            <pre><code>IS_LIST(value)</code></pre>
+          </div>
+        </div>
+        <p><b>IS_LIST(value):</b> Returns 1 if the value is a list, 0 otherwise. Use this to check if a variable contains a list/array.</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-filename">is_function.spdl</span>
+            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+              Run
+            </button>
+          </div>
+          <div class="code-content">
+            <pre><code>IS_FUNCTION(value)</code></pre>
+          </div>
+        </div>
+        <p><b>IS_FUNCTION(value):</b> Returns 1 if the value is a function/procedure, 0 otherwise. Useful for advanced programming and debugging.</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-filename">append.spdl</span>
+            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+              Run
+            </button>
+          </div>
+          <div class="code-content">
+            <pre><code>APPEND(list, value)</code></pre>
+          </div>
+        </div>
+        <p><b>APPEND(list, value):</b> Adds the value to the end of the list. Use this to grow a list dynamically.</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-filename">pop.spdl</span>
+            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+              Run
+            </button>
+          </div>
+          <div class="code-content">
+            <pre><code>POP(list, index)</code></pre>
+          </div>
+        </div>
+        <p><b>POP(list, index):</b> Removes and returns the element at the specified index from the list. Indexing starts at 1.</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-filename">extend.spdl</span>
+            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+              Run
+            </button>
+          </div>
+          <div class="code-content">
+            <pre><code>EXTEND(listA, listB)</code></pre>
+          </div>
+        </div>
+        <p><b>EXTEND(listA, listB):</b> Adds all elements from listB to the end of listA. Useful for combining lists.</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-filename">length.spdl</span>
+            <button class="run-button" onclick="runCode(this.nextElementSibling.querySelector('code'))">
+              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+              Run
+            </button>
+          </div>
+          <div class="code-content">
+            <pre><code>LENGTH(list)</code></pre>
+          </div>
+        </div>
+        <p><b>LENGTH(list):</b> Returns the number of elements in the list. Note: List indexing starts at 1, following College Board conventions.</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-filename">clear.spdl</span>
+            <button class="run-button" disabled title="Only available in Native IDE">
+              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+              Run
+            </button>
+          </div>
+          <div class="code-content">
+            <pre><code>CLEAR()</code></pre>
+          </div>
+        </div>
+        <p><b>CLEAR():</b> Clears the console. <b>Note:</b> This function is only available in the Native IDE.</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-filename">run.spdl</span>
+            <button class="run-button" disabled title="Only available in Native IDE">
+              <span class="material-symbols-rounded" style="font-size: 1rem;">play_arrow</span>
+              Run
+            </button>
+          </div>
+          <div class="code-content">
+            <pre><code>RUN("filename")</code></pre>
+          </div>
+        </div>
+        <p><b>RUN("filename"):</b> Runs another Spindle file by filename. <b>Note:</b> This function is only available in the Native IDE.</p>
       </div>
 
       <!-- Robot IDE Built-in Functions Section -->

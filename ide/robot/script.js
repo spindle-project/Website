@@ -97,8 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
         gridOutputContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
         gridOutputContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
 
-        // No longer setting --grid-cell-size directly in JS, relying on CSS `aspect-ratio` and `1fr`
-
         for (let i = 0; i < gridSize * gridSize; i++) {
             const gridCell = document.createElement('div');
             gridCell.classList.add('grid-cell');
@@ -107,11 +105,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         console.log(`Generated a ${gridSize}x${gridSize} grid.`);
 
-        // --- Place robot in the center ---
-        robotX = Math.floor(gridSize / 2);
-        robotY = Math.floor(gridSize / 2);
-        robotDirection = 0; // Default to Up/North
-        renderRobot(); // Render the robot at its initial position
+        // --- Place robot at user-set position if available, else center ---
+        if (userSetRobot) {
+            robotX = userSetRobot.x;
+            robotY = userSetRobot.y;
+            robotDirection = userSetRobot.direction;
+        } else {
+            robotX = Math.floor(gridSize / 2);
+            robotY = Math.floor(gridSize / 2);
+            robotDirection = 0;
+        }
+        renderRobot();
     }
 
     /**
@@ -129,17 +133,116 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Track user-set robot position and direction
+    let userSetRobot = null;
+
+    // Helper to center robot
+    function centerRobot() {
+        const gridSize = parseInt(gridSizeInput.value, 10);
+        robotX = Math.floor(gridSize / 2);
+        robotY = Math.floor(gridSize / 2);
+        robotDirection = 0;
+        renderRobot();
+    }
+
+    // Patch run_python_code to always restore user placement after grid regeneration
+    window.run_python_code = function(e) {
+        // The actual Python handler will be called by py-click, which will regenerate the grid
+        // So, after a short delay, restore the robot to the user-set position if available
+        setTimeout(() => {
+            if (userSetRobot) {
+                robotX = userSetRobot.x;
+                robotY = userSetRobot.y;
+                robotDirection = userSetRobot.direction;
+                renderRobot();
+            }
+        }, 50);
+    };
+
+    // Drag and rotate logic
+    let isDragging = false;
+    let dragOffset = { x: 0, y: 0 };
+
     /**
      * Renders the robot in its current cell with the correct direction symbol.
      * Also dynamically adjusts the robot's font size to fit the cell.
      */
     function renderRobot() {
         const gridSize = parseInt(gridSizeInput.value, 10);
-        const cellIndex = robotY * gridSize + robotX; // Y * width + X
+        // Remove robot from all cells first
+        for (let i = 0; i < gridOutputContainer.children.length; i++) {
+            const cell = gridOutputContainer.children[i];
+            cell.classList.remove('robot-cell');
+            cell.textContent = '';
+        }
+        const cellIndex = robotY * gridSize + robotX;
         const cell = gridOutputContainer.children[cellIndex];
         cell.textContent = directionSymbols[robotDirection];
-scaleRobotToCellHeight(cell, gridSize)
-        
+        scaleRobotToCellHeight(cell, gridSize);
+        cell.classList.add('robot-cell');
+        cell.style.cursor = 'grab';
+
+        // Remove previous listeners
+        cell.onmousedown = null;
+        cell.ontouchstart = null;
+        cell.onclick = null;
+        cell.onmouseup = null;
+        cell.onmousemove = null;
+        cell.ontouchmove = null;
+        cell.ontouchend = null;
+
+        // Click to rotate
+        cell.onclick = function(e) {
+            robotDirection = (robotDirection + 1) % 4;
+            userSetRobot = { x: robotX, y: robotY, direction: robotDirection };
+            renderRobot();
+        };
+
+        // Drag logic
+        cell.onmousedown = function(e) {
+            isDragging = true;
+            dragOffset = { x: e.offsetX, y: e.offsetY };
+            document.onmousemove = function(ev) {
+                if (!isDragging) return;
+                const rect = gridOutputContainer.getBoundingClientRect();
+                const cellSize = rect.width / gridSize;
+                const x = Math.floor((ev.clientX - rect.left) / cellSize);
+                const y = Math.floor((ev.clientY - rect.top) / cellSize);
+                if (x >= 0 && x < gridSize && y >= 0 && y < gridSize) {
+                    robotX = x;
+                    robotY = y;
+                    userSetRobot = { x: robotX, y: robotY, direction: robotDirection };
+                    renderRobot();
+                }
+            };
+            document.onmouseup = function() {
+                isDragging = false;
+                document.onmousemove = null;
+                document.onmouseup = null;
+            };
+        };
+        // Touch support
+        cell.ontouchstart = function(e) {
+            isDragging = true;
+            e.preventDefault();
+        };
+        cell.ontouchmove = function(ev) {
+            if (!isDragging) return;
+            const touch = ev.touches[0];
+            const rect = gridOutputContainer.getBoundingClientRect();
+            const cellSize = rect.width / gridSize;
+            const x = Math.floor((touch.clientX - rect.left) / cellSize);
+            const y = Math.floor((touch.clientY - rect.top) / cellSize);
+            if (x >= 0 && x < gridSize && y >= 0 && y < gridSize) {
+                robotX = x;
+                robotY = y;
+                userSetRobot = { x: robotX, y: robotY, direction: robotDirection };
+                renderRobot();
+            }
+        };
+        cell.ontouchend = function() {
+            isDragging = false;
+        };
     }
 
     // --- PyScript / Spindle Integration ---
@@ -147,7 +250,7 @@ scaleRobotToCellHeight(cell, gridSize)
         let robo_commands;
         try {
             robo_commands = JSON.parse(robo_commands_json);
-            originalOutputDiv.textContent = `Processing ${robo_commands.length} robot commands...`;
+            //originalOutputDiv.textContent += `Processing ${robo_commands.length} robot commands...`;
         } catch (e) {
             console.error("Failed to parse robo_commands JSON:", e);
             originalOutputDiv.textContent = "Error: Invalid command format from Spindle.";
@@ -160,7 +263,7 @@ scaleRobotToCellHeight(cell, gridSize)
             execute_command(command);
         });
 
-        originalOutputDiv.textContent += `\nAll ${robo_commands.length} commands executed. Robot at (${robotX}, ${robotY}) facing ${directionSymbols[robotDirection]}.`;
+        //originalOutputDiv.textContent += `\n \n All ${robo_commands.length} commands executed. Robot at (${robotX}, ${robotY}) facing ${directionSymbols[robotDirection]}.`;
     };
 
     /**
@@ -210,6 +313,28 @@ scaleRobotToCellHeight(cell, gridSize)
 
         renderRobot(); // Render robot at new position with new direction
     }
+
+    // Expose robot state for PyScript
+    window.getRobotState = function() {
+        return {
+            x: robotX,
+            y: robotY,
+            direction: robotDirection,
+            gridSize: parseInt(gridSizeInput.value, 10)
+        };
+    };
+
+    // Returns true if the robot can move forward without hitting a wall
+    window.canMoveForward = function() {
+        const gridSize = parseInt(gridSizeInput.value, 10);
+        let newX = robotX;
+        let newY = robotY;
+        if (robotDirection === 0) newY--;
+        else if (robotDirection === 1) newX++;
+        else if (robotDirection === 2) newY++;
+        else if (robotDirection === 3) newX--;
+        return (newX >= 0 && newX < gridSize && newY >= 0 && newY < gridSize);
+    };
 
     // Initial setup when the page loads
     generateGrid(); // Generate the initial grid with the robot
