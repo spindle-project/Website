@@ -193,9 +193,14 @@ function BuildSet(
   viewSetBtn.classList.add("view-set-btn");
   viewSetBtn.textContent = "View Set";
   if (setId) {
-    viewSetBtn.href = `/study/flashcards/viewset/?id=${setId}`;
+    viewSetBtn.onclick  = () => {
+      sessionStorage.setItem("ChoosenSet", setId);
+     // window.location.assign("/study/flashcards/viewset/");
+    }
   } else {
-    viewSetBtn.href = `/study/flashcards/viewset/?title=${encodeURIComponent(title)}`;
+    viewSetBtn.onclick = () => {
+      ChooseSet(title, scope);
+    }
   }
   viewSetBtn.setAttribute("tabindex", "0");
   viewSetBtn.style.width = "100%";
